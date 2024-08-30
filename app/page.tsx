@@ -19,25 +19,36 @@ const openMail = () => {
 const applyTheme = (theme: string) => {
   const isDark = theme === "dark";
 
-  document.querySelector(".main-container")!.style.background = isDark
-    ? "#232323"
-    : "#ffffff";
-  document.querySelector(".profile")!.style.background = isDark
-    ? "#1E1E1E"
-    : "#EBEBFA";
-  document.querySelector(".bio")!.style.background = isDark
-    ? "#323232"
-    : "#F7F7FF";
+  const mainContainer = document.querySelector(".main-container") as HTMLElement;
+  const profile = document.querySelector(".profile") as HTMLElement;
+  const bio = document.querySelector(".bio") as HTMLElement;
+  const darkModeContainer = document.querySelector(".dark-mode-container") as HTMLElement;
+
+  if (mainContainer) {
+    mainContainer.style.background = isDark ? "#232323" : "#ffffff";
+  }
+
+  if (profile) {
+    profile.style.background = isDark ? "#1E1E1E" : "#EBEBFA";
+  }
+
+  if (bio) {
+    bio.style.background = isDark ? "#323232" : "#F7F7FF";
+  }
+
   document.querySelectorAll(".white-text").forEach((element) => {
-    element.style.color = isDark ? "black" : "white";
+    (element as HTMLElement).style.color = isDark ? "black" : "white";
   });
+
   document.querySelectorAll(".black-text").forEach((element) => {
-    element.style.color = isDark ? "white" : "black";
+    (element as HTMLElement).style.color = isDark ? "white" : "black";
   });
-  document.querySelector(".dark-mode-container")!.style.justifyContent = isDark
-    ? "right"
-    : "left";
+
+  if (darkModeContainer) {
+    darkModeContainer.style.justifyContent = isDark ? "right" : "left";
+  }
 };
+
 
 const Home = () => {
   const [theme, setTheme] = useState("light");
