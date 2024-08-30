@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --primary-color: white;
+  --primary-color-dark: black;
+  --secondary-color: #ebebfa;
+  --secondary-color-dark: #1e1e1e;
+  --container-color-dark: #232323;
+  --bio-color: #f7f7ff;
+  --bio-color-dark: #323232;
+  --black: black;
+  --contact-color-dark: #1e1e1e;
+  --background-color: #ffffff;
+  --theme: "dark";
+}
+
+
+/* Universal Styles */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  transition: all 1s ease;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  width: 100%;
+}
+
+.main-container {
+  width: 100%;
+}
+
+/* Profile Section */
+.profile {
+  background: var(--secondary-color);
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.profile-pic {
+  width: 10rem;
+  border-radius: 50%;
+  margin: 132px auto auto auto;
+}
+
+.profile-name {
+  margin-top: 20px;
+  font-size: 20px; /* Specify font size */
+}
+
+.profile-quote {
+  padding-top: 10px;
+}
+
+/* Profession Section */
+.profession {
+  padding: 20px 20px 60px;
+  text-align: center;
+}
+
+.profession-title {
+  font-size: 60px;
+  padding-top: 30px;
+  font-weight: 350;
+}
+
+.profession-quote {
+  padding-top: 20px;
+}
+
+/* Bio Section */
+.bio {
+  padding: 20px;
+  background: var(--bio-color);
+  border-radius: 20px 20px 0 0;
+}
+
+.bio-description {
+  text-align: justify;
+  padding: 40px 0 60px;
+}
+
+/* Contact Section */
+.contact {
+  padding: 20px;
+  background: var(--black);
+  color: white;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 18px;
+  padding: 10px 0 30px;
+}
+
+.contact-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.contact-email-button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 15px;
+}
+
+.contact-button {
+  font-size: 18px;
+}
+
+/* Projects Section */
+.projects {
+  padding: 30px 0;
+}
+
+.project {
+  padding: 20px;
+  width: 100%;
+}
+
+.project img {
+  width: calc(100% - 40px);
+  height: 100%;
+  border-radius: 20px;
+}
+
+.project p {
+  padding: 20px 0;
+  width: calc(100% - 40px);
+}
+
+.project2-btn {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.dark-mode-container {
+  background-color: ghostwhite;
+  width: 80px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 50px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.dark-mode-container i {
+  font-size: 15px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  padding: 10px;
+}
+
+.bi-moon-fill {
+  color: lightblue;
+  background: var(--container-color-dark);
+}
+
+.bi-sun-fill {
+  color: orange;
+}
+
+/* Responsive Styles */
+@media screen and (min-width: 770px) {
+  .project img {
+    width: 40%;
+  }
+
+  .projects-inner {
+    display: none;
+  }
+
+  .bio {
+    margin: 30px;
+    font-size: 22px;
+  }
+
+  .profession-title {
+    font-size: 100px;
+    padding-top: 40px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .profile-name {
+    font-size: 28px;
+    font-weight: 400;
+  }
+
+  .profile-pic {
+    width: 13rem;
+    height: 13rem;
+    cursor: pointer;
+  }
+
+  .profession-quote,
+  .profile-quote {
+    font-size: 22px;
+    opacity: 0.8;
+  }
+
+  .profile {
+    border-radius: 0 0 80px 80px;
+    padding: 70px 20px;
+  }
+
+  .profile:hover {
+    border-radius: 0;
+    transition: 2 ease-in-out;
+    transition-delay: 0.3s;
+  }
+
+  .contact {
+    border-radius: 60px 60px 0px 0px;
+  }
+
+  .contact-button {
+    cursor: pointer;
+  }
+
+  .contact-title {
+    margin: 10px 0px 10px 0px;
+  }
+
+  .contact-email-button {
+    margin: 10px 0px 20px 0px;
+  }
+
+  .contact-email-button:hover {
+    outline: 2px dashed white;
+    outline-offset: 5px;
+    transition: outline 0.2s ease;
+    cursor: pointer;
+  }
+
+  .project-desc {
+    font-size: 22px;
+    margin: 15px;
+  }
+
+  .dark-mode-container {
+    width: 120px;
+    height: 60px;
+    padding: 10px 15px;
+    top: 40px;
+    right: 40px;
+  }
+
+  .dark-mode-container li {
+    height: 40px;
+    width: 40px;
+    padding: 15px;
+  }
+}
