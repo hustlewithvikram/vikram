@@ -181,6 +181,7 @@ body {
 
 .bi-sun-fill {
   color: orange;
+  background-color: var(--secondary-color);
 }
 
 /* Responsive Styles */
@@ -227,7 +228,7 @@ body {
   }
 
   .profile:hover {
-    border-radius: 0;
+    border-radius: 0 0 50px 50px;
     transition: 2 ease-in-out;
     transition-delay: 0.3s;
   }
@@ -238,6 +239,7 @@ body {
 
   .contact-button {
     cursor: pointer;
+    margin: 0px 20px;
   }
 
   .contact-title {
@@ -249,7 +251,7 @@ body {
   }
 
   .contact-email-button:hover {
-    outline: 2px dashed white;
+    outline: 5px solid white;
     outline-offset: 5px;
     transition: outline 0.2s ease;
     cursor: pointer;

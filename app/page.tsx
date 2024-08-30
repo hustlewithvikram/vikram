@@ -18,6 +18,7 @@ const openMail = () => {
 
 const applyTheme = (theme: string) => {
   const isDark = theme === "dark";
+
   document.querySelector(".main-container")!.style.background = isDark
     ? "#232323"
     : "#ffffff";
@@ -33,6 +34,9 @@ const applyTheme = (theme: string) => {
   document.querySelectorAll(".black-text").forEach((element) => {
     element.style.color = isDark ? "white" : "black";
   });
+  document.querySelector(".dark-mode-container")!.style.justifyContent = isDark
+    ? "right"
+    : "left";
 };
 
 const Home = () => {
@@ -198,7 +202,7 @@ const Home = () => {
           </div>
           <button
             onClick={openMail}
-            className="white-text contact-email-button"
+            className="contact-email-button"
           >
             Email Me
           </button>
