@@ -16,6 +16,7 @@ const openMail = () => {
   window.location.href = "mailto:vs423502@gmail.com";
 };
 
+// Apply theme styles based on the theme
 const applyTheme = (theme: string) => {
   const isDark = theme === "dark";
 
@@ -49,18 +50,16 @@ const applyTheme = (theme: string) => {
   }
 };
 
-
 const Home = () => {
   const [theme, setTheme] = useState("light");
-  // Apply theme styles based on the theme
 
   useEffect(() => {
-    // Apply theme on mount
+    // Load theme from localStorage on mount
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme as "light" | "dark");
     applyTheme(savedTheme);
 
-    // Add event listener for dark mode toggle
+    // Event listener function for dark mode toggle
     const handleDarkModeToggle = () => {
       const newTheme = theme === "light" ? "dark" : "light";
       setTheme(newTheme);
@@ -68,36 +67,15 @@ const Home = () => {
       applyTheme(newTheme);
     };
 
-    document
-      .querySelector(".dark-mode-container")
-      ?.addEventListener("click", handleDarkModeToggle);
+    // Add event listener for dark mode toggle
+    const darkModeContainer = document.querySelector(".dark-mode-container");
+    darkModeContainer?.addEventListener("click", handleDarkModeToggle);
 
     // Cleanup event listener on unmount
     return () => {
-      document
-        .querySelector(".dark-mode-container")
-        ?.removeEventListener("click", handleDarkModeToggle);
+      darkModeContainer?.removeEventListener("click", handleDarkModeToggle);
     };
-  }, [theme]);
-
-  useEffect(() => {
-    // Initialize AOS
-
-    // Load theme from localStorage
-    const savedTheme = localStorage.getItem("theme") || "light";
-    setTheme(savedTheme);
-    applyTheme(savedTheme);
-
-    // Toggle theme on dark mode button click
-    document
-      .querySelector(".dark-mode-container")
-      ?.addEventListener("click", () => {
-        const newTheme = theme === "light" ? "dark" : "light";
-        setTheme(newTheme);
-        localStorage.setItem("theme", newTheme);
-        applyTheme(newTheme);
-      });
-  }, [theme]);
+  }, [theme]); // Dependency array ensures the effect runs when `theme` changes
 
   return (
     <>
