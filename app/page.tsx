@@ -118,13 +118,15 @@ const Home = () => {
         <div className="bio">
           <p data-aos="fade-up" className="black-text bio-description">
             <b>Hey There,</b>
-            <br />
-            My name is Vikram Vishwakarma and I am from Maharashtra, India. It's
-            nice to meet you. So happy that you visited my portfolio website. I
-            am a <s>Genius, billionaire, playboy, philanthropist</s> normal guy
-            learning new things and exploring everything little by little. I've
-            completed my graduation in the field of computer science. If you
-            want to know more about me, you can contact me.
+            <br></br><br></br>
+            So my name is <i>Vikram Vishwakarma,</i> and i belong from Maharashtra, India.
+            First of all it’s great to meet you, and happy that you’ve visited my portfolio website.
+            I’m an avid learner who enjoys exploring new places and discovering new things.
+            I’m just a passionate individual who is trying to be a <s>"genius, billionaire, playboy, philanthropist,"</s> person who enjoys life without any expectations.
+            I’ve completed my B.Sc. in Computer Science and am continually growing and refining my skills in this field.
+            <br></br><br></br>
+            If you’d like to know more about me, feel free to reach me out.
+
           </p>
         </div>
 
