@@ -268,9 +268,9 @@ li {
     right: 40px;
   }
 
-  .dark-mode-container li {
-    height: 40px;
-    width: 40px;
+  .dark-mode-container i {
+    height: 30px;
+    width: 30px;
     padding: 15px;
   }
 }
