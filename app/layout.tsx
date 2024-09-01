@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { fetchVisitors } from "@/lib/fetchVisitors";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,18 +10,27 @@ export const metadata: Metadata = {
   description: "Made with Next Js",
 };
 
-export default function RootLayout({
+// Define the type for visitor data
+interface Visitor {
+  _id: string;
+  ipAddress: string;
+  visitDate: string;
+}
+
+export default async function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
+  // Fetch visitor data
+  const visitors: Visitor[] = await fetchVisitors();
+
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/images/profile_round.ico"></link>
+        <link rel="icon" href="/images/profile_round.ico" />
       </head>
       <body className={inter.className}>
         {children}
+        <h3 className="visitor-count">Visitor Count: {visitors.length}</h3>
       </body>
     </html>
   );
