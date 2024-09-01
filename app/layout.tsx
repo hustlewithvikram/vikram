@@ -30,7 +30,7 @@ export default async function RootLayout({
       </head>
       <body className={inter.className}>
         {children}
-        <h3 className="visitor-count">Visitor Count: {visitors.length}</h3>
+        <p className="visitor-count">🌟 Total {visitors.length} Visitors 🌟</p>
       </body>
     </html>
   );
