@@ -2,7 +2,6 @@
 "use client";
 
 import "bootstrap-icons/font/bootstrap-icons.css";
-import Script from "next/script";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
