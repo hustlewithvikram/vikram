@@ -10,18 +10,11 @@ export const metadata: Metadata = {
   description: "Made with Next Js",
 };
 
-// Define the type for visitor data
-interface Visitor {
-  _id: string;
-  ipAddress: string;
-  visitDate: string;
-}
-
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   // Fetch visitor data
-  const visitors: Visitor[] = await fetchVisitors();
+  const visitors = await fetchVisitors();
 
   return (
     <html lang="en">
