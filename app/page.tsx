@@ -4,6 +4,7 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import VisitorCount from "./VisitorCount";
 
 // Open URL in a new tab
 const openUrl = (url: string | URL | undefined) => {
@@ -197,6 +198,8 @@ const Home = () => {
             Email Me
           </button>
         </div>
+
+        <VisitorCount />
       </div>
     </>
   );
