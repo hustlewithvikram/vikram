@@ -123,9 +123,8 @@ li {
 }
 
 .project {
-  padding: 20px;
+  margin: 10px 20px;
   width: auto;
-  margin: 20px 0px;
 }
 
 .project img {
@@ -192,12 +191,15 @@ li {
 
 /* Responsive Styles */
 @media screen and (min-width: 770px) {
-  .project img {
-    width: 40%;
+  .projects-inner {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    column-gap: 1%;
+    margin: 20px;
   }
 
-  .projects-inner {
-    display: none;
+  .project {
+    background: red;
   }
 
   .bio {
@@ -265,7 +267,9 @@ li {
 
   .project-desc {
     font-size: 22px;
-    margin: 15px;
+    padding: 10px;
+    background: ghostwhite;
+    margin-top: 10px;
   }
 
   .dark-mode-container {

@@ -20,10 +20,14 @@ const openMail = () => {
 const applyTheme = (theme: string) => {
   const isDark = theme === "dark";
 
-  const mainContainer = document.querySelector(".main-container") as HTMLElement;
+  const mainContainer = document.querySelector(
+    ".main-container"
+  ) as HTMLElement;
   const profile = document.querySelector(".profile") as HTMLElement;
   const bio = document.querySelector(".bio") as HTMLElement;
-  const darkModeContainer = document.querySelector(".dark-mode-container") as HTMLElement;
+  const darkModeContainer = document.querySelector(
+    ".dark-mode-container"
+  ) as HTMLElement;
 
   if (mainContainer) {
     mainContainer.style.background = isDark ? "#232323" : "#ffffff";
@@ -118,61 +122,92 @@ const Home = () => {
         <div className="bio">
           <p data-aos="fade-up" className="black-text bio-description">
             <b>Hey There,</b>
-            <br></br><br></br>
-            So my name is <i>Vikram Vishwakarma,</i> and i belong from Maharashtra, India.
-            First of all it’s great to meet you, and happy that you’ve visited my portfolio website.
-            I’m an avid learner who enjoys exploring new places and discovering new things.
-            I’m just a passionate individual who is trying to be a <s>"genius, billionaire, playboy, philanthropist,"</s> person who enjoys life without any expectations.
-            I’ve completed my B.Sc. in Computer Science and am continually growing and refining my skills in this field.
-            <br></br><br></br>
+            <br></br>
+            <br></br>
+            So my name is <i>Vikram Vishwakarma,</i> and i belong from
+            Maharashtra, India. First of all it’s great to meet you, and happy
+            that you’ve visited my portfolio website. I’m an avid learner who
+            enjoys exploring new places and discovering new things. I’m just a
+            passionate individual who is trying to be a{" "}
+            <s>"genius, billionaire, playboy, philanthropist,"</s> person who
+            enjoys life without any expectations. I’ve completed my B.Sc. in
+            Computer Science and am continually growing and refining my skills
+            in this field.
+            <br></br>
+            <br></br>
             If you’d like to know more about me, feel free to reach me out.
-
           </p>
         </div>
 
         <div className="projects">
           <div className="projects-inner">
             <div data-aos="fade-up" className="project project1">
-              <Image
-                className="project-img"
-                src="/images/project1.jpg"
-                alt="Java calculator project"
-                width={300}
-                height={200}
-              />
-              <p className="black-text project-desc">
-                This is a Java calculator made for Android devices using the
-                Java programming language and official Android API.
-              </p>
+              <div className="project1-sec-1">
+                <Image
+                  className="project-img"
+                  src="/images/project1.jpg"
+                  alt="Java calculator project"
+                  width={300}
+                  height={200}
+                />
+              </div>
+              <div className="project1-sec-2">
+                <p className="black-text project-desc">
+                  This is a Java calculator made for Android devices using the
+                  Java programming language and official Android API.
+                </p>
+              </div>
+            </div>
+
+            <div data-aos="fade-up" className="project project1">
+              <div className="project1-sec-1">
+                <Image
+                  className="project-img"
+                  src="/images/project1.jpg"
+                  alt="Java calculator project"
+                  width={300}
+                  height={200}
+                />
+              </div>
+              <div className="project1-sec-2">
+                <p className="black-text project-desc">
+                  This is a Java calculator made for Android devices using the
+                  Java programming language and official Android API.
+                </p>
+              </div>
             </div>
 
             <div data-aos="fade-up" className="project project2">
-              <Image
-                className="project-img"
-                src="/images/project2.jpg"
-                alt="Homepage landing website project"
-                width={300}
-                height={200}
-              />
-              <p className="black-text project-desc">
-                It's a homepage landing website which can be used as the default
-                homepage in your browser.
-              </p>
-              <button
-                onClick={() =>
-                  openUrl("https://vikram.is-a.dev/dynamic-homepage")
-                }
-                className="project2-btn"
-              >
-                Visit Website &nbsp;
-                <i className="bi bi-link-45deg"></i>
-              </button>
+              <div className="project2-sec-1">
+                <Image
+                  className="project-img"
+                  src="/images/project2.png"
+                  alt="Homepage landing website project"
+                  width={300}
+                  height={200}
+                />
+              </div>
+              <div className="project2-sec-2">
+                <p className="black-text project-desc">
+                  It's a homepage landing website which can be used as the
+                  default homepage in your browser.
+                </p>
+                <button
+                  onClick={() =>
+                    openUrl("https://vikram.is-a.dev/dynamic-homepage")
+                  }
+                  className="project2-btn"
+                >
+                  Visit Website &nbsp;
+                  <i className="bi bi-link-45deg"></i>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="contact">
-          <h3 className="black-text contact-title">CONTACT ME</h3>
+        <footer className="contact">
+          <h3 className="contact-title">CONTACT ME</h3>
           <div className="contact-button-container">
             <i
               onClick={() => openUrl("https://instagram.com/vikramisdev")}
@@ -187,17 +222,14 @@ const Home = () => {
               className="bi bi-linkedin contact-button"
             ></i>
             <i
-              onClick={() => openUrl("https://facebook.com/vikramisdev")}
-              className="bi bi-facebook contact-button"
+              onClick={() => openUrl("https://github.com/vikramisdev")}
+              className="bi bi-github contact-button"
             ></i>
           </div>
-          <button
-            onClick={openMail}
-            className="contact-email-button"
-          >
+          <button onClick={openMail} className="contact-email-button">
             Email Me
           </button>
-        </div>
+        </footer>
 
         <VisitorCount />
       </div>
