@@ -120,6 +120,22 @@ li {
 /* Projects Section */
 .projects {
   padding: 30px 0;
+  margin: 80px 0px 0px 0px;
+}
+
+.projects-title {
+  margin: 20px 0px 10px 0px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.projects-desc {
+  padding: 5px 0px 10px 0px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  opacity: 0.8;
 }
 
 .project {
@@ -189,6 +205,17 @@ li {
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.resume-button {
+  float: right;
+  margin: 40px 0px 0px 0px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 40px;
+  background-color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
 /* Responsive Styles */
 @media screen and (min-width: 770px) {
 
@@ -210,6 +237,10 @@ li {
     height: 20rem;
     border-radius: 20px;
     object-fit: fill;
+  }
+
+  .project:hover {
+    cursor: pointer;
   }
 
   .bio {
@@ -288,4 +319,11 @@ li {
     width: 30px;
     padding: 15px;
   }
+}
+
+
+/* useless css */
+.header-notify {
+  text-align: center;
+  padding: 10px;
 }

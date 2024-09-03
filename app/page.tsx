@@ -83,6 +83,7 @@ const Home = () => {
 
   return (
     <>
+      <p className="header-notify">This website is in continuous development, some features might not work !</p> { /* useless code line */ }
       <div className="main-container">
         <div className="profile">
           <div className="dark-mode-container">
@@ -136,10 +137,14 @@ const Home = () => {
             <br></br>
             <br></br>
             If you’d like to know more about me, feel free to reach me out.
+
+            <button className="resume-button">Download Resume</button>
           </p>
         </div>
 
         <div className="projects">
+          <h2 className="projects-title black-text">My Work</h2>
+          <p className="projects-desc black-text">Some of my handcrafted projects</p>
           <div className="projects-inner">
             <div data-aos="fade-up" className="project project1">
               <div className="project1-sec-1">
