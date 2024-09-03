@@ -159,24 +159,6 @@ const Home = () => {
               </div>
             </div>
 
-            <div data-aos="fade-up" className="project project1">
-              <div className="project1-sec-1">
-                <Image
-                  className="project-img"
-                  src="/images/project1.jpg"
-                  alt="Java calculator project"
-                  width={300}
-                  height={200}
-                />
-              </div>
-              <div className="project1-sec-2">
-                <p className="black-text project-desc">
-                  This is a Java calculator made for Android devices using the
-                  Java programming language and official Android API.
-                </p>
-              </div>
-            </div>
-
             <div data-aos="fade-up" className="project project2">
               <div className="project2-sec-1">
                 <Image
