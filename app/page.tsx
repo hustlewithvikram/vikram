@@ -81,9 +81,20 @@ const Home = () => {
     };
   }, [theme]); // Dependency array ensures the effect runs when `theme` changes
 
+  const resumeBtn = document.querySelector(".resume-button");
+
+  // Add click event listener if resumeBtn is found
+  resumeBtn?.addEventListener("click", function onClick() {
+    var url = "https://gist.github.com/vikramisdev/b681778f4970732a20d4298fa8bd4e7e/raw/ab7308b588db609bf68f26bac3a4740141d71d54/vikram%2520resume.pdf";
+    window.open(url, "_blank");
+  });
+
   return (
     <>
-      <p className="header-notify">This website is in continuous development, some features might not work !</p> { /* useless code line */ }
+      <p className="header-notify">
+        This website is in continuous development, some features might not work
+        !
+      </p>
       <div className="main-container">
         <div className="profile">
           <div className="dark-mode-container">
@@ -137,53 +148,80 @@ const Home = () => {
             <br></br>
             <br></br>
             If you’d like to know more about me, feel free to reach me out.
-
             <button className="resume-button">Download Resume</button>
           </p>
         </div>
 
         <div className="projects">
           <h2 className="projects-title black-text">My Work</h2>
-          <p className="projects-desc black-text">Some of my handcrafted projects</p>
+          <p className="projects-desc black-text">
+            Some of my handcrafted projects
+          </p>
           <div className="projects-inner">
             <div data-aos="fade-up" className="project project1">
               <div className="project1-sec-1">
-                <Image
-                  className="project-img"
-                  src="/images/project1.jpg"
-                  alt="Java calculator project"
-                  width={300}
-                  height={200}
-                />
+                <div className="project-img">
+                  <div className="project-img-content">
+                    <h3 className="project-img-title">Swamp</h3>
+                    <p className="project-img-desc">An android calculator.</p>
+                  </div>
+                </div>
               </div>
               <div className="project1-sec-2">
                 <p className="black-text project-desc">
-                  This is a Java calculator made for Android devices using the
-                  Java programming language and official Android API.
+                  This is a Android Calculator built using Java & Android Api. It's the first android app that was made by me !
                 </p>
               </div>
             </div>
 
             <div data-aos="fade-up" className="project project2">
               <div className="project2-sec-1">
-                <Image
-                  className="project-img"
-                  src="/images/project2.png"
-                  alt="Homepage landing website project"
-                  width={300}
-                  height={200}
-                />
+                <div className="project-img">
+                  <div className="project-img-content">
+                    <h3 className="project-img-title">Doodle Search</h3>
+                    <p className="project-img-desc">
+                      A static chrome like search page.
+                    </p>
+                  </div>
+                </div>
               </div>
               <div className="project2-sec-2">
                 <p className="black-text project-desc">
-                  It's a homepage landing website which can be used as the
+                  It's a static website which can be used as the
                   default homepage in your browser.
                 </p>
                 <button
                   onClick={() =>
-                    openUrl("https://vikram.is-a.dev/dynamic-homepage")
+                    openUrl("https://vikramisdev.github.io/dynamic-homepage")
                   }
-                  className="project2-btn"
+                  className="project2-btn project-btn"
+                >
+                  Visit Website &nbsp;
+                  <i className="bi bi-link-45deg"></i>
+                </button>
+              </div>
+            </div>
+
+            <div data-aos="fade-up" className="project project3">
+              <div className="project3-sec-1">
+                <div className="project-img">
+                  <div className="project-img-content">
+                    <h3 className="project-img-title">Web draw</h3>
+                    <p className="project-img-desc">
+                      A site for drawing on canvas
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className="project3-sec-2">
+                <p className="black-text project-desc">
+                  It's a website which lets you enjoy drawing on a canvas, responsive to all devices.
+                </p>
+                <button
+                  onClick={() =>
+                    openUrl("https://vikramisdev.github.io/web-draw")
+                  }
+                  className="project3-btn project-btn"
                 >
                   Visit Website &nbsp;
                   <i className="bi bi-link-45deg"></i>

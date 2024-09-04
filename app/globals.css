@@ -131,7 +131,7 @@ li {
 }
 
 .projects-desc {
-  padding: 5px 0px 10px 0px;
+  padding: 5px 0px 20px 0px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200;
@@ -139,14 +139,29 @@ li {
 }
 
 .project {
-  margin: 10px 20px;
+  margin: 0px 20px 80px 20px;
   width: auto;
 }
 
-.project img {
+.project-img {
   width: 100%;
-  height: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: lavender;
   border-radius: 20px;
+}
+
+.project-img-title {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.project-img-desc {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .project p {
@@ -154,7 +169,7 @@ li {
   width: 100%;
 }
 
-.project2-btn {
+.project-btn {
   border: none;
   padding: 10px 15px;
   border-radius: 50px;
@@ -230,16 +245,24 @@ li {
     font-size: 22px;
     padding: 10px;
     margin-top: 10px;
+    text-align: justify;
   }
 
-  .project img {
+  .project-img {
     width: 100%;
-    height: 20rem;
+    height: 250px;
     border-radius: 20px;
-    object-fit: fill;
+  }
+
+  .project-img:hover {
+    scale: 1.02;
   }
 
   .project:hover {
+    cursor: pointer;
+  }
+
+  .project-btn {
     cursor: pointer;
   }
 
