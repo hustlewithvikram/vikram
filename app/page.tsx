@@ -81,13 +81,14 @@ const Home = () => {
     };
   }, [theme]); // Dependency array ensures the effect runs when `theme` changes
 
-  const resumeBtn = document.querySelector(".resume-button");
+  useEffect(() => {
+    const resumeBtn = document.querySelector(".resume-button");
 
-  // Add click event listener if resumeBtn is found
-  resumeBtn?.addEventListener("click", function onClick() {
-    var url = "https://gist.github.com/vikramisdev/b681778f4970732a20d4298fa8bd4e7e/raw/ab7308b588db609bf68f26bac3a4740141d71d54/vikram%2520resume.pdf";
-    window.open(url, "_blank");
-  });
+    resumeBtn?.addEventListener("click", function onClick() {
+      var url = "https://gist.github.com/vikramisdev/b681778f4970732a20d4298fa8bd4e7e/raw/ab7308b588db609bf68f26bac3a4740141d71d54/vikram%2520resume.pdf";
+      window.open(url, "_blank");
+    });
+  }, []);
 
   return (
     <>
