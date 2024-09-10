@@ -282,6 +282,8 @@ const Home = () => {
           <button className="contact-email-button" onClick={openMail}>
             Email Me
           </button>
+
+          <VisitorCount />
         </footer>
       </div>
     </>
