@@ -20,37 +20,37 @@ const openMail = () => {
 const applyTheme = (theme: string) => {
   const isDark = theme === "dark";
 
-  const mainContainer = document.querySelector(
-    ".main-container"
+  const mainContainer = document.querySelector(".page-wrapper") as HTMLElement;
+  const profileSection = document.querySelector(
+    ".profile-section"
   ) as HTMLElement;
-  const profile = document.querySelector(".profile") as HTMLElement;
-  const bio = document.querySelector(".bio") as HTMLElement;
-  const darkModeContainer = document.querySelector(
-    ".dark-mode-container"
+  const bioSection = document.querySelector(".bio-section") as HTMLElement;
+  const themeToggleContainer = document.querySelector(
+    ".theme-toggle-container"
   ) as HTMLElement;
 
   if (mainContainer) {
     mainContainer.style.background = isDark ? "#232323" : "#ffffff";
   }
 
-  if (profile) {
-    profile.style.background = isDark ? "#1E1E1E" : "#EBEBFA";
+  if (profileSection) {
+    profileSection.style.background = isDark ? "#1E1E1E" : "#EBEBFA";
   }
 
-  if (bio) {
-    bio.style.background = isDark ? "#323232" : "#F7F7FF";
+  if (bioSection) {
+    bioSection.style.background = isDark ? "#323232" : "#F7F7FF";
   }
 
-  document.querySelectorAll(".white-text").forEach((element) => {
+  document.querySelectorAll(".text-light").forEach((element) => {
     (element as HTMLElement).style.color = isDark ? "black" : "white";
   });
 
-  document.querySelectorAll(".black-text").forEach((element) => {
+  document.querySelectorAll(".text-dark").forEach((element) => {
     (element as HTMLElement).style.color = isDark ? "white" : "black";
   });
 
-  if (darkModeContainer) {
-    darkModeContainer.style.justifyContent = isDark ? "right" : "left";
+  if (themeToggleContainer) {
+    themeToggleContainer.style.justifyContent = isDark ? "right" : "left";
   }
 };
 
@@ -72,33 +72,35 @@ const Home = () => {
     };
 
     // Add event listener for dark mode toggle
-    const darkModeContainer = document.querySelector(".dark-mode-container");
-    darkModeContainer?.addEventListener("click", handleDarkModeToggle);
+    const themeToggleContainer = document.querySelector(
+      ".theme-toggle-container"
+    );
+    themeToggleContainer?.addEventListener("click", handleDarkModeToggle);
 
     // Cleanup event listener on unmount
     return () => {
-      darkModeContainer?.removeEventListener("click", handleDarkModeToggle);
+      themeToggleContainer?.removeEventListener("click", handleDarkModeToggle);
     };
   }, [theme]); // Dependency array ensures the effect runs when `theme` changes
 
   useEffect(() => {
-    const resumeBtn = document.querySelector(".resume-button");
+    const resumeBtn = document.querySelector(".resume-download-btn");
 
     resumeBtn?.addEventListener("click", function onClick() {
-      var url = "https://gist.github.com/vikramisdev/b681778f4970732a20d4298fa8bd4e7e/raw/ab7308b588db609bf68f26bac3a4740141d71d54/vikram%2520resume.pdf";
+      var url =
+        "https://gist.github.com/vikramisdev/b681778f4970732a20d4298fa8bd4e7e/raw/ab7308b588db609bf68f26bac3a4740141d71d54/vikram%2520resume.pdf";
       window.open(url, "_blank");
     });
   }, []);
 
   return (
     <>
-      <p className="header-notify">
-        This website is in continuous development, some features might not work
-        !
+      <p className="header-notification">
+        This website is in continuous development, some features might not work!
       </p>
-      <div className="main-container">
-        <div className="profile">
-          <div className="dark-mode-container">
+      <div className="page-wrapper">
+        <div className="profile-section">
+          <div className="theme-toggle-container">
             <i
               className={`bi ${
                 theme === "light" ? "bi-sun-fill" : "bi-moon-fill"
@@ -108,36 +110,36 @@ const Home = () => {
 
           <Image
             data-aos="fade-up"
-            className="profile-pic"
+            className="profile-picture"
             src="/images/profile.png"
             alt="Vikram Vishwakarma profile picture"
             width={150}
             height={150}
           />
-          <h2 data-aos="fade-up" className="black-text profile-name">
+          <h2 data-aos="fade-up" className="text-dark profile-name">
             Vikram Vishwakarma
           </h2>
-          <p data-aos="fade-up" className="black-text profile-quote">
+          <p data-aos="fade-up" className="text-dark profile-quote">
             Experience is the name everyone gives to their mistakes. ~ Oscar
             Wilde
           </p>
         </div>
 
-        <div className="profession">
-          <h1 data-aos="fade-up" className="black-text profession-title">
+        <div className="profession-section">
+          <h1 data-aos="fade-up" className="text-dark profession-title">
             WEB DESIGNER & DEVELOPER BASED IN INDIA
           </h1>
-          <p data-aos="fade-up" className="black-text profession-quote">
+          <p data-aos="fade-up" className="text-dark profession-quote">
             The best designer is nature.
           </p>
         </div>
 
-        <div className="bio">
-          <p data-aos="fade-up" className="black-text bio-description">
+        <div className="bio-section">
+          <p data-aos="fade-up" className="text-dark bio-description">
             <b>Hey There,</b>
             <br></br>
             <br></br>
-            So my name is <i>Vikram Vishwakarma,</i> and i belong from
+            So my name is <i>Vikram Vishwakarma,</i> and I belong from
             Maharashtra, India. First of all it’s great to meet you, and happy
             that you’ve visited my portfolio website. I’m an avid learner who
             enjoys exploring new places and discovering new things. I’m just a
@@ -149,53 +151,70 @@ const Home = () => {
             <br></br>
             <br></br>
             If you’d like to know more about me, feel free to reach me out.
-            <button className="resume-button">Download Resume</button>
+            <button className="resume-download-btn">Download Resume</button>
           </p>
         </div>
 
-        <div className="projects">
-          <h2 className="projects-title black-text">My Work</h2>
-          <p className="projects-desc black-text">
+        <div className="projects-section">
+          <h2 className="projects-title text-dark">My Work</h2>
+          <p className="projects-description text-dark">
             Some of my handcrafted projects
           </p>
-          <div className="projects-inner">
-            <div data-aos="fade-up" className="project project1">
-              <div className="project1-sec-1">
-                <div className="project-img">
-                  <div className="project-img-content">
-                    <h3 className="project-img-title">Swamp</h3>
-                    <p className="project-img-desc">An android calculator.</p>
+          <div className="projects-list">
+            <div data-aos="fade-up" className="project project-1">
+              <div className="project-image-container">
+                <Image
+                  className="project-image"
+                  width={1000}
+                  height={1000}
+                  src={"/images/project1.jpg"}
+                  alt={""}
+                ></Image>
+                <div className="project-image-overlay">
+                  <div>
+                    <h3 className="project-image-title">Swamp</h3>
+                    <p className="project-image-desc">
+                      A Android calculator written in Java.
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="project1-sec-2">
-                <p className="black-text project-desc">
-                  This is a Android Calculator built using Java & Android Api. It's the first android app that was made by me !
+              <div className="project-details">
+                <p className="text-dark project-description">
+                  This is an Android Calculator built using Java & Android API.
+                  It's the first android app that was made by me!
                 </p>
               </div>
             </div>
 
-            <div data-aos="fade-up" className="project project2">
-              <div className="project2-sec-1">
-                <div className="project-img">
-                  <div className="project-img-content">
-                    <h3 className="project-img-title">Doodle Search</h3>
-                    <p className="project-img-desc">
+            <div data-aos="fade-up" className="project project-2">
+              <div className="project-image-container">
+                <Image
+                  className="project-image"
+                  width={1000}
+                  height={1000}
+                  src={"/images/project2.jpg"}
+                  alt={""}
+                ></Image>
+                <div className="project-image-overlay">
+                  <div>
+                    <h3 className="project-image-title">Doodle Search</h3>
+                    <p className="project-image-desc">
                       A static chrome like search page.
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="project2-sec-2">
-                <p className="black-text project-desc">
-                  It's a static website which can be used as the
-                  default homepage in your browser.
+              <div className="project-details">
+                <p className="text-dark project-description">
+                  It's a static website that can be used as the default homepage
+                  in your browser.
                 </p>
                 <button
                   onClick={() =>
                     openUrl("https://vikramisdev.github.io/dynamic-homepage")
                   }
-                  className="project2-btn project-btn"
+                  className="project-visit-btn project-btn"
                 >
                   Visit Website &nbsp;
                   <i className="bi bi-link-45deg"></i>
@@ -203,26 +222,34 @@ const Home = () => {
               </div>
             </div>
 
-            <div data-aos="fade-up" className="project project3">
-              <div className="project3-sec-1">
-                <div className="project-img">
-                  <div className="project-img-content">
-                    <h3 className="project-img-title">Web draw</h3>
-                    <p className="project-img-desc">
+            <div data-aos="fade-up" className="project project-3">
+              <div className="project-image-container">
+                <Image
+                  className="project-image"
+                  width={1000}
+                  height={1000}
+                  src={"/images/project3.png"}
+                  alt={""}
+                ></Image>
+                <div className="project-image-overlay">
+                  <div>
+                    <h3 className="project-image-title">Web draw</h3>
+                    <p className="project-image-desc">
                       A site for drawing on canvas
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="project3-sec-2">
-                <p className="black-text project-desc">
-                  It's a website which lets you enjoy drawing on a canvas, responsive to all devices.
+              <div className="project-details">
+                <p className="text-dark project-description">
+                  It's a website that lets you enjoy drawing on a canvas,
+                  responsive to all devices.
                 </p>
                 <button
                   onClick={() =>
                     openUrl("https://vikramisdev.github.io/web-draw")
                   }
-                  className="project3-btn project-btn"
+                  className="project-visit-btn project-btn"
                 >
                   Visit Website &nbsp;
                   <i className="bi bi-link-45deg"></i>
@@ -232,32 +259,30 @@ const Home = () => {
           </div>
         </div>
 
-        <footer className="contact">
+        <footer className="contact-section">
           <h3 className="contact-title">CONTACT ME</h3>
           <div className="contact-button-container">
             <i
               onClick={() => openUrl("https://instagram.com/vikramisdev")}
-              className="bi bi-instagram contact-button"
+              className="bi bi-instagram contact-icon"
             ></i>
             <i
               onClick={() => openUrl("https://x.com/vikramisdev")}
-              className="bi bi-twitter contact-button"
+              className="bi bi-twitter contact-icon"
             ></i>
             <i
               onClick={() => openUrl("https://www.linkedin.com/in/vikramisdev")}
-              className="bi bi-linkedin contact-button"
+              className="bi bi-linkedin contact-icon"
             ></i>
             <i
               onClick={() => openUrl("https://github.com/vikramisdev")}
-              className="bi bi-github contact-button"
+              className="bi bi-github contact-icon"
             ></i>
           </div>
-          <button onClick={openMail} className="contact-email-button">
+          <button className="contact-email-button" onClick={openMail}>
             Email Me
           </button>
         </footer>
-
-        <VisitorCount />
       </div>
     </>
   );

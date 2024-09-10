@@ -17,7 +17,6 @@
   --theme: "dark";
 }
 
-
 /* Universal Styles */
 * {
   margin: 0;
@@ -31,18 +30,18 @@ li {
 }
 
 /* Profile Section */
-.profile {
+.profile-section {
   background: var(--secondary-color);
   padding: 70px 20px;
   text-align: center;
   border-radius: 0 0 80px 80px;
 }
 
-.profile:hover {
+.profile-section:hover {
   border-radius: 0 0 50px 50px;
 }
 
-.profile-pic {
+.profile-picture {
   width: 10rem;
   border-radius: 50%;
   margin: 132px auto auto auto;
@@ -58,7 +57,7 @@ li {
 }
 
 /* Profession Section */
-.profession {
+.profession-section {
   padding: 20px 20px 60px;
   text-align: center;
 }
@@ -74,7 +73,7 @@ li {
 }
 
 /* Bio Section */
-.bio {
+.bio-section {
   padding: 20px;
   background: var(--bio-color);
   border-radius: 20px 20px 0 0;
@@ -86,8 +85,8 @@ li {
 }
 
 /* Contact Section */
-.contact {
-  padding: 20px;
+.contact-section {
+  padding: 40px 0px 50px 0px;
   background: var(--black);
   color: white;
   text-align: center;
@@ -95,7 +94,7 @@ li {
 
 .contact-title {
   font-size: 18px;
-  padding: 10px 0 30px;
+  padding: 10px 0 20px 0px;
 }
 
 .contact-button-container {
@@ -103,7 +102,7 @@ li {
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 20px;
+  padding: 50px 0px 20px 0px;
 }
 
 .contact-email-button {
@@ -113,12 +112,12 @@ li {
   font-size: 15px;
 }
 
-.contact-button {
+.contact-icon {
   font-size: 18px;
 }
 
 /* Projects Section */
-.projects {
+.projects-section {
   padding: 30px 0;
   margin: 80px 0px 0px 0px;
 }
@@ -130,7 +129,7 @@ li {
   font-weight: 300;
 }
 
-.projects-desc {
+.projects-description {
   padding: 5px 0px 20px 0px;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -143,7 +142,7 @@ li {
   width: auto;
 }
 
-.project-img {
+.project-image-container {
   width: 100%;
   height: 250px;
   display: flex;
@@ -152,15 +151,36 @@ li {
   text-align: center;
   background-color: lavender;
   border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  filter: brightness(0.9);
 }
 
-.project-img-title {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.project-image {
+  height: 100%;
+  width: 100%;
+  opacity: 0.4;
+  filter: blur(8px);
+}
+
+.project-image-overlay {
   font-size: 22px;
-  font-weight: bold;
+  position: absolute;
+  z-index: 1;
+  background-color: rgba(var(--secondary-color) 0.8);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.project-img-desc {
+.project-image-title {
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.project-details {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -169,7 +189,7 @@ li {
   width: 100%;
 }
 
-.project-btn {
+.project-visit-btn {
   border: none;
   padding: 10px 15px;
   border-radius: 50px;
@@ -177,7 +197,7 @@ li {
   align-items: center;
 }
 
-.dark-mode-container {
+.theme-toggle-container {
   background-color: ghostwhite;
   width: 80px;
   height: 40px;
@@ -191,7 +211,7 @@ li {
   align-items: center;
 }
 
-.dark-mode-container i {
+.theme-toggle-container i {
   font-size: 15px;
   height: 25px;
   width: 25px;
@@ -217,10 +237,10 @@ li {
   background-color: black;
   color: white;
   padding: 20px 0px 50px 0px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.resume-button {
+.resume-download-btn {
   float: right;
   margin: 40px 0px 0px 0px;
   padding: 15px 20px;
@@ -233,28 +253,27 @@ li {
 
 /* Responsive Styles */
 @media screen and (min-width: 770px) {
-
-  .projects-inner {
+  .projects-list {
     display: grid;
     grid-template-columns: 33% 33% 33%;
     column-gap: 1%;
     margin: 20px;
   }
 
-  .project-desc {
+  .project-description {
     font-size: 22px;
     padding: 10px;
     margin-top: 10px;
     text-align: justify;
   }
 
-  .project-img {
+  .project-image-container {
     width: 100%;
     height: 300px;
     border-radius: 20px;
   }
 
-  .project-img:hover {
+  .project-image-container:hover {
     scale: 1.02;
   }
 
@@ -262,11 +281,11 @@ li {
     cursor: pointer;
   }
 
-  .project-btn {
+  .project-visit-btn {
     cursor: pointer;
   }
 
-  .bio {
+  .bio-section {
     margin: 30px;
     font-size: 22px;
   }
@@ -282,7 +301,7 @@ li {
     font-weight: 400;
   }
 
-  .profile-pic {
+  .profile-picture {
     width: 13rem;
     height: 13rem;
     cursor: pointer;
@@ -294,22 +313,34 @@ li {
     opacity: 0.8;
   }
 
-  .profile {
+  .profile-section {
     border-radius: 0 0 80px 80px;
     padding: 70px 20px;
   }
 
-  .profile:hover {
+  .profile-section:hover {
     border-radius: 0 0 50px 50px;
     transition: 2 ease-in-out;
     transition-delay: 0.3s;
   }
 
-  .contact {
+  .project-image:hover {
+    top: 0%;
+  }
+
+  .project-image-overlay {
+    opacity: 0.8;
+  }
+
+  .project-image-overlay:hover {
+    opacity: 1;
+  }
+
+  .contact-section {
     border-radius: 60px 60px 0px 0px;
   }
 
-  .contact-button {
+  .contact-icon {
     cursor: pointer;
     margin: 0px 20px;
   }
@@ -329,7 +360,7 @@ li {
     cursor: pointer;
   }
 
-  .dark-mode-container {
+  .theme-toggle-container {
     width: 120px;
     height: 60px;
     padding: 10px 15px;
@@ -337,16 +368,15 @@ li {
     right: 40px;
   }
 
-  .dark-mode-container i {
+  .theme-toggle-container i {
     height: 30px;
     width: 30px;
     padding: 15px;
   }
 }
 
-
-/* useless css */
-.header-notify {
+/* Notification Header */
+.header-notification {
   text-align: center;
   padding: 10px;
 }
