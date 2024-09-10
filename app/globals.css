@@ -273,8 +273,15 @@ li {
     border-radius: 20px;
   }
 
-  .project-image-container:hover {
-    scale: 1.02;
+  .project-image-container:hover .project-image {
+    z-index: 2;
+    filter: blur(0);
+    opacity: 1;
+    transition: all 0.5s;
+  }
+
+  .project-image-container:hover .project-image-overlay {
+    opacity: 0;
   }
 
   .project:hover {
@@ -322,18 +329,6 @@ li {
     border-radius: 0 0 50px 50px;
     transition: 2 ease-in-out;
     transition-delay: 0.3s;
-  }
-
-  .project-image:hover {
-    top: 0%;
-  }
-
-  .project-image-overlay {
-    opacity: 0.8;
-  }
-
-  .project-image-overlay:hover {
-    opacity: 1;
   }
 
   .contact-section {
