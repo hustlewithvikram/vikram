@@ -159,8 +159,6 @@ li {
 .project-image {
   height: 100%;
   width: 100%;
-  opacity: 0.4;
-  filter: blur(8px);
 }
 
 .project-image-overlay {
@@ -173,6 +171,7 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
 
 .project-image-title {
@@ -271,6 +270,17 @@ li {
     width: 100%;
     height: 300px;
     border-radius: 20px;
+  }
+
+  .project-image {
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+    filter: blur(8px);
+  }
+
+  .project-image-overlay {
+    opacity: 1;
   }
 
   .project-image-container:hover .project-image {
