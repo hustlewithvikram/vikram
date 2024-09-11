@@ -88,7 +88,7 @@ const Home = () => {
 
     resumeBtn?.addEventListener("click", function onClick() {
       var url =
-        "https://gist.github.com/vikramisdev/b681778f4970732a20d4298fa8bd4e7e/raw/ab7308b588db609bf68f26bac3a4740141d71d54/vikram%2520resume.pdf";
+        "https://gist.github.com/vikramisdev/b681778f4970732a20d4298fa8bd4e7e/raw/1bde48fc0243e803836c47a6c0e1a9d2e2422aa3/vikram%2520resume.pdf";
       window.open(url, "_blank");
     });
   }, []);
