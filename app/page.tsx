@@ -95,9 +95,6 @@ const Home = () => {
 
   return (
     <>
-      <p className="header-notification">
-        This website is in continuous development, some features might not work!
-      </p>
       <div className="page-wrapper">
         <div className="profile-section">
           <div className="theme-toggle-container">
@@ -140,13 +137,10 @@ const Home = () => {
             <br></br>
             <br></br>
             So my name is <i>Vikram Vishwakarma,</i> and I belong from
-            Maharashtra, India. First of all it’s great to meet you, and happy
-            that you’ve visited my portfolio website. I’m an avid learner who
-            enjoys exploring new places and discovering new things. I’m just a
-            passionate individual who is trying to be a{" "}
-            <s>"genius, billionaire, playboy, philanthropist,"</s> person who
-            enjoys life without any expectations. I’ve completed my B.Sc. in
-            Computer Science and am continually growing and refining my skills
+            Maharashtra, India. I’m an avid learner who
+            enjoys exploring new places and discovering new things. I’m a
+            passionate individual who is chasing his Goals. I’ve completed my Bachelor's Degree in
+            Computer Science and looking for Jobs. I am continuously learning and refining my skills
             in this field.
             <br></br>
             <br></br>
@@ -182,7 +176,7 @@ const Home = () => {
               <div className="project-details">
                 <p className="text-dark project-description">
                   This is an Android Calculator built using Java & Android API.
-                  It's the first android app that was made by me!
+                  It's the first android app that i made!
                 </p>
               </div>
             </div>
