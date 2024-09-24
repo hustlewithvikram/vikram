@@ -5,6 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import VisitorCount from "./VisitorCount";
+import Project from "./components/Project";
 
 // Open URL in a new tab
 const openUrl = (url: string | URL | undefined) => {
@@ -101,7 +102,7 @@ const Home = () => {
             <i
               className={`bi ${
                 theme === "light" ? "bi-sun-fill" : "bi-moon-fill"
-              }`}
+              } theme-toggle-button`}
             ></i>
           </div>
 
@@ -137,11 +138,11 @@ const Home = () => {
             <br></br>
             <br></br>
             So my name is <i>Vikram Vishwakarma,</i> and I belong from
-            Maharashtra, India. I’m an avid learner who
-            enjoys exploring new places and discovering new things. I’m a
-            passionate individual who is chasing his Goals. I’ve completed my Bachelor's Degree in
-            Computer Science and looking for Jobs. I am continuously learning and refining my skills
-            in this field.
+            Maharashtra, India. I’m an avid learner who enjoys exploring new
+            places and discovering new things. I’m a passionate individual who
+            is chasing his Goals. I’ve completed my Bachelor's Degree in
+            Computer Science and looking for Jobs. I am continuously learning
+            and refining my skills in this field.
             <br></br>
             <br></br>
             If you’d like to know more about me, feel free to reach me out.
@@ -154,102 +155,44 @@ const Home = () => {
           <p className="projects-description text-dark">
             Some of my handcrafted projects
           </p>
+
           <div className="projects-list">
-            <div data-aos="fade-up" className="project project-1">
-              <div className="project-image-container">
-                <Image
-                  className="project-image"
-                  width={1000}
-                  height={1000}
-                  src={"/images/project1.jpg"}
-                  alt={""}
-                ></Image>
-                <div className="project-image-overlay">
-                  <div>
-                    <h3 className="project-image-title">Swamp</h3>
-                    <p className="project-image-desc">
-                      A Android calculator written in Java.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="project-details">
-                <p className="text-dark project-description">
-                  This is an Android Calculator built using Java & Android API.
-                  It's the first android app that i made!
-                </p>
-              </div>
-            </div>
+            <Project
+              src="/images/project1.jpg"
+              overlaysrc="/images/android.png"
+              title="Swamp"
+              description="A android app in java."
+              projectDescription="This is an Android Calculator built using Java & Android API.
+                  It's the first android app that i made!"
+              handleButton={function () {}}
+              buttonText=""
+            />
 
-            <div data-aos="fade-up" className="project project-2">
-              <div className="project-image-container">
-                <Image
-                  className="project-image"
-                  width={1000}
-                  height={1000}
-                  src={"/images/project2.jpg"}
-                  alt={""}
-                ></Image>
-                <div className="project-image-overlay">
-                  <div>
-                    <h3 className="project-image-title">Doodle Search</h3>
-                    <p className="project-image-desc">
-                      A static chrome like search page.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="project-details">
-                <p className="text-dark project-description">
-                  It's a static website that can be used as the default homepage
-                  in your browser.
-                </p>
-                <button
-                  onClick={() =>
-                    openUrl("https://vikramisdev.github.io/dynamic-homepage")
-                  }
-                  className="project-visit-btn project-btn"
-                >
-                  Visit Website &nbsp;
-                  <i className="bi bi-link-45deg"></i>
-                </button>
-              </div>
-            </div>
+            <Project
+              src="/images/project2.jpg"
+              overlaysrc="/images/web.png"
+              title="Doodle Search"
+              description="A android app in java."
+              projectDescription="It's a static website that can be used as the default homepage
+                  in your browser."
+              handleButton={function () {
+                openUrl("https://vikramisdev.github.io/dynamic-homepage");
+              }}
+              buttonText="Visit Website"
+            />
 
-            <div data-aos="fade-up" className="project project-3">
-              <div className="project-image-container">
-                <Image
-                  className="project-image"
-                  width={1000}
-                  height={1000}
-                  src={"/images/project3.png"}
-                  alt={""}
-                ></Image>
-                <div className="project-image-overlay">
-                  <div>
-                    <h3 className="project-image-title">Web draw</h3>
-                    <p className="project-image-desc">
-                      A site for drawing on canvas
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="project-details">
-                <p className="text-dark project-description">
-                  It's a website that lets you enjoy drawing on a canvas,
-                  responsive to all devices.
-                </p>
-                <button
-                  onClick={() =>
-                    openUrl("https://vikramisdev.github.io/web-draw")
-                  }
-                  className="project-visit-btn project-btn"
-                >
-                  Visit Website &nbsp;
-                  <i className="bi bi-link-45deg"></i>
-                </button>
-              </div>
-            </div>
+            <Project
+              src="/images/project3.png"
+              overlaysrc="/images/web.png"
+              title="Web Draw"
+              description="A site for drawing on canvas."
+              projectDescription="It's a website that lets you enjoy drawing on a canvas,
+                  responsive to all devices."
+              handleButton={function () {
+                openUrl("https://vikramisdev.github.io/web-draw");
+              }}
+              buttonText="Visit Website"
+            />
           </div>
         </div>
 
