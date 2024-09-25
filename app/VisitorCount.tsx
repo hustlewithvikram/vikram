@@ -8,7 +8,11 @@ interface VisitorType {
   visitDate: string;
 }
 
-export default function VisitorCount() {
+interface ClassProps {
+  className?: string;
+}
+
+export default function VisitorCount(props: ClassProps) {
   const [visitorCount, setVisitorCount] = useState<number>(0);
 
   useEffect(() => {
@@ -22,6 +26,6 @@ export default function VisitorCount() {
   }, []);
 
   return (
-    <p className="visitor-count">🌟 Total {visitorCount} Visitors 🌟</p>
+    <p className={`visitor-count ${props.className}`}>🌟 Total {visitorCount} Visitors 🌟</p>
   );
 }

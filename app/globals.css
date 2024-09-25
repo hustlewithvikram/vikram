@@ -80,14 +80,7 @@ li {
 
 /* Bio Section */
 .bio-section {
-  padding: 20px;
   background: var(--bio-color);
-  border-radius: 20px 20px 0 0;
-}
-
-.bio-description {
-  text-align: justify;
-  padding: 40px 0 60px;
 }
 
 /* Contact Section */

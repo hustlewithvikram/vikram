@@ -15,7 +15,7 @@ export default function Project(props: ProjectProps) {
     <div className="flex flex-col justify-center m-5 md:m-10 h-fit">
       <div className="relative h-72 w-full rounded-3xl overflow-hidden">
         <Image className="h-full w-full" alt="project" height={100} width={300} src={props.src} />
-        <div className="overlay h-full w-full absolute flex items-center top-0 left-0 right-0 bottom-0 gap-4 justify-center sm:hover:opacity-0 bg-white cursor-pointer opacity-0 lg:opacity-100">
+        <div className="overlay h-full w-full absolute flex items-center top-0 left-0 right-0 bottom-0 gap-4 justify-center sm:hover:opacity-0 bg-slate-100 cursor-pointer opacity-0 lg:opacity-100">
           <Image
             className="h-10 w-10"
             alt="project cover"
@@ -30,7 +30,7 @@ export default function Project(props: ProjectProps) {
         </div>
       </div>
       <p className="mt-5 text-dark">{props.projectDescription}</p>
-      {props.buttonText.length != 0? <button className="w-fit bg-slate-100 px-4 py-2 mt-5 rounded-full" onClick={props.handleButton}>{props.buttonText}</button> : ''}
+      {props.buttonText.length != 0? <button className="w-fit bg-gray-100 px-4 py-2 mt-5 rounded-full flex" onClick={props.handleButton}>{props.buttonText}<li className="bi bi-link ml-4"></li></button> : ''}
     </div>
   );
 }

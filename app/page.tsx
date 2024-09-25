@@ -132,8 +132,8 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="bio-section">
-          <p data-aos="fade-up" className="text-dark bio-description">
+        <div className="bio-section sm:rounded-t-6xl rounded-t-4xl">
+          <p data-aos="fade-up" className="text-dark sm:p-14 px-10 pt-10 pb-24 text-justify sm:text-xl text-base sm:pb-20 h-fit">
             <b>Hey There,</b>
             <br></br>
             <br></br>
@@ -146,7 +146,7 @@ const Home = () => {
             <br></br>
             <br></br>
             If you’d like to know more about me, feel free to reach me out.
-            <button className="resume-download-btn">Download Resume</button>
+            <button className="flex float-end bg-white mt-6 text-black px-6 py-3 rounded-full">Download Resume <li className="bi bi-download ml-3"></li></button>
           </p>
         </div>
 
@@ -156,7 +156,7 @@ const Home = () => {
             Some of my handcrafted projects
           </p>
 
-          <div className="projects-list">
+          <div className="sm:grid grid-cols-3 gap-8 justify-between">
             <Project
               src="/images/project1.jpg"
               overlaysrc="/images/android.png"
@@ -196,9 +196,9 @@ const Home = () => {
           </div>
         </div>
 
-        <footer className="contact-section">
-          <h3 className="contact-title">CONTACT ME</h3>
-          <div className="contact-button-container">
+        <footer className="bg-black text-center text-white rounded-t-6xl md:rounded-t-10xl pt-10 pb-20">
+          <h3 className="text-center text-lg p-5">CONTACT ME</h3>
+          <div className="flex justify-center p-5 md:gap-4 gap-8 mt-4">
             <i
               onClick={() => openUrl("https://instagram.com/vikramisdev")}
               className="bi bi-instagram contact-icon"
@@ -216,11 +216,14 @@ const Home = () => {
               className="bi bi-github contact-icon"
             ></i>
           </div>
-          <button className="contact-email-button" onClick={openMail}>
+          <button
+            className="bg-white text-black py-3 px-6 rounded-full md:hover:outline md:hover:outline-4 md:hover:outline-white md:hover:outline-offset-4 transition-none"
+            onClick={openMail}
+          >
             Email Me
           </button>
 
-          <VisitorCount />
+          <VisitorCount className="mt-8" />
         </footer>
       </div>
     </>

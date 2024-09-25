@@ -15,6 +15,13 @@ const config: Config = {
       },
       fontFamily: {
         "roboto": ["Roboto", "sans-serif"],
+      },
+      borderRadius: {
+        "4xl" : "2rem",
+        "5xl" : "2.5rem",
+        "6xl" : "3rem",
+        "7xl" : "3.5rem",
+        "10xl" : "5rem"
       }
     },
   },
