@@ -78,16 +78,16 @@ export default function Home() {
 
         <div className="grid grid-cols-3 gap-x-10 mt-10">
             <Project
-            src="/images/project1.png"
-            title={"Doodle Search"}
+            src="/images/project1.jpg"
+            title={"Swamp Calculator"}
             description={
-              "Its a static search page, optimised for mobile and desktop sizes."
+              "It is a android calculator written in java using android API."
             }
             buttonText={"Visit on Github"}
             buttonIcon={"bi bi-github"}
             />
             <Project
-            src="/images/project2.png"
+            src="/images/project2.jpg"
             title={"Doodle Search"}
             description={
               "Its a static search page, optimised for mobile and desktop sizes."
@@ -95,10 +95,10 @@ export default function Home() {
             buttonText={"Visit Site"}
             />
             <Project
-              src="/images/project3.png"
-            title={"Doodle Search"}
+              src="/images/project3.jpg"
+            title={"ShopNow"}
             description={
-              "Its a static search page, optimised for mobile and desktop sizes."
+              "It is a E-Commerce website made in React Framework."
             }
             buttonText={"Visit Site"}
             />
@@ -119,24 +119,24 @@ export default function Home() {
 
         <div className="grid grid-cols-3 gap-x-10 mt-10">
           <Project
-            src="/images/project1.png"
-            title={"Doodle Search"}
+            src="/images/project1.jpg"
+            title={"Internship Studio"}
             description={
-              "Its a static search page, optimised for mobile and desktop sizes."
+              "I have done a one month intership at Internship Studio on Website design & Development."
             }
           />
           <Project
-            src="/images/project2.png"
-            title={"Doodle Search"}
+            src="/images/project2.jpg"
+            title={"InternPe"}
             description={
-              "Its a static search page, optimised for mobile and desktop sizes."
+              "I have done a one month intership at InternPe on Website design & Development."
             }
           />
           <Project
-            src="/images/project3.png"
-            title={"Doodle Search"}
+            src="/images/project3.jpg"
+            title={"Coursera Certification"}
             description={
-              "Its a static search page, optimised for mobile and desktop sizes."
+              "I have done completed a Google IT Automation with Python course offered by Coursera."
             }
           />
         </div>
