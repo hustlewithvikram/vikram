@@ -10,7 +10,12 @@ interface VisitorType {
 }
 
 export async function fetchVisitors(): Promise<VisitorType[]> {
-  const { db } = await connectToDatabase();
+  try {
+    const { db } = await connectToDatabase();
+  } catch(error) {
+    return new Visitor;
+  }
+
   const visitors = await Visitor.find({}).lean();
   return visitors as VisitorType[];
 }

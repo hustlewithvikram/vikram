@@ -2,35 +2,35 @@ import Image from "next/image";
 
 interface ProjectProps {
     src: string,
-    overlaysrc: string,
-    title: string,
-    description: string,
-    projectDescription: string,
-    handleButton(): void,
-    buttonText: string
+    title: String,
+    description: String
+    buttonText?: String,
+    buttonIcon?: String,
+    onClick?: () => {}
 }
 
 export default function Project(props: ProjectProps) {
   return (
-    <div className="flex flex-col justify-center m-5 md:m-10 h-fit">
-      <div className="relative h-72 w-full rounded-3xl overflow-hidden">
-        <Image className="h-full w-full" alt="project" height={100} width={300} src={props.src} />
-        <div className="overlay h-full w-full absolute flex items-center top-0 left-0 right-0 bottom-0 gap-4 justify-center sm:hover:opacity-0 bg-slate-100 cursor-pointer opacity-0 lg:opacity-100">
-          <Image
-            className="h-10 w-10"
-            alt="project cover"
-            height={500}
-            width={500}
-            src={props.overlaysrc}
-          />
-          <div>
-            <h1 className="font-bold font-sans">{props.title}</h1>
-            <p className="opacity-80">{props.description}</p>
-          </div>
-        </div>
+    <div className="cursor-pointer">
+      <Image src={props.src} alt="project image" className="h-64" width={500} height={500} />
+      <div className="p-5 bg-neutral-100 h-48">
+        <h1 className="text-lg font-semibold">{props.title}</h1>
+        <p className="mt-4">{props.description}</p>
+        {props.buttonText ? ProjectButton(props.buttonText, props.buttonIcon) : null}
       </div>
-      <p className="mt-5 text-dark">{props.projectDescription}</p>
-      {props.buttonText.length != 0? <button className="w-fit bg-gray-100 px-4 py-2 mt-5 rounded-full flex" onClick={props.handleButton}>{props.buttonText}<li className="bi bi-link ml-4"></li></button> : ''}
     </div>
+  );
+}
+
+function ProjectButton(text: String, icon?: String) {
+  return (
+    <button className="flex group items-center px-3 py-2 mt-4 hover:border-white border border-gray-600 rounded-full relative pr-12 overflow-hidden">
+      <h1 className="group-hover:z-10 group-hover:text-white transition-all delay-75">
+        {text}
+      </h1>
+      <i
+        className={`absolute transition-all group-hover:justify-end group-hover:pr-3 group-hover:right-0 group-hover:size-full ${icon? icon : "bi bi-arrow-up-right"} ml-2 rounded-full bg-black text-white size-8 flex justify-center items-center right-1`}
+      ></i>
+    </button>
   );
 }
