@@ -20,9 +20,6 @@ export default function Home() {
 
   return (
     <div className="bg-container">
-      {/* absolute elements */}
-
-
       {/* introduction */}
       <div className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-12 py-24">
         <Image
