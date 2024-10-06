@@ -6,7 +6,7 @@ import { fetchVisitors } from "@/lib/fetchVisitors";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Hey There",
+  title: "Vikram Vishwakarma",
   description: "Made with Next Js",
 };
 

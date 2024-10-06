@@ -5,23 +5,20 @@ import Image from "next/image";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState, useEffect } from "react";
 import Project from "./components/Project";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { motion } from "framer";
 
 export default function Home() {
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const about = document.querySelector(".about");
-    about?.addEventListener("mousenter", (event) => {
-      setCursor({ x: 100, y: 100 });
-    });
-  }, [cursor]);
-
-  console.log(cursor);
+    AOS.init();
+  }, []);
 
   return (
     <div className="bg-container">
       {/* introduction */}
-      <div className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-12 py-24">
+      <div data-aos="fade-up" className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-12 py-24">
         <Image
           className="md:rounded-full md:cursor-pointer mt-40 rounded-t-full rounded-br-full"
           src={"/images/profile.png"}
@@ -32,12 +29,12 @@ export default function Home() {
         <div className="">
           <div className="text-7xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
             <h1 className="md:transition-all md:delay-75 mt-24">
-              Web designer & developer from India
+              Web designer &<br/> developer from India
             </h1>
             <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
           </div>
 
-          <h2 className="text-xl font-semibold mt-8 opacity-80">
+          <h2 className="text-xl sm:text-base font-semibold mt-8 opacity-80">
             I am a web designer as well as a web developer provides a variety of
             satisfying, beautiful & functional websites.
           </h2>
@@ -47,7 +44,7 @@ export default function Home() {
         </div>
 
       {/* About section */}
-      <div className="bg-black rounded-t-6xl md:px-24 md:py-32 px-12 py-24 text-white">
+      <div data-aos="fade-up" className="bg-black rounded-t-6xl md:px-24 md:py-32 px-12 py-24 text-white">
         <h1 className="text-xl mb-5">Myself,</h1>
         <p className="text-xl">
           Hey There, So my name is <i>Vikram Vishwakarma</i>, and I belong from
@@ -73,7 +70,7 @@ export default function Home() {
           ></i>
         </div>
 
-        <div className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10">
+        <div data-aos="fade-up" className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10">
             <Project
             src="/images/project1.jpg"
             title={"Swamp Calculator"}
@@ -114,7 +111,7 @@ export default function Home() {
             ></i>
           </div>
 
-        <div className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10">
+        <div data-aos="fade-up" className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10">
           <Project
             src="/images/achievement1.jpg"
             title={"Internship Studio"}
@@ -147,7 +144,7 @@ export default function Home() {
               <h1 className="cursor-pointer"><span className="font-bold">Mobile: </span>+918805469136</h1>
               <h1 className="cursor-pointer"><span className="font-bold">Email: </span>vs423502@gamil.com</h1>
             </div>
-            <div className="flex gap-x-5">
+            <div className="md:flex md:gap-x-5 grid grid-cols-2 gap-5">
               {SocialButton("Instagram", "bi bi-instagram")}
               {SocialButton("Facebook", "bi bi-facebook")}
               {SocialButton("Twitter", "bi bi-twitter")}

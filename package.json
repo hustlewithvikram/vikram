@@ -14,6 +14,7 @@
     "@vercel/speed-insights": "^1.0.12",
     "aos": "^3.0.0-beta.6",
     "bootstrap-icons": "^1.11.3",
+    "framer": "^2.4.1",
     "i": "^0.3.7",
     "mongoose": "^8.6.0",
     "next": "14.2.7",
@@ -23,6 +24,7 @@
     "swr": "^2.2.5"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/jquery": "^3.5.30",
     "@types/node": "^20",
     "@types/react": "^18",
