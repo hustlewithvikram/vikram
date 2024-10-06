@@ -21,23 +21,23 @@ export default function Home() {
   return (
     <div className="bg-container">
       {/* absolute elements */}
-      <div className="cursor transition-all size-32 absolute left-0 top-0 rounded-full"></div>
+
 
       {/* introduction */}
-      <div className="flex flex-row-reverse justify-between items-end gap-14 px-24 py-48">
+      <div className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-12 py-24">
         <Image
-          className="rounded-full cursor-pointer"
+          className="md:rounded-full md:cursor-pointer mt-40 rounded-t-full rounded-br-full"
           src={"/images/profile.png"}
           alt="vikram profile picture"
           height={350}
           width={350}
         />
         <div className="">
-          <div className="text-7xl font-semibold relative cursor-pointer group hover:pl-10 transition-all">
-            <h1 className="transition-all delay-75">
+          <div className="text-7xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
+            <h1 className="md:transition-all md:delay-75 mt-24">
               Web designer & developer from India
             </h1>
-            <div className="group-hover:text-4xl overflow-hidden group-hover:rounded-lg absolute top-0 left-0 transition-all h-full group-hover:w-5 bg-black text-white w-0"></div>
+            <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
           </div>
 
           <h2 className="text-xl font-semibold mt-8 opacity-80">
@@ -50,7 +50,7 @@ export default function Home() {
         </div>
 
       {/* About section */}
-      <div className="about bg-black rounded-t-6xl px-24 py-32 text-white">
+      <div className="bg-black rounded-t-6xl md:px-24 md:py-32 px-12 py-24 text-white">
         <h1 className="text-xl mb-5">Myself,</h1>
         <p className="text-xl">
           Hey There, So my name is <i>Vikram Vishwakarma</i>, and I belong from
@@ -65,7 +65,7 @@ export default function Home() {
         </div>
 
       {/* work section */}
-      <div className="px-24 pt-32">
+      <div className="md:px-24 md:py-32 px-12 py-24">
         <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
           <div className="group-hover:z-1 transition-all delay-75 flex">
             <h1 className="">My Work</h1>
@@ -76,7 +76,7 @@ export default function Home() {
           ></i>
         </div>
 
-        <div className="grid grid-cols-3 gap-x-10 mt-10">
+        <div className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10">
             <Project
             src="/images/project1.jpg"
             title={"Swamp Calculator"}
@@ -106,7 +106,7 @@ export default function Home() {
         </div>
 
       {/* Achievement section */}
-      <div className="px-24 pt-32">
+      <div className="md:px-24 md:py-32 px-12 py-24">
         <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
           <div className="group-hover:z-1 transition-all delay-75 flex">
             <h1 className="">My Achievements</h1>
@@ -117,23 +117,23 @@ export default function Home() {
             ></i>
           </div>
 
-        <div className="grid grid-cols-3 gap-x-10 mt-10">
+        <div className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10">
           <Project
-            src="/images/project1.jpg"
+            src="/images/achievement1.jpg"
             title={"Internship Studio"}
             description={
               "I have done a one month intership at Internship Studio on Website design & Development."
             }
           />
           <Project
-            src="/images/project2.jpg"
+            src="/images/achievement2.jpg"
             title={"InternPe"}
             description={
               "I have done a one month intership at InternPe on Website design & Development."
             }
           />
           <Project
-            src="/images/project3.jpg"
+            src="/images/achievement3.jpg"
             title={"Coursera Certification"}
             description={
               "I have done completed a Google IT Automation with Python course offered by Coursera."
@@ -143,7 +143,7 @@ export default function Home() {
       </div>
 
       {/* Contact section */}
-      <div className="px-24 py-20 mt-32 bg-black flex justify-between text-white">
+      <div className="md:px-24 md:py-32 px-12 py-24 mt-32 bg-black flex justify-between text-white">
           <div className="">
             <h1 className="text-2xl font-semibold">Contact Me</h1>
             <div className="mt-10 gap-x-5">
