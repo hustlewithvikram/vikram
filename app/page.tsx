@@ -18,23 +18,23 @@ export default function Home() {
   return (
     <div className="bg-container">
       {/* introduction */}
-      <div data-aos="fade-up" className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-12 py-24">
+      <div data-aos="fade-up" className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12">
         <Image
-          className="md:rounded-full md:cursor-pointer mt-40 rounded-t-full rounded-br-full"
+          className="md:rounded-full md:cursor-pointer mt-16 rounded-t-full rounded-br-full"
           src={"/images/profile.png"}
           alt="vikram profile picture"
           height={350}
           width={350}
         />
         <div className="">
-          <div className="text-7xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
+          <div className="md:text-7xl text-6xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
             <h1 className="md:transition-all md:delay-75 mt-24">
               Web designer &<br/> developer from India
             </h1>
             <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
           </div>
 
-          <h2 className="text-xl sm:text-base font-semibold mt-8 opacity-80">
+          <h2 className="text-xl font-semibold mt-8 opacity-80">
             I am a web designer as well as a web developer provides a variety of
             satisfying, beautiful & functional websites.
           </h2>
@@ -44,7 +44,7 @@ export default function Home() {
         </div>
 
       {/* About section */}
-      <div data-aos="fade-up" className="bg-black rounded-t-6xl md:px-24 md:py-32 px-12 py-24 text-white">
+      <div data-aos="fade-up" className="bg-black rounded-t-6xl md:px-24 md:py-32 px-6 py-12 text-white">
         <h1 className="text-xl mb-5">Myself,</h1>
         <p className="text-xl">
           Hey There, So my name is <i>Vikram Vishwakarma</i>, and I belong from
@@ -59,7 +59,7 @@ export default function Home() {
         </div>
 
       {/* work section */}
-      <div className="md:px-24 md:py-32 px-12 py-24">
+      <div className="md:px-24 md:py-32 px-6 py-12">
         <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
           <div className="group-hover:z-1 transition-all delay-75 flex">
             <h1 className="">My Work</h1>
@@ -100,7 +100,7 @@ export default function Home() {
         </div>
 
       {/* Achievement section */}
-      <div className="md:px-24 md:py-32 px-12 py-24">
+      <div className="md:px-24 md:py-32 px-6 py-12">
         <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
           <div className="group-hover:z-1 transition-all delay-75 flex">
             <h1 className="">My Achievements</h1>
@@ -137,7 +137,7 @@ export default function Home() {
       </div>
 
       {/* Contact section */}
-      <div className="md:px-24 md:py-32 px-12 py-24 mt-32 bg-black flex justify-between text-white">
+      <div className="md:px-24 md:py-32 px-6 py-12 mt-32 bg-black flex justify-between text-white">
           <div className="">
             <h1 className="text-2xl font-semibold">Contact Me</h1>
             <div className="mt-10 gap-x-5">
