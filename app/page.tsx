@@ -5,20 +5,27 @@ import Image from "next/image";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState, useEffect } from "react";
 import Project from "./components/Project";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { motion } from "framer";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import SocialButton from "./components/SocialButton";
+import HoverButton from "./components/HoverButton";
 
 export default function Home() {
-
   useEffect(() => {
     AOS.init();
   }, []);
 
+  const github_url = "https://github.com/vikramisdev";
+  const email_url = "vs423502@gmail.com"
+  const mobile_number = "+918805469136"
+
   return (
-    <div className="bg-container">
+    <div className="bg-container select-none">
       {/* introduction */}
-      <div data-aos="fade-up" className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12">
+      <div
+        data-aos="fade-up"
+        className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12"
+      >
         <Image
           className="md:rounded-full md:cursor-pointer mt-16 rounded-t-full rounded-br-full"
           src={"/images/profile.png"}
@@ -29,34 +36,38 @@ export default function Home() {
         <div className="">
           <div className="md:text-7xl text-6xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
             <h1 className="md:transition-all md:delay-75 mt-24">
-              Web designer &<br/> developer from India
+              Web designer &<br /> developer from India
             </h1>
             <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
           </div>
 
           <h2 className="text-xl font-semibold mt-8 opacity-80">
-            I am a web designer as well as a web developer provides a variety of
-            satisfying, beautiful & functional websites.
+            The best designer is nature.
           </h2>
 
-          {HoverButton("Get in touch", "bi bi-arrow-right")}
+          <HoverButton
+            onClick={() => openUrl(email_url)}
+            text="Get in touch"
+            iconName="bi bi-arrow-right"
+          />
         </div>
-        </div>
+      </div>
 
       {/* About section */}
-      <div data-aos="fade-up" className="bg-black rounded-t-6xl md:px-24 md:py-32 px-6 py-12 text-white">
+      <div
+        data-aos="fade-up"
+        className="bg-black rounded-t-6xl md:px-24 md:py-32 px-6 py-12 text-white"
+      >
         <h1 className="text-xl mb-5">Myself,</h1>
         <p className="text-xl">
-          Hey There, So my name is <i>Vikram Vishwakarma</i>, and I belong from
-          Maharashtra, India. I’m an avid learner who enjoys exploring new
-          places and discovering new things. I’m a passionate individual who is
-          chasing his Goals. I’ve completed my Bachelor's Degree in Computer
-          Science and looking for Jobs. I am continuously learning and refining
-          my skills in this field.
+          <i>Vikram Vishwakarma</i>, and I am from
+          Maharashtra, India. Yes, Its the country which is poor but kind hearted, democratic with a large number different people and their cultures, yet like a family.
+          By Profession i would say i am Unemployed right now, I have completed my graduation in computer science in May, 2024. Right now i am learning a lot of things, like
+          Web Frameworks, Java & Kotlin Apps, AI & ML and boosting my knowledge. I also make these stunning clean, intereactive and responsive web designs.
           <br />
           <br /> If you’d like to know more about me, feel free to reach me out.
-          </p>
-        </div>
+        </p>
+      </div>
 
       {/* work section */}
       <div className="md:px-24 md:py-32 px-6 py-12">
@@ -70,8 +81,11 @@ export default function Home() {
           ></i>
         </div>
 
-        <div data-aos="fade-up" className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10">
-            <Project
+        <div
+          data-aos="fade-up"
+          className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10"
+        >
+          <Project
             src="/images/project1.jpg"
             title={"Swamp Calculator"}
             description={
@@ -79,25 +93,24 @@ export default function Home() {
             }
             buttonText={"Visit on Github"}
             buttonIcon={"bi bi-github"}
-            />
-            <Project
+          />
+          <Project
             src="/images/project2.jpg"
             title={"Doodle Search"}
             description={
               "Its a static search page, optimised for mobile and desktop sizes."
             }
             buttonText={"Visit Site"}
-            />
-            <Project
-              src="/images/project3.jpg"
+            onClick={() => openUrl("https:")}
+          />
+          <Project
+            src="/images/project3.jpg"
             title={"ShopNow"}
-            description={
-              "It is a E-Commerce website made in React Framework."
-            }
+            description={"It is a E-Commerce website made in React Framework."}
             buttonText={"Visit Site"}
-            />
-          </div>
+          />
         </div>
+      </div>
 
       {/* Achievement section */}
       <div className="md:px-24 md:py-32 px-6 py-12">
@@ -108,10 +121,13 @@ export default function Home() {
           </div>
           <i
             className={`transition-all bi bi-trophy rounded-full bg-black text-white size-8 flex justify-center items-center ml-2`}
-            ></i>
-          </div>
+          ></i>
+        </div>
 
-        <div data-aos="fade-up" className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10">
+        <div
+          data-aos="fade-up"
+          className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10"
+        >
           <Project
             src="/images/achievement1.jpg"
             title={"Internship Studio"}
@@ -138,49 +154,44 @@ export default function Home() {
 
       {/* Contact section */}
       <div className="md:px-24 md:py-32 px-6 py-12 mt-32 bg-black flex justify-between text-white">
-          <div className="">
-            <h1 className="text-2xl font-semibold">Contact Me</h1>
-            <div className="mt-10 gap-x-5">
-              <h1 className="cursor-pointer"><span className="font-bold">Mobile: </span>+918805469136</h1>
-              <h1 className="cursor-pointer"><span className="font-bold">Email: </span>vs423502@gamil.com</h1>
-            </div>
-            <div className="md:flex md:gap-x-5 grid grid-cols-2 gap-5">
-              {SocialButton("Instagram", "bi bi-instagram")}
-              {SocialButton("Facebook", "bi bi-facebook")}
-              {SocialButton("Twitter", "bi bi-twitter")}
-              {SocialButton("Github", "bi bi-github")}
-            </div>
+        <div className="">
+          <h1 className="text-2xl font-semibold">Contact Me</h1>
+          <div className="mt-10 gap-x-5">
+            <h1 className="cursor-pointer">
+              <span className="font-bold">Mobile: </span>{mobile_number}
+            </h1>
+            <h1 className="cursor-pointer">
+              <span className="font-bold">Email: </span>{email_url}
+            </h1>
           </div>
+          <div className="md:flex md:gap-x-5 grid grid-cols-2 gap-5">
+            <SocialButton
+              onClick={() => openUrl("https://instagram.com/vikramisdev")}
+              text="Instagram"
+              iconName="bi bi-instagram"
+            />
+            <SocialButton
+              onClick={() => openUrl("https://facebook.com/vikramisdev")}
+              text="Facebook"
+              iconName="bi bi-facebook"
+            />
+            <SocialButton
+              onClick={() => openUrl("https://x.com/vikramisdev")}
+              text="Twitter"
+              iconName="bi bi-twitter"
+            />
+            <SocialButton
+              onClick={() => openUrl(github_url)}
+              text="Github"
+              iconName="bi bi-github"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-// supporting function components
-function HoverButton(text: String, iconName: String) {
-  return (
-    <button className="flex group items-center px-3 py-2 mt-8 hover:border-white border border-gray-600 rounded-full relative pr-12 overflow-hidden">
-      <h1 className="group-hover:z-10 group-hover:text-white transition-all delay-75">
-        {text}
-      </h1>
-      <i
-        className={`absolute transition-all group-hover:justify-end group-hover:pr-3 group-hover:right-0 group-hover:size-full ${iconName} ml-2 rounded-full bg-black text-white size-8 flex justify-center items-center right-1`}
-      ></i>
-    </button>
-  );
+function openUrl(url: string, blank: Boolean = true) {
+  window.open(url, blank ? "_blank" : "");
 }
-
-function SocialButton(text: String, iconName: String) {
-  return (
-    <button className="flex group items-center px-3 py-2 mt-8 rounded-full relative pr-12 overflow-hidden">
-      <h1 className="group-hover:z-10 transition-all group-hover:text-black delay-75">
-        {text}
-      </h1>
-      <i
-        className={`absolute transition-all group-hover:justify-end group-hover:text-black group-hover:bg-white group-hover:pr-3 group-hover:right-0 group-hover:size-full ${iconName} ml-2 rounded-full bg-black text-white size-8 flex justify-center items-center right-1`}
-      ></i>
-    </button>
-  );
-}
-
-

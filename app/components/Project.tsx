@@ -6,7 +6,7 @@ interface ProjectProps {
     description: String
     buttonText?: String,
     buttonIcon?: String,
-    onClick?: () => {}
+    onClick?: () => any
 }
 
 export default function Project(props: ProjectProps) {
