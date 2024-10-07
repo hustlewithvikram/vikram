@@ -9,25 +9,39 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import SocialButton from "./components/SocialButton";
 import HoverButton from "./components/HoverButton";
+import BouncyTyping from "./components/BounceTyping";
 
 export default function Home() {
   useEffect(() => {
     AOS.init();
   }, []);
 
+  useEffect(() => {
+    const mainContainer = document.querySelector(".main-container");
+
+    if (mainContainer) {
+      if (window.scrollX !== 0) {
+        window.scrollTo(0, 0);
+      }
+      setTimeout(() => {
+        mainContainer.style.transform = "scale(1)";
+      }, 600);
+    }
+  }, []);
+
   const github_url = "https://github.com/vikramisdev";
-  const email_url = "vs423502@gmail.com"
-  const mobile_number = "+918805469136"
+  const email_url = "vs423502@gmail.com";
+  const mobile_number = "+918805469136";
 
   return (
-    <div className="bg-container select-none">
+    <div className="bg-container select-none main-container origin-top-left md:scale-150 transition-all md:duration-500">
       {/* introduction */}
       <div
         data-aos="fade-up"
         className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12"
       >
         <Image
-          className="md:rounded-full md:cursor-pointer mt-16 rounded-t-full rounded-br-full"
+          className="md:rounded-full md:cursor-pointer mt-12 rounded-t-full rounded-br-full"
           src={"/images/profile.png"}
           alt="vikram profile picture"
           height={350}
@@ -41,8 +55,8 @@ export default function Home() {
             <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
           </div>
 
-          <h2 className="text-xl font-semibold mt-8 opacity-80">
-            The best designer is nature.
+          <h2 className="text-xl font-semibold mt-8 opacity-70">
+            <BouncyTyping text="The best designer is nature." delay={800} />
           </h2>
 
           <HoverButton
@@ -60,10 +74,14 @@ export default function Home() {
       >
         <h1 className="text-xl mb-5">Myself,</h1>
         <p className="text-xl">
-          <i>Vikram Vishwakarma</i>, and I am from
-          Maharashtra, India. Yes, Its the country which is poor but kind hearted, democratic with a large number different people and their cultures, yet like a family.
-          By Profession i would say i am Unemployed right now, I have completed my graduation in computer science in May, 2024. Right now i am learning a lot of things, like
-          Web Frameworks, Java & Kotlin Apps, AI & ML and boosting my knowledge. I also make these stunning clean, intereactive and responsive web designs.
+          <i>Vikram Vishwakarma</i>, and I am from Maharashtra, India. Yes, Its
+          the country which is poor but kind hearted, democratic with a large
+          number different people and their cultures, yet like a family. By
+          Profession i would say i am Unemployed right now, I have completed my
+          graduation in computer science in May, 2024. Right now i am learning a
+          lot of things, like Web Frameworks, Java & Kotlin Apps, AI & ML and
+          boosting my knowledge. I also make these stunning clean, intereactive
+          and responsive web designs.
           <br />
           <br /> If you’d like to know more about me, feel free to reach me out.
         </p>
@@ -158,10 +176,12 @@ export default function Home() {
           <h1 className="text-2xl font-semibold">Contact Me</h1>
           <div className="mt-10 gap-x-5">
             <h1 className="cursor-pointer">
-              <span className="font-bold">Mobile: </span>{mobile_number}
+              <span className="font-bold">Mobile: </span>
+              {mobile_number}
             </h1>
             <h1 className="cursor-pointer">
-              <span className="font-bold">Email: </span>{email_url}
+              <span className="font-bold">Email: </span>
+              {email_url}
             </h1>
           </div>
           <div className="md:flex md:gap-x-5 grid grid-cols-2 gap-5">

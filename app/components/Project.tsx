@@ -11,8 +11,8 @@ interface ProjectProps {
 
 export default function Project(props: ProjectProps) {
   return (
-    <div className="cursor-pointer group">
-      <Image src={props.src} alt="project image" className="md:h-64 md:group-hover:opacity-80" width={650} height={600} />
+    <div className={`cursor-pointer group ${!props.buttonText? "md:hover:pt-10" : ""} transition-all`}>
+      <Image src={props.src} alt="project image" className="md:h-64" width={650} height={600} />
       <div className="p-5 bg-neutral-100 h-48">
         <h1 className="text-xl font-semibold">{props.title}</h1>
         <p className="mt-4">{props.description}</p>
