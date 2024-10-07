@@ -46,7 +46,7 @@ export default function Home() {
           </h2>
 
           <HoverButton
-            onClick={() => openUrl(email_url)}
+            onClick={() => openUrl("mailto:" + email_url)}
             text="Get in touch"
             iconName="bi bi-arrow-right"
           />
