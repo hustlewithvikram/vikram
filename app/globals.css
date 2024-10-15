@@ -43,3 +43,10 @@
     rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+
+.fade-out {
+  opacity: 1;
+  transition: opacity 2s ease-out;
+  opacity: 0;
+}
+
