@@ -13,10 +13,6 @@ import BouncyTyping from "./components/BounceTyping";
 import IntroAnimation from "./components/IntroAnimation";
 
 export default function Home() {
-  const [isIntroFinished, setIntroFinished] = useState(false);
-  const [isFirstVisit, setFirstVisit] = useState("false");
-  const visited = useRef(false);
-
   useEffect(() => {
     AOS.init();
   }, []);
@@ -32,12 +28,7 @@ export default function Home() {
       }
       setTimeout(() => {
         mainContainer.style.transform = "scale(1)";
-      }, 300);
-    }
-
-    if(!sessionStorage.getItem("visited")) {
-      sessionStorage.setItem("visited", "true");
-      visited.current = true;
+      }, 600);
     }
   }, [isIntroFinished]);
 
@@ -45,34 +36,32 @@ export default function Home() {
   const email_url = "vs423502@gmail.com";
   const mobile_number = "+918805469136";
 
-  if (!isIntroFinished && visited) {
-    return (
-      <>
-        <IntroAnimation setIntroFinished={setIntroFinished} />
-      </>
-    );
+  if (!isIntroFinished && !sessionStorage.getItem("visited")) {
+    return <IntroAnimation setIntroFinished={setIntroFinished} />;
   } else {
-    return (
-      <div className="bg-container select-none main-container origin-top-left md:scale-150 transition-all md:duration-500">
-        {/* introduction */}
-        <div
-          data-aos="fade-up"
-          className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12"
-        >
-          <Image
-            className="md:rounded-full md:cursor-pointer mt-12 rounded-t-full rounded-br-full"
-            src={"/images/profile.png"}
-            alt="vikram profile picture"
-            height={350}
-            width={350}
-          />
-          <div className="">
-            <div className="md:text-7xl text-6xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
-              <h1 className="md:transition-all md:delay-75 mt-24">
-                Web designer &<br /> developer from India
-              </h1>
-              <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
-            </div>
+    sessionStorage.setItem("visited", "true");
+
+  return (
+    <div className="bg-container select-none main-container origin-top-left md:scale-150 transition-all md:duration-500">
+      {/* introduction */}
+      <div
+        data-aos="fade-up"
+        className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12"
+      >
+        <Image
+          className="md:rounded-full md:cursor-pointer mt-12 rounded-t-full rounded-br-full"
+          src={"/images/profile.png"}
+          alt="vikram profile picture"
+          height={350}
+          width={350}
+        />
+        <div className="">
+          <div className="md:text-7xl text-6xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
+            <h1 className="md:transition-all md:delay-75 mt-24">
+              Web designer &<br /> developer from India
+            </h1>
+            <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
+          </div>
 
             <h2 className="text-xl font-semibold mt-8 opacity-70">
               <BouncyTyping text="The best designer is nature." delay={800} />
