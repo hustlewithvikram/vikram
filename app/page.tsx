@@ -9,10 +9,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import SocialButton from "./components/SocialButton";
 import HoverButton from "./components/HoverButton";
-import BouncyTyping from "./components/BounceTyping";
 import IntroAnimation from "./components/IntroAnimation";
 
 export default function Home() {
+  const [isIntroFinished, setIntroFinished] = useState(false);
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -36,7 +37,7 @@ export default function Home() {
   const email_url = "vs423502@gmail.com";
   const mobile_number = "+918805469136";
 
-  if (!isIntroFinished && !sessionStorage.getItem("visited")) {
+  if (!isIntroFinished) {
     return <IntroAnimation setIntroFinished={setIntroFinished} />;
   } else {
     sessionStorage.setItem("visited", "true");
@@ -62,10 +63,6 @@ export default function Home() {
             </h1>
             <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
           </div>
-
-            <h2 className="text-xl font-semibold mt-8 opacity-70">
-              <BouncyTyping text="The best designer is nature." delay={800} />
-            </h2>
 
             <HoverButton
               onClick={() => openUrl("mailto:" + email_url)}
