@@ -1,8 +1,6 @@
-// lib/fetchVisitors.ts
-import { connectToDatabase } from './mongoose'; // Adjust path if needed
-import Visitor from '../models/Visitor'; // Adjust path if needed
+import { connectToDatabase } from './mongoose';
+import Visitor from '../models/Visitor';
 
-// Define the type for visitor data
 interface VisitorType {
   _id: string;
   ipAddress: string;

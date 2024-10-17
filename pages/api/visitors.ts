@@ -1,7 +1,7 @@
 // pages/api/visitors.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 import Visitor from "@/models/Visitor";
-import { fetchVisitors } from "@/lib/fetchVisitors"; // Ensure this function is defined correctly
+import { fetchVisitors } from "@/lib/fetchVisitors";
 
 export default async function handler(
   req: NextApiRequest,
