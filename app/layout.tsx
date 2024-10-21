@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import "./globals.css";
-import { fetchVisitors } from "@/lib/fetchVisitors";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Vikram Vishwakarma",
@@ -20,7 +19,7 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   // Fetch visitor data
-  const visitors: VisitorType[] = await fetchVisitors();
+  // const visitors: VisitorType[] = await fetchVisitors();
 
   return (
     <html lang="en">
@@ -28,7 +27,7 @@ export default async function RootLayout({
         <link rel="icon" href="/images/profile_round.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       </head>
-      <body className={inter.className}>
+      <body /*className={inter.className}*/>
         {children}
       </body>
     </html>

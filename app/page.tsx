@@ -42,27 +42,27 @@ export default function Home() {
   } else {
     sessionStorage.setItem("visited", "true");
 
-  return (
-    <div className="bg-container select-none main-container origin-top-left md:scale-150 transition-all md:duration-500">
-      {/* introduction */}
-      <div
-        data-aos="fade-up"
-        className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12"
-      >
-        <Image
-          className="md:rounded-full md:cursor-pointer mt-12 rounded-t-full rounded-br-full"
-          src={"/images/profile.png"}
-          alt="vikram profile picture"
-          height={350}
-          width={350}
-        />
-        <div className="">
-          <div className="md:text-7xl text-6xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
-            <h1 className="md:transition-all md:delay-75 mt-24">
-              Web designer &<br /> developer from India
-            </h1>
-            <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
-          </div>
+    return (
+      <div className="bg-container main-container origin-top-left md:scale-150 transition-all md:duration-500">
+        {/* introduction */}
+        <div
+          data-aos="fade-up"
+          className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12"
+        >
+          <Image
+            className="md:rounded-full md:cursor-pointer mt-12 rounded-t-full rounded-br-full"
+            src={"/images/profile.png"}
+            alt="vikram profile picture"
+            height={350}
+            width={350}
+          />
+          <div className="">
+            <div className="md:text-7xl text-6xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all">
+              <h1 className="md:transition-all md:delay-75 mt-24">
+                Web designer &<br /> developer from India
+              </h1>
+              <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
+            </div>
 
             <HoverButton
               onClick={() => openUrl("mailto:" + email_url)}
@@ -75,21 +75,18 @@ export default function Home() {
         {/* About section */}
         <div
           data-aos="fade-up"
-          className="bg-black rounded-t-6xl md:px-24 md:py-32 px-6 py-12 text-white"
+          className="bg-black md:rounded-t-6xl rounded-t-4xl md:px-24 md:py-32 px-6 py-12 text-white"
         >
           <h1 className="text-xl mb-5">Myself,</h1>
-          <p className="text-xl">
-            <i>Vikram Vishwakarma</i>, and I am from Maharashtra, India. Yes,
-            Its the country which is poor but kind hearted, democratic with a
-            large number different people and their cultures, yet like a family.
-            By Profession i would say i am Unemployed right now, I have
-            completed my graduation in computer science in May, 2024. Right now
-            i am learning a lot of things, like Web Frameworks, Java & Kotlin
-            Apps, AI & ML and boosting my knowledge. I also make these stunning
-            clean, intereactive and responsive web designs.
-            <br />
-            <br /> If you’d like to know more about me, feel free to reach me
-            out.
+          <p className="text-xl text-justify md:text-2xl">
+            Hi There, My name is Vikram Vishwakarma and I belong from
+            Maharashtra, India. I have recently completed my degree in the field
+            of computer science, I like to design and build websites that are
+            responsive and beautiful. I use softwares like figma & adobe
+            illustrator to design & for the building part i use various web
+            frameworks to build my website. I always try to make the websites clean, minimal,
+            responsive & user friendly with smooth animations and
+            transitions.
           </p>
         </div>
 
@@ -172,7 +169,7 @@ export default function Home() {
               src="/images/achievement3.jpg"
               title={"Coursera Certification"}
               description={
-                "I have done completed a Google IT Automation with Python course offered by Coursera."
+                "I have completed a Google IT Automation with Python course offered by Coursera."
               }
             />
           </div>
