@@ -10,6 +10,8 @@ import "aos/dist/aos.css";
 import SocialButton from "./components/SocialButton";
 import HoverButton from "./components/HoverButton";
 import IntroAnimation from "./components/IntroAnimation";
+import { serialize, parse } from 'cookie';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 export default function Home() {
   const [isIntroFinished, setIntroFinished] = useState(false);
@@ -22,6 +24,11 @@ export default function Home() {
     const mainContainer = document.querySelector(
       ".main-container"
     ) as HTMLElement;
+
+    const visited = localStorage.getItem("visited");
+    if(visited !== null) {
+      setIntroFinished(true);
+    }
 
     if (mainContainer) {
       if (window.scrollX !== 0) {
@@ -40,7 +47,7 @@ export default function Home() {
   if (!isIntroFinished) {
     return <IntroAnimation setIntroFinished={setIntroFinished} />;
   } else {
-    sessionStorage.setItem("visited", "true");
+    localStorage.setItem("visited", "true");
 
     return (
       <div className="bg-container main-container origin-top-left md:scale-150 transition-all md:duration-500">
