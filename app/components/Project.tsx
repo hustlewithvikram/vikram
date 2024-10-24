@@ -6,12 +6,12 @@ interface ProjectProps {
     description: String
     buttonText?: String,
     buttonIcon?: String,
-    onClick?: () => any
+    onClick?: () => any,
 }
 
 export default function Project(props: ProjectProps) {
   return (
-    <div className={`cursor-pointer group shadow-sm ${!props.buttonText? "md:hover:mt-10" : ""} transition-all`}>
+    <div onClick={props.onClick} className={`cursor-pointer group shadow-sm ${!props.buttonText? "md:hover:mt-10" : ""} transition-all`}>
       <Image src={props.src} alt="project image" className="md:h-64" width={650} height={600} />
       <div className="p-5 bg-neutral-100 h-48">
         <h1 className="text-xl font-semibold">{props.title}</h1>

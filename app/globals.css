@@ -30,23 +30,3 @@
 .bg-black-varient-1 {
   background: #121826;
 }
-
-.stretch-text:hover {
-  transform: scale(1.5, 1); /* Stretches the text horizontally */
-  color: #f39c12;
-}
-
-.scale-120 {
-  --tw-scale-x: 1.2;
-  --tw-scale-y: 1.2;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y))
-    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
-    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.fade-out {
-  opacity: 1;
-  transition: opacity 2s ease-out;
-  opacity: 0;
-}
-

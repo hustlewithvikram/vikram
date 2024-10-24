@@ -11,7 +11,7 @@ export default function HoverButton(props: HoverButtonInterface) {
           {props.text}
         </h1>
         <i
-          className={`absolute transition-all group-hover:justify-end group-hover:pr-3 group-hover:right-0 group-hover:size-full ${props.iconName} ml-2 rounded-full bg-black text-white size-8 flex justify-center items-center right-1`}
+          className={`absolute transition-all group-hover:justify-end group-hover:pr-3 group-hover:right-0 group-hover:size-full duration-300 ${props.iconName} ml-2 rounded-full bg-black text-white size-8 flex justify-center items-center right-1`}
         ></i>
       </button>
     );

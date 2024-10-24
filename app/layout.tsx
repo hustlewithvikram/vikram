@@ -18,8 +18,6 @@ interface VisitorType {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  // Fetch visitor data
-  // const visitors: VisitorType[] = await fetchVisitors();
 
   return (
     <html lang="en">
