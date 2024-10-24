@@ -204,101 +204,84 @@ export default function Home() {
           <div
             data-aos="fade-up"
             data-aos-duration="800"
-            className="grid grid-cols-1 gap-y-4 md:grid-flow-row md:gap-6 md:auto-rows-min w-full mt-10 md:p-10 border-2 rounded-xl md:rounded-5xl overflow-hidden"
+            className="md:p-10 md:flex md:flex-wrap md:gap-5 | border-2 rounded-xl mt-10 grid grid-cols-1S"
           >
-            <div className="bg-blue-500 h-40 md:col-span-2 md:rounded-tl-xl flex items-center gap-x-5 overflow-hidden hover:scale-95 transition-all duration-500 hover:rounded-xl rounded-xl p-10 m-5">
-              <Image
-                className="size-24 md:size-44"
-                src={"/images/reactjs.svg"}
-                alt="reactjs"
-                width={100}
-                height={100}
-              />
-              <h1 className="md:text-9xl text-6xl font-bold font-roboto text-slate-100">
-                60%
-              </h1>
-            </div>
+            <Skill
+              src="/images/reactjs.svg"
+              alt="react js"
+              text="70%"
+              className="bg-blue-500 md:flex-grow h-44"
+              imgClassName="md:w-56 w-28"
+              textClassName="text-white md:text-9xl"
+              overlayText="REACT JS"
+            />
+            <Skill
+              src="/images/tailwindcss.png"
+              alt="tailwind css"
+              text="67%"
+              className="bg-slate-100 md:w-[30rem] md:h-44"
+              imgClassName="md:w-32 w-28"
+              textClassName="md:text-9xl text-6xl"
+              overlayText="TAILWIND CSS"
+            />
 
-            <div className="bg-slate-100 h-40 md:rounded-tr-xl flex items-center gap-x-5 justify-evenly md:w-80 md:hover:scale-95 transition-all duration-500 md:hover:rounded-xl rounded-xl p-10 m-5">
-              <Image
-                className="w-16 md:w-20"
-                src={"/images/tailwindcss.png"}
-                alt="tailwind css"
-                width={100}
-                height={100}
-              />
-              <h1 className="text-6xl font-bold font-roboto">56%</h1>
-            </div>
+            <Skill
+              src="/images/nextjs.png"
+              alt="next js"
+              text="72%"
+              className="bg-black md:w-full"
+              imgClassName="invert md:w-96 w-36"
+              textClassName="invert md:text-8xl text-3xl"
+              overlayText="NEXT JS"
+            />
 
-            <div className="bg-black p-10 overflow-hidden md:hover:scale-95 transition-all duration-500 md:hover:rounded-xl rounded-xl m-5">
-              <Image
-                className="invert"
-                src={"/images/nextjs.png"}
-                alt="nextjs"
-                width={400}
-                height={100}
-              />
-              <h1 className="text-7xl font-bold font-roboto mr-10 text-slate-100 mt-5">
-                72%
-              </h1>
-            </div>
+            <Skill
+              src="/images/git.svg"
+              alt="git"
+              text="58%"
+              className="bg-slate-100 md:w-[30rem] md:h-60"
+              imgClassName="md:w-44 w-36"
+              textClassName="md:text-9xl text-5xl"
+              overlayText="GIT"
+            />
+            <Skill
+              src="/images/vscode.svg"
+              alt="vscode"
+              text="78%"
+              className="bg-blue-500 md:flex-grow md:h-60"
+              imgClassName="md:w-36 w-32"
+              textClassName="md:text-9xl text-white"
+              overlayText="VSCODE"
+            />
 
-            <div className="bg-white md:h-72 md:col-span-2 flex flex-row-reverse items-center justify-around md:hover:scale-95 transition-all duration-500 md:hover:rounded-xl rounded-xl p-10 m-5">
-              <Image
-                className="bg-white size-28 md:size-36"
-                src={"/images/git.svg"}
-                alt="git"
-                width={200}
-                height={100}
-              />
-              <h1 className="md:text-8xl text-6xl font-bold font-roboto">63%</h1>
-            </div>
+            <Skill
+              src="/images/figma.svg"
+              alt="figma"
+              text="65%"
+              className="bg-slate-100 md:w-full md:h-44"
+              imgClassName="md:w-36 w-28"
+              textClassName="md:text-9xl"
+              overlayText="FIGMA"
+            />
 
-            <div className="bg-sky-500 md:h-72 md:col-span-3 md:w-full flex items-center gap-x-5 md:gap-x-16 p-10 md:hover:scale-95 transition-all duration-500 md:hover:rounded-xl rounded-xl m-5">
-              <Image
-                className="bg-white mix-blend-color-burn size-20 md:size-44"
-                src={"/images/vscode.svg"}
-                alt="vscode"
-                width={100}
-                height={100}
-              />
-              <h1 className="md:text-9xl text-6xl font-bold font-roboto text-slate-50">
-                78%
-              </h1>
-            </div>
-
-            <div className="bg-slate-100 h-44 md:rounded-bl-xl overflow-hidden flex gap-x-5 p-10 items-center md:hover:scale-95 transition-all duration-500 md:hover:rounded-xl rounded-xl m-5">
-              <Image
-                className="size-20 md:size-44"
-                src={"/images/figma.svg"}
-                alt="figma"
-                width={120}
-                height={150}
-              />
-              <h1 className="md:text-9xl text-7xl font-bold font-roboto">74%</h1>
-            </div>
-
-            <div className="bg-gray-100 h-44 flex items-center gap-x-5 md:hover:scale-95 transition-all duration-500 md:hover:rounded-xl rounded-xl p-10 m-5" >
-              <Image
-                className=""
-                src={"/images/android_studio.png"}
-                alt="android studio"
-                width={120}
-                height={150}
-              />
-              <h1 className="text-5xl font-bold font-roboto">46%</h1>
-            </div>
-
-            <div className="bg-white h-44 md:rounded-br-xl flex items-center justify-center gap-x-5 p-10 md:hover:scale-95 transition-all duration-500 md:hover:rounded-xl rounded-xl m-5">
-              <Image
-                className=""
-                src={"/images/docker.svg"}
-                alt="docker"
-                width={120}
-                height={150}
-              />
-              <h1 className="text-6xl font-bold font-roboto">25%</h1>
-            </div>
+            <Skill
+              src="/images/android_studio.png"
+              alt="android studio"
+              text="52%"
+              className="bg-white md:w-[35rem] md:h-44"
+              imgClassName="md:w-56 w-28"
+              textClassName="md:text-8xl"
+              overlayText="ANDROID STUDIO"
+            />
+            <Skill
+              src="/images/docker.svg"
+              alt="docker"
+              text="36%"
+              className="bg-white md:flex-grow md:h-44"
+              imgClassName="md:w-32 w-28"
+              textClassName="md:text-9xl text-6xl"
+              overlayText="DOCKER"
+            />
           </div>
         </div>
 
