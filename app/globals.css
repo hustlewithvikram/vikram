@@ -30,3 +30,16 @@
 .bg-black-varient-1 {
   background: #121826;
 }
+
+/* Apply this to any container you want to animate */
+.animated-bg {
+  background: linear-gradient(270deg, #3d3d3d, #e0e0e0, #000000, #fffbf8);
+  background-size: 600% 600%;
+  animation: gradientAnimation 8s ease-in-out infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

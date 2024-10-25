@@ -51,9 +51,10 @@ export default function Home() {
     localStorage.setItem("visited", "true");
 
     return (
-      <div className="bg-container main-container origin-top-left md:scale-150 transition-all md:duration-500">
+      <div className="bg-container main-container origin-top-left md:scale-150 transition-all md:duration-500 scroll-smooth">
         {/* introduction or hero section */}
         <div
+          id="hero-section"
           data-aos="fade-up"
           data-aos-duration="800"
           className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12 bg-[url('/images/hero_bg.svg')] bg-no-repeat bg-cover"
@@ -119,9 +120,9 @@ export default function Home() {
           >
             <Project
               src="/images/project1.webp"
-              title={"Swamp Calculator"}
+              title={"Deep Notes"}
               description={
-                "It is a android calculator written in java using android API."
+                "It is a android notes taking app written in kotlin using the jetpack compose library."
               }
               buttonText={"Visit on Github"}
               buttonIcon={"bi bi-github"}
@@ -134,7 +135,7 @@ export default function Home() {
                 "Its a static search page, optimised for mobile and desktop sizes."
               }
               buttonText={"Visit Site"}
-              onClick={() => openUrl(github_url + "dynamic-homepage")}
+              onClick={() => openUrl(github_url + "doodle-search")}
             />
             <Project
               src="/images/project3.webp"
@@ -190,8 +191,8 @@ export default function Home() {
         </div>
 
         {/* Skills Section */}
-        <div className="md:px-24 md:py-32 px-6 py-12 relative">
-          <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
+        <div className="relative">
+          <div className="md:mx-24 md:mb-16 mx-6 mb-12 flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
             <div className="group-hover:z-1 transition-all delay-75 flex">
               <h1 className="">Skills</h1>
               <div className="italic">- "Honed With Practice"</div>
@@ -204,24 +205,24 @@ export default function Home() {
           <div
             data-aos="fade-up"
             data-aos-duration="800"
-            className="md:p-10 md:flex md:flex-wrap md:gap-5 | border-2 rounded-xl mt-10 grid grid-cols-1S"
+            className="md:p-16 md:flex md:flex-wrap md:gap-5 bg-black | p-5 mt-10 grid grid-cols-1S"
           >
             <Skill
               src="/images/reactjs.svg"
               alt="react js"
               text="70%"
-              className="bg-blue-500 md:flex-grow h-44"
+              className="md:flex-grow h-44"
               imgClassName="md:w-56 w-28"
-              textClassName="text-white md:text-9xl"
+              textClassName="text-white md:text-9xl text-white"
               overlayText="REACT JS"
             />
             <Skill
               src="/images/tailwindcss.png"
               alt="tailwind css"
               text="67%"
-              className="bg-slate-100 md:w-[30rem] md:h-44"
+              className="md:w-[30rem] md:h-44"
               imgClassName="md:w-32 w-28"
-              textClassName="md:text-9xl text-6xl"
+              textClassName="md:text-9xl text-6xl text-white"
               overlayText="TAILWIND CSS"
             />
 
@@ -229,9 +230,9 @@ export default function Home() {
               src="/images/nextjs.png"
               alt="next js"
               text="72%"
-              className="bg-black md:w-full"
+              className="md:w-full"
               imgClassName="invert md:w-96 w-36"
-              textClassName="invert md:text-8xl text-3xl"
+              textClassName="invert md:text-8xl text-3xl text-white"
               overlayText="NEXT JS"
             />
 
@@ -239,16 +240,16 @@ export default function Home() {
               src="/images/git.svg"
               alt="git"
               text="58%"
-              className="bg-slate-100 md:w-[30rem] md:h-60"
+              className="md:w-[32rem] md:h-60"
               imgClassName="md:w-44 w-36"
-              textClassName="md:text-9xl text-5xl"
+              textClassName="md:text-9xl text-5xl text-white"
               overlayText="GIT"
             />
             <Skill
               src="/images/vscode.svg"
               alt="vscode"
               text="78%"
-              className="bg-blue-500 md:flex-grow md:h-60"
+              className="md:flex-grow md:h-60"
               imgClassName="md:w-36 w-32"
               textClassName="md:text-9xl text-white"
               overlayText="VSCODE"
@@ -258,9 +259,9 @@ export default function Home() {
               src="/images/figma.svg"
               alt="figma"
               text="65%"
-              className="bg-slate-100 md:w-full md:h-44"
+              className="md:w-full md:h-44"
               imgClassName="md:w-36 w-28"
-              textClassName="md:text-9xl"
+              textClassName="md:text-9xl text-white"
               overlayText="FIGMA"
             />
 
@@ -268,18 +269,18 @@ export default function Home() {
               src="/images/android_studio.png"
               alt="android studio"
               text="52%"
-              className="bg-white md:w-[35rem] md:h-44"
+              className="md:w-[35rem] md:h-44"
               imgClassName="md:w-56 w-28"
-              textClassName="md:text-8xl"
+              textClassName="md:text-8xl text-white"
               overlayText="ANDROID STUDIO"
             />
             <Skill
               src="/images/docker.svg"
               alt="docker"
               text="36%"
-              className="bg-white md:flex-grow md:h-44"
+              className="md:flex-grow md:h-44"
               imgClassName="md:w-32 w-28"
-              textClassName="md:text-9xl text-6xl"
+              textClassName="md:text-9xl text-6xl text-white"
               overlayText="DOCKER"
             />
           </div>
