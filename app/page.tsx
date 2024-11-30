@@ -10,8 +10,7 @@ import "aos/dist/aos.css";
 import SocialButton from "./components/SocialButton";
 import HoverButton from "./components/HoverButton";
 import IntroAnimation from "./components/IntroAnimation";
-import { serialize, parse } from "cookie";
-import { NextApiRequest, NextApiResponse } from "next";
+import LocomotiveScroll from "locomotive-scroll";
 import Skill from "./components/Skill";
 
 export default function Home() {
@@ -39,6 +38,21 @@ export default function Home() {
         mainContainer.style.transform = "scale(1)";
       }, 600);
     }
+
+    const locomotiveScroll = new LocomotiveScroll({
+      lenisOptions: {
+        wrapper: window,
+        content: document.documentElement,
+        lerp: 0.1,
+        duration: 1.2,
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      },
+    });
   }, [isIntroFinished]);
 
   const github_url = "https://github.com/vikramisdev/";
@@ -51,66 +65,67 @@ export default function Home() {
     localStorage.setItem("visited", "true");
 
     return (
-      <div className="bg-container main-container origin-top-left md:scale-150 transition-all md:duration-500 scroll-smooth">
+      <div className="bg-container main-container origin-center md:scale-[2] delay-700 transition-all md:duration-700 scroll-smooth">
         {/* introduction or hero section */}
-        <div
-          id="hero-section"
-          data-aos="fade-up"
-          data-aos-duration="800"
-          className="md:flex md:flex-row-reverse md:justify-between md:items-end md:gap-14 md:px-24 md:py-48 px-6 py-12 bg-[url('/images/hero_bg.svg')] bg-no-repeat bg-cover"
-        >
-          <Image
-            className="md:rounded-full md:cursor-pointer mt-12 rounded-t-full rounded-br-full"
-            src={"/images/profile.png"}
-            alt="vikram profile picture"
-            height={350}
-            width={350}
-          />
-          <div className="">
-            <div className="md:text-7xl text-6xl font-semibold relative cursor-pointer group md:hover:pl-10 transition-all duration-500">
-              <h1 className="md:transition-all mt-24">
-                Web designer &<br /> developer from India
+
+        <div>
+          <div className="flex flex-col gap-8 items-center">
+            <h1 className="md:transition-all md:text-9xl w-full text-center pt-32 md:hover:pt-24 transition-all duration-500 text-6xl px-6">
+              Web designer &<br /> developer from India
+            </h1>
+            <div className="flex md:gap-x-6 md:justify-center md:items-center md:py-12 flex-col gap-y-12 items-center">
+              <h1 className="md:text-2xl text-2xl">
+                The best designer is nature.
               </h1>
-              <div className="group-hover:rounded-lg md:absolute md:top-0 md:left-0 transition-all h-full md:group-hover:w-5 bg-black text-white w-0"></div>
+              <HoverButton
+                onClick={() => openUrl("mailto:" + email_url)}
+                text="Get in touch"
+                iconName="bi bi-arrow-right"
+              />
             </div>
-
-            <HoverButton
-              onClick={() => openUrl("mailto:" + email_url)}
-              text="Get in touch"
-              iconName="bi bi-arrow-right"
-            />
           </div>
-        </div>
 
-        {/* About section */}
-        <div
-          data-aos="fade-up"
-          data-aos-duration="800"
-          className="bg-black md:rounded-t-6xl rounded-t-4xl md:px-24 md:py-32 px-6 py-12 md:mx-6 md:my-12 mx-2 my-4 text-white"
-        >
-          <h1 className="text-xl mb-5">Myself,</h1>
-          <p className="text-xl text-justify md:text-2xl">
-            Hi There, My name is Vikram Vishwakarma and I belong from
-            Maharashtra, India. I have recently completed my degree in the field
-            of computer science, I like to design and build websites that are
-            responsive and beautiful. I use softwares like figma & adobe
-            illustrator to design & for the building part i use various web
-            frameworks to build my website. I always try to make the websites
-            clean, minimal, responsive & user friendly with smooth animations
-            and transitions.
-          </p>
+          <div
+            data-scroll
+            data-scroll-offset="20%, 10%"
+            data-scroll-speed="1.5"
+            className="md:h-screen md:m-12 flex md:flex-row md:px-40 md:items-center md:gap-x-12 bg-orange-400 md:rounded-full md:border-[2rem] px-8 pt-12 pb-32 flex-col gap-y-12 items-center m-5 rounded-full min-h-full mt-20"
+          >
+            <Image
+              className="md:rounded-full md:cursor-pointer rounded-full size-60 md:size-72"
+              src={"/images/profile.png"}
+              alt="vikram profile picture"
+              height={800}
+              width={800}
+            />
+            <div className="">
+              <h1 className="text-xl mb-5">Myself,</h1>
+              <p className="text-xl text-justify md:text-2xl">
+                Hi There, My name is Vikram Vishwakarma and I belong from
+                Maharashtra, India. I have recently completed my degree in the
+                field of computer science, I like to design and build websites
+                that are responsive and beautiful. I use softwares like figma &
+                adobe illustrator to design & for the building part i use
+                various web frameworks to build my website. I always try to make
+                the websites clean, minimal, responsive & user friendly with
+                smooth animations and transitions.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* work section */}
         <div className="md:px-24 md:py-32 px-6 py-12">
-          <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
-            <div className="group-hover:z-1 transition-all delay-75 flex">
-              <h1 className="">My Work</h1>
-              <div className="italic">- "Handcrafted By Me"</div>
+          <div className="flex justify-center">
+            <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
+              <div className="group-hover:z-1 transition-all delay-75 flex">
+                <h1 className="">My Work</h1>
+                <div className="italic">- "Handcrafted By Me"</div>
+              </div>
+              <i
+                className={`transition-all bi bi-briefcase rounded-full bg-black text-white size-8 flex justify-center items-center ml-2`}
+              ></i>
             </div>
-            <i
-              className={`transition-all bi bi-briefcase rounded-full bg-black text-white size-8 flex justify-center items-center ml-2`}
-            ></i>
           </div>
 
           <div
@@ -119,6 +134,8 @@ export default function Home() {
             className="grid md:grid-cols-3 md:gap-x-10 gap-y-24 mt-10"
           >
             <Project
+              data-scroll
+              data-scroll-speed="3"
               src="/images/project1.webp"
               title={"Deep Notes"}
               description={
@@ -151,14 +168,16 @@ export default function Home() {
 
         {/* Achievement section */}
         <div className="md:px-24 md:py-32 px-6 py-12">
-          <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
-            <div className="group-hover:z-1 transition-all delay-75 flex">
-              <h1 className="">My Achievements</h1>
-              <div className="italic">- "Everything"</div>
+          <div className="flex justify-center">
+            <div className="flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
+              <div className="group-hover:z-1 transition-all delay-75 flex">
+                <h1 className="">My Achievements</h1>
+                <div className="italic">- "Everything"</div>
+              </div>
+              <i
+                className={`transition-all bi bi-trophy rounded-full bg-black text-white size-8 flex justify-center items-center ml-2`}
+              ></i>
             </div>
-            <i
-              className={`transition-all bi bi-trophy rounded-full bg-black text-white size-8 flex justify-center items-center ml-2`}
-            ></i>
           </div>
 
           <div
@@ -192,14 +211,16 @@ export default function Home() {
 
         {/* Skills Section */}
         <div className="relative">
-          <div className="md:mx-24 md:mb-16 mx-6 mb-12 flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
-            <div className="group-hover:z-1 transition-all delay-75 flex">
-              <h1 className="">Skills</h1>
-              <div className="italic">- "Honed With Practice"</div>
+          <div className="flex justify-center">
+            <div className="md:mx-24 md:mb-16 mx-6 mb-12 flex group w-fit items-center px-3 py-2 mt-8 border border-gray-600 rounded-full relative overflow-hidden cursor-pointer duration-700">
+              <div className="group-hover:z-1 transition-all delay-75 flex">
+                <h1 className="">Skills</h1>
+                <div className="italic">- "Honed With Practice"</div>
+              </div>
+              <i
+                className={`transition-all bi bi-star rounded-full bg-black text-white size-8 flex justify-center items-center ml-2`}
+              ></i>
             </div>
-            <i
-              className={`transition-all bi bi-star rounded-full bg-black text-white size-8 flex justify-center items-center ml-2`}
-            ></i>
           </div>
 
           <div

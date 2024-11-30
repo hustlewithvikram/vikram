@@ -15,6 +15,8 @@ const config: Config = {
       },
       fontFamily: {
         "roboto": ["Roboto", "sans-serif"],
+        "lily" : ["Lily Script One"],
+        "fugaz-one" : ["Fugaz One"]
       },
       borderRadius: {
         "4xl" : "2rem",
