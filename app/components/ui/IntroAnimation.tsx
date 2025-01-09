@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../globals.css";
+import "@/app/globals.css";
 
 interface IntroAnimationProps {
   setIntroFinished: React.Dispatch<React.SetStateAction<boolean>>;
@@ -32,7 +32,10 @@ export default function IntroAnimation(props: IntroAnimationProps) {
         textInputRef.current.innerText += currentWord.charAt(charIndex);
         setCharIndex(charIndex + 1);
       } else if (isDeleting && charIndex > 0) {
-        textInputRef.current.innerText = currentWord.substring(0, charIndex - 1);
+        textInputRef.current.innerText = currentWord.substring(
+          0,
+          charIndex - 1
+        );
         setCharIndex(charIndex - 1);
       } else {
         if (!isDeleting && charIndex === currentWord.length) {
