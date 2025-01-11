@@ -8,6 +8,7 @@ import openUrl from "@/app/utils/utils";
 import HoverButton from "../ui/HoverButton";
 import { IconLine } from "@tabler/icons-react";
 import HyperText from "@/components/ui/hyper-text";
+import SmileyFace from "../ui/SmilyFace";
 
 const HeroSection = () => {
   const containerRef = useRef(null);

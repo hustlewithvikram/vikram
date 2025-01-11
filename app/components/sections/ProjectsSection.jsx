@@ -19,12 +19,14 @@ const ProjectList = [
   },
   {
     title: "Projects",
-    number: 3,
+    number: 4,
     src: "https://picsum.photos/2000",
   },
 ];
 
-function ProjectsSection() {
+import clsx from "clsx";
+
+export default function ProjectsSection() {
   return (
     <div className="flex justify-center gap-x-6 py-28 mx-6">
       {ProjectList.map((project, index) => (
@@ -39,4 +41,4 @@ function ProjectsSection() {
   );
 }
 
-export default ProjectsSection;
+

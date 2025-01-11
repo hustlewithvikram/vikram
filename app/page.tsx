@@ -8,7 +8,7 @@ import Project from "./components/ui/Project";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SocialButton from "./components/ui/SocialButton";
-import IntroAnimation from "./components/ui/IntroAnimation";
+import IntroAnimation from "./components/ui/ScreenReveal";
 import LocomotiveScroll from "locomotive-scroll";
 import Skill from "./components/ui/Skill";
 import AboutSection from "./components/sections/AboutSection";
@@ -18,19 +18,20 @@ import HeroSection from "./components/sections/HeroSection";
 import ProjectsSection from "./components/sections/ProjectsSection";
 import SkillsSection from "@/app/components/sections/SkillsSection";
 import openUrl from "./utils/utils";
+import ScreenReveal from "./components/ui/ScreenReveal";
 
 const github_url = "https://github.com/vikramisdev/";
 const email_url = "vs423502@gmail.com";
 const mobile_number = "+918805469136";
 
 export default function Home() {
-  const [isIntroFinished, setIntroFinished] = useState(false);
+  const [animationEnded, setAnimationEnded] = useState(false);
 
   useEffect(() => {
-    AOS.init();
-  }, []);
+    animationEnded
+      ? (document.body.style.overflow = "auto")
+      : (document.body.style.overflow = "hidden");
 
-  useEffect(() => {
     new LocomotiveScroll({
       lenisOptions: {
         wrapper: window,
@@ -45,64 +46,66 @@ export default function Home() {
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       },
     });
-  }, [isIntroFinished]);
 
-  if (!isIntroFinished) {
-    return <IntroAnimation setIntroFinished={setIntroFinished} />;
-  } else {
-    localStorage.setItem("visited", "true");
+    AOS.init();
+  }, []);
 
-    return (
-      <div className="bg-[#111] transition-all md:duration-700 scroll-smooth">
-        {/* Hero Section */}
-        <HeroSection />
+  return (
+    <div className="bg-[#111] transition-all md:duration-700 scroll-smooth">
+      {/* Screen Reveal */}
+      <ScreenReveal
+        animationEnded={animationEnded}
+        setAnimationEnded={setAnimationEnded}
+      />
 
-        {/* About Section */}
-        <AboutSection />
+      {/* Hero Section */}
+      <HeroSection />
 
-        {/* Achievements Section */}
-        <AchievementSection />
+      {/* About Section */}
+      <AboutSection />
 
-        {/* Projects Section */}
-        <ProjectsSection />
+      {/* Achievements Section */}
+      <AchievementSection />
 
-        {/* Skills Section */}
-        <SkillsSection />
+      {/* Projects Section */}
+      <ProjectsSection />
 
-        <footer className="md:px-24 md:py-32 px-6 py-12 bg-black text-white">
-          <h2 className="text-2xl font-semibold">Contact Me</h2>
-          <div className="mt-10">
-            <p>
-              <strong>Mobile:</strong> {mobile_number}
-            </p>
-            <p>
-              <strong>Email:</strong> {email_url}
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-5 md:flex md:gap-x-5 mt-5">
-            <SocialButton
-              onClick={() => openUrl("https://instagram.com/vikramisdev")}
-              text="Instagram"
-              iconName="bi bi-instagram"
-            />
-            <SocialButton
-              onClick={() => openUrl("https://facebook.com/vikramisdev")}
-              text="Facebook"
-              iconName="bi bi-facebook"
-            />
-            <SocialButton
-              onClick={() => openUrl("https://x.com/vikramisdev")}
-              text="Twitter"
-              iconName="bi bi-twitter"
-            />
-            <SocialButton
-              onClick={() => openUrl(github_url)}
-              text="Github"
-              iconName="bi bi-github"
-            />
-          </div>
-        </footer>
-      </div>
-    );
-  }
+      {/* Skills Section */}
+      <SkillsSection />
+
+      <footer className="md:px-24 md:py-32 px-6 py-12 bg-black text-white">
+        <h2 className="text-2xl font-semibold">Contact Me</h2>
+        <div className="mt-10">
+          <p>
+            <strong>Mobile:</strong> {mobile_number}
+          </p>
+          <p>
+            <strong>Email:</strong> {email_url}
+          </p>
+        </div>
+        <div className="grid grid-cols-2 gap-5 md:flex md:gap-x-5 mt-5">
+          <SocialButton
+            onClick={() => openUrl("https://instagram.com/vikramisdev")}
+            text="Instagram"
+            iconName="bi bi-instagram"
+          />
+          <SocialButton
+            onClick={() => openUrl("https://facebook.com/vikramisdev")}
+            text="Facebook"
+            iconName="bi bi-facebook"
+          />
+          <SocialButton
+            onClick={() => openUrl("https://x.com/vikramisdev")}
+            text="Twitter"
+            iconName="bi bi-twitter"
+          />
+          <SocialButton
+            onClick={() => openUrl(github_url)}
+            text="Github"
+            iconName="bi bi-github"
+          />
+        </div>
+      </footer>
+    </div>
+  );
 }
