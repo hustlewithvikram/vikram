@@ -14,6 +14,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      backgroundColor: {
+        background: "var(--background-color)",
+      },
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
         lily: ["Lily Script One"],

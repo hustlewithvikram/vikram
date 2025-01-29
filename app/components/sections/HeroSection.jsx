@@ -9,9 +9,11 @@ import HoverButton from "../ui/HoverButton";
 import { IconLine } from "@tabler/icons-react";
 import HyperText from "@/components/ui/hyper-text";
 import SmileyFace from "../ui/SmilyFace";
+import { useScrollProgress } from "../../../hooks/useScrollProgress";
 
 const HeroSection = () => {
   const containerRef = useRef(null);
+  const scrollProgress = useScrollProgress();
 
   useEffect(() => {
     // Initialize Locomotive Scroll
@@ -39,27 +41,33 @@ const HeroSection = () => {
     <div
       ref={containerRef}
       data-scroll-container
-      className="bg-[#111] h-screen relative flex text-[#aaa] font-bebas"
+      className="dark:bg-[#111] bg-[#f8f8f8] h-screen flex text-[#aaa] font-bebas transition-all duration-1000"
     >
       {/* left section */}
-      <section className="flex items-center pl-24 gap-x-16 absolute rotate-90 left-20 origin-top-left w-[100vh] h-20">
-        <div className="bg-[#aaa] w-[1px] h-[100px] rotate-90"></div>
-        <h1 className="font-roboto w-60">UI/UX Designer &</h1>
-        <div className="bg-[#aaa] w-[1px] h-[330px] rotate-90"></div>
+      <section
+        className={`transition-all duration-1000 fixed top-0 flex items-center pl-24 gap-x-16 bg-transparent rotate-90 left-20 origin-top-left w-[100vh] h-20 ${
+          scrollProgress < 1.5 ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <div className="dark:bg-[#aaa] bg-black w-[3px] h-[100px] rotate-90 z-40"></div>
+        <div className="font-roboto w-60 dark:text-[#aaa] text-black flex items-center gap-x-4">
+          <h1>UI/UX Designer &</h1>
+        </div>
+        <div className="bg-red-600 w-[3px] h-[320px] rotate-90 z-40"></div>
       </section>
 
       {/* middle section */}
-      <section className="flex-1 flex flex-col justify-center px-32">
+      <section className="flex-1 flex flex-col justify-center md:px-32 px-20">
         <div className="space-y-2">
           <div
             data-scroll
             data-scroll-class="frontend-text"
             data-scroll-direction="vertical"
             data-scroll-offset="50%"
-            className="bg-[#ED1D24] px-8 w-fit flex items-center"
+            className="bg-[#ED1D24] md:px-8 px-4 w-fit flex items-center"
           >
             <HyperText
-              className="text-[14rem] text-[#111] h-48 flex items-center"
+              className="md:text-[14rem] text-6xl dark:text-black text-black md:h-48 flex items-center"
               text="FRONTEND"
             />
           </div>
@@ -71,7 +79,7 @@ const HeroSection = () => {
             className="flex items-center"
           >
             <HyperText
-              className="text-[14rem] h-48 flex items-center"
+              className="md:text-[14rem] text-6xl md:h-48 flex items-center dark:text-[#aaa] text-[#222]"
               text="DEVELOPER"
             />
           </div>
@@ -79,7 +87,7 @@ const HeroSection = () => {
         <div>
           <div className="flex items-center gap-x-2 py-4">
             <IconLine className="size-8 md:hover:rotate-45 transition-all" />
-            <h1 className="font-sans text-xl font-light opacity-75">
+            <h1 className="font-sans md:text-xl font-light dark:opacity-75 text-neutral-900 dark:text-neutral-100">
               It&rsquo;s Vikram Vishwakarma, a design Enthusiast.
             </h1>
           </div>
@@ -90,17 +98,6 @@ const HeroSection = () => {
           />
         </div>
       </section>
-
-      {/* right section */}
-      {/* <section className="flex-1 flex justify-center items-center">
-        <Image
-          className="md:cursor-pointer size-[50vh] transition-all rounded-full"
-          src={"/images/profile.jpg"}
-          alt="vikram profile picture"
-          height={2000}
-          width={2000}
-        />
-      </section> */}
     </div>
   );
 };

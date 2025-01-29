@@ -18,7 +18,7 @@ const TimelineData = [
   {
     title: "2021",
     content: (
-      <div className="text-white md:text-2xl space-y-16">
+      <div className="text-black dark:text-neutral-100 md:text-2xl space-y-16">
         <DataSection title="My Journey in Computer Science">
           I embarked on my journey in Computer Science by enrolling in a B.Sc.
           program at KTHM College, Nashik, Maharashtra, in 2021. This decision
@@ -37,7 +37,7 @@ const TimelineData = [
   {
     title: "2024",
     content: (
-      <div className="text-white md:text-2xl space-y-16">
+      <div className="text-black dark:text-neutral-100 md:text-2xl space-y-16">
         <DataSection title="Achievements in 2024">
           In 2024, I dedicated myself to enhancing my web development skills by
           focusing on the fundamentals, including design theories, layouts, and
@@ -58,7 +58,7 @@ const TimelineData = [
   {
     title: "2025",
     content: (
-      <div className="text-white md:text-2xl space-y-16">
+      <div className="text-black dark:text-neutral-100 md:text-2xl space-y-16">
         <DataSection title="Plans for 2025">
           In 2025, I plan to enhance my technical skills in machine learning,
           blockchain, and DevOps. I aim to apply my knowledge through real-world

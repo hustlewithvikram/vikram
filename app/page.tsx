@@ -19,6 +19,9 @@ import ProjectsSection from "./components/sections/ProjectsSection";
 import SkillsSection from "@/app/components/sections/SkillsSection";
 import openUrl from "./utils/utils";
 import ScreenReveal from "./components/ui/ScreenReveal";
+import DarkMode from "./components/ui/DarkMode";
+import ScrollToTop from "./components/ui/ScrollToTop";
+import SkillGrid from "./components/ui/SkillGrid";
 
 const github_url = "https://github.com/vikramisdev/";
 const email_url = "vs423502@gmail.com";
@@ -51,27 +54,27 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-[#111] transition-all md:duration-700 scroll-smooth">
+    <div className="bg-background dark:bg-[#111] transition-all md:duration-700 scroll-smooth">
+      {/* absolute, fixed components */}
       {/* Screen Reveal */}
       <ScreenReveal
         animationEnded={animationEnded}
         setAnimationEnded={setAnimationEnded}
       />
-
+      <DarkMode />
+      <ScrollToTop />
+      {/* end of absolute, fixed components */}
+      {/* ------------ */}
       {/* Hero Section */}
       <HeroSection />
-
       {/* About Section */}
       <AboutSection />
-
       {/* Achievements Section */}
       <AchievementSection />
-
       {/* Projects Section */}
       <ProjectsSection />
-
       {/* Skills Section */}
-      <SkillsSection />
+      <SkillGrid />
 
       <footer className="md:px-24 md:py-32 px-6 py-12 bg-black text-white">
         <h2 className="text-2xl font-semibold">Contact Me</h2>
