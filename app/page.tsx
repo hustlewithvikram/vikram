@@ -22,6 +22,8 @@ import ScreenReveal from "./components/ui/ScreenReveal";
 import DarkMode from "./components/ui/DarkMode";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import SkillGrid from "./components/ui/SkillGrid";
+import LoadingStartup from "./components/ui/LoadingStartup";
+import { Progress } from "../components/ui/progress";
 
 const github_url = "https://github.com/vikramisdev/";
 const email_url = "vs423502@gmail.com";
@@ -57,14 +59,18 @@ export default function Home() {
     <div className="bg-background dark:bg-[#111] transition-all md:duration-700 scroll-smooth">
       {/* absolute, fixed components */}
       {/* Screen Reveal */}
-      <ScreenReveal
+      <LoadingStartup />
+      {/* <ScreenReveal
         animationEnded={animationEnded}
         setAnimationEnded={setAnimationEnded}
-      />
+      /> */}
+      <Progress className="fixed top-0 rounded-none z-50 h-1" value={50} />
       <DarkMode />
       <ScrollToTop />
       {/* end of absolute, fixed components */}
+
       {/* ------------ */}
+
       {/* Hero Section */}
       <HeroSection />
       {/* About Section */}

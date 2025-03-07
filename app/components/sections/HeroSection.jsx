@@ -59,25 +59,12 @@ const HeroSection = () => {
       {/* middle section */}
       <section className="flex-1 flex flex-col justify-center md:px-32 px-20">
         <div className="space-y-2">
-          <div
-            data-scroll
-            data-scroll-class="frontend-text"
-            data-scroll-direction="vertical"
-            data-scroll-offset="50%"
-            className="bg-[#ED1D24] md:px-8 px-4 w-fit flex items-center"
-          >
-            <HyperText
-              className="md:text-[14rem] text-6xl dark:text-black text-black md:h-48 flex items-center"
-              text="FRONTEND"
-            />
+          <div className="bg-[#ED1D24] md:px-8 px-4 w-fit flex items-center">
+            <h1 className="md:text-[14rem] text-6xl dark:text-black text-black flex items-center">
+              FRONTEND
+            </h1>
           </div>
-          <div
-            data-scroll
-            data-scroll-class="developer-text"
-            data-scroll-direction="horizontal"
-            data-scroll-offset="50%"
-            className="flex items-center"
-          >
+          <div className="flex items-center">
             <HyperText
               className="md:text-[14rem] text-6xl md:h-48 flex items-center dark:text-[#aaa] text-[#222]"
               text="DEVELOPER"

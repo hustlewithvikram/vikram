@@ -28,23 +28,23 @@ const SkillGrid = () => {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col justify-center">
-      <div className="flex items-center gap-x-4 mx-6 px-4 py-2 rounded-full textlg bg-black text-white w-fit">
-        <HiCode className="size-6" />
-        <h1>Programming Languages</h1>
-      </div>
-      <div className="flex flex-wrap gap-1 p-6 h-44">
-        {shuffledSkills.map((skill, index) => (
-          <div
-            key={index}
-            className="group flex items-center justify-center gap-x-4 bg-neutral-900 text-white shadow-lg p-4 flex-1 duration-700 transition-all"
-          >
-            {skill.icon}
-            <p className="text-sm font-medium">{skill.name}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+		<div className="h-screen flex flex-col justify-center">
+			<div className="flex items-center gap-x-4 mx-6 px-4 py-2 rounded-full textlg bg-black text-white w-fit">
+				<HiCode className="size-6" />
+				<h1>Programming Languages</h1>
+			</div>
+			<div className="flex flex-wrap gap-2 p-6 h-44">
+				{shuffledSkills.map((skill, index) => (
+					<div
+						key={index}
+						className="group flex items-center rounded-full justify-center gap-x-4 bg-neutral-900 text-white shadow-lg p-4 flex-1 duration-700 transition-all"
+					>
+						{skill.icon}
+						<p className="text-sm font-medium">{skill.name}</p>
+					</div>
+				))}
+			</div>
+		</div>
   );
 };
 

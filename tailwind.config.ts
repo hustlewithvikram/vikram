@@ -22,6 +22,8 @@ const config: Config = {
         lily: ["Lily Script One"],
         "fugaz-one": ["Fugaz One"],
         bebas: ["Bebas Neue", "cursive"],
+        princess: ["Princess Sofia", "serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       borderRadius: {
         "4xl": "2rem",

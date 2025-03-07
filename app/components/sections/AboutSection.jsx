@@ -17,6 +17,7 @@ const AboutSection = () => {
         data-scroll-class="line"
         width={500}
         height={500}
+        className="rounded-full"
       />
       <section className="flex-1">
         <HyperText
