@@ -17,7 +17,7 @@ import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 import HeroSection from "./components/sections/HeroSection";
 import ProjectsSection from "./components/sections/ProjectsSection";
 import SkillsSection from "@/app/components/sections/SkillsSection";
-import openUrl from "./utils/utils";
+import { openUrl } from "./utils/utils";
 import ScreenReveal from "./components/ui/ScreenReveal";
 import DarkMode from "./components/ui/DarkMode";
 import ScrollToTop from "./components/ui/ScrollToTop";

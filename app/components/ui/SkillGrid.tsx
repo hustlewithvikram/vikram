@@ -1,51 +1,94 @@
 "use client";
 
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { useEffect, useState } from "react";
-import { FaReact, FaPython, FaJava, FaNodeJs, FaCode } from "react-icons/fa";
 import { HiCode } from "react-icons/hi";
-import { SiNextdotjs, SiTailwindcss, SiMongodb, SiMysql } from "react-icons/si";
 
 const skills = [
-  { name: "React", icon: <FaReact size={40} className="text-blue-500" /> },
-  { name: "Next.js", icon: <SiNextdotjs size={40} className="text-black" /> },
-  {
-    name: "Tailwind CSS",
-    icon: <SiTailwindcss size={40} className="text-blue-400" />,
-  },
-  { name: "Python", icon: <FaPython size={40} className="text-yellow-500" /> },
-  { name: "Java", icon: <FaJava size={40} className="text-red-500" /> },
-  { name: "Node.js", icon: <FaNodeJs size={40} className="text-green-500" /> },
-  { name: "MongoDB", icon: <SiMongodb size={40} className="text-green-600" /> },
-  { name: "MySQL", icon: <SiMysql size={40} className="text-blue-600" /> },
+	{
+		name: "React",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+		description:
+			"A JavaScript library for building interactive UIs efficiently.",
+	},
+	{
+		name: "Next.js",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+		description:
+			"A React framework for production-ready web applications with SSR & SSG.",
+	},
+	{
+		name: "Tailwind CSS",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+		description:
+			"A utility-first CSS framework for rapidly building modern designs.",
+	},
+	{
+		name: "Python",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+		description:
+			"A versatile programming language known for its simplicity and vast ecosystem.",
+	},
+	{
+		name: "Java",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+		description:
+			"A popular, object-oriented programming language used in enterprise applications.",
+	},
+	{
+		name: "Node.js",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+		description:
+			"A runtime that allows JavaScript to run on the server side for backend development.",
+	},
+	{
+		name: "MongoDB",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+		description:
+			"A NoSQL database known for its flexibility and scalability.",
+	},
+	{
+		name: "MySQL",
+		icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+		description:
+			"A relational database management system widely used for web applications.",
+	},
 ];
 
 const SkillGrid = () => {
-  const [shuffledSkills, setShuffledSkills] = useState(skills);
+	const [shuffledSkills, setShuffledSkills] = useState(skills);
 
-  // Shuffle skills array on mount
-  useEffect(() => {
-    setShuffledSkills([...skills].sort(() => Math.random() - 0.5));
-  }, []);
+	// Shuffle skills array on mount
+	useEffect(() => {
+		setShuffledSkills([...skills].sort(() => Math.random() - 0.5));
+	}, []);
 
-  return (
-		<div className="h-screen flex flex-col justify-center">
-			<div className="flex items-center gap-x-4 mx-6 px-4 py-2 rounded-full textlg bg-black text-white w-fit">
+	return (
+		<div className="flex flex-col">
+			<div className="flex items-center gap-x-4 mx-6 px-4 py-2 rounded-full text-lg bg-black text-white w-fit">
 				<HiCode className="size-6" />
 				<h1>Programming Languages</h1>
 			</div>
-			<div className="flex flex-wrap gap-2 p-6 h-44">
+			{/* Grid Layout Fix */}
+			<BentoGrid className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-8 max-w-6xl mx-auto my-20">
 				{shuffledSkills.map((skill, index) => (
-					<div
+					<BentoGridItem
+						className="w-full h-full flex flex-col items-center justify-center bg-gray-100 rounded-3xl shadow-md"
 						key={index}
-						className="group flex items-center rounded-full justify-center gap-x-4 bg-neutral-900 text-white shadow-lg p-4 flex-1 duration-700 transition-all"
-					>
-						{skill.icon}
-						<p className="text-sm font-medium">{skill.name}</p>
-					</div>
+						title={skill.name}
+						description={skill.description}
+						icon={
+							<img
+								src={skill.icon}
+								alt={skill.name}
+								className="w-16 h-16 mb-2"
+							/>
+						}
+					/>
 				))}
-			</div>
+			</BentoGrid>
 		</div>
-  );
+	);
 };
 
 export default SkillGrid;
