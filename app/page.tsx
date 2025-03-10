@@ -56,65 +56,58 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-background dark:bg-[#111] transition-all md:duration-700 scroll-smooth">
-      {/* absolute, fixed components */}
-      {/* Screen Reveal */}
-      <LoadingStartup />
-      {/* <ScreenReveal
-        animationEnded={animationEnded}
-        setAnimationEnded={setAnimationEnded}
-      /> */}
-      <Progress className="fixed top-0 rounded-none z-50 h-1" value={50} />
-      <DarkMode />
-      <ScrollToTop />
-      {/* end of absolute, fixed components */}
+		<div className="bg-background dark:bg-[#111] transition-all md:duration-700 scroll-smooth">
+			<DarkMode />
+			<ScrollToTop />
 
-      {/* ------------ */}
+			{/* Hero Section */}
+			<HeroSection />
+			{/* About Section */}
+			<AboutSection />
+			{/* Achievements Section */}
+			<AchievementSection />
+			{/* Projects Section */}
+			<ProjectsSection />
+			{/* Skills Section */}
+			<SkillGrid />
 
-      {/* Hero Section */}
-      <HeroSection />
-      {/* About Section */}
-      <AboutSection />
-      {/* Achievements Section */}
-      <AchievementSection />
-      {/* Projects Section */}
-      <ProjectsSection />
-      {/* Skills Section */}
-      <SkillGrid />
-
-      <footer className="md:px-24 md:py-32 px-6 py-12 bg-black text-white">
-        <h2 className="text-2xl font-semibold">Contact Me</h2>
-        <div className="mt-10">
-          <p>
-            <strong>Mobile:</strong> {mobile_number}
-          </p>
-          <p>
-            <strong>Email:</strong> {email_url}
-          </p>
-        </div>
-        <div className="grid grid-cols-2 gap-5 md:flex md:gap-x-5 mt-5">
-          <SocialButton
-            onClick={() => openUrl("https://instagram.com/vikramisdev")}
-            text="Instagram"
-            iconName="bi bi-instagram"
-          />
-          <SocialButton
-            onClick={() => openUrl("https://facebook.com/vikramisdev")}
-            text="Facebook"
-            iconName="bi bi-facebook"
-          />
-          <SocialButton
-            onClick={() => openUrl("https://x.com/vikramisdev")}
-            text="Twitter"
-            iconName="bi bi-twitter"
-          />
-          <SocialButton
-            onClick={() => openUrl(github_url)}
-            text="Github"
-            iconName="bi bi-github"
-          />
-        </div>
-      </footer>
-    </div>
+			<footer className="md:px-24 md:py-32 px-6 py-12 bg-black text-white">
+				<h2 className="text-2xl font-semibold">Contact Me</h2>
+				<div className="mt-10">
+					<p>
+						<strong>Mobile:</strong> {mobile_number}
+					</p>
+					<p>
+						<strong>Email:</strong> {email_url}
+					</p>
+				</div>
+				<div className="grid grid-cols-2 gap-5 md:flex md:gap-x-5 mt-5">
+					<SocialButton
+						onClick={() =>
+							openUrl("https://instagram.com/vikramisdev")
+						}
+						text="Instagram"
+						iconName="bi bi-instagram"
+					/>
+					<SocialButton
+						onClick={() =>
+							openUrl("https://facebook.com/vikramisdev")
+						}
+						text="Facebook"
+						iconName="bi bi-facebook"
+					/>
+					<SocialButton
+						onClick={() => openUrl("https://x.com/vikramisdev")}
+						text="Twitter"
+						iconName="bi bi-twitter"
+					/>
+					<SocialButton
+						onClick={() => openUrl(github_url)}
+						text="Github"
+						iconName="bi bi-github"
+					/>
+				</div>
+			</footer>
+		</div>
   );
 }

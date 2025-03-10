@@ -5,6 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Princess+Sofia&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -177,3 +179,23 @@
   border-bottom: 5px solid #3b3b3b;
   border-radius: 0 0 50px 50px;
 }
+
+/* data aos */
+@keyframes flip-down {
+  0% {
+    transform: rotateX(-90deg);
+    /* opacity: 0; */
+    border-radius: 0; /* Start fully rounded */
+  }
+  100% {
+    transform: rotateX(0deg);
+    /* opacity: 1; */
+    border-radius: 20px; /* Final rounded corners */
+  }
+}
+
+/* Custom AOS Class */
+.aos-animate[data-aos="custom-flip-down"] {
+  animation: flip-down 1s ease-out forwards;
+}
+
