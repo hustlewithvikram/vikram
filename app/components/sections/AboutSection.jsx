@@ -7,7 +7,7 @@ const AboutSection = () => {
 	const isMobile = useIsMobile();
 
 	return (
-		<div className="dark:bg-[#111] bg-[#f8f8f8] py-12 md:px-32 px-12 h-screen duration-1000 text-gray-300 flex md:flex-row md:items-center md:gap-x-12 flex-col gap-y-12 items-center relative">
+		<div className="dark:bg-[#111] bg-[#f8f8f8] py-12 md:px-32 px-12 h-screen duration-1000 text-gray-300 flex md:flex-row md:items-center md:gap-x-28 flex-col gap-y-12 items-center relative">
 			<img
 				src="/images/vikram.jpg"
 				alt="line"
@@ -15,7 +15,7 @@ const AboutSection = () => {
 				data-aos-duration="2000"
 				width={500}
 				height={500}
-				className="rounded-full grayscale contrast-100"
+				className="rounded-full grayscale contrast-100 outline-dashed outline-offset-[30px] size-48 md:size-[500px]"
 			/>
 			<section
 				data-aos={isMobile ? "fade-up" : "fade-left"}
