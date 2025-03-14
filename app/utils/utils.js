@@ -5,21 +5,18 @@ function openUrl(url) {
 }
 
 function useIsMobile(breakpoint = 768) {
-    const [isMobile, setIsMobile] = useState(
-        typeof window !== "undefined" && window.innerWidth <= breakpoint
-    );
+    const [isMobile, setIsMobile] = useState(false); // Initial state is false (avoids SSR mismatch)
 
     useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= breakpoint);
-        };
+        const checkMobile = () => setIsMobile(window.innerWidth <= breakpoint);
 
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        checkMobile(); // Run once after mount to set correct value
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
     }, [breakpoint]);
 
     return isMobile;
 }
 
 export { useIsMobile, openUrl };
-

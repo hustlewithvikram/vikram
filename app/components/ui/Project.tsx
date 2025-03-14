@@ -1,8 +1,4 @@
-import {
-  IconArrowBarRight,
-  IconArrowCurveRight,
-  IconArrowUpRight,
-} from "@tabler/icons-react";
+import { IconArrowUpRight } from "@tabler/icons-react";
 import Image from "next/image";
 
 interface ProjectProps {
@@ -16,26 +12,29 @@ interface ProjectProps {
 export default function Project(props: ProjectProps) {
 	return (
 		<div
-			className={`group rounded-2xl overflow-hidden cursor-pointer relative min-w-360 w-full h-[calc(100vh-4rem)] text-white ${props.className}`}
+			className={`group rounded-2xl border overflow-hidden cursor-pointer relative w-full bg-gray-100 dark:bg-[#111] dark:border-zinc-700 text-white ${props.className} flex flex-col gap-y-4 justify-between p-4`}
 		>
-			<img
-				src={props.src}
-				alt={props.title}
-				className={`w-full h-full bg-gray-50 px-4`}
-				style={{ objectFit: "contain" }}
-			/>
-			<div className="dark:md:bg-[#111] md:bg-gray-100 text-black dark:text-gray-50 group-hover:translate-y-full duration-700 h-full w-full transition-all group-hover:bg-opacity-0 group-hover:bg-gray-700 absolute top-0 left-0 right-0 bottom-0 flex flex-col justify-center">
-				<div className="flex justify-center items-center flex-1 text-9xl font-normal group-hover:text-white">
-					<h1>{props.id}</h1>
-				</div>
-				<div className="flex justify-between items-center w-full md:px-8 md:py-8 py-4 px-3 h-fit group-hover:text-white">
+			{/* Image Section */}
+			<div className="w-full">
+				<img
+					src={props.src}
+					alt={props.title}
+					height={300}
+					width={300}
+					className="w-full h-full object-cover rounded-full p-8 md:group-hover:scale-110 duration-700"
+				/>
+			</div>
+
+			{/* Info Section */}
+			<div className="dark:bg-[#111] bg-gray-100 text-black dark:text-gray-50 flex flex-col justify-center">
+				<div className="flex justify-between items-center">
 					<div>
-						<h1 className="text-2xl font-semibold">
+						<h1 className="text-xl md:text-2xl font-semibold">
 							{props.title}
 						</h1>
 						<p>{props.description}</p>
 					</div>
-					<IconArrowUpRight className="size-32" />
+					<IconArrowUpRight className="size-12 md:size-32" />
 				</div>
 			</div>
 		</div>

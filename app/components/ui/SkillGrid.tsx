@@ -25,7 +25,7 @@ const SkillGrid = () => {
 	}, []);
 
 	return (
-		<div className="flex flex-col">
+		<div className="flex flex-col mt-12">
 			<div className="flex items-center gap-x-4 mx-6 px-4 py-2 rounded-full text-lg bg-black text-white w-fit">
 				<HiCode className="size-6" />
 				<h1>Tech Stack</h1>
@@ -36,7 +36,7 @@ const SkillGrid = () => {
 					return (
 						<div
 							key={index}
-							className="bg-stone-200 dark:bg-zinc-950 mt-3 px-6 py-4 flex items-center gap-x-5 dark:text-gray-100"
+							className="bg-gray-100 rounded-[5px] dark:bg-zinc-950 mt-3 px-6 py-4 flex items-center gap-x-5 dark:text-gray-100"
 						>
 							<span className="whitespace-nowrap">
 								{skill.name}

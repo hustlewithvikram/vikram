@@ -1,5 +1,9 @@
 import React from "react";
 import Project from "@/app/components/ui/Project";
+import { HiCode } from "react-icons/hi";
+import { FaProjectDiagram } from "react-icons/fa";
+import { FaDiamond } from "react-icons/fa6";
+import { RiVipDiamondLine } from "react-icons/ri";
 
 const ProjectList = [
 	{
@@ -34,10 +38,16 @@ const ProjectList = [
 
 export default function ProjectsSection() {
 	return (
-		<div className="flex md:flex-row flex-col gap-y-4 justify-center gap-6 py-28 mx-6 bg-background dark:bg-[#111]">
-			{ProjectList.map((project) => (
-				<Project data-aos="fade-up" key={project.id} {...project} />
-			))}
+		<div className="mt-12">
+			<div className="flex items-center gap-x-4 mx-6 px-4 py-2 rounded-full text-lg bg-black text-white w-fit">
+				<RiVipDiamondLine className="size-6" />
+				<h1>Personal Projects</h1>
+			</div>
+			<div className="flex md:flex-row flex-col gap-y-4 justify-center gap-6 py-6 mx-6 bg-background dark:bg-[#111]">
+				{ProjectList.map((project) => (
+					<Project data-aos="fade-up" key={project.id} {...project} />
+				))}
+			</div>
 		</div>
 	);
 }
