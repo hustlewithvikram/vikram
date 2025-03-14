@@ -32,21 +32,6 @@ const HeroSection = () => {
 			});
 		}
 
-		const tl = gsap.timeline();
-
-		// GSAP Animation
-		tl.fromTo(
-			".hero-title",
-			{ opacity: 0, y: 100 },
-			{
-				opacity: 1,
-				y: 0,
-				stagger: 0.2,
-				duration: 0.5,
-				ease: "power2.out",
-			}
-		);
-
 		return () => {
 			window.removeEventListener("resize", checkScreenSize);
 			scrollRef.current?.destroy();
@@ -62,22 +47,28 @@ const HeroSection = () => {
 			}`}
 		>
 			{/* Left Section */}
-			<section
-				className={`fixed top-0 flex items-center pl-24 gap-x-16 bg-transparent rotate-90 left-20 origin-top-left w-[100vh] h-20 transition-opacity duration-700 ${
-					scrollProgress < 1.5 ? "opacity-100" : "opacity-0"
-				}`}
-			>
-				<div className="dark:bg-[#aaa] bg-black w-[3px] h-[100px] rotate-90 z-40"></div>
-				<div className="font-roboto w-60 dark:text-[#aaa] text-black flex items-center gap-x-4">
-					<h1>UI/UX Designer &</h1>
-				</div>
-				<div className="bg-red-600 w-[3px] h-[320px] rotate-90 z-40"></div>
-			</section>
+			{!isMobile && (
+				<section
+					className={`fixed top-0 flex items-center pl-24 gap-x-16 bg-transparent rotate-90 left-20 origin-top-left w-[100vh] h-20 transition-opacity duration-700 ${
+						scrollProgress < 1.5 ? "opacity-100" : "opacity-0"
+					}`}
+				>
+					<div className="dark:bg-[#aaa] bg-black w-[3px] h-[100px] rotate-90 z-40"></div>
+					<div className="font-roboto w-60 dark:text-[#aaa] text-black flex items-center gap-x-4">
+						<h1>UI/UX Designer &</h1>
+					</div>
+					<div className="bg-red-600 w-[3px] h-[320px] rotate-90 z-40"></div>
+				</section>
+			)}
 
 			{/* Middle Section */}
 			<section className="flex-1 flex flex-col justify-end md:justify-center md:px-32">
-				<div className="pl-16 md:pl-0">
-					<h1 className="hero-title md:text-[14rem] dark:text-gray-50 text-6xl text-black flex items-center tracking-[0.5rem]">
+				<div className={`${!isMobile && "pl-16"} px-5 md:pl-0`}>
+					<h1
+						data-aos="flip-up"
+						data-aos-duration="1000"
+						className="md:text-[14rem] dark:text-gray-50 text-6xl text-black flex items-center tracking-[0.5rem]"
+					>
 						FRONTEND
 					</h1>
 					<h1
@@ -89,8 +80,8 @@ const HeroSection = () => {
 					</h1>
 				</div>
 
-				<div className="pl-16 md:pl-0">
-					<div className="flex items-center gap-x-2 py-4">
+				<div className={`${!isMobile && "pl-16"} px-5 md:pl-0 pb-3`}>
+					<div className="flex items-center gap-x-2 py-4 md:py-4">
 						<FaGgCircle className="size-8 md:hover:rotate-45 transition-all text-black dark:text-gray-200" />
 						<h1 className="font-sans md:text-xl dark:opacity-55 text-neutral-900 dark:text-neutral-100">
 							It&rsquo;s Vikram Vishwakarma, a design Enthusiast.
