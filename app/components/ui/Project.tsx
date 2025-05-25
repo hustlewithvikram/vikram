@@ -1,4 +1,3 @@
-import { IconArrowUpRight } from "@tabler/icons-react";
 import Image from "next/image";
 
 interface ProjectProps {
@@ -9,32 +8,44 @@ interface ProjectProps {
 	className?: string;
 }
 
-export default function Project(props: ProjectProps) {
+export default function Project({
+	src,
+	title,
+	description,
+	className = "",
+}: ProjectProps) {
 	return (
 		<div
-			className={`group rounded-2xl border overflow-hidden cursor-pointer relative w-full bg-gray-100 dark:bg-[#111] dark:border-zinc-700 text-white ${props.className} flex flex-col gap-y-4 justify-between p-4`}
+			tabIndex={0}
+			className={`relative w-full h-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-orange-500 rounded-2xl ${className}`}
+			aria-label={`${title} project card`}
 		>
-			{/* Image Section */}
-			<div className="w-full">
-				<img
-					src={props.src}
-					alt={props.title}
-					height={300}
-					width={300}
-					className="w-full h-full object-cover rounded-full p-8 md:group-hover:scale-110 duration-700"
+			<div
+				className="
+          relative w-full h-full rounded-2xl overflow-hidden
+          shadow-xl border border-gray-300 dark:border-gray-700
+          bg-white/30 dark:bg-black/30 backdrop-blur-sm
+          transition-transform duration-300 ease-in-out
+          hover:scale-[1.03] hover:shadow-2xl
+        "
+			>
+				<Image
+					src={src}
+					alt={title}
+					fill
+					sizes="(max-width: 768px) 100vw, 300px"
+					className="object-cover transition-opacity duration-300 ease-in-out"
+					priority
 				/>
-			</div>
 
-			{/* Info Section */}
-			<div className="dark:bg-[#111] bg-gray-100 text-black dark:text-gray-50 flex flex-col justify-center">
-				<div className="flex justify-between items-center">
-					<div>
-						<h1 className="text-xl md:text-2xl font-semibold">
-							{props.title}
-						</h1>
-						<p>{props.description}</p>
-					</div>
-					<IconArrowUpRight className="size-12 md:size-32" />
+				{/* Bottom overlay text */}
+				<div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3">
+					<h2 className="text-lg font-semibold text-white drop-shadow-sm">
+						{title}
+					</h2>
+					<p className="text-sm text-gray-200 line-clamp-2">
+						{description}
+					</p>
 				</div>
 			</div>
 		</div>

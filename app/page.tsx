@@ -14,10 +14,40 @@ import SocialButton from "./components/ui/SocialButton";
 import { openUrl } from "./utils/utils";
 import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa6";
 import ScrollToTop from "./components/ui/ScrollToTop";
+import FloatBar from "./components/ui/FloatBar";
+import HorizontalTimeline from "./components/ui/HorizontalTimeline";
 
 const github_url = "https://github.com/vikramisdev/";
 const email_url = "vs423502@gmail.com";
 const mobile_number = "+918805469136";
+
+const sampleEvents = [
+	{ date: "Jan 2021", title: "Started Learning Web Development" },
+	{
+		date: "Jun 2021",
+		title: "Built My First Website",
+		description:
+			"Created a portfolio site using HTML, CSS, and basic JavaScript.",
+	},
+	{
+		date: "Dec 2021",
+		title: "Learned React & Tailwind",
+		description:
+			"Dived deep into modern front-end development and component-based design.",
+	},
+	{
+		date: "May 2022",
+		title: "Landed Freelance Projects",
+		description:
+			"Started taking on real-world work, building sites and apps for clients.",
+	},
+	{
+		date: "Nov 2023",
+		title: "Built Fullstack Projects",
+		description:
+			"Integrated backend with Next.js and databases to create dynamic applications.",
+	},
+];
 
 export default function Home() {
 	const [isMobile, setIsMobile] = useState(false);
@@ -74,12 +104,18 @@ export default function Home() {
 			{/* Sections */}
 			<HeroSection />
 			<AboutSection />
-			<AchievementSection />
+			<HorizontalTimeline events={sampleEvents} />
 			<ProjectsSection />
 			<SkillGrid />
 
+			{/* Float bar */}
+			<FloatBar />
+
 			{/* Footer */}
-			<footer className="md:px-24 md:py-32 px-6 py-12 bg-black text-white">
+			<footer
+				id="contact"
+				className="md:px-24 md:py-32 px-6 py-12 bg-black text-white"
+			>
 				<h2 className="text-2xl font-semibold">Contact Me</h2>
 				<div className="mt-10">
 					<p>

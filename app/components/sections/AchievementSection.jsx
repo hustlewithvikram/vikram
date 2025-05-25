@@ -80,9 +80,9 @@ const TimelineData = [
 // Main Component
 const AchievementSection = () => {
   return (
-    <div className="w-full">
-      <Timeline data={TimelineData} />
-    </div>
+		<div id="portfolio" className="w-full">
+			<Timeline data={TimelineData} />
+		</div>
   );
 };
 

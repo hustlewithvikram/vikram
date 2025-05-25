@@ -26,12 +26,12 @@ const SkillGrid = () => {
 
 	return (
 		<div className="flex flex-col mt-12">
-			<div className="flex items-center gap-x-4 mx-6 px-4 py-2 rounded-full text-lg bg-black text-white w-fit">
+			<div className="flex items-center gap-x-4 px-4 py-2 md:mx-28 mx-4 rounded-full text-lg bg-black text-white w-fit">
 				<HiCode className="size-6" />
 				<h1>Tech Stack</h1>
 			</div>
 			{/* Grid Layout Fix */}
-			<div className="px-6 py-6">
+			<div className="md:px-28 px-4 py-10">
 				{skills.map((skill, index) => {
 					return (
 						<div

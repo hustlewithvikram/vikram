@@ -7,7 +7,10 @@ const AboutSection = () => {
 	const isMobile = useIsMobile();
 
 	return (
-		<div className="dark:bg-[#111] bg-[#f8f8f8] pt-24 md:px-32 px-12 h-screen duration-1000 text-gray-300 flex md:flex-row md:items-center md:gap-x-28 flex-col gap-y-16 items-center">
+		<div
+			id="about"
+			className="dark:bg-[#111] bg-[#f8f8f8] pt-24 md:px-32 px-12 h-screen duration-1000 text-gray-300 flex md:flex-row md:items-center md:gap-x-28 gap-y-20 flex-col items-center"
+		>
 			<img
 				src="/images/vikram.jpg"
 				alt="line"
@@ -15,7 +18,11 @@ const AboutSection = () => {
 				height={500}
 				className="rounded-full grayscale contrast-100 outline-dashed outline-offset-[30px] size-48 md:size-[500px]"
 			/>
-			<section className="flex-1 text-justify">
+			<section
+				className="flex-1 text-justify"
+				// data-scroll
+				// data-scroll-speed="0.8"
+			>
 				<h1 className="text-3xl font-semibold text-black dark:text-inherit mb-2 uppercase">
 					Introduction ?!
 				</h1>
