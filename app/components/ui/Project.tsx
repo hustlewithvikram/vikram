@@ -23,20 +23,20 @@ export default function Project({
 			<div
 				className="
           relative w-full h-full rounded-2xl overflow-hidden
-          shadow-xl border border-gray-300 dark:border-gray-700
+          shadow-xl border
           bg-white/30 dark:bg-black/30 backdrop-blur-sm
           transition-transform duration-300 ease-in-out
           hover:scale-[1.03] hover:shadow-2xl
         "
 			>
-				<Image
+				{/* <Image
 					src={src}
 					alt={title}
 					fill
 					sizes="(max-width: 768px) 100vw, 300px"
 					className="object-cover transition-opacity duration-300 ease-in-out"
 					priority
-				/>
+				/> */}
 
 				{/* Bottom overlay text */}
 				<div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3">

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaStar } from "react-icons/fa6";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,6 +62,7 @@ const HorizontalTimeline: React.FC<TimelineProps> = ({ events }) => {
 
 	return (
 		<div
+			id="portfolio"
 			ref={containerRef}
 			className="relative w-full h-screen overflow-hidden bg-transparent"
 		>
@@ -70,11 +72,11 @@ const HorizontalTimeline: React.FC<TimelineProps> = ({ events }) => {
 						key={index}
 						className="timeline-item flex-shrink-0 w-screen h-full flex flex-col items-center justify-center p-10"
 					>
-						<div className="w-6 h-6 bg-black rounded-full mb-4 shadow-md"></div>
-						<div className="text-lg font-bold text-gray-800">
+						<FaStar className="w-8 h-8 text-black dark:text-white rounded-full mb-4 shadow-md" />
+						<div className="text-lg font-bold text-gray-800 dark:text-gray-50">
 							{event.date}
 						</div>
-						<div className="text-md text-gray-700">
+						<div className="text-md text-gray-700 dark:text-gray-400">
 							{event.title}
 						</div>
 						{event.description && (
