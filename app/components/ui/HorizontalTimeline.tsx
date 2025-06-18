@@ -72,7 +72,7 @@ const HorizontalTimeline: React.FC<TimelineProps> = ({ events }) => {
 						key={index}
 						className="timeline-item flex-shrink-0 w-screen h-full flex flex-col items-center justify-center p-10"
 					>
-						<FaStar className="w-8 h-8 text-black dark:text-white rounded-full mb-4 shadow-md" />
+						<FaStar className="w-8 h-8 text-black dark:text-white mb-4" />
 						<div className="text-lg font-bold text-gray-800 dark:text-gray-50">
 							{event.date}
 						</div>

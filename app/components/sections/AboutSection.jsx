@@ -23,7 +23,7 @@ const AboutSection = () => {
 				// data-scroll
 				// data-scroll-speed="0.8"
 			>
-				<h1 className="text-3xl font-semibold text-black dark:text-inherit mb-2 uppercase">
+				<h1 className="text-3xl font-semibold dark:text-inherit mb-2 uppercase text-orange-400">
 					Introduction ?!
 				</h1>
 				<p className="text-xl md:text-2xl text-black dark:text-inherit">
