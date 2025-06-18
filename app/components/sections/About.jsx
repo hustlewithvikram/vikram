@@ -1,11 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import HyperText from "@/components/ui/hyper-text";
-import { Lens } from "../../../components/ui/lens";
-import { useIsMobile } from "../../utils/utils";
-
-const AboutSection = () => {
-	const isMobile = useIsMobile();
-
+const About = () => {
 	return (
 		<div
 			id="about"
@@ -41,4 +34,4 @@ const AboutSection = () => {
 	);
 };
 
-export default AboutSection;
+export default About;

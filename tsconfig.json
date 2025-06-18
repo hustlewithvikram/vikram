@@ -21,6 +21,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "hooks/use-outside-click.ts", "app/components/sections/HeroSection.jsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "hooks/use-outside-click.ts",
+    "app/components/sections/Hero.jsx"
+  ],
   "exclude": ["node_modules"]
 }

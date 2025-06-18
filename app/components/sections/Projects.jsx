@@ -33,7 +33,7 @@ const ProjectList = [
 	},
 ];
 
-export default function ProjectsSection() {
+export default function Projects() {
 	return (
 		<div>
 			<div className="flex items-center gap-x-4 px-4 py-2 md:mx-28 mx-4 rounded-full text-lg bg-black text-white w-fit">

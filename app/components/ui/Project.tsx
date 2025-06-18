@@ -29,14 +29,14 @@ export default function Project({
           hover:scale-[1.03] hover:shadow-2xl
         "
 			>
-				{/* <Image
+				<Image
 					src={src}
 					alt={title}
 					fill
 					sizes="(max-width: 768px) 100vw, 300px"
 					className="object-cover transition-opacity duration-300 ease-in-out"
 					priority
-				/> */}
+				/>
 
 				{/* Bottom overlay text */}
 				<div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3">

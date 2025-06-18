@@ -1,20 +1,19 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import LocomotiveScroll from "locomotive-scroll";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import HeroSection from "./components/sections/HeroSection";
-import SkillGrid from "./components/ui/SkillGrid";
-import ProjectsSection from "./components/sections/ProjectsSection";
-import AchievementSection from "./components/sections/AchievementSection";
-import FooterSection from "./components/sections/FooterSection";
-import AboutSection from "./components/sections/AboutSection";
+import LocomotiveScroll from "locomotive-scroll";
+import { useEffect, useRef, useState } from "react";
+import About from "./components/sections/About";
+import Footer from "./components/sections/Footer";
+import Hero from "./components/sections/Hero";
+import Projects from "./components/sections/Projects";
 import DarkMode from "./components/ui/DarkMode";
+import SkillGrid from "./components/ui/SkillGrid";
 
-import ScrollToTop from "./components/ui/ScrollToTop";
-import FloatBar from "./components/ui/FloatBar";
+import FloatNavBar from "./components/ui/FloatNavBar";
 import HorizontalTimeline from "./components/ui/HorizontalTimeline";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 const sampleEvents = [
 	{ date: "Jan 2021", title: "Started Learning Web Development" },
@@ -97,17 +96,17 @@ export default function Home() {
 			<ScrollToTop />
 
 			{/* Sections */}
-			<HeroSection />
-			<AboutSection />
+			<Hero />
+			<About />
 			<HorizontalTimeline events={sampleEvents} />
-			<ProjectsSection />
+			<Projects />
 			<SkillGrid />
 
 			{/* Float bar */}
-			<FloatBar />
+			<FloatNavBar />
 
 			{/* Footer */}
-			<FooterSection />
+			<Footer />
 		</div>
 	);
 }

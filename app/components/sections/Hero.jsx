@@ -7,7 +7,7 @@ import { email_url } from "@/app/constants/constants";
 import { openUrl } from "@/app/utils/utils";
 import HoverButton from "../ui/HoverButton";
 
-const HeroSection = () => {
+const Hero = () => {
 	const containerRef = useRef(null);
 	const scrollRef = useRef(null);
 	const [isMobile, setIsMobile] = useState(false);
@@ -69,4 +69,4 @@ const HeroSection = () => {
 	);
 };
 
-export default HeroSection;
+export default Hero;

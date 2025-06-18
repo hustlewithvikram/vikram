@@ -1,19 +1,18 @@
 "use client";
 
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { Progress } from "@/components/ui/progress";
 import { useEffect, useState } from "react";
 import { HiCode } from "react-icons/hi";
 
 const skills = [
 	{ name: "React", progress: 70 },
-	{ name: "Next.js", progress: 65 },
-	{ name: "Tailwind CSS", progress: 75 },
+	{ name: "Next.js", progress: 75 },
+	{ name: "Tailwind CSS", progress: 70 },
 	{ name: "Python", progress: 60 },
-	{ name: "Java", progress: 65 },
-	{ name: "Node.js", progress: 50 },
-	{ name: "MongoDB", progress: 70 },
-	{ name: "MySQL", progress: 60 },
+	{ name: "Java", progress: 55 },
+	{ name: "Node.js", progress: 40 },
+	{ name: "MongoDB", progress: 55 },
+	{ name: "MySQL", progress: 50 },
 ];
 
 const SkillGrid = () => {

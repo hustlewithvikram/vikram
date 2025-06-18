@@ -2,7 +2,7 @@ import React from "react";
 import { HiHome } from "react-icons/hi";
 import { FaUser, FaBriefcase, FaEnvelope, FaFileAlt } from "react-icons/fa";
 
-const FloatBar: React.FC = () => {
+const FloatNavBar: React.FC = () => {
 	// Function to scroll to a section
 	const scrollToSection = (id: string) => {
 		const section = document.getElementById(id);
@@ -61,4 +61,4 @@ const FloatBar: React.FC = () => {
 	);
 };
 
-export default FloatBar;
+export default FloatNavBar;
