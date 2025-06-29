@@ -1,46 +1,68 @@
 import React from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa6";
-import SocialButton from "../ui/SocialButton";
 import { openUrl } from "../../utils/utils";
-const github_url = "https://github.com/vikramisdev/";
-const email_url = "vs423502@gmail.com";
-const mobile_number = "+918805469136";
+
+const githubUrl = "https://github.com/vikramisdev";
+const instagramUrl = "https://instagram.com/vikramisdev";
+const facebookUrl = "https://facebook.com/vikramisdev";
+const twitterUrl = "https://x.com/vikramisdev";
+const email = "vs423502@gmail.com";
+const phone = "+918805469136";
 
 const Footer = () => {
 	return (
 		<footer
 			id="contact"
-			className="md:px-24 md:py-32 px-6 py-12 bg-black text-white"
+			className="bg-black text-white px-6 md:px-24 py-12 md:py-24"
 		>
-			<h2 className="text-2xl font-semibold">Contact Me</h2>
-			<div className="mt-10">
+			{/* Heading */}
+			<h2 className="text-2xl font-bold mb-6 border-b border-gray-700 w-fit pb-2">
+				Contact Me
+			</h2>
+
+			{/* Contact Info */}
+			<div className="space-y-2 text-sm md:text-base">
 				<p>
-					<strong>Mobile:</strong> {mobile_number}
+					<strong>Phone:</strong>{" "}
+					<a
+						href={`tel:${phone}`}
+						className="hover:underline text-gray-300"
+					>
+						{phone}
+					</a>
 				</p>
 				<p>
-					<strong>Email:</strong> {email_url}
+					<strong>Email:</strong>{" "}
+					<a
+						href={`mailto:${email}`}
+						className="hover:underline text-gray-300"
+					>
+						{email}
+					</a>
 				</p>
 			</div>
-			<div className="flex md:gap-x-5 mt-5">
-				<SocialButton
-					onClick={() => openUrl("https://instagram.com/vikramisdev")}
-					text="Instagram"
-					icon={<FaInstagram className="text-white text-3xl" />}
+
+			{/* Social Links */}
+			<div className="flex flex-wrap gap-4 mt-6">
+				<SocialIcon
+					url={instagramUrl}
+					label="Instagram"
+					icon={<FaInstagram />}
 				/>
-				<SocialButton
-					onClick={() => openUrl("https://facebook.com/vikramisdev")}
-					text="Facebook"
-					icon={<FaFacebook className="text-white text-3xl" />}
+				<SocialIcon
+					url={facebookUrl}
+					label="Facebook"
+					icon={<FaFacebook />}
 				/>
-				<SocialButton
-					onClick={() => openUrl("https://x.com/vikramisdev")}
-					text="Twitter"
-					icon={<FaTwitter className="text-white text-3xl" />}
+				<SocialIcon
+					url={twitterUrl}
+					label="Twitter"
+					icon={<FaTwitter />}
 				/>
-				<SocialButton
-					onClick={() => openUrl(github_url)}
-					text="Github"
-					icon={<FaGithub className="text-white text-3xl" />}
+				<SocialIcon
+					url={githubUrl}
+					label="GitHub"
+					icon={<FaGithub />}
 				/>
 			</div>
 		</footer>
@@ -48,3 +70,18 @@ const Footer = () => {
 };
 
 export default Footer;
+
+function SocialIcon({ url, label, icon }) {
+	return (
+		<button
+			onClick={() => openUrl(url)}
+			aria-label={label}
+			className="group flex items-center gap-2 text-white bg-zinc-800 hover:bg-white hover:text-black px-4 py-2 rounded-full transition-all duration-200"
+		>
+			<span className="text-xl">{icon}</span>
+			<span className="hidden sm:inline text-sm font-medium">
+				{label}
+			</span>
+		</button>
+	);
+}

@@ -1,9 +1,23 @@
-import React from "react";
-import { HiHome } from "react-icons/hi";
-import { FaUser, FaBriefcase, FaEnvelope, FaFileAlt } from "react-icons/fa";
+"use client";
 
-const FloatNavBar: React.FC = () => {
-	// Function to scroll to a section
+import React, { useEffect, useRef, useState } from "react";
+import { HiHome } from "react-icons/hi";
+import { FaUser, FaBriefcase, FaEnvelope } from "react-icons/fa";
+import clsx from "clsx";
+
+const sections = [
+	{ id: "home", icon: <HiHome size={20} />, label: "Home" },
+	{ id: "about", icon: <FaUser size={18} />, label: "About" },
+	{ id: "portfolio", icon: <FaBriefcase size={18} />, label: "Portfolio" },
+	{ id: "contact", icon: <FaEnvelope size={18} />, label: "Contact" },
+];
+
+const FloatNavBar = () => {
+	const [activeSection, setActiveSection] = useState("home");
+	const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
+	const [scaleX, setScaleX] = useState(1);
+	const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
 	const scrollToSection = (id: string) => {
 		const section = document.getElementById(id);
 		if (section) {
@@ -11,53 +25,83 @@ const FloatNavBar: React.FC = () => {
 		}
 	};
 
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						setActiveSection(entry.target.id);
+					}
+				});
+			},
+			{ threshold: 0.6 }
+		);
+
+		sections.forEach(({ id }) => {
+			const section = document.getElementById(id);
+			if (section) observer.observe(section);
+		});
+
+		return () => observer.disconnect();
+	}, []);
+
+	useEffect(() => {
+		const index = sections.findIndex((s) => s.id === activeSection);
+		const btn = btnRefs.current[index];
+		if (btn) {
+			setIndicatorStyle({
+				left: btn.offsetLeft,
+				width: btn.offsetWidth,
+			});
+		}
+	}, [activeSection]);
+
+	useEffect(() => {
+		setScaleX(1.25); // Stretch effect
+		const timeout = setTimeout(() => setScaleX(1), 250); // Bounce back
+		return () => clearTimeout(timeout);
+	}, [indicatorStyle.left]);
+
 	return (
-		<nav className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-gray-50 dark:bg-[#111] dark:border-white border-2 dark:border-none text-black dark:text-white p-2 rounded-full flex gap-6 shadow-lg">
-			{/* Home */}
-			<button
-				onClick={() => scrollToSection("home")}
-				className="flex items-center gap-x-2 px-3 py-2 rounded-full transition-colors duration-200 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
+		<div className="hidden fixed bottom-5 left-0 w-full z-50 md:flex justify-center pointer-events-none">
+			<nav
+				className="relative flex items-center bg-white/70 dark:bg-black/70 backdrop-blur-md
+        border border-gray-300 dark:border-gray-700 rounded-full shadow-md
+        px-4 py-2 pointer-events-auto"
 			>
-				<HiHome />
-				<span className="hidden md:inline">Home</span>
-			</button>
+				{/* Sliding indicator with stretch animation */}
+				<div
+					className="absolute top-1.5 bottom-1.5 bg-black dark:bg-white rounded-full transition-all duration-300 ease-[cubic-bezier(0.25,1.5,0.5,1)] transform-gpu"
+					style={{
+						left: indicatorStyle.left,
+						width: indicatorStyle.width,
+						transform: `scaleX(${scaleX})`,
+						zIndex: 0,
+					}}
+				/>
 
-			{/* About */}
-			<button
-				onClick={() => scrollToSection("about")}
-				className="flex items-center gap-x-2 px-3 py-2 rounded-full transition-colors duration-200 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-			>
-				<FaUser />
-				<span className="hidden md:inline">About</span>
-			</button>
-
-			{/* Portfolio */}
-			<button
-				onClick={() => scrollToSection("portfolio")}
-				className="flex items-center gap-x-2 px-3 py-2 rounded-full transition-colors duration-200 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-			>
-				<FaBriefcase />
-				<span className="hidden md:inline">Portfolio</span>
-			</button>
-
-			{/* Resume */}
-			{/* <button
-				onClick={() => scrollToSection("resume")}
-				className="flex items-center gap-x-2 px-3 py-2 rounded-full transition-colors duration-200 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-			>
-				<FaFileAlt />
-				<span className="hidden md:inline">Resume</span>
-			</button> */}
-
-			{/* Contact */}
-			<button
-				onClick={() => scrollToSection("contact")}
-				className="flex items-center gap-x-2 px-3 py-2 rounded-full transition-colors duration-200 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black"
-			>
-				<FaEnvelope />
-				<span className="hidden md:inline">Contact</span>
-			</button>
-		</nav>
+				{/* Buttons */}
+				{sections.map(({ id, icon, label }, index) => (
+					<button
+						key={id}
+						ref={(el) => {
+							btnRefs.current[index] = el;
+						}}
+						onClick={() => scrollToSection(id)}
+						className={clsx(
+							"relative z-10 flex items-center gap-2 px-4 py-2 text-sm rounded-full transition-all duration-200",
+							activeSection === id
+								? "text-white dark:text-black"
+								: "text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10"
+						)}
+						aria-label={label}
+					>
+						{icon}
+						<span className="hidden md:inline">{label}</span>
+					</button>
+				))}
+			</nav>
+		</div>
 	);
 };
 

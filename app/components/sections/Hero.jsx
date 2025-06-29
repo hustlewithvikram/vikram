@@ -1,71 +1,73 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
-import LocomotiveScroll from "locomotive-scroll";
+import { motion } from "framer-motion";
 import { FaArrowUp } from "react-icons/fa6";
 import { email_url } from "@/app/constants/constants";
 import { openUrl } from "@/app/utils/utils";
 import HoverButton from "../ui/HoverButton";
 
+const fadeIn = (delay = 0) => ({
+	initial: { opacity: 0, y: 40 },
+	animate: {
+		opacity: 1,
+		y: 0,
+		transition: { delay, duration: 0.6, ease: "easeOut" },
+	},
+});
+
 const Hero = () => {
-	const containerRef = useRef(null);
-	const scrollRef = useRef(null);
-	const [isMobile, setIsMobile] = useState(false);
-
-	useLayoutEffect(() => {
-		const checkScreenSize = () => setIsMobile(window.innerWidth < 768);
-		checkScreenSize();
-		window.addEventListener("resize", checkScreenSize);
-
-		if (!isMobile && containerRef.current) {
-			scrollRef.current = new LocomotiveScroll({
-				el: containerRef.current,
-				smooth: true,
-				inertia: 0.5,
-			});
-		}
-
-		return () => {
-			window.removeEventListener("resize", checkScreenSize);
-			scrollRef.current?.destroy();
-		};
-	}, [isMobile]);
-
 	return (
-		<div
+		<section
 			id="home"
-			ref={containerRef}
-			data-scroll-container
 			className="relative dark:bg-[#111] bg-[#f8f8f8] min-h-screen flex flex-col justify-center text-[#aaa] font-['PP Neue Montreal'] px-6 md:px-32"
 		>
-			{/* Left Absolute Element */}
-			<div className="absolute -left-20 top-60 transform -translate-y-1/2 text-sm md:text-lg text-zinc-500 font-semibold rotate-90">
-				AI is going to take over the world !
-			</div>
+			{/* Left Rotated Text */}
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 0.5 }}
+				transition={{ delay: 1.4 }}
+				className="absolute -left-20 top-1/2 -translate-y-1/2 text-sm md:text-base text-zinc-500 font-semibold rotate-90"
+			>
+				AI is going to take over the world!
+			</motion.div>
 
-			<div className="p-8">
-				<h1 className="text-[calc(100vw/15)] md:text-[calc(100vw/25)] font-light text-black bg-red-300 rounded-r-full w-fit pl-2 pr-8">
+			{/* Hero Text */}
+			<div className="p-6 md:p-8 max-w-6xl space-y-2">
+				<motion.h1
+					className="text-[clamp(1.2rem,6vw,4rem)] font-light text-black dark:text-white bg-red-300 rounded-r-full w-fit pl-2 pr-8"
+					{...fadeIn(0)}
+				>
 					You can call me a
-				</h1>
-				<h1 className="text-[calc(100vw/12)] md:text-[calc(100vw/25)] font-bold dark:text-gray-100 text-black">
+				</motion.h1>
+				<motion.h1
+					className="text-[clamp(2rem,7.5vw,5rem)] font-bold dark:text-gray-100 text-black"
+					{...fadeIn(0.1)}
+				>
 					FULL STACK
-				</h1>
-				<h1 className="text-[calc(100vw/10)] font-bold text-black bg-orange-300 rounded-r-full pl-2">
+				</motion.h1>
+				<motion.h1
+					className="text-[clamp(2.8rem,9vw,6rem)] font-bold text-black bg-orange-300 rounded-r-full pl-2"
+					{...fadeIn(0.2)}
+				>
 					DEVELOPER,
-				</h1>
-				<h1 className="text-[calc(100vw/15)] md:text-[calc(100vw/25)] font-light dark:text-zinc-500 text-black">
+				</motion.h1>
+				<motion.h1
+					className="text-[clamp(1.8rem,6vw,4rem)] font-light text-black dark:text-zinc-400"
+					{...fadeIn(0.3)}
+				>
 					Or whatever you like!
-				</h1>
+				</motion.h1>
 			</div>
 
-			<div className="md:pt-6 pl-8">
+			{/* Call to Action */}
+			<motion.div className="pl-8 md:pl-16 pt-4 md:pt-6" {...fadeIn(0.5)}>
 				<HoverButton
 					onClick={() => openUrl("mailto:" + email_url)}
 					text="Know me More"
 					icon={<FaArrowUp />}
 				/>
-			</div>
-		</div>
+			</motion.div>
+		</section>
 	);
 };
 

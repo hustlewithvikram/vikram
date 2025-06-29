@@ -5,11 +5,11 @@ import "aos/dist/aos.css";
 import LocomotiveScroll from "locomotive-scroll";
 import { useEffect, useRef, useState } from "react";
 import About from "./components/sections/About";
-import Footer from "./components/sections/Footer";
 import Hero from "./components/sections/Hero";
 import Projects from "./components/sections/Projects";
 import DarkMode from "./components/ui/DarkMode";
 import SkillGrid from "./components/ui/SkillGrid";
+import Footer from "@/app/components/sections/Footer";
 
 import FloatNavBar from "./components/ui/FloatNavBar";
 import HorizontalTimeline from "./components/ui/HorizontalTimeline";

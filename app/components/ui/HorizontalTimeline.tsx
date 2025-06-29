@@ -1,6 +1,9 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa6";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -17,77 +20,77 @@ interface TimelineProps {
 
 const HorizontalTimeline: React.FC<TimelineProps> = ({ events }) => {
 	const containerRef = useRef<HTMLDivElement>(null);
-	const timelineRef = useRef<HTMLDivElement>(null);
+	const trackRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		const ctx = gsap.context(() => {
-			const sections = gsap.utils.toArray(".timeline-item");
+		const container = containerRef.current;
+		const track = trackRef.current;
 
-			// Timeline scroll effect
-			const scrollTween = gsap.to(sections, {
-				xPercent: -100 * (sections.length - 1),
-				ease: "none",
-				scrollTrigger: {
-					id: "horizontalScroll",
-					trigger: containerRef.current,
-					pin: true,
-					scrub: 1,
-					snap: 1 / (sections.length - 1),
-					end: "+=1000", // Reduced scroll distance here
-				},
-			});
+		if (!container || !track) return;
 
-			// Zoom effect
-			sections.forEach((section: any) => {
-				gsap.fromTo(
-					section,
-					{ scale: 0.85, opacity: 0.5 },
-					{
-						scale: 1,
-						opacity: 1,
-						scrollTrigger: {
-							trigger: section,
-							containerAnimation: scrollTween,
-							start: "left center",
-							end: "right center",
-							scrub: true,
-						},
-					}
-				);
-			});
-		}, containerRef);
+		ScrollTrigger.killAll(); // Clean previous triggers
 
-		return () => ctx.revert();
-	}, []);
+		const totalCards = events.length;
+
+		// Animate the horizontal scroll
+		gsap.to(track, {
+			x: () => `-${window.innerWidth * (totalCards - 1)}`,
+			ease: "none",
+			scrollTrigger: {
+				trigger: container,
+				start: "top top",
+				end: () => `+=${window.innerWidth * totalCards * 0.35}`, // faster scroll
+				pin: true,
+				scrub: 0.2,
+				snap: 1 / (totalCards - 1),
+				invalidateOnRefresh: true,
+			},
+		});
+
+		return () => {
+			ScrollTrigger.getAll().forEach((t) => t.kill());
+		};
+	}, [events.length]);
 
 	return (
-		<div
+		<section
 			id="portfolio"
 			ref={containerRef}
 			className="relative w-full h-screen overflow-hidden bg-transparent"
 		>
-			<div ref={timelineRef} className="flex w-max h-full">
-				{events.map((event, index) => (
-					<div
-						key={index}
-						className="timeline-item flex-shrink-0 w-screen h-full flex flex-col items-center justify-center p-10"
+			<div
+				ref={trackRef}
+				className="flex h-full items-center px-[calc(50vw-50%)]"
+				style={{
+					width: `${events.length * 100}vw`,
+					willChange: "transform",
+				}}
+			>
+				{events.map((event, i) => (
+					<motion.div
+						key={i}
+						className="timeline-item w-screen h-full flex-shrink-0 flex flex-col justify-center items-center px-6"
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{ duration: 0.5, delay: i * 0.05 }}
+						viewport={{ once: true }}
 					>
 						<FaStar className="w-8 h-8 text-black dark:text-white mb-4" />
-						<div className="text-lg font-bold text-gray-800 dark:text-gray-50">
+						<h2 className="text-xl font-bold text-gray-800 dark:text-white">
 							{event.date}
-						</div>
-						<div className="text-md text-gray-700 dark:text-gray-400">
+						</h2>
+						<p className="text-md text-gray-700 dark:text-gray-300 font-medium">
 							{event.title}
-						</div>
+						</p>
 						{event.description && (
-							<div className="text-sm text-gray-500 mt-2 text-center max-w-xs">
+							<p className="text-sm text-center text-gray-500 mt-2 max-w-xs">
 								{event.description}
-							</div>
+							</p>
 						)}
-					</div>
+					</motion.div>
 				))}
 			</div>
-		</div>
+		</section>
 	);
 };
 

@@ -1,36 +1,113 @@
+/* eslint-disable react/no-unescaped-entities */
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+	hidden: {},
+	show: {
+		transition: {
+			staggerChildren: 0.2,
+			delayChildren: 0.2,
+		},
+	},
+};
+
+const fadeUp = {
+	hidden: { opacity: 0, y: 40 },
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.6,
+			ease: [0.25, 0.8, 0.25, 1], // easeInOutExpo-like
+		},
+	},
+};
+
 const About = () => {
 	return (
-		<div
+		<section
 			id="about"
-			className="dark:bg-[#111] bg-[#f8f8f8] pt-24 md:px-32 px-12 h-screen duration-1000 text-gray-300 flex md:flex-row md:items-center md:gap-x-28 gap-y-20 flex-col items-center"
+			className="dark:bg-[#111] bg-[#f8f8f8] min-h-screen flex items-center justify-center px-6 md:px-24 lg:px-40 py-20"
 		>
-			<img
-				src="/images/vikram.jpg"
-				alt="line"
-				width={500}
-				height={500}
-				className="rounded-full grayscale contrast-100 outline-dashed outline-offset-[30px] size-48 md:size-[500px]"
-			/>
-			<section
-				className="flex-1 text-justify"
-				// data-scroll
-				// data-scroll-speed="0.8"
+			<motion.div
+				variants={containerVariants}
+				initial="hidden"
+				whileInView="show"
+				viewport={{ once: true }}
+				className="flex flex-col md:flex-row items-center gap-12 max-w-7xl w-full"
 			>
-				<h1 className="text-3xl font-semibold dark:text-inherit mb-2 uppercase text-orange-400">
-					Introduction ?!
-				</h1>
-				<p className="text-xl md:text-2xl text-black dark:text-inherit">
-					Hey There, My name is Vikram Vishwakarma and I belong from
-					Maharashtra, India. I have recently completed my degree in
-					the field of computer science, I like to design and build
-					websites that are responsive and beautiful. I use softwares
-					like figma & adobe illustrator to design & for the building
-					part I use various web frameworks to build my website. I
-					always try to make the websites clean, minimal, responsive &
-					user friendly with smooth animations and transitions.
-				</p>
-			</section>
-		</div>
+				{/* Profile Picture */}
+				<motion.div variants={fadeUp} className="relative">
+					<div className="relative size-48 md:size-80 rounded-full outline-dashed outline-2 outline-offset-8 outline-orange-400 overflow-hidden grayscale hover:grayscale-0 transition duration-500">
+						<Image
+							src="/images/vikram.jpg"
+							alt="Vikram Vishwakarma"
+							fill
+							className="object-cover"
+							priority
+						/>
+					</div>
+				</motion.div>
+
+				{/* Text Content */}
+				<motion.article
+					variants={fadeUp}
+					className="flex-1 text-left space-y-5"
+				>
+					<h3 className="text-2xl md:text-3xl font-semibold text-black dark:text-white">
+						Hi, I'm{" "}
+						<span className="text-orange-500">
+							Vikram Vishwakarma
+						</span>
+					</h3>
+
+					<motion.p
+						variants={fadeUp}
+						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
+					>
+						Based in Maharashtra, India — I recently completed my
+						degree in Computer Science and I’m deeply passionate
+						about crafting elegant interfaces and smooth digital
+						experiences.
+					</motion.p>
+
+					<motion.p
+						variants={fadeUp}
+						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
+					>
+						I specialize in building responsive, accessible, and
+						high-performance websites. My design process starts in{" "}
+						<span className="font-medium text-white dark:text-white">
+							Figma
+						</span>{" "}
+						or{" "}
+						<span className="font-medium text-white dark:text-white">
+							Illustrator
+						</span>
+						, then I bring it to life with{" "}
+						<span className="font-medium">React</span>,{" "}
+						<span className="font-medium">Tailwind</span> and{" "}
+						<span className="font-medium">Next.js</span>.
+					</motion.p>
+
+					<motion.p
+						variants={fadeUp}
+						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
+					>
+						I’m always looking to push boundaries and create
+						websites that don’t just work — they{" "}
+						<span className="italic text-white dark:text-white">
+							feel
+						</span>{" "}
+						good. Clean, minimal, and motion-enhanced design is my
+						jam.
+					</motion.p>
+				</motion.article>
+			</motion.div>
+		</section>
 	);
 };
 
