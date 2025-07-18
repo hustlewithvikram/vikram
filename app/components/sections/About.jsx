@@ -40,7 +40,7 @@ const About = () => {
 				className="flex flex-col md:flex-row items-center gap-12 max-w-7xl w-full"
 			>
 				{/* Profile Picture */}
-				<motion.div variants={fadeUp} className="relative">
+				{/* <motion.div variants={fadeUp} className="relative">
 					<div className="relative size-48 md:size-80 rounded-full outline-dashed outline-2 outline-offset-8 outline-orange-400 overflow-hidden grayscale hover:grayscale-0 transition duration-500">
 						<Image
 							src="/images/vikram.jpg"
@@ -50,7 +50,7 @@ const About = () => {
 							priority
 						/>
 					</div>
-				</motion.div>
+				</motion.div> */}
 
 				{/* Text Content */}
 				<motion.article
@@ -80,11 +80,11 @@ const About = () => {
 					>
 						I specialize in building responsive, accessible, and
 						high-performance websites. My design process starts in{" "}
-						<span className="font-medium text-white dark:text-white">
+						<span className="font-medium dark:text-white">
 							Figma
 						</span>{" "}
 						or{" "}
-						<span className="font-medium text-white dark:text-white">
+						<span className="font-medium dark:text-white">
 							Illustrator
 						</span>
 						, then I bring it to life with{" "}
@@ -99,9 +99,7 @@ const About = () => {
 					>
 						I’m always looking to push boundaries and create
 						websites that don’t just work — they{" "}
-						<span className="italic text-white dark:text-white">
-							feel
-						</span>{" "}
+						<span className="italic dark:text-white">feel</span>{" "}
 						good. Clean, minimal, and motion-enhanced design is my
 						jam.
 					</motion.p>

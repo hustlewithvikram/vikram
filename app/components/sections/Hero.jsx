@@ -5,68 +5,78 @@ import { FaArrowUp } from "react-icons/fa6";
 import { email_url } from "@/app/constants/constants";
 import { openUrl } from "@/app/utils/utils";
 import HoverButton from "../ui/HoverButton";
+import Image from "next/image";
+import { FaMailBulk } from "react-icons/fa";
+import { CiMail } from "react-icons/ci";
+import { HiMail } from "react-icons/hi";
 
-const fadeIn = (delay = 0) => ({
-	initial: { opacity: 0, y: 40 },
-	animate: {
-		opacity: 1,
-		y: 0,
-		transition: { delay, duration: 0.6, ease: "easeOut" },
+const cards = [
+	{
+		title: "Web Designer",
+		description:
+			"Crafting clean and modern UI designs using Figma and CSS tricks.",
+		image: "/images/vikram_l1.webp",
 	},
-});
+	{
+		title: "Frontend Dev",
+		description:
+			"Building responsive apps using React, Next.js, and Tailwind CSS.",
+		image: "/images/vikram_l2.webp",
+	},
+	{
+		title: "Backend Dev",
+		description:
+			"Creating fast APIs with Node.js, Express, and integrating databases.",
+		image: "/images/vikram_l3.webp",
+	},
+	{
+		title: "Python / Java",
+		description:
+			"Automating tasks and solving problems with Python and Java.",
+		image: "/images/vikram_l4.webp",
+	},
+];
 
 const Hero = () => {
 	return (
 		<section
 			id="home"
-			className="relative dark:bg-[#111] bg-[#f8f8f8] min-h-screen flex flex-col justify-center text-[#aaa] font-['PP Neue Montreal'] px-6 md:px-32"
+			className="relative dark:bg-[#111] bg-[#f8f8f8] min-h-screen flex flex-col justify-center items-center text-[#aaa] font-['PP Neue Montreal'] px-6 md:px-32"
 		>
-			{/* Left Rotated Text */}
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 0.5 }}
-				transition={{ delay: 1.4 }}
-				className="absolute -left-20 top-1/2 -translate-y-1/2 text-sm md:text-base text-zinc-500 font-semibold rotate-90"
-			>
-				AI is going to take over the world!
-			</motion.div>
-
-			{/* Hero Text */}
-			<div className="p-6 md:p-8 max-w-6xl space-y-2">
-				<motion.h1
-					className="text-[clamp(1.2rem,6vw,4rem)] font-light text-black dark:text-white bg-red-300 rounded-r-full w-fit pl-2 pr-8"
-					{...fadeIn(0)}
-				>
-					You can call me a
-				</motion.h1>
-				<motion.h1
-					className="text-[clamp(2rem,7.5vw,5rem)] font-bold dark:text-gray-100 text-black"
-					{...fadeIn(0.1)}
-				>
-					FULL STACK
-				</motion.h1>
-				<motion.h1
-					className="text-[clamp(2.8rem,9vw,6rem)] font-bold text-black bg-orange-300 rounded-r-full pl-2"
-					{...fadeIn(0.2)}
-				>
-					DEVELOPER,
-				</motion.h1>
-				<motion.h1
-					className="text-[clamp(1.8rem,6vw,4rem)] font-light text-black dark:text-zinc-400"
-					{...fadeIn(0.3)}
-				>
-					Or whatever you like!
-				</motion.h1>
+			{/* Carousel Cards - Expandable like Android 16 Wallpaper */}
+			<div className="flex md:gap-4 gap-[8px] w-full max-w-6xl overflow-hidden py-5 h-[55vh]">
+				{cards.map((card, idx) => (
+					<motion.div
+						key={idx}
+						className="relative flex-1 group hover:flex-[2] transition-all duration-500 ease-in-out overflow-hidden rounded-2xl bg-white dark:bg-zinc-900"
+						initial={{ opacity: 0, y: 20 }}
+						animate={{ opacity: 1, y: 0 }}
+						transition={{ delay: 0.2 + idx * 0.1 }}
+					>
+						<Image
+							src={card.image}
+							alt={card.title}
+							fill
+							className="md:object-cover md:object-top absolute inset-0 group-hover:opacity-60 transition-opacity duration-500"
+						/>
+					</motion.div>
+				))}
 			</div>
 
-			{/* Call to Action */}
-			<motion.div className="pl-8 md:pl-16 pt-4 md:pt-6" {...fadeIn(0.5)}>
+			{/* Name & Contact */}
+			<div className="text-center space-y-4 flex flex-col items-center">
+				<h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white">
+					Vikram – Web Designer & Full Stack Developer
+				</h2>
+				<p className="text-zinc-600 dark:text-zinc-400">
+					Turning ideas into beautiful, functional web experiences
+				</p>
 				<HoverButton
 					onClick={() => openUrl("mailto:" + email_url)}
-					text="Know me More"
-					icon={<FaArrowUp />}
+					text="Reach Me Out"
+					icon={<HiMail />}
 				/>
-			</motion.div>
+			</div>
 		</section>
 	);
 };
