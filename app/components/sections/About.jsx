@@ -40,17 +40,17 @@ const About = () => {
 				className="flex flex-col md:flex-row items-center gap-12 max-w-7xl w-full"
 			>
 				{/* Profile Picture */}
-				{/* <motion.div variants={fadeUp} className="relative">
-					<div className="relative size-48 md:size-80 rounded-full outline-dashed outline-2 outline-offset-8 outline-orange-400 overflow-hidden grayscale hover:grayscale-0 transition duration-500">
+				<motion.div variants={fadeUp} className="relative">
+					<div className="relative size-48 md:size-80 rounded-4xl outline-dashed outline-2 outline-offset-8 outline-orange-400 overflow-hidden grayscale hover:grayscale-0 transition duration-500">
 						<Image
-							src="/images/vikram.jpg"
+							src="/images/vikram.png"
 							alt="Vikram Vishwakarma"
 							fill
 							className="object-cover"
 							priority
 						/>
 					</div>
-				</motion.div> */}
+				</motion.div>
 
 				{/* Text Content */}
 				<motion.article

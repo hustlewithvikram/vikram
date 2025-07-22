@@ -9,8 +9,7 @@ const ProjectList = [
 		id: 1,
 		title: "Tron Userbot",
 		description: "Telegram user automation and botless power.",
-		src: "/images/tron-round.png",
-		isLarge: true,
+		src: "/images/tron.png",
 		url: "https://github.com/TronUb/Tron",
 	},
 	{
@@ -18,7 +17,6 @@ const ProjectList = [
 		title: "DeepNotes",
 		description: "Secure notes with cloud sync.",
 		src: "/images/deepnotes.png",
-		isLarge: false,
 		url: "https://github.com/vikramisdev/deepnotes",
 	},
 	{
@@ -26,7 +24,6 @@ const ProjectList = [
 		title: "XLauncher",
 		description: "Minimal, fast Android launcher.",
 		src: "/images/xlauncher.png",
-		isLarge: false,
 		url: "https://github.com/vikramisdev/xlauncher",
 	},
 	{
@@ -34,31 +31,27 @@ const ProjectList = [
 		title: "Shop Now",
 		description: "Modern e-commerce experience.",
 		src: "/images/shopnow18.png",
-		isLarge: true,
 		url: "https://github.com/vikramisdev/shopnow",
 	},
 ];
 
 export default function Projects() {
 	return (
-		<section className="py-20 px-4 md:px-12">
-			{/* Header */}
-			<div className="flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full w-fit mb-10 md:mx-20 text-lg">
-				<FaSuitcase className="size-4" />
-				<h2 className="font-semibold">Projects</h2>
+		<section id="projects" className="py-20 px-4 md:px-12">
+			{/* Section Header */}
+			<div className="md:mx-20 flex justify-start">
+				<div className="flex items-center gap-3 w-fit md:mb-12 mb-6 px-6 py-3 rounded-full bg-neutral-900 text-white">
+					<FaSuitcase className="size-5" />
+					<h2 className="text-xl font-semibold">Projects</h2>
+				</div>
 			</div>
 
-			{/* Layout */}
-			<div className="max-w-7xl mx-auto flex flex-wrap gap-6">
-				{ProjectList.map((project, idx) => (
+			{/* Project Grid */}
+			<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-16 gap-10">
+				{ProjectList.map((project) => (
 					<div
 						key={project.id}
-						className={`
-              w-full aspect-[4/3] md:aspect-[8/3]
-              ${project.isLarge ? "md:basis-[60%]" : "md:basis-[38%]"}
-              rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02]
-              dark:border dark:border-gray-500
-            `}
+						className="bg-white dark:bg-neutral-900 rounded-3xl shadow-sm border border-gray-200 dark:border-neutral-700 overflow-hidden transition-transform hover:border-black/20 hover:shadow-neutral-500/20 group"
 					>
 						<Project {...project} />
 					</div>

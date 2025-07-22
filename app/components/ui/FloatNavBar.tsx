@@ -4,18 +4,34 @@ import React, { useEffect, useRef, useState } from "react";
 import { HiHome } from "react-icons/hi";
 import { FaUser, FaBriefcase, FaEnvelope } from "react-icons/fa";
 import clsx from "clsx";
+import {
+	RiProjector2Fill,
+	RiProjectorFill,
+	RiStarSFill,
+	RiTimeLine,
+} from "react-icons/ri";
+import {
+	FaFaceGrinStars,
+	FaFolder,
+	FaHand,
+	FaRegStar,
+	FaStarOfLife,
+} from "react-icons/fa6";
+import { IconStars } from "@tabler/icons-react";
 
 const sections = [
 	{ id: "home", icon: <HiHome size={20} />, label: "Home" },
 	{ id: "about", icon: <FaUser size={18} />, label: "About" },
-	{ id: "portfolio", icon: <FaBriefcase size={18} />, label: "Portfolio" },
+	{ id: "portfolio", icon: <RiTimeLine size={18} />, label: "Portfolio" },
+	{ id: "projects", icon: <FaFolder size={18} />, label: "Projects" },
+	{ id: "skills", icon: <IconStars size={18} />, label: "Skills" },
 	{ id: "contact", icon: <FaEnvelope size={18} />, label: "Contact" },
 ];
 
 const FloatNavBar = () => {
 	const [activeSection, setActiveSection] = useState("home");
-	const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
-	const [scaleX, setScaleX] = useState(1);
+	const [indicatorStyle, setIndicatorStyle] = useState({ top: 0, height: 0 });
+	const [scaleY, setScaleY] = useState(1);
 	const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
 	const scrollToSection = (id: string) => {
@@ -50,32 +66,32 @@ const FloatNavBar = () => {
 		const btn = btnRefs.current[index];
 		if (btn) {
 			setIndicatorStyle({
-				left: btn.offsetLeft,
-				width: btn.offsetWidth,
+				top: btn.offsetTop,
+				height: btn.offsetHeight,
 			});
 		}
 	}, [activeSection]);
 
 	useEffect(() => {
-		setScaleX(1.25); // Stretch effect
-		const timeout = setTimeout(() => setScaleX(1), 250); // Bounce back
+		setScaleY(1.1); // Stretch effect
+		const timeout = setTimeout(() => setScaleY(1), 220); // Bounce back
 		return () => clearTimeout(timeout);
-	}, [indicatorStyle.left]);
+	}, [indicatorStyle.top]);
 
 	return (
-		<div className="hidden fixed bottom-5 left-0 w-full z-50 md:flex justify-center pointer-events-none">
+		<div className="hidden md:flex fixed right-4 top-1/2 -translate-y-1/2 z-50 pointer-events-none">
 			<nav
-				className="relative flex items-center bg-white/70 dark:bg-black/70 backdrop-blur-md
-        border border-gray-300 dark:border-gray-700 rounded-full shadow-md
-        px-4 py-2 pointer-events-auto"
+				className="relative flex flex-col items-center bg-white/70 dark:bg-black/70
+        backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-full shadow-md
+        px-2 py-4 pointer-events-auto"
 			>
-				{/* Sliding indicator with stretch animation */}
+				{/* Vertical sliding indicator */}
 				<div
-					className="absolute top-1.5 bottom-1.5 bg-black dark:bg-white rounded-full transition-all duration-300 ease-[cubic-bezier(0.25,1.5,0.5,1)] transform-gpu"
+					className="absolute left-1.5 right-1.5 bg-black dark:bg-white rounded-full transition-all duration-300 ease-[cubic-bezier(0.25,1.5,0.5,1)] transform-gpu"
 					style={{
-						left: indicatorStyle.left,
-						width: indicatorStyle.width,
-						transform: `scaleX(${scaleX})`,
+						top: indicatorStyle.top,
+						height: indicatorStyle.height,
+						transform: `scaleY(${scaleY})`,
 						zIndex: 0,
 					}}
 				/>
@@ -89,7 +105,7 @@ const FloatNavBar = () => {
 						}}
 						onClick={() => scrollToSection(id)}
 						className={clsx(
-							"relative z-10 flex items-center gap-2 px-4 py-2 text-sm rounded-full transition-all duration-200",
+							"relative z-10 flex items-center justify-center mb-2 px-[12px] py-[15px] rounded-full transition-all duration-200",
 							activeSection === id
 								? "text-white dark:text-black"
 								: "text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10"
@@ -97,7 +113,6 @@ const FloatNavBar = () => {
 						aria-label={label}
 					>
 						{icon}
-						<span className="hidden md:inline">{label}</span>
 					</button>
 				))}
 			</nav>

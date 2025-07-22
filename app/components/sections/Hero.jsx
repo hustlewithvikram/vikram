@@ -15,25 +15,25 @@ const cards = [
 		title: "Web Designer",
 		description:
 			"Crafting clean and modern UI designs using Figma and CSS tricks.",
-		image: "/images/vikram_l1.webp",
+		image: "/images/slide1.webp",
 	},
 	{
 		title: "Frontend Dev",
 		description:
 			"Building responsive apps using React, Next.js, and Tailwind CSS.",
-		image: "/images/vikram_l2.webp",
+		image: "/images/slide2.webp",
 	},
 	{
 		title: "Backend Dev",
 		description:
 			"Creating fast APIs with Node.js, Express, and integrating databases.",
-		image: "/images/vikram_l3.webp",
+		image: "/images/slide3.webp",
 	},
 	{
 		title: "Python / Java",
 		description:
 			"Automating tasks and solving problems with Python and Java.",
-		image: "/images/vikram_l4.webp",
+		image: "/images/slide4.webp",
 	},
 ];
 
@@ -57,7 +57,7 @@ const Hero = () => {
 							src={card.image}
 							alt={card.title}
 							fill
-							className="md:object-cover md:object-top absolute inset-0 group-hover:opacity-60 transition-opacity duration-500"
+							className="object-cover md:object-top absolute inset-0 transition-opacity duration-500"
 						/>
 					</motion.div>
 				))}
@@ -65,8 +65,8 @@ const Hero = () => {
 
 			{/* Name & Contact */}
 			<div className="text-center space-y-4 flex flex-col items-center">
-				<h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white">
-					Vikram – Web Designer & Full Stack Developer
+				<h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white font-princess">
+					Web Designer & Developer
 				</h2>
 				<p className="text-zinc-600 dark:text-zinc-400">
 					Turning ideas into beautiful, functional web experiences

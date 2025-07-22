@@ -15,33 +15,6 @@ import FloatNavBar from "./components/ui/FloatNavBar";
 import HorizontalTimeline from "./components/ui/HorizontalTimeline";
 import ScrollToTop from "./components/ui/ScrollToTop";
 
-const sampleEvents = [
-	{ date: "Jan 2021", title: "Started Learning Web Development" },
-	{
-		date: "Jun 2021",
-		title: "Built My First Website",
-		description:
-			"Created a portfolio site using HTML, CSS, and basic JavaScript.",
-	},
-	{
-		date: "Dec 2021",
-		title: "Learned React & Tailwind",
-		description:
-			"Dived deep into modern front-end development and component-based design.",
-	},
-	{
-		date: "May 2022",
-		title: "Landed Freelance Projects",
-		description:
-			"Started taking on real-world work, building sites and apps for clients.",
-	},
-	{
-		date: "Nov 2023",
-		title: "Built Fullstack Projects",
-		description:
-			"Integrated backend with Next.js and databases to create dynamic applications.",
-	},
-];
 
 export default function Home() {
 	const [isMobile, setIsMobile] = useState(false);
@@ -98,7 +71,7 @@ export default function Home() {
 			{/* Sections */}
 			<Hero />
 			<About />
-			<HorizontalTimeline events={sampleEvents} />
+			<HorizontalTimeline />
 			<Projects />
 			<SkillGrid />
 

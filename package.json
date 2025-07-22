@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@fontsource/agbalumo": "^5.0.6",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/lab": "^7.0.0-beta.14",
+    "@mui/material": "^7.2.0",
     "@radix-ui/react-progress": "^1.1.2",
     "@tabler/icons-react": "^3.31.0",
     "@tsparticles/engine": "^3.7.1",

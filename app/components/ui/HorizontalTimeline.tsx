@@ -1,96 +1,146 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { motion } from "framer-motion";
-import { FaStar } from "react-icons/fa6";
+import React from "react";
+import {
+	Timeline,
+	TimelineItem,
+	TimelineSeparator,
+	TimelineConnector,
+	TimelineContent,
+	TimelineDot,
+	TimelineOppositeContent,
+} from "@mui/lab";
 
-gsap.registerPlugin(ScrollTrigger);
+import CodeIcon from "@mui/icons-material/Code";
+import LanguageIcon from "@mui/icons-material/Language";
+import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import SecurityIcon from "@mui/icons-material/Security";
+import BuildCircleIcon from "@mui/icons-material/BuildCircle";
 
-type TimelineEvent = {
+const sampleEvents: {
 	date: string;
 	title: string;
-	description?: string;
-};
+	description: string;
+	color: string; // custom color code or tailwind class
+	icon: React.ElementType;
+}[] = [
+	{
+		date: "Jan 2021",
+		title: "Started Learning Web Development",
+		description:
+			"Driven by curiosity about how websites work, I began exploring HTML, CSS, and JavaScript.",
+		color: "#f4a261",
+		icon: CodeIcon,
+	},
+	{
+		date: "Jun 2021",
+		title: "Built My First Website",
+		description:
+			"My first portfolio was rough—bad layout, awkward colors. But it marked the beginning.",
+		color: "#bde0fe",
+		icon: LanguageIcon,
+	},
+	{
+		date: "Dec 2021",
+		title: "Learned ReactJs & Tailwind",
+		description:
+			"I explored modern frontend tools like React.js and Tailwind CSS through tutorials.",
+		color: "#4ade80", // green-400
+		icon: IntegrationInstructionsIcon,
+	},
+	{
+		date: "Jul 2022",
+		title: "Dived Into Next.js and Advanced UI",
+		description:
+			"I began mastering Next.js for SSR, routing, and integrated Figma for design systems.",
+		color: "#60a5fa", // blue-400
+		icon: RocketLaunchIcon,
+	},
+	{
+		date: "Nov 2023",
+		title: "Built Fullstack Projects",
+		description:
+			"Deployed 'ShopNow' (e-commerce app) with authentication, cart, filters, admin panel.",
+		color: "#c084fc", // purple-400
+		icon: DashboardIcon,
+	},
+	{
+		date: "Apr 2024",
+		title: "Started Learning Auth and Security",
+		description:
+			"Worked on nextjs nextauth authentication as well as clerk auth as well as traditional one's.",
+		color: "#f87171", // red-400
+		icon: SecurityIcon,
+	},
+	{
+		date: "Jul 2025",
+		title: "Building With Refined Skills",
+		description:
+			"Now confident across frontend & backend. Focused on UI, performance, and clean code.",
+		color: "#34d399", // emerald-400
+		icon: BuildCircleIcon,
+	},
+];
 
-interface TimelineProps {
-	events: TimelineEvent[];
-}
-
-const HorizontalTimeline: React.FC<TimelineProps> = ({ events }) => {
-	const containerRef = useRef<HTMLDivElement>(null);
-	const trackRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const container = containerRef.current;
-		const track = trackRef.current;
-
-		if (!container || !track) return;
-
-		ScrollTrigger.killAll(); // Clean previous triggers
-
-		const totalCards = events.length;
-
-		// Animate the horizontal scroll
-		gsap.to(track, {
-			x: () => `-${window.innerWidth * (totalCards - 1)}`,
-			ease: "none",
-			scrollTrigger: {
-				trigger: container,
-				start: "top top",
-				end: () => `+=${window.innerWidth * totalCards * 0.35}`, // faster scroll
-				pin: true,
-				scrub: 0.2,
-				snap: 1 / (totalCards - 1),
-				invalidateOnRefresh: true,
-			},
-		});
-
-		return () => {
-			ScrollTrigger.getAll().forEach((t) => t.kill());
-		};
-	}, [events.length]);
+const TimelineContentBlock = ({
+	event,
+}: {
+	event: (typeof sampleEvents)[0];
+}) => {
+	const Icon = event.icon;
 
 	return (
-		<section
-			id="portfolio"
-			ref={containerRef}
-			className="relative w-full h-screen overflow-hidden bg-transparent"
-		>
-			<div
-				ref={trackRef}
-				className="flex h-full items-center px-[calc(50vw-50%)]"
-				style={{
-					width: `${events.length * 100}vw`,
-					willChange: "transform",
-				}}
+		<TimelineItem id="portfolio">
+			<TimelineOppositeContent
+				sx={{ m: "20px 0 0 0" }}
+				align="right"
+				variant="body2"
+				color="text.secondary"
+				className="dark:text-gray-300"
 			>
-				{events.map((event, i) => (
-					<motion.div
-						key={i}
-						className="timeline-item w-screen h-full flex-shrink-0 flex flex-col justify-center items-center px-6"
-						initial={{ opacity: 0, y: 30 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						transition={{ duration: 0.5, delay: i * 0.05 }}
-						viewport={{ once: true }}
-					>
-						<FaStar className="w-8 h-8 text-black dark:text-white mb-4" />
-						<h2 className="text-xl font-bold text-gray-800 dark:text-white">
-							{event.date}
-						</h2>
-						<p className="text-md text-gray-700 dark:text-gray-300 font-medium">
-							{event.title}
-						</p>
-						{event.description && (
-							<p className="text-sm text-center text-gray-500 mt-2 max-w-xs">
-								{event.description}
-							</p>
-						)}
-					</motion.div>
-				))}
-			</div>
-		</section>
+				{event.date}
+			</TimelineOppositeContent>
+
+			<TimelineSeparator>
+				<TimelineConnector />
+				<TimelineDot
+					sx={{
+						backgroundColor: event.color,
+						width: 48,
+						height: 48,
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+					className="dark:text-gray-100 md:hover:-translate-y-4 cursor-pointer transition-transform duration-300 ease-in-out"
+				>
+					<Icon sx={{ color: "#444", fontSize: 24 }} />
+				</TimelineDot>
+				<TimelineConnector className="h-16" />
+			</TimelineSeparator>
+
+			<TimelineContent sx={{ py: "12px", px: 2 }}>
+				<span className="dark:text-gray-100 md:text-2xl text-lg">
+					{event.title}
+				</span>
+				<br />
+				<span className="dark:text-gray-300 md:text-md">
+					{event.description}
+				</span>
+			</TimelineContent>
+		</TimelineItem>
+	);
+};
+
+const HorizontalTimeline = () => {
+	return (
+		<Timeline position="alternate">
+			{sampleEvents.map((event, idx) => (
+				<TimelineContentBlock key={idx} event={event} />
+			))}
+		</Timeline>
 	);
 };
 

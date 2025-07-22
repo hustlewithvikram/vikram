@@ -23,29 +23,27 @@ export default function Project({
 		<div
 			tabIndex={0}
 			onClick={() => router.push(url)}
-			className={`relative w-full h-full cursor-pointer rounded-2xl group ${className}`}
+			className={`group cursor-pointer w-full max-w-sm mx-auto rounded-3xl p-6 overflow-hidden bg-white dark:bg-zinc-900 ${className}`}
 		>
 			{/* Image */}
-			<div className="relative w-full h-full rounded-2xl overflow-hidden group-hover:shadow-2xl transition-transform duration-300">
+			<div className="relative w-full h-60 overflow-hidden rounded-3xl">
 				<Image
 					src={src}
 					alt={title}
 					fill
-					className="object-cover w-full h-full"
-					sizes="(max-width: 768px) 100vw, 33vw"
+					className="object-cover bg-black rounded-3xl group-hover:scale-110 duration-300"
 					priority
 				/>
-				{/* Overlay */}
-				<div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
-				{/* Text */}
-				<div className="absolute bottom-0 left-0 right-0 z-20 px-4 py-3">
-					<h2 className="text-lg font-semibold text-white drop-shadow-sm">
-						{title}
-					</h2>
-					<p className="text-sm text-gray-200 line-clamp-2">
-						{description}
-					</p>
-				</div>
+			</div>
+
+			{/* Text */}
+			<div className="p-4 space-y-2">
+				<h3 className="text-lg font-semibold text-zinc-900 dark:text-white">
+					{title}
+				</h3>
+				<p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed line-clamp-3">
+					{description}
+				</p>
 			</div>
 		</div>
 	);
