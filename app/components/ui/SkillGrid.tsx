@@ -6,22 +6,22 @@ import { HiCode } from "react-icons/hi";
 
 // ✅ Move skills outside to avoid redefinition on each render
 const skills = [
-  { name: "Next.js", progress: 85 },
-  { name: "React", progress: 80 },
-  { name: "Tailwind CSS", progress: 85 },
-  { name: "Redux / RTK", progress: 80 },
-  { name: "JavaScript", progress: 80 },
-  { name: "TypeScript", progress: 75 },
-  { name: "Node.js", progress: 60 },
-  { name: "Express", progress: 60 },
-  { name: "MongoDB", progress: 65 },
-  { name: "REST APIs", progress: 75 },
-  { name: "Auth (NextAuth)", progress: 75 },
-  { name: "Python", progress: 60 },
-  { name: "Java", progress: 55 },
-  { name: "MySQL", progress: 50 },
-  { name: "Git & GitHub", progress: 80 },
-  { name: "Cloudinary / CDN", progress: 70 },
+	{ name: "Next.js", progress: 65 },
+	{ name: "React", progress: 70 },
+	{ name: "Tailwind CSS", progress: 65 },
+	{ name: "Redux / RTK", progress: 40 },
+	{ name: "JavaScript", progress: 65 },
+	{ name: "TypeScript", progress: 45 },
+	{ name: "Node.js", progress: 48 },
+	{ name: "Express", progress: 30 },
+	{ name: "MongoDB", progress: 35 },
+	{ name: "REST APIs", progress: 36 },
+	{ name: "Auth (NextAuth)", progress: 42 },
+	{ name: "Python", progress: 78 },
+	{ name: "Java", progress: 55 },
+	{ name: "MySQL", progress: 40 },
+	{ name: "Git & GitHub", progress: 60 },
+	{ name: "Cloudinary / CDN", progress: 40 },
 ];
 
 const SkillGrid = () => {

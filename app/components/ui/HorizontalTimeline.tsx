@@ -10,6 +10,7 @@ import {
 	TimelineDot,
 	TimelineOppositeContent,
 } from "@mui/lab";
+import { motion } from "framer-motion";
 
 import CodeIcon from "@mui/icons-material/Code";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -23,7 +24,7 @@ const sampleEvents: {
 	date: string;
 	title: string;
 	description: string;
-	color: string; // custom color code or tailwind class
+	color: string;
 	icon: React.ElementType;
 }[] = [
 	{
@@ -47,7 +48,7 @@ const sampleEvents: {
 		title: "Learned ReactJs & Tailwind",
 		description:
 			"I explored modern frontend tools like React.js and Tailwind CSS through tutorials.",
-		color: "#4ade80", // green-400
+		color: "#4ade80",
 		icon: IntegrationInstructionsIcon,
 	},
 	{
@@ -55,7 +56,7 @@ const sampleEvents: {
 		title: "Dived Into Next.js and Advanced UI",
 		description:
 			"I began mastering Next.js for SSR, routing, and integrated Figma for design systems.",
-		color: "#60a5fa", // blue-400
+		color: "#60a5fa",
 		icon: RocketLaunchIcon,
 	},
 	{
@@ -63,7 +64,7 @@ const sampleEvents: {
 		title: "Built Fullstack Projects",
 		description:
 			"Deployed 'ShopNow' (e-commerce app) with authentication, cart, filters, admin panel.",
-		color: "#c084fc", // purple-400
+		color: "#c084fc",
 		icon: DashboardIcon,
 	},
 	{
@@ -71,7 +72,7 @@ const sampleEvents: {
 		title: "Started Learning Auth and Security",
 		description:
 			"Worked on nextjs nextauth authentication as well as clerk auth as well as traditional one's.",
-		color: "#f87171", // red-400
+		color: "#f87171",
 		icon: SecurityIcon,
 	},
 	{
@@ -79,66 +80,75 @@ const sampleEvents: {
 		title: "Building With Refined Skills",
 		description:
 			"Now confident across frontend & backend. Focused on UI, performance, and clean code.",
-		color: "#34d399", // emerald-400
+		color: "#34d399",
 		icon: BuildCircleIcon,
 	},
 ];
 
 const TimelineContentBlock = ({
 	event,
+	index,
 }: {
 	event: (typeof sampleEvents)[0];
+	index: number;
 }) => {
 	const Icon = event.icon;
 
 	return (
-		<TimelineItem id="portfolio">
-			<TimelineOppositeContent
-				sx={{ m: "20px 0 0 0" }}
-				align="right"
-				variant="body2"
-				color="text.secondary"
-				className="dark:text-gray-300"
-			>
-				{event.date}
-			</TimelineOppositeContent>
-
-			<TimelineSeparator>
-				<TimelineConnector />
-				<TimelineDot
-					sx={{
-						backgroundColor: event.color,
-						width: 48,
-						height: 48,
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-					}}
-					className="dark:text-gray-100 md:hover:-translate-y-4 cursor-pointer transition-transform duration-300 ease-in-out"
+		<motion.div
+			initial={{ opacity: 0, y: 40 }}
+			whileInView={{ opacity: 1, y: 0 }}
+			viewport={{ once: true }}
+			transition={{ duration: 0.6, delay: index * 0.2 }}
+		>
+			<TimelineItem position={index % 2 === 0 ? "right" : "left"}>
+				<TimelineOppositeContent
+					sx={{ m: "20px 0 0 0" }}
+					align={index % 2 === 0 ? "left" : "right"}
+					variant="body2"
+					color="text.secondary"
+					className="dark:text-gray-300 text-sm md:text-base"
 				>
-					<Icon sx={{ color: "#444", fontSize: 24 }} />
-				</TimelineDot>
-				<TimelineConnector className="h-16" />
-			</TimelineSeparator>
+					{event.date}
+				</TimelineOppositeContent>
 
-			<TimelineContent sx={{ py: "12px", px: 2 }}>
-				<span className="dark:text-gray-100 md:text-2xl text-lg">
-					{event.title}
-				</span>
-				<br />
-				<span className="dark:text-gray-300 md:text-md">
-					{event.description}
-				</span>
-			</TimelineContent>
-		</TimelineItem>
+				<TimelineSeparator>
+					<TimelineConnector />
+					<TimelineDot
+						sx={{
+							backgroundColor: event.color,
+							width: 48,
+							height: 48,
+							display: "flex",
+							alignItems: "center",
+							justifyContent: "center",
+						}}
+						className="dark:text-gray-100 md:hover:-translate-y-4 cursor-pointer transition-transform duration-300 ease-in-out"
+					>
+						<Icon sx={{ color: "#444", fontSize: 24 }} />
+					</TimelineDot>
+					<TimelineConnector className="h-16" />
+				</TimelineSeparator>
+
+				<TimelineContent sx={{ py: "12px", px: 2 }}>
+					<span className="dark:text-gray-100 md:text-2xl text-lg font-semibold">
+						{event.title}
+					</span>
+					<br />
+					<span className="dark:text-gray-300 md:text-base text-sm">
+						{event.description}
+					</span>
+				</TimelineContent>
+			</TimelineItem>
+		</motion.div>
 	);
 };
 
 const HorizontalTimeline = () => {
 	return (
-		<Timeline position="alternate">
+		<Timeline id="portfolio" position="alternate">
 			{sampleEvents.map((event, idx) => (
-				<TimelineContentBlock key={idx} event={event} />
+				<TimelineContentBlock key={idx} event={event} index={idx} />
 			))}
 		</Timeline>
 	);

@@ -83,7 +83,7 @@ const FloatNavBar = () => {
 			<nav
 				className="relative flex flex-col items-center bg-white/70 dark:bg-black/70
         backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-full shadow-md
-        px-2 py-4 pointer-events-auto"
+        px-2 py-2 pointer-events-auto"
 			>
 				{/* Vertical sliding indicator */}
 				<div

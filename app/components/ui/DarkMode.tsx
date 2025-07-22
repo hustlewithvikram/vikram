@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CiBrightnessUp } from "react-icons/ci";
 import { RiMoonClearLine } from "react-icons/ri";
 import { HiOutlineSun } from "react-icons/hi";
 

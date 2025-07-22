@@ -82,10 +82,6 @@ const About = () => {
 						high-performance websites. My design process starts in{" "}
 						<span className="font-medium dark:text-white">
 							Figma
-						</span>{" "}
-						or{" "}
-						<span className="font-medium dark:text-white">
-							Illustrator
 						</span>
 						, then I bring it to life with{" "}
 						<span className="font-medium">React</span>,{" "}

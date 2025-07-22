@@ -12,9 +12,9 @@ import SkillGrid from "./components/ui/SkillGrid";
 import Footer from "@/app/components/sections/Footer";
 
 import FloatNavBar from "./components/ui/FloatNavBar";
+import Skills from "./components/sections/Skills";
 import HorizontalTimeline from "./components/ui/HorizontalTimeline";
 import ScrollToTop from "./components/ui/ScrollToTop";
-
 
 export default function Home() {
 	const [isMobile, setIsMobile] = useState(false);
@@ -73,7 +73,7 @@ export default function Home() {
 			<About />
 			<HorizontalTimeline />
 			<Projects />
-			<SkillGrid />
+			<Skills />
 
 			{/* Float bar */}
 			<FloatNavBar />
