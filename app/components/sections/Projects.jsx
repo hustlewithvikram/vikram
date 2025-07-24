@@ -30,7 +30,7 @@ const ProjectList = [
 		id: 4,
 		title: "Shop Now",
 		description: "Modern e-commerce experience.",
-		src: "/images/shopnow18.png",
+		src: "/images/shopnowlogo.png",
 		url: "https://github.com/vikramisdev/shopnow",
 	},
 ];
@@ -51,7 +51,7 @@ export default function Projects() {
 				{ProjectList.map((project) => (
 					<div
 						key={project.id}
-						className="bg-white dark:bg-neutral-900 rounded-3xl shadow-sm border border-gray-200 dark:border-neutral-700 overflow-hidden transition-transform hover:border-black/20 hover:shadow-neutral-500/20 group"
+						className="bg-white dark:bg-neutral-900 rounded-[30px] shadow-sm border border-gray-200 dark:border-neutral-700 overflow-hidden transition-transform hover:border-black/20 hover:shadow-neutral-500/20 group"
 					>
 						<Project {...project} />
 					</div>

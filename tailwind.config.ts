@@ -53,6 +53,9 @@ const config: Config = {
 					},
 				},
 			},
+			backdropBlur: {
+				sm: "4px",
+			},
 		},
 	},
 };

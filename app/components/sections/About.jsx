@@ -30,7 +30,7 @@ const About = () => {
 	return (
 		<section
 			id="about"
-			className="dark:bg-[#111] bg-[#f8f8f8] min-h-screen flex items-center justify-center px-6 md:px-24 lg:px-40 py-20"
+			className="dark:bg-[#111] bg-background min-h-screen flex items-center justify-center px-6 md:px-24 lg:px-40 py-20"
 		>
 			<motion.div
 				variants={containerVariants}
@@ -41,12 +41,12 @@ const About = () => {
 			>
 				{/* Profile Picture */}
 				<motion.div variants={fadeUp} className="relative">
-					<div className="relative size-48 md:size-80 rounded-4xl outline-dashed outline-2 outline-offset-8 outline-orange-400 overflow-hidden grayscale hover:grayscale-0 transition duration-500">
+					<div className="relative size-48 md:size-80 hover:scale-95 hover:cursor-pointer rounded-4xl outline-dashed outline-2 outline-offset-8 outline-orange-400 overflow-hidden grayscale hover:grayscale-0 transition duration-500">
 						<Image
 							src="/images/vikram.png"
 							alt="Vikram Vishwakarma"
 							fill
-							className="object-cover"
+							className="object-cover mix-blend-color-burn"
 							priority
 						/>
 					</div>

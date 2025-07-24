@@ -46,14 +46,14 @@ const SkillGrid = () => {
 				{shuffledSkills.map((skill, index) => (
 					<div
 						key={index}
-						className="bg-white dark:bg-zinc-950 rounded-xl px-5 py-4 flex items-center justify-between gap-4 shadow-sm"
+						className="bg-white group dark:bg-zinc-950 rounded-full hover:cursor-pointer px-5 py-4 flex items-center justify-between gap-4 shadow-sm"
 					>
 						<span className="text-sm font-medium text-gray-800 dark:text-gray-200 min-w-[90px]">
 							{skill.name}
 						</span>
-						<div className="w-full h-2 bg-gray-300 dark:bg-zinc-800 rounded">
+						<div className="w-full h-full bg-gray-300 dark:bg-zinc-800 rounded-full overflow-hidden">
 							<div
-								className={`h-2 rounded transition-all duration-300 ${
+								className={`h-full transition-all rounded-full duration-300 ${
 									skill.progress <= 25
 										? "bg-red-500"
 										: skill.progress <= 50
@@ -66,7 +66,7 @@ const SkillGrid = () => {
 							/>
 						</div>
 
-						<span className="text-xs font-semibold w-12 text-right text-gray-700 dark:text-gray-300">
+						<span className="text-md font-semibold w-12 text-right text-gray-700 dark:text-gray-300">
 							{skill.progress}%
 						</span>
 					</div>
