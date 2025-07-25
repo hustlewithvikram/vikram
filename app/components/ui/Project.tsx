@@ -23,7 +23,7 @@ export default function Project({
 		<div
 			tabIndex={0}
 			onClick={() => router.push(url)}
-			className={`group cursor-pointer w-full max-w-sm mx-auto rounded-3xl p-2 overflow-hidden bg-white dark:bg-zinc-900 ${className}`}
+			className={`group cursor-pointer w-full mx-auto rounded-3xl p-2 overflow-hidden bg-white dark:bg-zinc-900 ${className}`}
 		>
 			{/* Image */}
 			<div className="relative w-full h-60 overflow-hidden rounded-3xl">
@@ -31,7 +31,7 @@ export default function Project({
 					src={src}
 					alt={title}
 					fill
-					className="object-cover bg-gray-100 dark:bg-black rounded-3xl group-hover:scale-110 duration-300"
+					className="object-cover bg-[#222] dark:bg-black rounded-3xl group-hover:scale-110 duration-300"
 					priority
 				/>
 			</div>

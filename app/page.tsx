@@ -13,8 +13,8 @@ import Footer from "@/app/components/sections/Footer";
 
 import FloatNavBar from "./components/ui/FloatNavBar";
 import Skills from "./components/sections/Skills";
-import HorizontalTimeline from "./components/ui/HorizontalTimeline";
 import ScrollToTop from "./components/ui/ScrollToTop";
+import Timeline from "./components/sections/Timeline";
 
 export default function Home() {
 	const [isMobile, setIsMobile] = useState(false);
@@ -71,7 +71,7 @@ export default function Home() {
 			{/* Sections */}
 			<Hero />
 			<About />
-			<HorizontalTimeline />
+			<Timeline />
 			<Projects />
 			<Skills />
 

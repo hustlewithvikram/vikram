@@ -3,6 +3,7 @@
 import React from "react";
 import Project from "@/app/components/ui/Project";
 import { FaSuitcase } from "react-icons/fa6";
+import { Folder } from "@mui/icons-material";
 
 const ProjectList = [
 	{
@@ -39,15 +40,15 @@ export default function Projects() {
 	return (
 		<section id="projects" className="py-20 px-4 md:px-12">
 			{/* Section Header */}
-			<div className="md:mx-20 flex justify-start">
+			<div className="flex justify-start">
 				<div className="flex items-center gap-3 w-fit md:mb-12 mb-6 px-6 py-3 rounded-full bg-neutral-900 text-white">
-					<FaSuitcase className="size-5" />
+					<Folder className="size-5" />
 					<h2 className="text-xl font-semibold">Projects</h2>
 				</div>
 			</div>
 
 			{/* Project Grid */}
-			<div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-16 gap-10">
+			<div className="mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 md:gap-16 gap-10">
 				{ProjectList.map((project) => (
 					<div
 						key={project.id}

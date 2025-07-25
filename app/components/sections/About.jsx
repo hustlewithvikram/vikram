@@ -30,36 +30,23 @@ const About = () => {
 	return (
 		<section
 			id="about"
-			className="dark:bg-[#111] bg-background min-h-screen flex items-center justify-center px-6 md:px-24 lg:px-40 py-20"
+			className="dark:bg-[#111] bg-background min-h-screen flex items-center justify-center px-6 py-20 md:px-12"
 		>
 			<motion.div
 				variants={containerVariants}
 				initial="hidden"
 				whileInView="show"
 				viewport={{ once: true }}
-				className="flex flex-col md:flex-row items-center gap-12 max-w-7xl w-full"
+				className="flex flex-col md:flex-row items-center gap-12 w-full"
 			>
-				{/* Profile Picture */}
-				<motion.div variants={fadeUp} className="relative">
-					<div className="relative size-48 md:size-80 hover:scale-95 hover:cursor-pointer rounded-4xl outline-dashed outline-2 outline-offset-8 outline-orange-400 overflow-hidden grayscale hover:grayscale-0 transition duration-500">
-						<Image
-							src="/images/vikram.png"
-							alt="Vikram Vishwakarma"
-							fill
-							className="object-cover mix-blend-color-burn"
-							priority
-						/>
-					</div>
-				</motion.div>
-
 				{/* Text Content */}
 				<motion.article
 					variants={fadeUp}
 					className="flex-1 text-left space-y-5"
 				>
-					<h3 className="text-2xl md:text-3xl font-semibold text-black dark:text-white">
+					<h3 className="text-2xl md:text-7xl font-semibold text-black dark:text-white">
 						Hi, I'm{" "}
-						<span className="text-orange-500">
+						<span className="text-red-600 dark:opacity-100 dark:text-orange-500 opacity-20 font-questrial">
 							Vikram Vishwakarma
 						</span>
 					</h3>

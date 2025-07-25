@@ -1,31 +1,23 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { HiHome } from "react-icons/hi";
-import { FaUser, FaBriefcase, FaEnvelope } from "react-icons/fa";
 import clsx from "clsx";
 import {
-	RiProjector2Fill,
-	RiProjectorFill,
-	RiStarSFill,
-	RiTimeLine,
-} from "react-icons/ri";
-import {
-	FaFaceGrinStars,
-	FaFolder,
-	FaHand,
-	FaRegStar,
-	FaStarOfLife,
-} from "react-icons/fa6";
-import { IconStars } from "@tabler/icons-react";
+	Folder,
+	Home,
+	Mail,
+	Person,
+	Stars,
+	Timeline,
+} from "@mui/icons-material";
 
 const sections = [
-	{ id: "home", icon: <HiHome size={20} />, label: "Home" },
-	{ id: "about", icon: <FaUser size={18} />, label: "About" },
-	{ id: "portfolio", icon: <RiTimeLine size={18} />, label: "Portfolio" },
-	{ id: "projects", icon: <FaFolder size={18} />, label: "Projects" },
-	{ id: "skills", icon: <IconStars size={18} />, label: "Skills" },
-	{ id: "contact", icon: <FaEnvelope size={18} />, label: "Contact" },
+	{ id: "home", icon: <Home />, label: "Home" },
+	{ id: "about", icon: <Person />, label: "About" },
+	{ id: "timeline", icon: <Timeline />, label: "Timeline" },
+	{ id: "projects", icon: <Folder />, label: "Projects" },
+	{ id: "skills", icon: <Stars />, label: "Skills" },
+	{ id: "contact", icon: <Mail />, label: "Contact" },
 ];
 
 const FloatNavBar = () => {
@@ -81,8 +73,8 @@ const FloatNavBar = () => {
 	return (
 		<div className="hidden md:flex fixed right-4 top-1/2 -translate-y-1/2 z-50 pointer-events-none">
 			<nav
-				className="relative flex flex-col items-center bg-white/70 dark:bg-black/70
-        backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-full shadow-md
+				className="relative flex flex-col items-center
+        backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-full
         px-2 py-2 pointer-events-auto"
 			>
 				{/* Vertical sliding indicator */}
@@ -105,7 +97,7 @@ const FloatNavBar = () => {
 						}}
 						onClick={() => scrollToSection(id)}
 						className={clsx(
-							"relative z-10 flex items-center justify-center mb-2 px-[12px] py-[15px] rounded-full transition-all duration-200",
+							"relative z-10 flex items-center justify-center mb-2 p-3 rounded-full transition-all duration-200",
 							activeSection === id
 								? "text-white dark:text-black"
 								: "text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10"

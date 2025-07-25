@@ -1,91 +1,111 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
 import HoverButton from "../ui/HoverButton";
 import { HiMail } from "react-icons/hi";
-import SpeedDribbleButton from "../ui/HoverButton";
-import { FaRocket } from "react-icons/fa6";
-import CTAButton from "../ui/HoverButton";
-import SpeedButton from "../ui/HoverButton";
-import SpeedButtonGoo from "../ui/HoverButton";
 import { openUrl } from "../../utils/utils";
 
-// Card data
-const cards = [
-	{ title: "Web", image: "/images/slide1.gif" },
-	{ title: "Designer", image: "/images/slide2.gif" },
-	{ title: "&", image: "/images/slide3.gif" },
-	{ title: "Developer", image: "/images/slide4.gif" },
-];
+const fadeUp = {
+	hidden: { opacity: 0, y: 40 },
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.6,
+			ease: [0.25, 0.8, 0.25, 1],
+		},
+	},
+};
 
 const Hero = () => {
-	const [hoveredIndex, setHoveredIndex] = useState(0);
-
 	return (
 		<section
 			id="home"
-			className="dark:bg-[#111] bg-background min-h-screen flex flex-col items-center justify-center px-4 md:px-12 py-16"
+			className="relative dark:bg-[#111] min-h-screen max-h-screen bg-background flex flex-col items-center justify-end px-4 md:px-12 overflow-hidden"
 		>
-			{/* Card layout */}
-			<div className="flex flex-col md:flex-row w-full max-w-7xl gap-4 h-[90vh] md:h-[65vh]">
-				{cards.map((card, idx) => {
-					const isHovered = hoveredIndex === idx;
-					const isAnyHovered = hoveredIndex !== null;
+			{/* 🔠 Big name background text */}
+			<h1 className="absolute md:text-[90vw] text-[70vh] font-bold text-red-800 bottom-0 text-center dark:text-black opacity-10 pointer-events-none select-none leading-none">
+				VIKRAM
+			</h1>
 
-					return (
-						<motion.div
-							key={idx}
-							layout
-							initial={{ opacity: 0, y: 30 }}
-							animate={{
-								opacity: isAnyHovered && !isHovered ? 0.3 : 1,
-								y: 0,
-							}}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 0.4, ease: "easeInOut" }}
-							onMouseEnter={() => setHoveredIndex(idx)}
-							onMouseLeave={() => setHoveredIndex(null)}
-							className="relative flex-1 overflow-hidden rounded-2xl cursor-pointer"
-							style={{
-								flex: isHovered ? 6 : isAnyHovered ? 1 : 1,
-								transition: "flex 0.6s ease-in-out",
-							}}
-						>
-							<Image
-								src={card.image}
-								alt={card.title}
-								fill
-								unoptimized
-								className="object-cover object-center"
-							/>
-							{isHovered && (
-								<div className="absolute inset-0 bg-black/30 backdrop-blur-sm text-white flex justify-center md:justify-start items-center text-5xl md:text-[12rem] font-semibold">
-									{card.title}
-								</div>
-							)}
-						</motion.div>
-					);
-				})}
-			</div>
+			{/* 👤 Centered personal image and content */}
+			<motion.div
+				initial="hidden"
+				animate="show"
+				variants={{
+					hidden: {},
+					show: {
+						transition: {
+							staggerChildren: 0.2,
+							delayChildren: 0.2,
+						},
+					},
+				}}
+				className="flex flex-col items-center text-center z-10"
+			>
+				<motion.span
+					variants={fadeUp}
+					className="absolute bottom-6 left-6 md:top-16 md:left-10 font-semibold text-[4vw] md:text-[2vw]"
+				>
+					<span className="text-red-600 font-fugaz-one">5+</span>{" "}
+					<span className="dark:text-gray-300">Projects</span>
+				</motion.span>
 
-			{/* Slogan and button below the cards */}
-			<div className="text-center flex flex-col items-center max-w-3xl mt-10 px-4 space-y-5">
-				<p className="text-base sm:text-lg text-neutral-700 dark:text-neutral-300">
-					I turn ideas into experiences — beautiful websites, powerful
-					backend systems, and pixel-perfect designs.
-				</p>
-				<HoverButton
-					text="Reach out"
-					icon={<HiMail />}
-					onClick={() =>
-						openUrl(
-							"mailto:vs423502@gmail.com?&subject=Regarding%20your%20portfolio%20or%20work."
-						)
-					}
-				/>
-			</div>
+				<motion.span
+					variants={fadeUp}
+					className="text-[10vw] md:absolute left-10 top-10"
+				>
+					<span className="md:absolute left-0 md:text-[6vw] md:top-32 top-6 dark:text-gray-400">
+						Hey There,
+					</span>
+					<br />
+					<span className="dark:text-gray-100">I'm </span>
+					<span className="font-semibold italic text-[12vw] dark:text-gray-100">
+						Vikram
+					</span>
+				</motion.span>
+
+				<div className="md:absolute left-5 bottom-6 flex flex-col items-center md:items-start gap-y-6">
+					<motion.p
+						variants={fadeUp}
+						className="mt-3 text-neutral-600 dark:text-neutral-300 max-w-xl text-base sm:text-lg mix-blend-difference"
+					>
+						I’m a full-stack developer and designer who loves
+						crafting smooth, interactive digital experiences — from
+						frontend to backend.
+					</motion.p>
+
+					<motion.div variants={fadeUp} className="md:ml-6">
+						<HoverButton
+							text="Reach out"
+							icon={<HiMail />}
+							onClick={() =>
+								openUrl(
+									"mailto:vs423502@gmail.com?&subject=Regarding%20your%20portfolio%20or%20work."
+								)
+							}
+						/>
+					</motion.div>
+				</div>
+
+				<div className="size-[20rem] md:size-[30rem] relative bg-transparent">
+					<motion.div
+						variants={fadeUp}
+						className="relative h-full w-full"
+					>
+						<Image
+							src="/images/vikram_transparent.png"
+							alt="Vikram's Photo"
+							fill
+							className="object-cover drop-shadow-[0_0_6rem_black]"
+							priority
+						/>
+					</motion.div>
+				</div>
+			</motion.div>
 		</section>
 	);
 };

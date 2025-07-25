@@ -1,6 +1,7 @@
 "use client";
 
 import { Progress } from "@/components/ui/progress";
+import { Code, CodeOffRounded } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { HiCode } from "react-icons/hi";
 
@@ -25,24 +26,24 @@ const skills = [
 ];
 
 const SkillGrid = () => {
-  const [shuffledSkills, setShuffledSkills] = useState(skills);
+	const [shuffledSkills, setShuffledSkills] = useState(skills);
 
-  useEffect(() => {
-    // Shuffle only once on mount
-    const shuffled = [...skills].sort(() => Math.random() - 0.5);
-    setShuffledSkills(shuffled);
-  }, []);
+	useEffect(() => {
+		// Shuffle only once on mount
+		const shuffled = [...skills].sort(() => Math.random() - 0.5);
+		setShuffledSkills(shuffled);
+	}, []);
 
-  return (
+	return (
 		<div id="skills" className="flex flex-col mt-16">
 			{/* Header */}
-			<div className="flex items-center gap-x-4 px-4 py-2 md:mx-28 mx-4 rounded-full text-lg bg-black text-white w-fit">
-				<HiCode className="size-6" />
+			<div className="flex items-center gap-x-4 px-4 py-2 md:mx-12 mx-4 rounded-full text-lg bg-black text-white w-fit">
+				<CodeOffRounded className="size-6" />
 				<h1 className="font-semibold">Tech Stack</h1>
 			</div>
 
 			{/* Grid Layout */}
-			<div className="md:px-28 px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+			<div className="md:px-12 px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
 				{shuffledSkills.map((skill, index) => (
 					<div
 						key={index}
@@ -73,7 +74,7 @@ const SkillGrid = () => {
 				))}
 			</div>
 		</div>
-  );
+	);
 };
 
 export default SkillGrid;
