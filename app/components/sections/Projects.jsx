@@ -2,7 +2,6 @@
 
 import React from "react";
 import Project from "@/app/components/ui/Project";
-import { FaSuitcase } from "react-icons/fa6";
 import { Folder } from "@mui/icons-material";
 
 const ProjectList = [
@@ -12,6 +11,8 @@ const ProjectList = [
 		description: "Telegram user automation and botless power.",
 		src: "/images/tron.png",
 		url: "https://github.com/TronUb/Tron",
+		tags: ["Python", "Telegram API", "Userbot"],
+		buttonText: "Source",
 	},
 	{
 		id: 2,
@@ -19,6 +20,8 @@ const ProjectList = [
 		description: "Secure notes with cloud sync.",
 		src: "/images/deepnotes.png",
 		url: "https://github.com/vikramisdev/deepnotes",
+		tags: ["Kotlin", "Firebase", "Notes App"],
+		buttonText: "Source",
 	},
 	{
 		id: 3,
@@ -26,6 +29,8 @@ const ProjectList = [
 		description: "Minimal, fast Android launcher.",
 		src: "/images/xlauncher.png",
 		url: "https://github.com/vikramisdev/xlauncher",
+		tags: ["Kotlin", "Kotlin-Compose", "Material Design 3"],
+		buttonText: "Source",
 	},
 	{
 		id: 4,
@@ -33,6 +38,8 @@ const ProjectList = [
 		description: "Modern e-commerce experience.",
 		src: "/images/shopnowlogo.png",
 		url: "https://github.com/vikramisdev/shopnow",
+		tags: ["ReactJs", "MongoDB", "NextJs", "NextAuth"],
+		buttonText: "Source",
 	},
 ];
 

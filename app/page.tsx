@@ -75,9 +75,6 @@ export default function Home() {
 			<Projects />
 			<Skills />
 
-			{/* Float bar */}
-			<FloatNavBar />
-
 			{/* Footer */}
 			<Footer />
 		</div>

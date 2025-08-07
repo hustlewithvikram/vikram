@@ -87,7 +87,7 @@ const Timeline = () => {
 							index % 2 === 0 ? "flex justify-end" : ""
 						}`}
 					>
-						<div className="h-12 w-[2px] bg-black opacity-60"></div>
+						<div className="h-12 w-[2px] bg-black dark:bg-white opacity-60"></div>
 					</div>
 				</div>
 			))}

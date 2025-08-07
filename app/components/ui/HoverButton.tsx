@@ -25,7 +25,7 @@ export default function HoverButton({
 				initial="rest"
 				animate="rest"
 				className={clsx(
-					"relative group z-20 overflow-hidden group px-1 py-2 h-12 w-40 rounded-full text-neutral-100 dark:text-white bg-black dark:bg-neutral-900 font-semibold flex items-center gap-3"
+					"relative group z-20 overflow-hidden group px-1 py-2 h-12 w-40 border border-[#222] rounded-full text-neutral-100 dark:text-white bg-neutral-900 font-semibold flex items-center gap-3"
 				)}
 			>
 				{/* Static Content */}
@@ -38,7 +38,7 @@ export default function HoverButton({
 							</span>
 
 							{/* Animated Hover Overlay */}
-							<div className="absolute inset-0 flex items-center justify-center text-lg bg-orange-300 text-white p-2 rounded-full scale-0 group-hover:scale-[8] transition-transform duration-500 ease-in-out"></div>
+							<div className="absolute inset-0 flex items-center justify-center text-lg bg-orange-400 text-white p-2 rounded-full scale-0 group-hover:scale-[8] transition-transform duration-500 ease-in-out"></div>
 						</div>
 					)}
 

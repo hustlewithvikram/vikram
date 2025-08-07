@@ -16,6 +16,7 @@ const config: Config = {
 			},
 			backgroundColor: {
 				background: "var(--background-color)",
+				themeColor: "var(--theme-color)",
 			},
 			fontFamily: {
 				roboto: ["Roboto", "sans-serif"],

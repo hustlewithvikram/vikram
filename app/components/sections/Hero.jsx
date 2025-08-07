@@ -1,113 +1,101 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-
-import HoverButton from "../ui/HoverButton";
+import Image from "next/image";
 import { HiMail } from "react-icons/hi";
+import HoverButton from "../ui/HoverButton";
 import { openUrl } from "../../utils/utils";
+import { GridPattern } from "../../../components/magicui/grid-pattern";
+import { cn } from "../../../lib/utils";
 
-const fadeUp = {
-	hidden: { opacity: 0, y: 40 },
-	show: {
+const fadeInItem = {
+	hidden: { opacity: 0, y: 20 },
+	show: (i = 0) => ({
 		opacity: 1,
 		y: 0,
-		transition: {
-			duration: 0.6,
-			ease: [0.25, 0.8, 0.25, 1],
-		},
-	},
+		transition: { delay: 0.2 + i * 0.15, duration: 0.5 },
+	}),
 };
 
-const Hero = () => {
+export default function Hero() {
 	return (
-		<section
-			id="home"
-			className="relative dark:bg-[#111] min-h-screen max-h-screen bg-background flex flex-col items-center justify-end px-4 md:px-12 overflow-hidden"
-		>
-			{/* 🔠 Big name background text */}
-			<h1 className="absolute md:text-[90vw] text-[70vh] font-bold text-red-800 bottom-0 text-center dark:text-black opacity-10 pointer-events-none select-none leading-none">
-				VIKRAM
-			</h1>
-
-			{/* 👤 Centered personal image and content */}
-			<motion.div
-				initial="hidden"
-				animate="show"
-				variants={{
-					hidden: {},
-					show: {
-						transition: {
-							staggerChildren: 0.2,
-							delayChildren: 0.2,
-						},
-					},
-				}}
-				className="flex flex-col items-center text-center z-10"
-			>
-				<motion.span
-					variants={fadeUp}
-					className="absolute bottom-6 left-6 md:top-16 md:left-10 font-semibold text-[4vw] md:text-[2vw]"
-				>
-					<span className="text-red-600 font-fugaz-one">5+</span>{" "}
-					<span className="dark:text-gray-300">Projects</span>
-				</motion.span>
-
-				<motion.span
-					variants={fadeUp}
-					className="text-[10vw] md:absolute left-10 top-10"
-				>
-					<span className="md:absolute left-0 md:text-[6vw] md:top-32 top-6 dark:text-gray-400">
-						Hey There,
-					</span>
-					<br />
-					<span className="dark:text-gray-100">I'm </span>
-					<span className="font-semibold italic text-[12vw] dark:text-gray-100">
-						Vikram
-					</span>
-				</motion.span>
-
-				<div className="md:absolute left-5 bottom-6 flex flex-col items-center md:items-start gap-y-6">
-					<motion.p
-						variants={fadeUp}
-						className="mt-3 text-neutral-600 dark:text-neutral-300 max-w-xl text-base sm:text-lg mix-blend-difference"
+		<main className="h-[calc(100vh-32px)] px-6 md:px-10 py-10 m-4 rounded-4xl bg-[#080808] overflow-hidden">
+			<div className="flex flex-col md:flex-row justify-between items-center gap-10 h-full">
+				{/* LEFT SECTION */}
+				<article className="flex flex-col justify-center items-start text-left max-w-xl w-full space-y-6">
+					<GridPattern
+						width={80}
+						height={80}
+						x={-1}
+						y={-1}
+						className={cn(
+							"[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
+						)}
+					/>
+					<motion.h1
+						variants={fadeInItem}
+						initial="hidden"
+						animate="show"
+						custom={0}
+						className="text-xl md:text-2xl text-gray-100"
 					>
-						I’m a full-stack developer and designer who loves
-						crafting smooth, interactive digital experiences — from
-						frontend to backend.
-					</motion.p>
+						Hi, I'm Vikram
+					</motion.h1>
 
-					<motion.div variants={fadeUp} className="md:ml-6">
+					<motion.div
+						variants={fadeInItem}
+						initial="hidden"
+						animate="show"
+						custom={1}
+						className="text-xl md:text-5xl text-neutral-300 leading-tight flex flex-col gap-y-6"
+					>
+						I build clean, performant web experiences with a focus
+						on UI details and performance.{" "}
+						<motion.h1
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ delay: 0.6 }}
+							className="w-fit text-neutral-300 py-2 text-sm md:text-6xl"
+						>
+							<span className="text-red-500">Built 5+</span>{" "}
+							Projects
+						</motion.h1>
+					</motion.div>
+
+					<motion.div
+						whileHover={{ scale: 1.05 }}
+						variants={fadeInItem}
+						initial="hidden"
+						animate="show"
+						custom={2}
+					>
 						<HoverButton
 							text="Reach out"
 							icon={<HiMail />}
-							onClick={() =>
-								openUrl(
-									"mailto:vs423502@gmail.com?&subject=Regarding%20your%20portfolio%20or%20work."
-								)
-							}
+							onClick={() => openUrl("mailto:vs423502@gmail.com")}
 						/>
 					</motion.div>
-				</div>
+				</article>
 
-				<div className="size-[20rem] md:size-[30rem] relative bg-transparent">
+				{/* RIGHT SECTION */}
+				<aside className="relative md:w-[420px] md:h-[420px] w-[380px] h-[380px] rounded-full overflow-hidden flex-shrink-0 bg-themeColor">
 					<motion.div
-						variants={fadeUp}
-						className="relative h-full w-full"
+						variants={fadeInItem}
+						initial="hidden"
+						animate="show"
+						custom={3}
+						className="w-full h-full rounded-xl overflow-hidden"
 					>
 						<Image
 							src="/images/vikram_transparent.png"
-							alt="Vikram's Photo"
+							alt="Vikram"
 							fill
-							className="object-cover drop-shadow-[0_0_6rem_black]"
-							priority
+							className="object-cover"
 						/>
 					</motion.div>
-				</div>
-			</motion.div>
-		</section>
+				</aside>
+			</div>
+		</main>
 	);
-};
-
-export default Hero;
+}

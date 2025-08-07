@@ -13,7 +13,7 @@ const Footer = () => {
 	return (
 		<footer
 			id="contact"
-			className="bg-black text-white px-6 md:px-24 py-12 md:py-24"
+			className="bg-black text-white px-6 md:px-24 py-12 md:py-24 rounded-3xl m-4"
 		>
 			{/* Heading */}
 			<h2 className="text-2xl font-bold mb-6 border-b border-gray-700 w-fit pb-2">
@@ -76,7 +76,7 @@ function SocialIcon({ url, label, icon }) {
 		<button
 			onClick={() => openUrl(url)}
 			aria-label={label}
-			className="group flex items-center gap-2 text-white bg-zinc-800 hover:bg-white hover:text-black px-4 py-2 rounded-full transition-all duration-200"
+			className="group flex items-center gap-2 text-white bg-zinc-800 hover:bg-white hover:text-black px-2 py-2 rounded-full transition-all duration-200"
 		>
 			<span className="text-xl">{icon}</span>
 			<span className="hidden sm:inline text-sm font-medium">
