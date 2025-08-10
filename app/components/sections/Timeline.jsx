@@ -1,3 +1,5 @@
+"use client";
+
 import HorizontalDetailCard from "../ui/HorizontalDetailCard";
 import {
 	Code as CodeIcon,
@@ -7,12 +9,11 @@ import {
 	Dashboard as DashboardIcon,
 	Security as SecurityIcon,
 	BuildCircle as BuildCircleIcon,
-	Folder,
 	TimelineOutlined,
 } from "@mui/icons-material";
+import { useEffect, useRef, useState } from "react";
 
-// Set icon size here
-const iconSize = 280;
+const iconSize = 48;
 
 const sampleEvents = [
 	{
@@ -67,30 +68,83 @@ const sampleEvents = [
 ];
 
 const Timeline = () => {
+	const containerRef = useRef(null);
+	const firstDotRef = useRef(null);
+	const lastDotRef = useRef(null);
+	const [lineStyles, setLineStyles] = useState({ top: 0, height: 0 });
+
+	useEffect(() => {
+		if (firstDotRef.current && lastDotRef.current && containerRef.current) {
+			const containerRect = containerRef.current.getBoundingClientRect();
+			const firstRect = firstDotRef.current.getBoundingClientRect();
+			const lastRect = lastDotRef.current.getBoundingClientRect();
+
+			const top =
+				firstRect.top - containerRect.top + firstRect.height / 2;
+			const height =
+				lastRect.top +
+				lastRect.height / 2 -
+				(firstRect.top + firstRect.height / 2);
+
+			setLineStyles({ top, height });
+		}
+	}, []);
+
 	return (
-		<section id="timeline" className="px-6 md:px-12">
-			<div className="flex justify-start">
-				<div className="flex items-center gap-3 w-fit md:mb-12 mb-6 px-6 py-3 rounded-full bg-neutral-900 text-white">
+		<section id="timeline" className="px-6 md:px-12 py-16 relative">
+			{/* Header */}
+			<div className="flex mb-12">
+				<div className="flex items-center gap-3 px-6 py-3 rounded-full bg-neutral-900 text-white shadow-lg shadow-neutral-800/30">
 					<TimelineOutlined className="size-5" />
 					<h2 className="text-xl font-semibold">Timeline</h2>
 				</div>
 			</div>
-			{sampleEvents.map((event, index) => (
-				<div key={index}>
-					<HorizontalDetailCard
-						title={event.title}
-						description={event.description}
-						icon={event.icon}
-					/>
-					<div
-						className={`w-full ${
-							index % 2 === 0 ? "flex justify-end" : ""
-						}`}
-					>
-						<div className="h-12 w-[2px] bg-black dark:bg-white opacity-60"></div>
-					</div>
+
+			{/* Timeline Content */}
+			<div ref={containerRef} className="relative">
+				{/* Vertical Line */}
+				<div
+					className="absolute left-1/2 -translate-x-1/2 bg-black/20 hidden md:block"
+					style={{
+						width: "2px",
+						top: lineStyles.top,
+						height: lineStyles.height,
+					}}
+				/>
+
+				{/* Events */}
+				<div className="flex flex-col gap-12">
+					{sampleEvents.map((event, index) => (
+						<div
+							key={index}
+							className={`relative flex flex-col md:flex-row items-center gap-6 md:gap-12 ${
+								index % 2 === 0 ? "md:flex-row-reverse" : ""
+							}`}
+						>
+							{/* Dot */}
+							<div
+								ref={(el) => {
+									if (index === 0) firstDotRef.current = el;
+									if (index === sampleEvents.length - 1)
+										lastDotRef.current = el;
+								}}
+								className="hidden md:block absolute left-1/2 -translate-x-1/2 z-10"
+							>
+								<div className="w-6 h-6 bg-orange-400 rounded-full border-4 border-orange-200" />
+							</div>
+
+							{/* Card */}
+							<div className="flex-1 max-w-xl">
+								<HorizontalDetailCard
+									title={`${event.date} — ${event.title}`}
+									description={event.description}
+									icon={event.icon}
+								/>
+							</div>
+						</div>
+					))}
 				</div>
-			))}
+			</div>
 		</section>
 	);
 };

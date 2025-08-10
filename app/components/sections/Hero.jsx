@@ -4,10 +4,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { HiMail } from "react-icons/hi";
+import { FaDownload } from "react-icons/fa";
 import HoverButton from "../ui/HoverButton";
 import { openUrl } from "../../utils/utils";
 import { GridPattern } from "../../../components/magicui/grid-pattern";
 import { cn } from "../../../lib/utils";
+import { Download } from "@mui/icons-material";
 
 const fadeInItem = {
 	hidden: { opacity: 0, y: 20 },
@@ -20,7 +22,10 @@ const fadeInItem = {
 
 export default function Hero() {
 	return (
-		<main className="h-[calc(100vh-32px)] px-6 md:px-10 py-10 m-4 rounded-4xl bg-[#080808] overflow-hidden">
+		<main
+			className="h-[calc(100vh-32px)] px-6 md:px-10 py-10 m-4 rounded-[2rem] bg-[#080808] overflow-hidden inverted-radius"
+			role="main"
+		>
 			<div className="flex flex-col md:flex-row justify-between items-center gap-10 h-full">
 				{/* LEFT SECTION */}
 				<article className="flex flex-col justify-center items-start text-left max-w-xl w-full space-y-6">
@@ -30,20 +35,23 @@ export default function Hero() {
 						x={-1}
 						y={-1}
 						className={cn(
-							"[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
+							"[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
 						)}
+						aria-hidden="true"
+						role="presentation"
 					/>
+
 					<motion.h1
 						variants={fadeInItem}
 						initial="hidden"
 						animate="show"
 						custom={0}
-						className="text-xl md:text-2xl text-gray-100"
+						className="text-xl md:text-2xl text-gray-100 font-semibold"
 					>
 						Hi, I'm Vikram
 					</motion.h1>
 
-					<motion.div
+					<motion.p
 						variants={fadeInItem}
 						initial="hidden"
 						animate="show"
@@ -51,30 +59,41 @@ export default function Hero() {
 						className="text-xl md:text-5xl text-neutral-300 leading-tight flex flex-col gap-y-6"
 					>
 						I build clean, performant web experiences with a focus
-						on UI details and performance.{" "}
-						<motion.h1
+						on UI details and performance.
+						<motion.span
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ delay: 0.6 }}
 							className="w-fit text-neutral-300 py-2 text-sm md:text-6xl"
 						>
-							<span className="text-red-500">Built 5+</span>{" "}
+							<span className="text-red-500 font-bold">
+								Built 5+
+							</span>{" "}
 							Projects
-						</motion.h1>
-					</motion.div>
+						</motion.span>
+					</motion.p>
 
+					{/* BUTTONS */}
 					<motion.div
-						whileHover={{ scale: 1.05 }}
 						variants={fadeInItem}
 						initial="hidden"
 						animate="show"
 						custom={2}
+						className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
 					>
 						<HoverButton
 							text="Reach out"
 							icon={<HiMail />}
 							onClick={() => openUrl("mailto:vs423502@gmail.com")}
+							aria-label="Reach out via email"
 						/>
+						<a
+							href="/resume.pdf"
+							download
+							className="w-full sm:w-auto"
+						>
+							<HoverButton text="My Resume" icon={<Download />} />
+						</a>
 					</motion.div>
 				</article>
 
@@ -85,13 +104,14 @@ export default function Hero() {
 						initial="hidden"
 						animate="show"
 						custom={3}
-						className="w-full h-full rounded-xl overflow-hidden"
+						className="w-full h-full rounded-full overflow-hidden"
 					>
 						<Image
 							src="/images/vikram_transparent.png"
-							alt="Vikram"
+							alt="Portrait of Vikram"
 							fill
 							className="object-cover"
+							priority
 						/>
 					</motion.div>
 				</aside>

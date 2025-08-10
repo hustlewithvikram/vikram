@@ -46,7 +46,7 @@ const About = () => {
 				>
 					<h3 className="text-2xl md:text-7xl font-semibold text-black dark:text-white">
 						Hi, Its{" "}
-						<span className="text-red-600 dark:opacity-100 dark:text-orange-500 opacity-20 font-questrial">
+						<span className="text-red-600 dark:opacity-100 dark:text-orange-500 opacity-50 font-questrial">
 							Vikram Vishwakarma
 						</span>
 					</h3>
