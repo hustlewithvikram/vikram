@@ -4,6 +4,21 @@ function openUrl(url) {
     window.open(url, "_blank");
 }
 
+async function downloadMedia(url, filename) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Failed to fetch file');
+    const blob = await res.blob();
+    const blobUrl = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = filename || 'download';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(blobUrl);
+}
+
+
 function useIsMobile(breakpoint = 768) {
     const [isMobile, setIsMobile] = useState(false); // Initial state is false (avoids SSR mismatch)
 
@@ -19,4 +34,4 @@ function useIsMobile(breakpoint = 768) {
     return isMobile;
 }
 
-export { useIsMobile, openUrl };
+export { useIsMobile, openUrl, downloadMedia };

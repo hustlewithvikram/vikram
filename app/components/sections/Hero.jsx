@@ -6,7 +6,7 @@ import Image from "next/image";
 import { HiMail } from "react-icons/hi";
 import { FaDownload } from "react-icons/fa";
 import HoverButton from "../ui/HoverButton";
-import { openUrl } from "../../utils/utils";
+import { downloadMedia, openUrl } from "../../utils/utils";
 import { GridPattern } from "../../../components/magicui/grid-pattern";
 import { cn } from "../../../lib/utils";
 import { Download } from "@mui/icons-material";
@@ -92,7 +92,16 @@ export default function Hero() {
 							download
 							className="w-full sm:w-auto"
 						>
-							<HoverButton text="My Resume" icon={<Download />} />
+							<HoverButton
+								text="My Resume"
+								icon={<Download />}
+								onClick={() =>
+									downloadMedia(
+										"https://raw.githubusercontent.com/vikramisdev/resume/master/Vikram%20Vishwakarma%20-%20Back-End%20Developer%20-%20Resume.pdf",
+										"Vikram Vishwakarma - Backend Developer.pdf"
+									)
+								}
+							/>
 						</a>
 					</motion.div>
 				</article>
