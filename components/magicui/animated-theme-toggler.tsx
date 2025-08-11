@@ -10,10 +10,10 @@ type Props = {
 };
 
 export const AnimatedThemeToggler = ({ className }: Props) => {
-	const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-	const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-	const changeTheme = async () => {
+  const changeTheme = async () => {
 		if (!buttonRef.current || typeof document === "undefined") return;
 
 		const doThemeChange = () => {
@@ -52,11 +52,11 @@ export const AnimatedThemeToggler = ({ className }: Props) => {
 				pseudoElement: "::view-transition-new(root)",
 			}
 		);
-	};
+  };
 
-	return (
+  return (
 		<button ref={buttonRef} onClick={changeTheme} className={cn(className)}>
 			{isDarkMode ? <SunDim /> : <Moon />}
 		</button>
-	);
+  );
 };
