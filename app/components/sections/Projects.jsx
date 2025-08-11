@@ -46,7 +46,7 @@ const ProjectList = [
 		title: "Shop Now",
 		description: "Modern e-commerce experience.",
 		src: "/images/projects/advitdesignstudio.png",
-		url: "https://github.com/vikramisdev/shopnow",
+		url: "https://github.com/vikramisdev/advit",
 		tags: ["ReactJs", "Resend", "NextJs"],
 		buttonText: "Source",
 	},
