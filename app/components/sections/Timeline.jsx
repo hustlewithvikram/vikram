@@ -104,7 +104,7 @@ const Timeline = () => {
 			<div ref={containerRef} className="relative">
 				{/* Vertical Line */}
 				<div
-					className="absolute left-1/2 -translate-x-1/2 bg-black/20 hidden md:block"
+					className="absolute left-1/2 -translate-x-1/2 dark:bg-white/40 bg-black/20 hidden md:block"
 					style={{
 						width: "2px",
 						top: lineStyles.top,

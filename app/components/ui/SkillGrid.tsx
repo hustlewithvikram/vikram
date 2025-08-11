@@ -1,9 +1,7 @@
 "use client";
 
-import { Progress } from "@/components/ui/progress";
-import { Code, CodeOffRounded } from "@mui/icons-material";
+import { CodeOffRounded } from "@mui/icons-material";
 import { useEffect, useState } from "react";
-import { HiCode } from "react-icons/hi";
 
 // ✅ Move skills outside to avoid redefinition on each render
 const skills = [
@@ -60,8 +58,8 @@ const SkillGrid = () => {
 										: skill.progress <= 50
 										? "bg-orange-500"
 										: skill.progress <= 75
-										? "bg-yellow-500"
-										: "bg-green-600"
+										? "bg-yellow-400"
+										: "bg-green-500"
 								}`}
 								style={{ width: `${skill.progress}%` }}
 							/>

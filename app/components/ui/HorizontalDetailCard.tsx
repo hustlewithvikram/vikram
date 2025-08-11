@@ -29,7 +29,7 @@ const HorizontalDetailCard = ({
 		>
 			{/* Text Content */}
 			<div className="relative z-10 flex flex-col justify-center h-full gap-2">
-				<h2 className="z-30 font-poppins text-2xl md:text-6xl font-semibold text-neutral-600 dark:text-gray-100 tracking-tight transition-colors group-hover:text-orange-400 dark:group-hover:text-orange-400">
+				<h2 className="z-30 font-poppins text-2xl md:text-6xl font-semibold text-neutral-600 dark:text-gray-300 tracking-tight transition-colors group-hover:text-orange-400 dark:group-hover:text-orange-400">
 					{title}
 				</h2>
 				<p className="text-base text-neutral-600 z-40 dark:text-zinc-400 max-w-[90%] leading-relaxed">

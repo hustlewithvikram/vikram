@@ -3,6 +3,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { GridPattern } from "../../../components/magicui/grid-pattern";
+import { cn } from "../../../lib/utils";
 
 const containerVariants = {
 	hidden: {},
@@ -32,6 +34,19 @@ const About = () => {
 			id="about"
 			className="dark:bg-[#111] bg-background min-h-screen flex items-center justify-center px-6 py-20 md:px-12"
 		>
+			<GridPattern
+				width={80}
+				height={80}
+				x={-1}
+				y={-1}
+				stroke="black"
+				className={cn(
+					"[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
+				)}
+				aria-hidden="true"
+				role="presentation"
+			/>
+
 			<motion.div
 				variants={containerVariants}
 				initial="hidden"
@@ -55,25 +70,22 @@ const About = () => {
 						variants={fadeUp}
 						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
 					>
-						Based in Maharashtra, India — I recently completed my
-						degree in Computer Science and I’m deeply passionate
-						about crafting elegant interfaces and smooth digital
-						experiences.
+						Based in Maharashtra, India — I am a Computer Science
+						graduate passionate about building robust backend
+						systems and seamless digital experiences.
 					</motion.p>
 
 					<motion.p
 						variants={fadeUp}
 						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
 					>
-						I specialize in building responsive, accessible, and
-						high-performance websites. My design process starts in{" "}
+						I build robust, scalable backend systems using{" "}
 						<span className="font-medium dark:text-white">
-							Figma
-						</span>
-						, then I bring it to life with{" "}
-						<span className="font-medium">React</span>,{" "}
-						<span className="font-medium">Tailwind</span> and{" "}
-						<span className="font-medium">Next.js</span>.
+							Python
+						</span>{" "}
+						and <span className="font-medium">JavaScript</span>,
+						focusing on API integration, database management, and
+						server-side performance.
 					</motion.p>
 
 					<motion.p

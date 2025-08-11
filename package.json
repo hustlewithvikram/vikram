@@ -30,6 +30,7 @@
     "gsap": "^3.12.5",
     "i": "^0.3.7",
     "locomotive-scroll": "^5.0.0-beta.21",
+    "lucide-react": "^0.539.0",
     "mongoose": "^8.6.0",
     "motion": "^12.4.10",
     "next": "^14.2.18",

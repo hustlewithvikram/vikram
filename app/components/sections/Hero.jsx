@@ -4,12 +4,11 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { HiMail } from "react-icons/hi";
-import { FaDownload } from "react-icons/fa";
 import HoverButton from "../ui/HoverButton";
-import { downloadMedia, openUrl } from "../../utils/utils";
+import { openUrl } from "../../utils/utils";
 import { GridPattern } from "../../../components/magicui/grid-pattern";
 import { cn } from "../../../lib/utils";
-import { Download } from "@mui/icons-material";
+import DownloadResume from "../ui/DownloadResume";
 
 const fadeInItem = {
 	hidden: { opacity: 0, y: 20 },
@@ -28,7 +27,7 @@ export default function Hero() {
 		>
 			<div className="flex flex-col md:flex-row justify-between items-center gap-10 h-full">
 				{/* LEFT SECTION */}
-				<article className="flex flex-col justify-center items-start text-left max-w-xl w-full space-y-6">
+				<article className="flex flex-col justify-center items-start text-left max-w-2xl w-full space-y-6">
 					<GridPattern
 						width={80}
 						height={80}
@@ -46,7 +45,7 @@ export default function Hero() {
 						initial="hidden"
 						animate="show"
 						custom={0}
-						className="text-xl md:text-2xl text-gray-100 font-semibold"
+						className="text-xl md:text-2xl text-gray-100 font-normal"
 					>
 						Hi, I'm Vikram
 					</motion.h1>
@@ -58,8 +57,8 @@ export default function Hero() {
 						custom={1}
 						className="text-xl md:text-5xl text-neutral-300 leading-tight flex flex-col gap-y-6"
 					>
-						I build clean, performant web experiences with a focus
-						on UI details and performance.
+						Backend Developer Expert in Python & JavaScript APIs and
+						Databases
 						<motion.span
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: 0 }}
@@ -87,22 +86,7 @@ export default function Hero() {
 							onClick={() => openUrl("mailto:vs423502@gmail.com")}
 							aria-label="Reach out via email"
 						/>
-						<a
-							href="/resume.pdf"
-							download
-							className="w-full sm:w-auto"
-						>
-							<HoverButton
-								text="My Resume"
-								icon={<Download />}
-								onClick={() =>
-									downloadMedia(
-										"https://raw.githubusercontent.com/vikramisdev/resume/master/Vikram%20Vishwakarma%20-%20Back-End%20Developer%20-%20Resume.pdf",
-										"Vikram Vishwakarma - Backend Developer.pdf"
-									)
-								}
-							/>
-						</a>
+						<DownloadResume />
 					</motion.div>
 				</article>
 

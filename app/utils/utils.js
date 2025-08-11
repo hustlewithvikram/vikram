@@ -6,16 +6,16 @@ function openUrl(url) {
 
 async function downloadMedia(url, filename) {
     const res = await fetch(url);
-    if (!res.ok) throw new Error('Failed to fetch file');
+    if (!res.ok) throw new Error("Failed to fetch file, status: " + res.status);
     const blob = await res.blob();
-    const blobUrl = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement("a");
     a.href = blobUrl;
-    a.download = filename || 'download';
+    a.download = filename || "download.pdf";
     document.body.appendChild(a);
     a.click();
     a.remove();
-    window.URL.revokeObjectURL(blobUrl);
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
 }
 
 
