@@ -56,7 +56,11 @@ export const AnimatedThemeToggler = ({ className }: Props) => {
 
   return (
 		<button ref={buttonRef} onClick={changeTheme} className={cn(className)}>
-			{isDarkMode ? <SunDim /> : <Moon />}
+			{isDarkMode ? (
+				<SunDim />
+			) : (
+				<Moon className="text-white dark:text-black" />
+			)}
 		</button>
   );
 };
