@@ -57,8 +57,7 @@ export default function Hero() {
 						custom={1}
 						className="text-xl md:text-5xl text-neutral-300 leading-tight flex flex-col gap-y-6"
 					>
-						Backend Developer Expert in Python & JavaScript APIs and
-						Databases
+						Junior Flutter Developer
 						<motion.span
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: 0 }}

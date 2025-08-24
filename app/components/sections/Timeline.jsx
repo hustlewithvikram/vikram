@@ -20,52 +20,53 @@ const sampleEvents = [
 		date: "Jan 2021",
 		title: "Started Learning Web Development",
 		description:
-			"Driven by curiosity about how websites work, I began exploring HTML, CSS, and JavaScript.",
+			"Curiosity about how websites are built pushed me to start with the basics — HTML, CSS, and JavaScript.",
 		icon: <CodeIcon style={{ fontSize: iconSize }} />,
 	},
 	{
 		date: "Jun 2021",
-		title: "Built My First Website",
+		title: "Discovered React.js",
 		description:
-			"My first portfolio was rough—bad layout, awkward colors. But it marked the beginning.",
+			"I built my first interactive UIs using React.js — components, hooks, and props opened a whole new world.",
 		icon: <LanguageIcon style={{ fontSize: iconSize }} />,
 	},
 	{
 		date: "Dec 2021",
-		title: "Learned ReactJs & Tailwind",
+		title: "Mastered Modern Frontend Tools",
 		description:
-			"I explored modern frontend tools like React.js and Tailwind CSS through tutorials.",
+			"Styled projects with Tailwind CSS and explored component-driven design. This boosted my speed and confidence.",
 		icon: <IntegrationInstructionsIcon style={{ fontSize: iconSize }} />,
 	},
 	{
 		date: "Jul 2022",
-		title: "Dived Into Next.js and Advanced UI",
+		title: "Next.js & Advanced Concepts",
 		description:
-			"I began mastering Next.js for SSR, routing, and integrated Figma for design systems.",
+			"Leveled up with Next.js — SSR, API routes, and routing. Started focusing on performance and developer experience.",
 		icon: <RocketLaunchIcon style={{ fontSize: iconSize }} />,
 	},
 	{
 		date: "Nov 2023",
-		title: "Built Fullstack Projects",
+		title: "Fullstack & Auth Projects",
 		description:
-			"Deployed 'ShopNow' (e-commerce app) with authentication, cart, filters, admin panel.",
+			"Built fullstack apps with authentication (NextAuth, Clerk) and deployed e-commerce & dashboards.",
 		icon: <DashboardIcon style={{ fontSize: iconSize }} />,
 	},
 	{
 		date: "Apr 2024",
-		title: "Started Learning Auth and Security",
+		title: "Exploring Mobile Development",
 		description:
-			"Worked on nextjs nextauth authentication as well as clerk auth as well as traditional one's.",
+			"Curiosity led me beyond the web — I started exploring mobile frameworks to expand my reach.",
 		icon: <SecurityIcon style={{ fontSize: iconSize }} />,
 	},
 	{
 		date: "Jul 2025",
-		title: "Building With Refined Skills",
+		title: "Transitioned to Flutter",
 		description:
-			"Now confident across frontend & backend. Focused on UI, performance, and clean code.",
+			"Now focusing on Flutter for cross-platform apps. Blending my frontend background with mobile to deliver smooth, scalable, and modern experiences.",
 		icon: <BuildCircleIcon style={{ fontSize: iconSize }} />,
 	},
 ];
+
 
 const Timeline = () => {
 	const containerRef = useRef(null);

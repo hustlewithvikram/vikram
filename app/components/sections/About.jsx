@@ -71,32 +71,32 @@ const About = () => {
 						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
 					>
 						Based in Maharashtra, India — I am a Computer Science
-						graduate passionate about building robust backend
-						systems and seamless digital experiences.
+						graduate passionate about crafting high-performance
+						mobile applications with Flutter.
 					</motion.p>
 
 					<motion.p
 						variants={fadeUp}
 						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
 					>
-						I build robust, scalable backend systems using{" "}
+						I build scalable, cross-platform apps using{" "}
 						<span className="font-medium dark:text-white">
-							Python
+							Flutter
 						</span>{" "}
-						and <span className="font-medium">JavaScript</span>,
-						focusing on API integration, database management, and
-						server-side performance.
+						and <span className="font-medium">Dart</span>, focusing
+						on smooth UI, efficient state management, and seamless
+						integration with APIs and databases.
 					</motion.p>
 
 					<motion.p
 						variants={fadeUp}
 						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
 					>
-						I’m always looking to push boundaries and create
-						websites that don’t just work — they{" "}
+						I’m driven to push boundaries and create apps that not
+						only perform well — they{" "}
 						<span className="italic dark:text-white">feel</span>{" "}
-						good. Clean, minimal, and motion-enhanced design is my
-						jam.
+						delightful. Clean, minimal interfaces enhanced with
+						subtle motion are my signature.
 					</motion.p>
 				</motion.article>
 			</motion.div>
