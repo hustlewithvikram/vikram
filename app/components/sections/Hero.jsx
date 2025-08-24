@@ -91,7 +91,7 @@ export default function Hero() {
 				</article>
 
 				{/* RIGHT SECTION */}
-				<aside className="relative md:w-[420px] md:h-[420px] w-[380px] h-[380px] rounded-full overflow-hidden flex-shrink-0 bg-themeColor">
+				<aside className="relative md:w-[420px] md:h-[420px] w-screen h-[380px] rounded-t-full md:rounded-full overflow-hidden flex-shrink-0 bg-themeColor">
 					<motion.div
 						variants={fadeInItem}
 						initial="hidden"
