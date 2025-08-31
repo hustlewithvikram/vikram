@@ -5,31 +5,22 @@ import { useEffect, useState, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
+// ✅ Cleaned skill list: only web-dev + essential tools
 const skills = [
-	{ name: "Next.js", progress: 65 },
-	{ name: "React", progress: 70 },
-	{ name: "Tailwind CSS", progress: 65 },
-	{ name: "Redux / RTK", progress: 40 },
-	{ name: "JavaScript", progress: 65 },
-	{ name: "TypeScript", progress: 45 },
-	{ name: "Node.js", progress: 48 },
-	{ name: "Express", progress: 30 },
-	{ name: "MongoDB", progress: 35 },
-	{ name: "REST APIs", progress: 36 },
-	{ name: "Auth (NextAuth)", progress: 42 },
-	{ name: "Python", progress: 78 },
-	{ name: "Java", progress: 55 },
-	{ name: "MySQL", progress: 40 },
-	{ name: "Git & GitHub", progress: 60 },
-	{ name: "Cloudinary / CDN", progress: 40 },
+	{ name: "Next.js", progress: 70 },
+	{ name: "React", progress: 75 },
+	{ name: "JavaScript", progress: 70 },
+	{ name: "TypeScript", progress: 50 },
+	{ name: "Tailwind CSS", progress: 68 },
+	{ name: "Redux / RTK", progress: 45 },
+	{ name: "Node.js", progress: 55 },
+	{ name: "Express", progress: 42 },
+	{ name: "MongoDB", progress: 48 },
+	{ name: "REST APIs", progress: 52 },
+	{ name: "Auth (NextAuth)", progress: 46 },
+	{ name: "Git & GitHub", progress: 65 },
+	{ name: "Cloudinary / CDN", progress: 45 },
 ];
-
-const getColorClass = (progress: number, isDark: boolean) => {
-	if (progress <= 25) return isDark ? "bg-red-400" : "bg-red-500";
-	if (progress <= 50) return isDark ? "bg-orange-400" : "bg-orange-500";
-	if (progress <= 75) return isDark ? "bg-yellow-300" : "bg-yellow-400";
-	return isDark ? "bg-green-400" : "bg-green-500";
-};
 
 function SkillItem({
 	skill,
@@ -59,31 +50,21 @@ function SkillItem({
 		}, 20);
 	};
 
-	const resetProgress = () => {
-		if (intervalRef.current) clearInterval(intervalRef.current);
-		setAnimatedProgress(0);
-	};
-
-	// Animate automatically when in view
 	useEffect(() => {
 		if (inView) animateProgress(skill.progress);
 	}, [inView, skill.progress]);
 
-	const isDark =
-		typeof document !== "undefined" &&
-		document.documentElement.classList.contains("dark");
-
 	return (
 		<motion.div
 			ref={ref}
-			className="bg-white group dark:bg-zinc-950 rounded-full px-5 py-4 flex items-center justify-between gap-4 shadow-sm select-none"
+			className="bg-white dark:bg-zinc-900 rounded-xl px-5 py-4 flex flex-col gap-3 shadow-sm hover:shadow-md transition-all duration-200"
 			variants={{
 				hidden: { opacity: 0, y: 20 },
 				show: { opacity: 1, y: 0 },
 			}}
 			onClick={() => {
 				if (isMobile) {
-					if (animatedProgress > 0) resetProgress();
+					if (animatedProgress > 0) setAnimatedProgress(0);
 					else animateProgress(skill.progress);
 				}
 			}}
@@ -93,28 +74,30 @@ function SkillItem({
 			aria-valuemax={100}
 			aria-label={`${skill.name} skill level ${animatedProgress}%`}
 		>
-			<span className="text-sm font-medium text-gray-800 dark:text-gray-200 min-w-[90px]">
-				{skill.name}
-			</span>
-			<div className="w-full h-full bg-gray-300 dark:bg-zinc-800 rounded-full overflow-hidden">
+			{/* Label + % */}
+			<div className="flex items-center justify-between">
+				<span className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+					{skill.name}
+				</span>
+				<motion.span
+					key={animatedProgress}
+					initial={{ scale: 0.9, opacity: 0 }}
+					animate={{ scale: 1, opacity: 1 }}
+					transition={{ duration: 0.2 }}
+					className="text-sm font-semibold text-zinc-600 dark:text-zinc-300"
+				>
+					{animatedProgress}%
+				</motion.span>
+			</div>
+
+			{/* Progress bar */}
+			<div className="w-full h-10 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
 				<motion.div
-					className={`h-full rounded-full ${getColorClass(
-						skill.progress,
-						isDark
-					)}`}
+					className="h-full rounded-full bg-black dark:bg-gray-200"
 					style={{ width: `${animatedProgress}%` }}
-					transition={{ duration: 0.3, ease: "easeOut" }}
+					transition={{ duration: 0.4, ease: "easeOut" }}
 				/>
 			</div>
-			<motion.span
-				key={animatedProgress}
-				initial={{ scale: 0.8, opacity: 0 }}
-				animate={{ scale: 1, opacity: 1 }}
-				transition={{ duration: 0.2 }}
-				className="text-md font-semibold w-12 text-right text-gray-700 dark:text-gray-300"
-			>
-				{animatedProgress}%
-			</motion.span>
 		</motion.div>
 	);
 }
@@ -132,16 +115,16 @@ export default function SkillGrid() {
 	}, []);
 
 	return (
-		<div id="skills" className="flex flex-col mt-16">
+		<div id="skills" className="flex flex-col mt-20">
 			{/* Header */}
-			<div className="flex items-center gap-x-4 px-4 py-2 md:mx-12 mx-4 rounded-full text-lg bg-black text-white w-fit">
-				<CodeOffRounded className="size-6" />
-				<h1 className="font-semibold">Tech Stack</h1>
+			<div className="flex items-center gap-x-3 px-6 py-2 md:mx-12 mx-4 w-fit">
+				<CodeOffRounded className="size-5" />
+				<h1 className="font-medium">Tech Stack</h1>
 			</div>
 
 			{/* Grid */}
 			<motion.div
-				className="md:px-12 px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4"
+				className="md:px-12 px-4 py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
 				initial="hidden"
 				animate="show"
 				variants={{

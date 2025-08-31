@@ -1,30 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { GridPattern } from "../../../components/magicui/grid-pattern";
-import { cn } from "../../../lib/utils";
 
-const containerVariants = {
+const container = {
 	hidden: {},
 	show: {
-		transition: {
-			staggerChildren: 0.2,
-			delayChildren: 0.2,
-		},
+		transition: { staggerChildren: 0.15, delayChildren: 0.2 },
 	},
 };
 
 const fadeUp = {
-	hidden: { opacity: 0, y: 40 },
+	hidden: { opacity: 0, y: 20 },
 	show: {
 		opacity: 1,
 		y: 0,
-		transition: {
-			duration: 0.6,
-			ease: [0.25, 0.8, 0.25, 1], // easeInOutExpo-like
-		},
+		transition: { duration: 0.6, ease: [0.25, 0.8, 0.25, 1] },
 	},
 };
 
@@ -32,73 +23,76 @@ const About = () => {
 	return (
 		<section
 			id="about"
-			className="dark:bg-[#111] bg-background min-h-screen flex items-center justify-center px-6 py-20 md:px-12"
+			className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-20 bg-gradient-to-b from-white to-gray-50 dark:from-[#0b0b0b] dark:to-[#111] transition-colors"
 		>
-			<GridPattern
-				width={80}
-				height={80}
-				x={-1}
-				y={-1}
-				stroke="black"
-				className={cn(
-					"[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
-				)}
-				aria-hidden="true"
-				role="presentation"
-			/>
-
 			<motion.div
-				variants={containerVariants}
+				variants={container}
 				initial="hidden"
 				whileInView="show"
 				viewport={{ once: true }}
-				className="flex flex-col md:flex-row items-center gap-12 w-full"
+				className="max-w-6xl mx-auto flex flex-col gap-12"
 			>
-				{/* Text Content */}
-				<motion.article
-					variants={fadeUp}
-					className="flex-1 text-left space-y-5"
-				>
-					<h3 className="text-2xl md:text-7xl font-semibold text-black dark:text-white">
-						Hi, Its{" "}
-						<span className="text-red-600 dark:opacity-100 dark:text-orange-500 opacity-50 font-questrial">
+				{/* Heading */}
+				<motion.div variants={fadeUp} className="space-y-6">
+					<div className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 text-sm font-medium">
+						About Me
+					</div>
+
+					<h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight text-gray-900 dark:text-white">
+						Hi, I’m{" "}
+						<span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
 							Vikram Vishwakarma
 						</span>
-					</h3>
+					</h1>
 
-					<motion.p
-						variants={fadeUp}
-						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
-					>
-						Based in Maharashtra, India — I am a Computer Science
-						graduate passionate about crafting high-performance
-						mobile applications with Flutter.
-					</motion.p>
-
-					<motion.p
-						variants={fadeUp}
-						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
-					>
-						I build scalable, cross-platform apps using{" "}
-						<span className="font-medium dark:text-white">
-							Flutter
+					<p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
+						Based in Maharashtra, India — I’m a{" "}
+						<span className="font-semibold">
+							Computer Science graduate
 						</span>{" "}
-						and <span className="font-medium">Dart</span>, focusing
-						on smooth UI, efficient state management, and seamless
-						integration with APIs and databases.
-					</motion.p>
+						and{" "}
+						<span className="font-semibold text-gray-900 dark:text-white">
+							React.js & React Native Developer
+						</span>{" "}
+						passionate about crafting clean, modern, and
+						user-focused digital experiences.
+					</p>
+				</motion.div>
 
-					<motion.p
-						variants={fadeUp}
-						className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg"
-					>
-						I’m driven to push boundaries and create apps that not
-						only perform well — they{" "}
-						<span className="italic dark:text-white">feel</span>{" "}
-						delightful. Clean, minimal interfaces enhanced with
-						subtle motion are my signature.
-					</motion.p>
-				</motion.article>
+				{/* Body */}
+				<motion.div
+					variants={fadeUp}
+					className="space-y-6 text-lg md:text-xl"
+				>
+					<p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+						I build{" "}
+						<span className="font-medium">scalable web apps</span>{" "}
+						with{" "}
+						<span className="font-semibold text-sky-600 dark:text-sky-400">
+							React.js
+						</span>{" "}
+						and{" "}
+						<span className="font-medium">
+							cross-platform mobile apps
+						</span>{" "}
+						with{" "}
+						<span className="font-semibold text-indigo-600 dark:text-indigo-400">
+							React Native
+						</span>
+						. My expertise spans UI/UX, animations, Firebase
+						integrations, and seamless backend connections.
+					</p>
+
+					<p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+						My philosophy:{" "}
+						<span className="italic text-gray-900 dark:text-white">
+							design simplicity
+						</span>{" "}
+						+ <span className="italic">engineering excellence</span>
+						. I strive to build apps that not only work flawlessly
+						but feel natural and delightful to use.
+					</p>
+				</motion.div>
 			</motion.div>
 		</section>
 	);
