@@ -91,7 +91,7 @@ const TimelineCard = React.memo(({ item, isActive, onClick, isMobile }) => {
 				transition={{ duration: 0.3 }}
 				className="relative"
 			>
-				<div className="absolute flex justify-center items-center -left-8 top-12 w-6 h-6 rounded-full bg-purple-300 dark:bg-gray-50 text-white text-sm z-10 shadow-lg">
+				<div className="absolute flex justify-center items-center -left-8 top-12 w-6 h-6 rounded-full bg-purple-300 dark:bg-gray-50 dark:text-black text-white text-sm z-10 shadow-lg">
 					{item.id}
 				</div>
 
@@ -104,12 +104,7 @@ const TimelineCard = React.memo(({ item, isActive, onClick, isMobile }) => {
 					}`}
 				>
 					<div className="flex items-center justify-between mb-3">
-						<div className="flex items-center gap-3">
-							<span
-								className={`text-2xl bg-gradient-to-r ${item.color} bg-clip-text text-transparent`}
-							>
-								{item.icon}
-							</span>
+						<div className="h-fit gap-3">
 							<span className="text-sm font-semibold text-neutral-600 dark:text-neutral-300 bg-white/50 dark:bg-neutral-800/50 py-1 px-3 rounded-full">
 								{item.date}
 							</span>

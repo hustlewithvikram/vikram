@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail } from "@mui/icons-material";
 import Image from "next/image";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { sendEmail } from "../../../lib/utils";
 
 const Hero = () => {
 	const isMobile = useMediaQuery("(max-width:768px)");
@@ -85,6 +86,12 @@ const Hero = () => {
 					</h1>
 					<div className="h-3" />
 					<motion.button
+						onClick={() => {
+							sendEmail(
+								"Regarding some service",
+								"Hey vikram, I wanted to know that ..."
+							);
+						}}
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ delay: 0.8 }}
