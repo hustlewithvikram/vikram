@@ -17,7 +17,7 @@ const Footer = () => {
 		>
 			{/* Heading */}
 			<h2 className="text-2xl font-bold mb-6 border-b border-gray-700 w-fit pb-2">
-				Contact Me
+				Contacts
 			</h2>
 
 			{/* Contact Info */}

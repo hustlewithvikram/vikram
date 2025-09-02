@@ -5,16 +5,16 @@ import "aos/dist/aos.css";
 import LocomotiveScroll from "locomotive-scroll";
 import { useEffect, useRef, useState } from "react";
 import About from "./components/sections/About";
-import Hero from "./components/sections/Hero";
+import NewHeroSection from "./components/sections/Hero";
 import Projects from "./components/sections/Projects";
 import DarkMode from "./components/ui/DarkMode";
 import SkillGrid from "./components/ui/SkillGrid";
 import Footer from "@/app/components/sections/Footer";
-
 import FloatNavBar from "./components/ui/FloatNavBar";
 import Skills from "./components/sections/Skills";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Timeline from "./components/sections/Timeline";
+import Hero from "./components/sections/Hero";
 
 export default function Home() {
 	const [isMobile, setIsMobile] = useState(false);

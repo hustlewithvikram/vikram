@@ -40,7 +40,7 @@ const About = () => {
 
 					<h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight text-gray-900 dark:text-white">
 						Hi, I’m{" "}
-						<span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+						<span className="text-blue-400">
 							Vikram Vishwakarma
 						</span>
 					</h1>
