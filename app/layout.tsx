@@ -25,7 +25,7 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<head>
-				<link rel="icon" href="/images/profile_round.ico" />
+				<link rel="icon" href="/images/vikram.ico" />
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{

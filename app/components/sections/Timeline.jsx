@@ -99,13 +99,13 @@ const TimelineCard = React.memo(({ item, isActive, onClick, isMobile }) => {
 					onClick={() => onClick(item.id)}
 					className={`w-full text-left rounded-2xl p-5 transition-all duration-300 backdrop-blur-sm border ${
 						isActive
-							? "bg-white/90 dark:bg-neutral-900/90 shadow-xl border-white/20"
-							: "bg-white/70 dark:bg-neutral-800/70 shadow-md hover:shadow-lg border-white/10"
+							? "bg-white/90 dark:bg-neutral-950/50 shadow-xl border-white/20"
+							: "bg-white/70 dark:bg-neutral-900/90 shadow-md hover:shadow-lg border-white/10"
 					}`}
 				>
 					<div className="flex items-center justify-between mb-3">
 						<div className="h-fit gap-3">
-							<span className="text-sm font-semibold text-neutral-600 dark:text-neutral-300 bg-white/50 dark:bg-neutral-800/50 py-1 px-3 rounded-full">
+							<span className="text-sm font-semibold text-neutral-600 dark:text-neutral-300 bg-white/50 dark:bg-neutral-800/50 py-1 rounded-full">
 								{item.date}
 							</span>
 						</div>
@@ -206,7 +206,7 @@ export default function Timeline() {
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.5 }}
-					className="text-3xl font-bold text-center mb-10 text-neutral-900 dark:text-neutral-100"
+					className="text-md mb-10 bg-blue-200 dark:bg-blue-950 text-blue-950 dark:text-blue-200 w-fit px-4 py-2 rounded-full"
 				>
 					My Journey
 				</motion.h2>
@@ -217,7 +217,7 @@ export default function Timeline() {
 						initial={{ height: 0 }}
 						animate={{ height: "100%" }}
 						transition={{ duration: 1, delay: 0.2 }}
-						className="absolute left-0 top-0 w-1 bg-gray-200"
+						className="absolute left-0 top-0 w-1 bg-neutral-800"
 					/>
 
 					<div className="flex flex-col gap-6">

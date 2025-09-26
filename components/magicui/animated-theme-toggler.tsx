@@ -1,7 +1,7 @@
 "use client";
 
 import { Moon, SunDim } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { flushSync } from "react-dom";
 import { cn } from "@/lib/utils";
 
@@ -10,24 +10,37 @@ type Props = {
 };
 
 export const AnimatedThemeToggler = ({ className }: Props) => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+	const [isDarkMode, setIsDarkMode] = useState(false);
+	const buttonRef = useRef<HTMLButtonElement | null>(null);
 
-  const changeTheme = async () => {
+	// On mount, read saved theme from localStorage
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			const savedTheme = localStorage.getItem("theme");
+			if (savedTheme) {
+				const dark = savedTheme === "dark";
+				setIsDarkMode(dark);
+				document.documentElement.classList.toggle("dark", dark);
+			}
+		}
+	}, []);
+
+	const changeTheme = async () => {
 		if (!buttonRef.current || typeof document === "undefined") return;
 
 		const doThemeChange = () => {
 			flushSync(() => {
 				const dark = document.documentElement.classList.toggle("dark");
 				setIsDarkMode(dark);
+				localStorage.setItem("theme", dark ? "dark" : "light"); // persist theme
 			});
 		};
 
-		// If startViewTransition is supported
+		// Animate with View Transitions if supported
 		if (document.startViewTransition) {
 			await document.startViewTransition(doThemeChange).ready;
 		} else {
-			doThemeChange(); // Fallback for unsupported browsers
+			doThemeChange(); // fallback
 		}
 
 		const { top, left, width, height } =
@@ -52,9 +65,9 @@ export const AnimatedThemeToggler = ({ className }: Props) => {
 				pseudoElement: "::view-transition-new(root)",
 			}
 		);
-  };
+	};
 
-  return (
+	return (
 		<button ref={buttonRef} onClick={changeTheme} className={cn(className)}>
 			{isDarkMode ? (
 				<SunDim />
@@ -62,5 +75,5 @@ export const AnimatedThemeToggler = ({ className }: Props) => {
 				<Moon className="text-white dark:text-black" />
 			)}
 		</button>
-  );
+	);
 };

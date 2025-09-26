@@ -57,7 +57,13 @@ const config: Config = {
 			backdropBlur: {
 				sm: "4px",
 			},
+			clipPath: {
+				// rounded nonagon (example)
+				"nonagon-rounded":
+					"path('M 150,0 L 260,50 A 20,20 0 0 1 280,80 L 290,150 A 20,20 0 0 1 270,180 L 230,250 A 20,20 0 0 1 200,260 L 100,260 A 20,20 0 0 1 70,250 L 30,180 A 20,20 0 0 1 10,150 L 20,80 A 20,20 0 0 1 40,50 Z')",
+			},
 		},
 	},
+	plugins: [require("tailwind-clip-path")],
 };
 export default config;

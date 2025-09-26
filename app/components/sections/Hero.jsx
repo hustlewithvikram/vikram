@@ -1,107 +1,107 @@
-/* eslint-disable react/no-unescaped-entities */
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail } from "@mui/icons-material";
 import Image from "next/image";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { sendEmail } from "../../../lib/utils";
+import { ArrowRight, ArrowRightAltRounded } from "@mui/icons-material";
+import { ArrowRightToLine } from "lucide-react";
 
 const Hero = () => {
-	const isMobile = useMediaQuery("(max-width:768px)");
-
-	// Animation dictionaries
-	const leftShapeVariants = isMobile
-		? {
-				hidden: { x: "-100%", y: 0, opacity: 0, rotate: 0 },
-				show: { x: 0, y: 0, opacity: 1, rotate: 0 },
-		  }
-		: {
-				hidden: { x: "-100%", y: "-100%", opacity: 0, rotate: 35 },
-				show: { x: "-50%", y: "-50%", opacity: 1, rotate: 35 },
-		  };
-
-	const rightShapeVariants = isMobile
-		? {
-				hidden: { x: "100%", y: 0, opacity: 0, rotate: 0 },
-				show: { x: 0, y: 0, opacity: 1, rotate: 0 },
-		  }
-		: {
-				hidden: { x: "100%", y: "100%", opacity: 0, rotate: 35 },
-				show: { x: "50%", y: "50%", opacity: 1, rotate: 35 },
-		  };
+	const fadeUp = {
+		hidden: { opacity: 0, y: 20 },
+		show: (i = 0) => ({
+			opacity: 1,
+			y: 0,
+			transition: { delay: i * 0.2, duration: 0.8, ease: "easeOut" },
+		}),
+	};
 
 	return (
-		<div className="h-screen w-full relative overflow-hidden">
-			{/* Left diagonal shape (top-left) */}
-			<motion.div
-				variants={leftShapeVariants}
-				initial="hidden"
-				animate="show"
-				transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-				className={`absolute top-0 left-0 bg-blue-200 md:border-[30px] border-blue-50 dark:bg-blue-300
-					${
-						isMobile
-							? "h-[40vh] w-screen rounded-b-full flex justify-center"
-							: "md:h-[80vh] md:w-[110vw] rounded-r-full flex md:justify-end items-center"
-					}`}
-			>
-				<Image
-					src="/images/vikram.jpg"
-					alt="vikram vishwakarma"
-					width={400}
-					height={400}
-					className={`${
-						isMobile
-							? "size-[180px] mt-8"
-							: "md:size-[300px] md:rotate-[-35deg] mr-32"
-					} rounded-full`}
-				/>
-			</motion.div>
-
-			{/* Right diagonal shape (bottom-right) */}
-			<motion.div
-				variants={rightShapeVariants}
-				initial="hidden"
-				animate="show"
-				transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-				className={`absolute bottom-0 right-0 bg-purple-200 md:border-[30px] md:border-purple-50 dark:bg-purple-300
-					${
-						isMobile
-							? "h-[40vh] pt-8 w-screen rounded-t-full flex justify-center border-none"
-							: "md:h-[80vh] md:w-[110vw] rounded-l-full flex md:justify-start justify-end items-center"
-					}`}
-			>
-				<div
-					className={`${
-						isMobile
-							? "text-center mt-4 px-4"
-							: "md:rotate-[-35deg] ml-32"
-					}`}
+		<div className="min-h-screen w-full flex items-center justify-center bg-white dark:bg-black px-6 py-12">
+			<div className="max-w-6xl w-full flex flex-col md:flex-row gap-12 md:gap-20 items-center">
+				{/* Image Section */}
+				<motion.div
+					variants={fadeUp}
+					custom={1}
+					initial="hidden"
+					animate="show"
+					className="flex justify-center"
 				>
-					<h1 className="text-4xl md:font-bold font-poppins">
-						Vikram Vishwakarma
-					</h1>
-					<h1 className="text-opacity-65">
-						ReactJs & React Native Developer
-					</h1>
-					<div className="h-3" />
-					<motion.button
-						onClick={() => {
-							sendEmail(
-								"Regarding some service",
-								"Hey vikram, I wanted to know that ..."
-							);
-						}}
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						transition={{ delay: 0.8 }}
-						className="px-3 py-2 rounded-full flex bg-white md:mx-0 mx-auto"
+					<div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 overflow-hidden">
+						<Image
+							src="/images/vikram_nonagon.png"
+							alt="Vikram Vishwakarma"
+							fill
+							className="object-cover "
+						/>
+					</div>
+				</motion.div>
+
+				{/* Text Section */}
+				<motion.div
+					initial="hidden"
+					animate="show"
+					variants={fadeUp}
+					className="space-y-6 text-center md:text-left"
+				>
+					<motion.h1
+						variants={fadeUp}
+						custom={0}
+						className="text-2xl sm:text-2xl md:text-5xl lg:text-5xl font-semibold tracking-tight text-gray-900 dark:text-white"
 					>
-						<Mail className="mr-2" />
-						<span>Let's Work</span>
+						Vikram Vishwakarma
+					</motion.h1>
+
+					<motion.h2
+						variants={fadeUp}
+						custom={1}
+						className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-light"
+					>
+						React & React Native Developer
+					</motion.h2>
+
+					<motion.p
+						variants={fadeUp}
+						custom={2}
+						className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0"
+					>
+						I craft modern digital products with React ecosystems —
+						focused on performance, clarity, and user delight.
+					</motion.p>
+
+					<motion.div
+						variants={fadeUp}
+						custom={3}
+						className="flex flex-wrap justify-center md:justify-start gap-2 text-sm text-gray-700 dark:text-gray-300"
+					>
+						{["React", "React Native", "UI/UX"].map((skill) => (
+							<span
+								key={skill}
+								className="px-3 py-1 rounded-full bg-blue-200 dark:bg-blue-950"
+							>
+								{skill}
+							</span>
+						))}
+					</motion.div>
+
+					<motion.button
+						variants={fadeUp}
+						custom={4}
+						whileHover={{ y: -2 }}
+						whileTap={{ scale: 0.98 }}
+						onClick={() =>
+							sendEmail(
+								"Potential Collaboration",
+								"Hello Vikram, I'd like to discuss a project opportunity..."
+							)
+						}
+						className="mt-6 inline-flex items-center gap-3 justify-center px-6 py-3 rounded-full bg-purple-300 font-medium mx-auto md:mx-0"
+					>
+						<span>Start a Project</span>
+						<ArrowRightToLine />
 					</motion.button>
-				</div>
-			</motion.div>
+				</motion.div>
+			</div>
 		</div>
 	);
 };
