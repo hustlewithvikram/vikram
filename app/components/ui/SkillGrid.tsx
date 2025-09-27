@@ -118,8 +118,9 @@ export default function SkillGrid() {
 		<div id="skills" className="flex flex-col mt-20">
 			{/* Header */}
 			<div className="flex items-center gap-x-3 px-6 py-2 md:mx-12 mx-4 w-fit">
-				<CodeOffRounded className="size-5" />
-				<h1 className="font-medium">Tech Stack</h1>
+				<h1 className="font-medium text-xs bg-red-200 dark:bg-red-300 text-red-800 px-3 py-2 rounded-full">
+					Tech Stack
+				</h1>
 			</div>
 
 			{/* Grid */}

@@ -23,14 +23,14 @@ const About = () => {
 	return (
 		<section
 			id="about"
-			className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-20 bg-gradient-to-b from-white to-gray-50 dark:from-[#0b0b0b] dark:to-[#111] transition-colors"
+			className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-20 bg-gradient-to-b bg-white dark:bg-[#0b0b0b] transition-colors"
 		>
 			<motion.div
 				variants={container}
 				initial="hidden"
 				whileInView="show"
 				viewport={{ once: true }}
-				className="max-w-6xl mx-auto flex flex-col gap-12"
+				className="max-w-7xl mx-auto flex flex-col gap-12"
 			>
 				{/* Heading */}
 				<motion.div variants={fadeUp} className="space-y-6">
@@ -68,7 +68,7 @@ const About = () => {
 						I build{" "}
 						<span className="font-medium">scalable web apps</span>{" "}
 						with{" "}
-						<span className="font-semibold text-sky-600 dark:text-sky-400">
+						<span className="font-semibold text-blue-600 dark:text-blue-400">
 							React.js
 						</span>{" "}
 						and{" "}

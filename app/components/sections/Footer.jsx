@@ -1,82 +1,84 @@
-import React from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa6";
+import { Phone, Email } from "@mui/icons-material"; // MUI icons
 import { openUrl } from "../../utils/utils";
 
-const githubUrl = "https://github.com/vikramisdev";
-const instagramUrl = "https://instagram.com/vikramisdev";
-const facebookUrl = "https://facebook.com/vikramisdev";
-const twitterUrl = "https://x.com/vikramisdev";
-const email = "vs423502@gmail.com";
-const phone = "+918805469136";
+const CONTACTS = {
+	github: "https://github.com/vikramisdev",
+	instagram: "https://instagram.com/vikramisdev",
+	facebook: "https://facebook.com/vikramisdev",
+	twitter: "https://x.com/vikramisdev",
+	email: "vs423502@gmail.com",
+	phone: "+918805469136",
+};
 
-const Footer = () => {
+export default function Footer() {
 	return (
-		<footer
-			id="contact"
-			className="bg-black text-white px-6 md:px-24 py-12 md:py-24 rounded-3xl m-4"
-		>
-			{/* Heading */}
-			<h2 className="text-2xl font-bold mb-6 border-b border-gray-700 w-fit pb-2">
-				Contacts
+		<footer className="bg-black text-white px-6 md:px-24 py-12 md:py-24 rounded-3xl m-4 relative overflow-hidden">
+			<h2 className="text-2xl md:text-3xl font-bold mb-8 border-b border-gray-700 w-fit pb-2">
+				Contact Me
 			</h2>
 
 			{/* Contact Info */}
-			<div className="space-y-2 text-sm md:text-base">
-				<p>
-					<strong>Phone:</strong>{" "}
-					<a
-						href={`tel:${phone}`}
-						className="hover:underline text-gray-300"
-					>
-						{phone}
-					</a>
-				</p>
-				<p>
-					<strong>Email:</strong>{" "}
-					<a
-						href={`mailto:${email}`}
-						className="hover:underline text-gray-300"
-					>
-						{email}
-					</a>
-				</p>
+			<div className="space-y-3 md:space-y-2 my-6 text-sm md:text-base">
+				<ContactItem
+					value={CONTACTS.phone}
+					href={`tel:${CONTACTS.phone}`}
+					icon={<Phone />}
+				/>
+				<ContactItem
+					value={CONTACTS.email}
+					href={`mailto:${CONTACTS.email}`}
+					icon={<Email />}
+				/>
 			</div>
 
 			{/* Social Links */}
-			<div className="flex flex-wrap gap-4 mt-6">
+			<div className="flex flex-wrap gap-4">
 				<SocialIcon
-					url={instagramUrl}
+					url={CONTACTS.instagram}
 					label="Instagram"
 					icon={<FaInstagram />}
 				/>
 				<SocialIcon
-					url={facebookUrl}
+					url={CONTACTS.facebook}
 					label="Facebook"
 					icon={<FaFacebook />}
 				/>
 				<SocialIcon
-					url={twitterUrl}
+					url={CONTACTS.twitter}
 					label="Twitter"
 					icon={<FaTwitter />}
 				/>
 				<SocialIcon
-					url={githubUrl}
+					url={CONTACTS.github}
 					label="GitHub"
 					icon={<FaGithub />}
 				/>
 			</div>
 		</footer>
 	);
-};
+}
 
-export default Footer;
+// Contact Item
+function ContactItem({ value, href, icon }) {
+	return (
+		<a
+			href={href}
+			className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-200"
+		>
+			{icon} {/* MUI icon instead of label */}
+			<span>{value}</span>
+		</a>
+	);
+}
 
+// Social Icon
 function SocialIcon({ url, label, icon }) {
 	return (
 		<button
 			onClick={() => openUrl(url)}
 			aria-label={label}
-			className="group flex items-center gap-2 text-white bg-zinc-800 hover:bg-white hover:text-black px-2 py-2 rounded-full transition-all duration-200"
+			className="group flex items-center gap-2 text-white bg-zinc-800 hover:bg-white hover:text-black px-4 py-2 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-lg"
 		>
 			<span className="text-xl">{icon}</span>
 			<span className="hidden sm:inline text-sm font-medium">

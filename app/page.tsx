@@ -1,33 +1,29 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import LocomotiveScroll from "locomotive-scroll";
-import { useEffect, useRef, useState } from "react";
-import About from "./components/sections/About";
-import NewHeroSection from "./components/sections/Hero";
-import Projects from "./components/sections/Projects";
-import DarkMode from "./components/ui/DarkMode";
-import SkillGrid from "./components/ui/SkillGrid";
-import Footer from "@/app/components/sections/Footer";
-import FloatNavBar from "./components/ui/FloatNavBar";
-import Skills from "./components/sections/Skills";
-import ScrollToTop from "./components/ui/ScrollToTop";
-import Timeline from "./components/sections/Timeline";
+
+// Sections & UI components
 import Hero from "./components/sections/Hero";
+import About from "./components/sections/About";
+import Projects from "./components/sections/Projects";
+import Skills from "./components/sections/Skills";
+import Timeline from "./components/sections/Timeline";
+import Footer from "@/app/components/sections/Footer";
+import DarkMode from "./components/ui/DarkMode";
+import ScrollToTop from "./components/ui/ScrollToTop";
 
 export default function Home() {
 	const [isMobile, setIsMobile] = useState(false);
 	const scrollRef = useRef<HTMLDivElement | null>(null);
 
 	useEffect(() => {
-		// Check screen size
-		const checkScreenSize = () => {
-			setIsMobile(window.innerWidth < 768);
-		};
+		const handleResize = () => setIsMobile(window.innerWidth < 768);
 
-		checkScreenSize();
-		window.addEventListener("resize", checkScreenSize);
+		handleResize();
+		window.addEventListener("resize", handleResize);
 
 		let locoScroll: LocomotiveScroll | null = null;
 
@@ -47,12 +43,11 @@ export default function Home() {
 			});
 		}
 
-		AOS.init();
+		AOS.init({ once: true, duration: 800 });
 
-		// Cleanup function
 		return () => {
 			locoScroll?.destroy();
-			window.removeEventListener("resize", checkScreenSize);
+			window.removeEventListener("resize", handleResize);
 		};
 	}, [isMobile]);
 
@@ -60,11 +55,11 @@ export default function Home() {
 		<div
 			data-scroll-container
 			ref={scrollRef}
-			className={`bg-background dark:bg-[#111] transition-all md:duration-700 ${
+			className={`bg-white dark:bg-[#0b0b0b] transition-colors duration-700 ${
 				isMobile ? "scroll-smooth" : ""
 			}`}
 		>
-			{/* absolute components */}
+			{/* UI Components */}
 			<DarkMode />
 			<ScrollToTop />
 

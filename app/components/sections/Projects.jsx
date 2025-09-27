@@ -6,7 +6,7 @@ import { Web } from "@mui/icons-material";
 
 const categories = [
 	{
-		title: "ReactJS & React Native Projects",
+		title: "ReactJS Projects",
 		icon: <Web className="text-gray-800 dark:text-gray-200" />,
 		projects: [
 			{
@@ -40,8 +40,7 @@ export default function Projects() {
 					<div key={index}>
 						{/* Category Header */}
 						<div className="flex items-center gap-3 mb-8 px-4">
-							{category.icon}
-							<h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+							<h3 className="text-xs font-semibold text-amber-800 bg-amber-100 dark:text-amber-900 dark:bg-amber-400 px-3 py-2 rounded-full">
 								{category.title}
 							</h3>
 						</div>

@@ -17,24 +17,52 @@ const Hero = () => {
 	};
 
 	return (
-		<div className="min-h-screen w-full flex items-center justify-center bg-white dark:bg-black px-6 py-12">
+		<div className="min-h-screen w-full flex items-center justify-center px-6 py-12">
 			<div className="max-w-6xl w-full flex flex-col md:flex-row gap-12 md:gap-20 items-center">
 				{/* Image Section */}
 				<motion.div
-					variants={fadeUp}
-					custom={1}
-					initial="hidden"
-					animate="show"
-					className="flex justify-center"
+					className="relative w-full max-w-[15rem] md:max-w-[26rem] aspect-square overflow-hidden" // aspect-square keeps it square
+					initial={{ opacity: 0, scale: 0.6 }}
+					animate={{ opacity: 1, scale: 1 }}
+					transition={{
+						type: "spring",
+						stiffness: 100,
+						damping: 10,
+						bounce: 1,
+						duration: 1,
+					}}
 				>
-					<div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 overflow-hidden">
-						<Image
-							src="/images/vikram_nonagon.png"
-							alt="Vikram Vishwakarma"
-							fill
-							className="object-cover "
+					<svg
+						className="absolute w-full h-full"
+						viewBox="0 0 400 400" // set proper viewBox for scaling
+						preserveAspectRatio="xMidYMid slice"
+					>
+						<mask id="mask">
+							<motion.g
+								initial={{ rotate: 0 }}
+								animate={{ rotate: 360 }}
+								transition={{
+									duration: 30,
+									repeat: Infinity,
+									ease: "linear",
+								}}
+							>
+								<image
+									href="/images/nonagon.svg"
+									width="100%"
+									height="100%"
+								/>
+							</motion.g>
+						</mask>
+
+						<image
+							href="/images/vikram.jpg"
+							width="100%"
+							height="100%"
+							mask="url(#mask)"
+							preserveAspectRatio="xMidYMid slice"
 						/>
-					</div>
+					</svg>
 				</motion.div>
 
 				{/* Text Section */}
@@ -57,13 +85,20 @@ const Hero = () => {
 						custom={1}
 						className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-light"
 					>
-						React & React Native Developer
+						<span className="text-blue-600 dark:text-blue-400 font-normal">
+							React
+						</span>{" "}
+						<span className="font-normal">&</span>{" "}
+						<span className="text-indigo-600 dark:text-indigo-400 font-normal">
+							React Native
+						</span>{" "}
+						<span className="font-normal">Developer</span>
 					</motion.h2>
 
 					<motion.p
 						variants={fadeUp}
 						custom={2}
-						className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs mx-auto md:mx-0"
+						className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs md:max-w-lg mx-auto md:mx-0"
 					>
 						I craft modern digital products with React ecosystems —
 						focused on performance, clarity, and user delight.
@@ -87,18 +122,20 @@ const Hero = () => {
 					<motion.button
 						variants={fadeUp}
 						custom={4}
-						whileHover={{ y: -2 }}
-						whileTap={{ scale: 0.98 }}
+						whileHover={{ scale: 0.95 }}
+						whileTap={{ scale: 0.95 }}
 						onClick={() =>
 							sendEmail(
 								"Potential Collaboration",
 								"Hello Vikram, I'd like to discuss a project opportunity..."
 							)
 						}
-						className="mt-6 inline-flex items-center gap-3 justify-center px-6 py-3 rounded-full bg-purple-300 font-medium mx-auto md:mx-0"
+						className="mt-6 inline-flex items-center gap-2 text-neutral-700 justify-center font-medium mx-auto md:mx-0"
 					>
-						<span>Start a Project</span>
-						<ArrowRightToLine />
+						<motion.span className="bg-purple-300 px-4 py-3 rounded-full">
+							Start a Project
+						</motion.span>
+						<ArrowRightToLine className="bg-purple-300 p-3 size-12 rounded-full" />
 					</motion.button>
 				</motion.div>
 			</div>
