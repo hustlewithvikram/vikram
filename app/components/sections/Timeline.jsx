@@ -84,9 +84,7 @@ const TimelineCard = React.memo(({ item }) => {
 	return (
 		<div className="bg-white dark:bg-neutral-800 rounded-2xl p-6 h-full border border-neutral-200 dark:border-neutral-700 transition-all duration-300">
 			<div className="flex items-center gap-4 mb-5">
-				<span
-					className={`text-3xl p-3 ${item.color} text-white rounded-full`}
-				>
+				<span className={`text-3xl p-3 bg-orange-100 rounded-full`}>
 					{item.icon}
 				</span>
 				<span className="text-sm font-semibold text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700/50 py-1.5 px-4 rounded-full">
@@ -164,12 +162,12 @@ export default function Timeline() {
 						onClick={() => selectCard(index)}
 						className={`flex items-center gap-4 px-4 py-3 rounded-full text-sm font-medium text-neutral-700 dark:text-neutral-300 transition-all duration-300 ${
 							currentIndex === index
-								? "dark:border-white bg-neutral-100 dark:bg-neutral-700/50"
+								? "dark:border-white bg-orange-50 dark:bg-neutral-700/50"
 								: ""
 						}`}
 					>
 						<span
-							className={`text-xl p-1 ${item.color} text-white rounded-full`}
+							className={`text-xl bg-orange-100 p-3 rounded-full`}
 						>
 							{item.icon}
 						</span>

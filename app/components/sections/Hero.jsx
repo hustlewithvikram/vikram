@@ -3,7 +3,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { sendEmail } from "../../../lib/utils";
-import { ArrowRight, ArrowRightAltRounded } from "@mui/icons-material";
+import {
+	ArrowRight,
+	ArrowRightAltRounded,
+	Download,
+	Mail,
+} from "@mui/icons-material";
 import { ArrowRightToLine } from "lucide-react";
 
 const Hero = () => {
@@ -14,6 +19,15 @@ const Hero = () => {
 			y: 0,
 			transition: { delay: i * 0.2, duration: 0.8, ease: "easeOut" },
 		}),
+	};
+
+	const downloadResume = () => {
+		// Update the path below with your resume file (e.g. public/resume.pdf)
+		const link = document.createElement("a");
+		link.href =
+			"/documents/Vikram Vishwakarma - React & React Native Resume.pdf";
+		link.download = "Vikram Vishwakarma - React & React Native Resume.pdf";
+		link.click();
 	};
 
 	return (
@@ -119,24 +133,36 @@ const Hero = () => {
 						))}
 					</motion.div>
 
-					<motion.button
-						variants={fadeUp}
-						custom={4}
-						whileHover={{ scale: 0.95 }}
-						whileTap={{ scale: 0.95 }}
-						onClick={() =>
-							sendEmail(
-								"Potential Collaboration",
-								"Hello Vikram, I'd like to discuss a project opportunity..."
-							)
-						}
-						className="mt-6 inline-flex items-center gap-2 text-neutral-700 justify-center font-medium mx-auto md:mx-0"
-					>
-						<motion.span className="bg-purple-300 px-4 py-3 rounded-full">
-							Start a Project
-						</motion.span>
-						<ArrowRightToLine className="bg-purple-300 p-3 size-12 rounded-full" />
-					</motion.button>
+					<motion.div className="mt-8 flex items-center md:justify-start justify-center gap-4">
+						{/* --- Email Button --- */}
+						<motion.button
+							variants={fadeUp}
+							custom={1}
+							whileHover={{ scale: 0.95 }}
+							whileTap={{ scale: 0.85 }}
+							onClick={() =>
+								sendEmail(
+									"Potential Collaboration",
+									"Hello Vikram, I'd like to discuss a project opportunity..."
+								)
+							}
+							className="flex items-center justify-center bg-blue-300 md:hover:bg-blue-400 text-white rounded-full p-3 transition-all"
+						>
+							<Mail size={24} />
+						</motion.button>
+
+						<motion.button
+							variants={fadeUp}
+							custom={2}
+							whileHover={{ scale: 0.97 }}
+							whileTap={{ scale: 0.85 }}
+							onClick={downloadResume}
+							className="flex items-center gap-2 bg-purple-100 md:hover:bg-purple-200 text-neutral-800 font-medium px-5 py-3 rounded-full transition-all"
+						>
+							<Download className="w-5 h-5" />
+							Download Resume
+						</motion.button>
+					</motion.div>
 				</motion.div>
 			</div>
 		</div>
