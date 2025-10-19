@@ -146,7 +146,7 @@ const Hero = () => {
 									"Hello Vikram, I'd like to discuss a project opportunity..."
 								)
 							}
-							className="flex items-center justify-center bg-blue-300 md:hover:bg-blue-400 text-white rounded-full p-3 transition-all"
+							className="flex items-center justify-center bg-blue-300 md:hover:bg-blue-400 text-white dark:text-black rounded-full p-3 transition-all"
 						>
 							<Mail size={24} />
 						</motion.button>

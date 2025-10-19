@@ -23,7 +23,7 @@ const About = () => {
 	return (
 		<section
 			id="about"
-			className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-20 bg-gradient-to-b bg-white dark:bg-[#0b0b0b] transition-colors"
+			className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-20 bg-gradient-to-b transition-colors"
 		>
 			<motion.div
 				variants={container}
