@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { WindowProvider } from "./context/WindowContext";
+import { WindowContainer } from "./windows/components/WindowContainer";
+import Taskbar from "./windows/ui/taskbar/Taskbar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,16 +19,16 @@ export const metadata: Metadata = {
 	],
 	creator: "Vikram Vishwakarma",
 	authors: { name: "Vikram Vishwakarma" },
-	robots: "index, follow", // Instructs search engines to index the page and follow links
+	robots: "index, follow",
 };
 
 export default async function RootLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<head>
-				<link rel="icon" href="/images/vikram.ico" />
+				<link rel="icon" href="/images/vikram_nonagon.ico" />
 				<script
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
@@ -73,13 +76,31 @@ export default async function RootLayout({
 					content="/images/profile_round.ico"
 				/>
 			</head>
-			<body className="bg-background dark:bg-[#111] transition-all md:duration-700">
+			<body
+				className="bg-background dark:bg-[#111] transition-all md:duration-700"
+				suppressHydrationWarning
+			>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 				>
-					{children}
+					<WindowProvider>
+						{/* Windows 11 Desktop Environment */}
+						<div className="h-screen overflow-hidden bg-gray-50 dark:bg-gray-900">
+							{/* Desktop Background */}
+							<div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-cyan-100 dark:from-gray-800 dark:to-gray-900" />
+
+							{/* Floating Windows */}
+							<WindowContainer />
+
+							{/* Main Content (acts as desktop background content) */}
+							<div className="relative z-0">{children}</div>
+
+							{/* Taskbar */}
+							<Taskbar />
+						</div>
+					</WindowProvider>
 				</ThemeProvider>
 			</body>
 		</html>

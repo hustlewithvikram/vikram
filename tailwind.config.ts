@@ -43,6 +43,7 @@ const config: Config = {
 			},
 			animation: {
 				ripple: "ripple var(--duration,2s) ease calc(var(--i, 0)*.2s) infinite",
+				marquee: "marquee 15s linear infinite",
 			},
 			keyframes: {
 				ripple: {
@@ -52,6 +53,10 @@ const config: Config = {
 					"50%": {
 						transform: "translate(-50%, -50%) scale(0.9)",
 					},
+				},
+				marquee: {
+					"0%": { transform: "translateX(0)" },
+					"100%": { transform: "translateX(-50%)" },
 				},
 			},
 			backdropBlur: {
