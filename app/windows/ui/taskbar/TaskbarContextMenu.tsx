@@ -12,6 +12,19 @@ interface ContextMenuProps {
 	onOpenNewWindow: (id: string) => void;
 }
 
+// Discriminated union for safe typing
+type MenuItem =
+	| { type: "separator" }
+	| {
+			type: "item";
+			label: string;
+			action: () => void;
+			icon?: string;
+			bold?: boolean;
+			disabled?: boolean;
+			danger?: boolean;
+	  };
+
 export function TaskbarContextMenu({
 	app,
 	isPinned,
@@ -22,26 +35,30 @@ export function TaskbarContextMenu({
 	onCloseWindow,
 	onOpenNewWindow,
 }: ContextMenuProps) {
-	const menuItems = [
+	const menuItems: MenuItem[] = [
 		{
+			type: "item",
 			label: app.name,
 			action: () => console.log(`Open ${app.name}`),
 			icon: "play_arrow",
 			bold: true,
 		},
 		{
+			type: "item",
 			label: "Open new window",
 			action: () => onOpenNewWindow(app.id),
 			icon: "open_in_new",
 		},
 		{ type: "separator" },
 		{
+			type: "item",
 			label: isPinned ? "Unpin from taskbar" : "Pin to taskbar",
 			action: () => (isPinned ? onUnpin(app.id) : onPin(app.id)),
 			icon: isPinned ? "push_pin" : "push_pin",
 		},
 		{ type: "separator" },
 		{
+			type: "item",
 			label: "Close window",
 			action: () => onCloseWindow(app.id),
 			disabled: !isRunning,
@@ -73,7 +90,8 @@ export function TaskbarContextMenu({
 					<button
 						key={item.label}
 						onClick={() => {
-							item!!.action();
+							if (item.disabled) return;
+							item.action();
 							onClose();
 						}}
 						disabled={item.disabled}
@@ -87,9 +105,7 @@ export function TaskbarContextMenu({
 					>
 						<span
 							className={`material-symbols-rounded text-[18px] ${
-								item.disabled
-									? "text-gray-400"
-									: "text-gray-600"
+								item.disabled ? "text-gray-400" : "text-gray-600"
 							} group-hover:text-current`}
 						>
 							{item.icon}

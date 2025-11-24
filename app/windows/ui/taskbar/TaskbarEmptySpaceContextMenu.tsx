@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import MonitorHeartOutlinedIcon from "@mui/icons-material/MonitorHeartOutlined";
+import React from "react";
 
 interface TaskbarEmptySpaceContextMenuProps {
 	onClose: () => void;
@@ -9,14 +10,26 @@ interface TaskbarEmptySpaceContextMenuProps {
 	onShowDesktop: () => void;
 }
 
+// Discriminated union so TS knows which entries have actions
+type MenuItem =
+	| { type: "separator" }
+	| {
+			type: "item";
+			label: string;
+			action: () => void;
+			icon?: React.ReactNode;
+			disabled?: boolean;
+	  };
+
 export function TaskbarEmptySpaceContextMenu({
 	onClose,
 	onTaskbarSettings,
 	onTaskManager,
 	onShowDesktop,
 }: TaskbarEmptySpaceContextMenuProps) {
-	const menuItems = [
+	const menuItems: MenuItem[] = [
 		{
+			type: "item",
 			label: "Task Manager",
 			action: onTaskManager,
 			icon: (
@@ -25,6 +38,7 @@ export function TaskbarEmptySpaceContextMenu({
 		},
 		{ type: "separator" },
 		{
+			type: "item",
 			label: "Taskbar settings",
 			action: onTaskbarSettings,
 			icon: <SettingsOutlinedIcon style={{ height: 20, width: 20 }} />,
@@ -50,19 +64,21 @@ export function TaskbarEmptySpaceContextMenu({
 					);
 				}
 
+				// item is narrowed to the "item" variant here, so action exists
 				return (
 					<button
-						key={item.label}
+						key={`${item.label}-${index}`}
 						onClick={() => {
+							if (item.disabled) return; // guard in case
 							item.action();
 							onClose();
 						}}
-						className="rounded-[6px] w-full px-3 py-1 text-left text-[14px] text-gray-700 hover:bg-[#0067C0] hover:text-white transition-colors flex items-center justify-between group"
+						disabled={item.disabled}
+						className="rounded-[6px] w-full px-3 py-1 text-left text-[14px] text-gray-700 hover:bg-[#0067C0] hover:text-white transition-colors flex items-center justify-between group disabled:cursor-not-allowed disabled:opacity-60"
 					>
 						<div className="flex items-center gap-2">
-							<span className="material-symbols-rounded text-gray-600 group-hover:text-current">
-								{item.icon}
-							</span>
+							{/* icon is a React node */}
+							{item.icon}
 							<span className="font-semibold">{item.label}</span>
 						</div>
 					</button>

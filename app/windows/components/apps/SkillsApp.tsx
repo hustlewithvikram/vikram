@@ -5,7 +5,7 @@ export function SkillsApp({ windowId }: { windowId: string }) {
 		"Node.js",
 		"Python",
 		"UI/UX Design",
-		"Cloud Architecture",
+		"MongoDB",
 	];
 
 	return (
@@ -18,7 +18,7 @@ export function SkillsApp({ windowId }: { windowId: string }) {
 					{skills.map((skill, index) => (
 						<div
 							key={index}
-							className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center"
+							className="p-3 bg-gray-50 rounded-lg border border-gray-200 text-center text-gray-800"
 						>
 							{skill}
 						</div>

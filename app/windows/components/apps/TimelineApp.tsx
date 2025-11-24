@@ -7,12 +7,18 @@ export function TimelineApp({ windowId }: { windowId: string }) {
 				</h1>
 				<div className="space-y-4">
 					<div className="border-l-4 border-purple-500 pl-4">
-						<h3 className="font-semibold">2024 - Present</h3>
-						<p className="text-gray-600">Senior Developer</p>
+						<h3 className="font-semibold text-gray-500">
+							2025 - Present
+						</h3>
+						<p className="text-gray-800">
+							FullStack React & React Native Developer
+						</p>
 					</div>
 					<div className="border-l-4 border-blue-500 pl-4">
-						<h3 className="font-semibold">2022 - 2024</h3>
-						<p className="text-gray-600">Full Stack Developer</p>
+						<h3 className="font-semibold text-gray-500">
+							2024 - 2025
+						</h3>
+						<p className="text-gray-800">Frontend Developer</p>
 					</div>
 				</div>
 			</div>

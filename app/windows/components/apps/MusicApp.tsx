@@ -220,7 +220,7 @@ export function MusicApp({ windowId }: { windowId: string }) {
 			</div>
 
 			{/* Status Bar */}
-			<div className="bg-gray-50 border-t border-gray-200 px-6 py-2 text-sm text-gray-600 flex justify-between">
+			<div className="bg-gray-50 border-t border-gray-200 px-6 py-2 text-sm text-gray-600 flex justify-between h-14">
 				<span>{songs.length} songs</span>
 				{currentSong && (
 					<span>

@@ -8,17 +8,21 @@ export function ReachOutApp({ windowId }: { windowId: string }) {
 				<div className="space-y-4">
 					<div>
 						<h3 className="font-semibold text-gray-700">Email</h3>
-						<p className="text-gray-600">contact@vikram.com</p>
+						<p className="text-gray-600">vs423502@gmail.com</p>
 					</div>
 					<div>
 						<h3 className="font-semibold text-gray-700">
 							LinkedIn
 						</h3>
-						<p className="text-gray-600">linkedin.com/in/vikram</p>
+						<p className="text-gray-600">
+							https://linkedin.com/in/hustlewithvikram
+						</p>
 					</div>
 					<div>
 						<h3 className="font-semibold text-gray-700">GitHub</h3>
-						<p className="text-gray-600">github.com/vikram</p>
+						<p className="text-gray-600">
+							https://github.com/hustlewithvikram
+						</p>
 					</div>
 				</div>
 			</div>

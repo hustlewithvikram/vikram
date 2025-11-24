@@ -1,8 +1,14 @@
 export function ProjectsApp({ windowId }: { windowId: string }) {
 	const projects = [
-		{ name: "E-commerce Platform", tech: "Next.js, Stripe, PostgreSQL" },
-		{ name: "AI Chat Application", tech: "React, Node.js, OpenAI" },
-		{ name: "Mobile Fitness App", tech: "React Native, Firebase" },
+		{
+			name: "E-commerce Platform (ShopNow)",
+			tech: "Next.js, Stripe, PostgreSQL",
+		},
+		{ name: "Advit Design Studio", tech: "NextJs, TailwindCSS, etc" },
+		{
+			name: "Gallery App (React Native)",
+			tech: "React Native, Nativewind",
+		},
 	];
 
 	return (

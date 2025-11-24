@@ -416,14 +416,7 @@ export default function WindowsMainScreen() {
 							whileHover={{ scale: 1.05 }}
 							whileTap={{ scale: 0.95 }}
 						>
-							<div className="relative">
-								{icon.icon}
-								{selectedIcons.has(icon.id) && (
-									<div className="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center">
-										<div className="w-1.5 h-1.5 bg-white rounded-full" />
-									</div>
-								)}
-							</div>
+							<div className="relative">{icon.icon}</div>
 							<span className="text-white text-xs text-center font-medium drop-shadow-lg px-1 py-0.5">
 								{icon.name}
 							</span>

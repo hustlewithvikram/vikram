@@ -188,7 +188,7 @@ function QuickSettingsPanel({ onClose }: { onClose?: () => void }) {
 						<button
 							key={action.id}
 							onClick={() => toggleQuickAction(action.id)}
-							className={`aspect-square rounded-[6px] transition-all flex flex-col items-center justify-center gap-2 p-2 ${
+							className={`h-20 rounded-[6px] transition-all flex flex-col items-center justify-center gap-2 p-2 ${
 								action.active
 									? "bg-blue-500 text-white shadow-sm"
 									: "bg-white/70 hover:bg-white/80 active:bg-white/90 text-gray-700 border border-gray-200/50"
