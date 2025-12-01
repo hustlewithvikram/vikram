@@ -1,15 +1,10 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { sendEmail } from "../../../lib/utils";
-import {
-	ArrowRight,
-	ArrowRightAltRounded,
-	Download,
-	Mail,
-} from "@mui/icons-material";
-import { ArrowRightToLine } from "lucide-react";
+import { Download, Mail } from "@mui/icons-material";
 
 const Hero = () => {
 	const fadeUp = {
@@ -17,12 +12,11 @@ const Hero = () => {
 		show: (i = 0) => ({
 			opacity: 1,
 			y: 0,
-			transition: { delay: i * 0.2, duration: 0.8, ease: "easeOut" },
+			transition: { delay: i * 0.12, duration: 0.6, ease: "easeOut" },
 		}),
 	};
 
 	const downloadResume = () => {
-		// Update the path below with your resume file (e.g. public/resume.pdf)
 		const link = document.createElement("a");
 		link.href =
 			"/documents/Vikram Vishwakarma - React & React Native Resume.pdf";
@@ -31,141 +25,131 @@ const Hero = () => {
 	};
 
 	return (
-		<div className="min-h-screen w-full flex items-center justify-center px-6 py-12">
-			<div className="max-w-6xl w-full flex flex-col md:flex-row gap-12 md:gap-20 items-center">
-				{/* Image Section */}
+		<section className="min-h-screen w-full flex items-center justify-center px-6 py-12 bg-white dark:bg-[#0b0b0e]">
+			<div className="w-full max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10 md:gap-20">
+				{/* Left text column */}
 				<motion.div
-					className="relative w-full max-w-[15rem] md:max-w-[26rem] aspect-square overflow-hidden" // aspect-square keeps it square
-					initial={{ opacity: 0, scale: 0.6 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{
-						type: "spring",
-						stiffness: 100,
-						damping: 10,
-						bounce: 1,
-						duration: 1,
-					}}
-				>
-					<svg
-						className="absolute w-full h-full"
-						viewBox="0 0 400 400" // set proper viewBox for scaling
-						preserveAspectRatio="xMidYMid slice"
-					>
-						<mask id="mask">
-							<motion.g
-								initial={{ rotate: 0 }}
-								animate={{ rotate: 360 }}
-								transition={{
-									duration: 30,
-									repeat: Infinity,
-									ease: "linear",
-								}}
-							>
-								<image
-									href="/images/nonagon.svg"
-									width="100%"
-									height="100%"
-								/>
-							</motion.g>
-						</mask>
-
-						<image
-							href="/images/vikram.jpg"
-							width="100%"
-							height="100%"
-							mask="url(#mask)"
-							preserveAspectRatio="xMidYMid slice"
-						/>
-					</svg>
-				</motion.div>
-
-				{/* Text Section */}
-				<motion.div
+					className="w-full md:w-1/2 relative pl-0 md:pl-8"
 					initial="hidden"
 					animate="show"
 					variants={fadeUp}
-					className="space-y-6 text-center md:text-left"
 				>
-					<motion.h1
+					{/* Vertical left marker (role + year) */}
+					<div className="hidden md:flex absolute -left-10 top-24 flex-col items-center gap-6">
+						<div className="transform -rotate-90 origin-left text-sm text-gray-400 dark:text-gray-500 tracking-wide select-none">
+							Fullstack Developer
+						</div>
+						<div className="h-[120px] border-l border-gray-200 dark:border-gray-800" />
+						<div className="transform -rotate-90 origin-left text-sm text-gray-400 dark:text-gray-500 select-none">
+							2002
+						</div>
+					</div>
+
+					{/* Metrics */}
+					<motion.div
 						variants={fadeUp}
 						custom={0}
-						className="text-2xl sm:text-2xl md:text-5xl lg:text-5xl font-semibold tracking-tight text-gray-900 dark:text-white"
+						className="hidden md:flex gap-8 mb-8 items-center"
 					>
-						Vikram Vishwakarma
-					</motion.h1>
+						<div className="text-center">
+							<div className="text-2xl font-semibold text-gray-900 dark:text-white">
+								+20
+							</div>
+							<div className="text-sm text-gray-500 dark:text-gray-400">
+								Projects completed
+							</div>
+						</div>
+						<div className="text-center">
+							<div className="text-2xl font-semibold text-gray-900 dark:text-white">
+								+50
+							</div>
+							<div className="text-sm text-gray-500 dark:text-gray-400">
+								Milestones Achieved
+							</div>
+						</div>
+					</motion.div>
 
-					<motion.h2
+					{/* Headline */}
+					<motion.h1
 						variants={fadeUp}
 						custom={1}
-						className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-light"
+						className="text-[5.5rem] sm:text-[6.5rem] md:text-[7.5rem] leading-[0.88] font-extrabold tracking-tight text-gray-900 dark:text-white"
+						style={{ lineHeight: 0.95 }}
 					>
-						<span className="text-blue-600 dark:text-blue-400 font-normal">
-							React
-						</span>{" "}
-						<span className="font-normal">&</span>{" "}
-						<span className="text-indigo-600 dark:text-indigo-400 font-normal">
-							React Native
-						</span>{" "}
-						<span className="font-normal">Developer</span>
-					</motion.h2>
+						Hello
+					</motion.h1>
 
 					<motion.p
 						variants={fadeUp}
 						custom={2}
-						className="text-base sm:text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-xs md:max-w-lg mx-auto md:mx-0"
+						className="mt-3 text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-xl"
 					>
-						I craft modern digital products with React ecosystems —
-						focused on performance, clarity, and user delight.
+						— It's Vikram. I craft modern digital products with
+						React ecosystems — focused on performance, clarity, and
+						user delight.
 					</motion.p>
 
 					<motion.div
 						variants={fadeUp}
 						custom={3}
-						className="flex flex-wrap justify-center md:justify-start gap-2 text-sm text-gray-700 dark:text-gray-300"
+						className="mt-8 flex flex-wrap gap-3 items-center"
 					>
-						{["React", "React Native", "UI/UX"].map((skill) => (
-							<span
-								key={skill}
-								className="px-3 py-1 rounded-full bg-blue-200 dark:bg-blue-950"
-							>
-								{skill}
-							</span>
-						))}
-					</motion.div>
-
-					<motion.div className="mt-8 flex items-center md:justify-start justify-center gap-4">
-						{/* --- Email Button --- */}
-						<motion.button
-							variants={fadeUp}
-							custom={1}
-							whileHover={{ scale: 0.95 }}
-							whileTap={{ scale: 0.85 }}
+						<button
 							onClick={() =>
 								sendEmail(
 									"Potential Collaboration",
 									"Hello Vikram, I'd like to discuss a project opportunity..."
 								)
 							}
-							className="flex items-center justify-center bg-blue-300 md:hover:bg-blue-400 text-white dark:text-black rounded-full p-3 transition-all"
+							className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 shadow-sm"
 						>
-							<Mail size={24} />
-						</motion.button>
+							<Mail fontSize="small" />
+							Email
+						</button>
 
-						<motion.button
-							variants={fadeUp}
-							custom={2}
-							whileHover={{ scale: 0.97 }}
-							whileTap={{ scale: 0.85 }}
+						<button
 							onClick={downloadResume}
-							className="flex items-center gap-2 bg-purple-100 md:hover:bg-purple-200 text-neutral-800 font-medium px-5 py-3 rounded-full transition-all"
+							className="flex items-center gap-2 bg-white/80 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white rounded-full px-4 py-2 shadow-sm"
 						>
-							<Download className="w-5 h-5" />
+							<Download fontSize="small" />
 							Download Resume
-						</motion.button>
+						</button>
+
+						<div className="hidden sm:flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300">
+							{["React", "React Native", "UI/UX"].map((s) => (
+								<span
+									key={s}
+									className="px-3 py-1 rounded-full bg-blue-50 dark:bg-white/5 text-xs"
+								>
+									{s}
+								</span>
+							))}
+						</div>
 					</motion.div>
 				</motion.div>
+
+				{/* Right image column */}
+				<motion.div
+					className="w-full md:w-1/3 flex items-center justify-center bg-white pt-16 rounded-full overflow-hidden h-[50vh] md:h-full"
+					initial={{ opacity: 0, scale: 0.9 }}
+					animate={{ opacity: 1, scale: 1 }}
+					transition={{ duration: 0.8, ease: "easeOut" }}
+				>
+					<div className="relative w-[80vw] h-[100vw] max-w-[520px] sm:max-w-[560px] md:w-[500px] md:h-[580px]">
+						{/* rotating nonagon mask + image */}
+						<Image
+							src="/images/vikram_vishwakarma.png"
+							alt="Vikram portrait"
+							fill
+							style={{
+								objectFit: "cover",
+								objectPosition: "top",
+							}}
+						/>
+					</div>
+				</motion.div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
