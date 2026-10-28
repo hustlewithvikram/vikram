@@ -115,7 +115,7 @@ TimelineCard.displayName = "TimelineCard";
 
 export default function Timeline() {
 	const [currentIndex, setCurrentIndex] = useState(0);
-	const isMobile = useMediaQuery("(max-width:768px)");
+	const isMobile = useMediaQuery("(max-width:1023px)");
 
 	const nextCard = useCallback(() => {
 		setCurrentIndex((prev) => (prev + 1) % timelineData.length);
