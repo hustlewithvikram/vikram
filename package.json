@@ -43,7 +43,8 @@
     "scrollmagic": "^2.0.8",
     "swr": "^2.2.5",
     "tailwind-clip-path": "^1.0.0",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "@material/web": "2.5.0"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
