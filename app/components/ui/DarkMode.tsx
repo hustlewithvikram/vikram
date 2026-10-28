@@ -7,9 +7,9 @@ export default function DarkMode() {
 	return (
 		<motion.div
 			whileTap={{ scale: 0.8 }}
-			className="fixed top-10 right-10 z-50 rounded-full h-7 w-7 flex justify-center items-center"
+			className="fixed right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full sm:right-6 sm:top-6 lg:right-8 lg:top-8"
 		>
-			<AnimatedThemeToggler className="bg-gray-800 dark:bg-purple-300 text-white dark:text-black rounded-full p-2 cursor-pointer" />
+			<AnimatedThemeToggler className="cursor-pointer rounded-full bg-gray-800 p-2 text-white dark:bg-purple-300 dark:text-black" />
 		</motion.div>
 	);
 }
