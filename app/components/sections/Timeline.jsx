@@ -1,291 +1,257 @@
 "use client";
-import React, { useState, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-	MdLanguage,
-	MdCode,
-	MdLayers,
-	MdBolt,
-	MdDashboard,
-	MdPhoneAndroid,
-	MdDevices,
-	MdChevronLeft,
-	MdChevronRight,
+  MdLanguage,
+  MdCode,
+  MdLayers,
+  MdBolt,
+  MdDashboard,
+  MdPhoneAndroid,
+  MdDevices,
+  MdArrowOutward,
 } from "react-icons/md";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const timelineData = [
-	{
-		id: "1",
-		date: "Jan 2021",
-		title: "First Steps in Web",
-		description:
-			"Started with HTML, CSS, and JS — learning how the web really works.",
-		icon: <MdLanguage />,
-		color: "bg-blue-500",
-	},
-	{
-		id: "2",
-		date: "Jun 2021",
-		title: "Enter React.js",
-		description:
-			"Built my first dynamic UIs with components, hooks, and props.",
-		icon: <MdCode />,
-		color: "bg-purple-500",
-	},
-	{
-		id: "3",
-		date: "Dec 2021",
-		title: "Modern Frontend Tools",
-		description:
-			"Adopted Tailwind + component-driven design → faster, cleaner builds.",
-		icon: <MdLayers />,
-		color: "bg-amber-500",
-	},
-	{
-		id: "4",
-		date: "Jul 2022",
-		title: "Next.js Journey",
-		description: "Mastered SSR, API routes, and performance optimizations.",
-		icon: <MdBolt />,
-		color: "bg-green-500",
-	},
-	{
-		id: "5",
-		date: "Nov 2023",
-		title: "Full-stack Projects",
-		description:
-			"Built authenticated dashboards & e-commerce apps with NextAuth/Clerk.",
-		icon: <MdDashboard />,
-		color: "bg-indigo-500",
-	},
-	{
-		id: "6",
-		date: "Apr 2024",
-		title: "Exploring Mobile",
-		description:
-			"Experimented with mobile dev, broadening my reach beyond web.",
-		icon: <MdPhoneAndroid />,
-		color: "bg-red-500",
-	},
-	{
-		id: "7",
-		date: "Jul 2025",
-		title: "Transition to React Native",
-		description:
-			"Now building polished, cross-platform apps with React Native.",
-		icon: <MdDevices />,
-		color: "bg-violet-500",
-	},
+  {
+    id: "01",
+    date: "Jan 2021",
+    title: "First Steps in Web",
+    description:
+      "Started with HTML, CSS, and JavaScript, learning the foundations of how the web works.",
+    icon: <MdLanguage />,
+    tone: "blue",
+    tag: "The beginning",
+  },
+  {
+    id: "02",
+    date: "Jun 2021",
+    title: "Enter React.js",
+    description:
+      "Built dynamic interfaces with reusable components, hooks, and props.",
+    icon: <MdCode />,
+    tone: "violet",
+    tag: "Frontend",
+  },
+  {
+    id: "03",
+    date: "Dec 2021",
+    title: "Modern Frontend Tools",
+    description:
+      "Adopted Tailwind CSS and component-driven design to build cleaner interfaces faster.",
+    icon: <MdLayers />,
+    tone: "amber",
+    tag: "Design systems",
+  },
+  {
+    id: "04",
+    date: "Jul 2022",
+    title: "Next.js Journey",
+    description:
+      "Explored server-side rendering, API routes, and performance-focused web development.",
+    icon: <MdBolt />,
+    tone: "emerald",
+    tag: "Full stack",
+  },
+  {
+    id: "05",
+    date: "Nov 2023",
+    title: "Full-stack Projects",
+    description:
+      "Built authenticated dashboards and e-commerce experiences using modern web tools.",
+    icon: <MdDashboard />,
+    tone: "indigo",
+    tag: "Building products",
+  },
+  {
+    id: "06",
+    date: "Apr 2024",
+    title: "Exploring Mobile",
+    description:
+      "Expanded beyond the browser and began exploring mobile application development.",
+    icon: <MdPhoneAndroid />,
+    tone: "rose",
+    tag: "Mobile",
+  },
+  {
+    id: "07",
+    date: "Jul 2025",
+    title: "Cross-platform Apps",
+    description:
+      "Moved into building polished mobile experiences and exploring cross-platform development.",
+    icon: <MdDevices />,
+    tone: "cyan",
+    tag: "Next chapter",
+  },
 ];
 
-// Timeline card for desktop
-const TimelineCard = React.memo(({ item }) => {
-	return (
-		<div className="bg-white dark:bg-neutral-800 rounded-2xl p-6 h-full border border-neutral-200 dark:border-neutral-700 transition-all duration-300">
-			<div className="flex items-center gap-4 mb-5">
-				<span
-					className={`text-3xl p-3 bg-orange-100 dark:text-black rounded-full`}
-				>
-					{item.icon}
-				</span>
-				<span className="text-sm font-semibold text-neutral-600 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-700/50 py-1.5 px-4 rounded-full">
-					{item.date}
-				</span>
-			</div>
+const toneClasses = {
+  blue: "bg-blue-100 text-blue-700 dark:bg-blue-400/15 dark:text-blue-300",
+  violet: "bg-violet-100 text-violet-700 dark:bg-violet-400/15 dark:text-violet-300",
+  amber: "bg-amber-100 text-amber-800 dark:bg-amber-400/15 dark:text-amber-300",
+  emerald: "bg-emerald-100 text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-300",
+  indigo: "bg-indigo-100 text-indigo-700 dark:bg-indigo-400/15 dark:text-indigo-300",
+  rose: "bg-rose-100 text-rose-700 dark:bg-rose-400/15 dark:text-rose-300",
+  cyan: "bg-cyan-100 text-cyan-800 dark:bg-cyan-400/15 dark:text-cyan-300",
+};
 
-			<h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
-				{item.title}
-			</h3>
+function JourneyCard({ item, index, compact = false }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.35, delay: Math.min(index * 0.045, 0.2) }}
+      className="group relative h-full overflow-hidden rounded-3xl border border-neutral-200/80 bg-white p-5 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900 dark:hover:border-neutral-700 sm:p-6"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <span
+          className={`inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-2xl ${toneClasses[item.tone]}`}
+          aria-hidden="true"
+        >
+          {item.icon}
+        </span>
+        <span className="rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1.5 text-xs font-semibold tracking-wide text-neutral-600 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300">
+          {item.date}
+        </span>
+      </div>
 
-			<p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
-				{item.description}
-			</p>
+      <div className="mt-5 flex items-center gap-2">
+        <span className="text-xs font-bold tracking-[0.16em] text-neutral-400 dark:text-neutral-500">
+          {item.id}
+        </span>
+        <span className="h-px w-6 bg-neutral-200 dark:bg-neutral-700" />
+        <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+          {item.tag}
+        </span>
+      </div>
 
-			<div className="mt-4 pt-3 border-t border-neutral-100 dark:border-neutral-700">
-				<span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
-					Milestone {item.id}/{timelineData.length}
-				</span>
-			</div>
-		</div>
-	);
-});
+      <h3 className={`mt-3 font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 ${compact ? "text-lg" : "text-xl"}`}>
+        {item.title}
+      </h3>
+      <p className="mt-2 text-sm leading-6 text-neutral-600 dark:text-neutral-400 sm:text-[0.925rem]">
+        {item.description}
+      </p>
 
-TimelineCard.displayName = "TimelineCard";
-
-export default function Timeline() {
-	const [currentIndex, setCurrentIndex] = useState(0);
-	const isMobile = useMediaQuery("(max-width:1023px)");
-
-	const nextCard = useCallback(() => {
-		setCurrentIndex((prev) => (prev + 1) % timelineData.length);
-	}, []);
-
-	const prevCard = useCallback(() => {
-		setCurrentIndex((prev) =>
-			prev === 0 ? timelineData.length - 1 : prev - 1
-		);
-	}, []);
-
-	const selectCard = useCallback((index) => {
-		setCurrentIndex(index);
-	}, []);
-
-	if (isMobile) {
-		// Mobile accordion view (keep your previous one)
-		return (
-			<div className="mx-auto max-w-2xl px-5 py-10">
-				<h2 className="text-md mb-10 bg-blue-200 dark:bg-blue-950 text-blue-950 dark:text-blue-200 w-fit px-4 py-2 rounded-full">
-					My Journey
-				</h2>
-				<div className="flex flex-col gap-6">
-					{timelineData.map((item, index) => (
-						<div key={item.id} className="relative">
-							<TimelineCardMobile
-								item={item}
-								isActive={currentIndex === index}
-								onClick={() => selectCard(index)}
-							/>
-						</div>
-					))}
-				</div>
-			</div>
-		);
-	}
-
-	// Desktop view
-	return (
-		<div className="relative w-full max-w-7xl mx-auto px-6 py-16 flex gap-8">
-			{/* Left - small chips */}
-			<div className="flex flex-col gap-4">
-				{timelineData.map((item, index) => (
-					<motion.button
-						key={item.id}
-						onClick={() => selectCard(index)}
-						className={`flex items-center gap-4 px-4 py-3 rounded-full text-sm font-medium text-neutral-700 dark:text-neutral-300 transition-all duration-300 ${
-							currentIndex === index
-								? "dark:border-white bg-orange-50 dark:bg-neutral-700/50"
-								: ""
-						}`}
-					>
-						<span
-							className={`text-xl bg-orange-100 dark:text-black p-3 rounded-full`}
-						>
-							{item.icon}
-						</span>
-						<span>{item.date}</span>
-					</motion.button>
-				))}
-			</div>
-
-			{/* Right - big card */}
-			<div className="flex-1 relative">
-				<AnimatePresence mode="wait">
-					<motion.div
-						key={currentIndex}
-						initial={{ opacity: 0, x: 50 }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: -50 }}
-						transition={{ duration: 0.4 }}
-					>
-						<TimelineCard item={timelineData[currentIndex]} />
-					</motion.div>
-				</AnimatePresence>
-
-				{/* Progress bar */}
-				<div className="absolute bottom-0 left-0 w-full flex items-center justify-center mt-8 gap-x-3">
-					<div className="flex justify-center w-full max-w-3xl">
-						<div className="relative h-2 w-full bg-neutral-300 dark:bg-neutral-700 rounded-full overflow-hidden">
-							<motion.div
-								className="absolute top-0 left-0 h-full bg-black dark:bg-white rounded-full"
-								initial={{ width: 0 }}
-								animate={{
-									width: `${
-										((currentIndex + 1) /
-											timelineData.length) *
-										100
-									}%`,
-								}}
-								transition={{ duration: 0.4, ease: "easeOut" }}
-							/>
-						</div>
-					</div>
-
-					{/* Navigation arrows */}
-					<motion.button
-						whileTap={{ scale: 0.9 }}
-						onClick={prevCard}
-						className="bg-white dark:bg-neutral-800 rounded-full p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-xl transition-all"
-					>
-						<MdChevronLeft className="text-2xl text-neutral-700 dark:text-neutral-300" />
-					</motion.button>
-					<motion.button
-						whileTap={{ scale: 0.9 }}
-						onClick={nextCard}
-						className="bg-white dark:bg-neutral-800 rounded-full p-3 border border-neutral-200 dark:border-neutral-700 hover:shadow-xl transition-all"
-					>
-						<MdChevronRight className="text-2xl text-neutral-700 dark:text-neutral-300" />
-					</motion.button>
-				</div>
-			</div>
-		</div>
-	);
+      <div className="mt-5 flex items-center justify-between border-t border-neutral-100 pt-4 dark:border-neutral-800">
+        <span className="text-xs font-medium text-neutral-400 dark:text-neutral-500">
+          Milestone {index + 1} of {timelineData.length}
+        </span>
+        <MdArrowOutward className="text-lg text-neutral-400 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-neutral-700 dark:group-hover:text-neutral-200" />
+      </div>
+    </motion.article>
+  );
 }
 
-// Mobile timeline card
-function TimelineCardMobile({ item, isActive, onClick }) {
-	return (
-		<motion.div
-			initial={{ opacity: 0, y: 20 }}
-			animate={{ opacity: 1, y: 0 }}
-			exit={{ opacity: 0, y: 20 }}
-			transition={{ duration: 0.3 }}
-			className="relative flex"
-		>
-			{/* Timeline dot and line */}
-			<div className="flex flex-col items-center mr-4">
-				<div className="w-6 h-6 rounded-full bg-purple-300 dark:bg-gray-50 dark:text-black text-white flex justify-center items-center text-sm z-10 shadow-lg">
-					{item.id}
-				</div>
-				{item.id != timelineData.length && (
-					<div className="flex-1 w-1 bg-neutral-300 dark:bg-neutral-700" />
-				)}
-			</div>
+export default function Timeline() {
+  const [expandedId, setExpandedId] = useState("01");
 
-			{/* Card */}
-			<button
-				onClick={onClick}
-				className={`flex-1 text-left rounded-2xl p-5 transition-all duration-300 backdrop-blur-sm border ${
-					isActive
-						? "bg-white/90 dark:bg-neutral-950/50 border dark:border-white/15"
-						: "bg-white/70 dark:bg-neutral-900/90 border dark:border-white/50"
-				}`}
-			>
-				<div className="flex items-center justify-between mb-3">
-					<span className="text-sm font-semibold text-neutral-600 dark:text-neutral-300 bg-white/50 dark:bg-neutral-800/50 py-1 px-2 rounded-full">
-						{item.date}
-					</span>
-				</div>
+  return (
+    <section
+      id="journey"
+      aria-labelledby="journey-heading"
+      className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
+    >
+      <div className="mx-auto mb-9 max-w-3xl text-center sm:mb-12">
+        <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-600 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
+          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+          The path so far
+        </span>
+        <h2
+          id="journey-heading"
+          className="mt-4 text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl lg:text-5xl"
+        >
+          My Journey<span className="text-blue-600 dark:text-blue-400">.</span>
+        </h2>
+        <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-neutral-600 dark:text-neutral-400 sm:text-base sm:leading-7">
+          Every milestone taught me something new. Here’s how curiosity turned
+          into a journey of building for the web and beyond.
+        </p>
+      </div>
 
-				<h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 mb-2">
-					{item.title}
-				</h3>
+      <div className="mb-6 grid grid-cols-3 gap-2 sm:mb-8 sm:gap-3">
+        {[
+          { value: "2021", label: "Started coding" },
+          { value: "7", label: "Key milestones" },
+          { value: "Ongoing", label: "Always learning" },
+        ].map((stat) => (
+          <div
+            key={stat.label}
+            className="rounded-2xl border border-neutral-200/80 bg-neutral-50/80 px-2 py-3 text-center dark:border-neutral-800 dark:bg-neutral-900/70 sm:rounded-3xl sm:px-4 sm:py-4"
+          >
+            <p className="text-sm font-bold text-neutral-900 dark:text-neutral-100 sm:text-xl">
+              {stat.value}
+            </p>
+            <p className="mt-1 text-[10px] leading-4 text-neutral-500 dark:text-neutral-400 sm:text-xs">
+              {stat.label}
+            </p>
+          </div>
+        ))}
+      </div>
 
-				{/* Animate the description */}
-				<AnimatePresence>
-					{isActive && (
-						<motion.p
-							initial={{ height: 0, opacity: 0 }}
-							animate={{ height: "auto", opacity: 1 }}
-							exit={{ height: 0, opacity: 0 }}
-							transition={{ duration: 0.3 }}
-							className="text-neutral-600 dark:text-neutral-400 overflow-hidden"
-						>
-							{item.description}
-						</motion.p>
-					)}
-				</AnimatePresence>
-			</button>
-		</motion.div>
-	);
+      <div className="hidden grid-cols-2 gap-4 md:grid lg:grid-cols-3 lg:gap-5">
+        {timelineData.map((item, index) => (
+          <JourneyCard key={item.id} item={item} index={index} />
+        ))}
+      </div>
+
+      <div className="flex flex-col gap-3 md:hidden">
+        {timelineData.map((item, index) => {
+          const isExpanded = expandedId === item.id;
+          return (
+            <motion.div
+              key={item.id}
+              layout
+              className={`overflow-hidden rounded-2xl border transition-colors ${isExpanded
+                ? "border-neutral-300 bg-white shadow-sm dark:border-neutral-700 dark:bg-neutral-900"
+                : "border-neutral-200 bg-neutral-50/80 dark:border-neutral-800 dark:bg-neutral-900/50"
+              }`}
+            >
+              <button
+                type="button"
+                aria-expanded={isExpanded}
+                onClick={() => setExpandedId(isExpanded ? "" : item.id)}
+                className="flex w-full items-center gap-3 p-4 text-left sm:p-5"
+              >
+                <span
+                  className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-xl ${toneClasses[item.tone]}`}
+                  aria-hidden="true"
+                >
+                  {item.icon}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-xs font-medium text-neutral-500 dark:text-neutral-400">
+                    {item.date} · Milestone {index + 1}
+                  </span>
+                  <span className="mt-1 block text-sm font-semibold text-neutral-900 dark:text-neutral-100 sm:text-base">
+                    {item.title}
+                  </span>
+                </span>
+                <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-lg text-neutral-500 transition-transform dark:text-neutral-400 ${isExpanded ? "rotate-45" : ""}`}>
+                  +
+                </span>
+              </button>
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.div
+                    key="description"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.22 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="px-4 pb-5 pl-[4.5rem] text-sm leading-6 text-neutral-600 dark:text-neutral-400 sm:pl-[5rem]">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
+      </div>
+    </section>
+  );
 }
