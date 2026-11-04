@@ -21,6 +21,7 @@ export default function FloatNavBar() {
   const [visible, setVisible] = useState(true);
   const ignoreNavigationScroll = useRef(false);
   const navigationResetTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const previousScrollY = useRef(0);
   const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
 
@@ -42,15 +43,15 @@ export default function FloatNavBar() {
   }, [pathname]);
 
   useEffect(() => {
-    let previousY = window.scrollY;
+    previousScrollY.current = window.scrollY;
     let ticking = false;
 
     const updateDirection = () => {
       const currentY = window.scrollY;
-      const delta = currentY - previousY;
+      const delta = currentY - previousScrollY.current;
 
       if (ignoreNavigationScroll.current) {
-        previousY = currentY;
+        previousScrollY.current = currentY;
         ticking = false;
         return;
       }
@@ -103,7 +104,7 @@ export default function FloatNavBar() {
                 if (navigationResetTimer.current) clearTimeout(navigationResetTimer.current);
                 navigationResetTimer.current = setTimeout(() => {
                   ignoreNavigationScroll.current = false;
-                  previousY = window.scrollY;
+                  previousScrollY.current = window.scrollY;
                 }, 1100);
               }}
               aria-current={active === id ? "location" : undefined}
