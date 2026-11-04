@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import {
   MdLanguage, MdCode, MdLayers, MdBolt, MdDashboard,
   MdPhoneAndroid, MdDevices, MdArrowOutward, MdClose,
@@ -26,9 +26,9 @@ function JourneyCard({ item, index, onOpen }) {
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.38, delay: (index % 4) * 0.045, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ layout: { type: "spring", stiffness: 280, damping: 30 }, opacity: { duration: 0.25 }, y: { duration: 0.38, delay: (index % 4) * 0.045, ease: [0.22, 1, 0.36, 1] } }}
       whileHover={{ y: -3 }}
-      whileTap={{ scale: 0.985 }}
+      whileTap={{ scale: 0.99 }}
       className={`group relative flex h-full min-h-[190px] w-full min-w-0 flex-col items-start overflow-hidden rounded-[1.6rem] border border-zinc-200/80 bg-white p-5 text-left shadow-[0_4px_18px_rgba(15,23,42,0.035)] transition-colors hover:border-orange-300 hover:shadow-xl hover:shadow-orange-950/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-orange-400/50 sm:min-h-[210px] sm:p-6 ${index === 0 ? "sm:col-span-2 xl:row-span-2 xl:min-h-[310px]" : index === 3 || index === 4 || index === 6 ? "sm:col-span-2" : ""}`}
     >
       <div className="flex w-full items-start justify-between gap-3">
@@ -65,6 +65,7 @@ export default function Timeline() {
   }, [selected]);
 
   return (
+    <LayoutGroup id="journey-milestones">
     <section id="journey" aria-labelledby="journey-heading" className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div className="mb-7 flex flex-col gap-4 sm:mb-9 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl">
@@ -82,7 +83,7 @@ export default function Timeline() {
       <AnimatePresence>
         {selected && (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-zinc-950/35 p-4 backdrop-blur-xl sm:p-6"
+            className="fixed inset-0 z-[100] grid place-items-center overflow-y-auto bg-zinc-950/40 p-4 backdrop-blur-xl sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -95,8 +96,8 @@ export default function Timeline() {
               role="dialog"
               aria-modal="true"
               aria-labelledby="journey-dialog-title"
-              className="relative my-auto w-full max-w-xl overflow-hidden rounded-[2rem] border border-white/70 bg-white p-6 shadow-[0_30px_100px_rgba(0,0,0,0.28)] dark:border-zinc-700 dark:bg-zinc-900 sm:p-8"
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="relative m-auto w-full max-w-xl overflow-hidden rounded-[2rem] border border-white/70 bg-white p-6 shadow-[0_30px_100px_rgba(0,0,0,0.28)] dark:border-zinc-700 dark:bg-zinc-900 sm:p-8"
+              transition={{ layout: { type: "spring", stiffness: 280, damping: 30 }, opacity: { duration: 0.2 } }}
             >
               <button type="button" onClick={() => setSelected(null)} aria-label="Close details" className="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full bg-zinc-100 text-zinc-700 transition hover:bg-orange-100 hover:text-orange-800 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-orange-400/15 dark:hover:text-orange-300"><MdClose size={20} /></button>
               <div className="flex items-center gap-4 pr-12">
@@ -120,5 +121,6 @@ export default function Timeline() {
         )}
       </AnimatePresence>
     </section>
+    </LayoutGroup>
   );
 }
