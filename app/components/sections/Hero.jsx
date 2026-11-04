@@ -18,6 +18,7 @@ const Hero = () => {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(ellipse_at_75%_20%,rgba(234,88,12,0.10),transparent_55%)]" />
       <div className="mx-auto grid min-h-[min(760px,calc(100svh-7rem))] w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: "easeOut" }} className="order-2 min-w-0 lg:order-1">
+          <p className="mb-3 -rotate-2 text-[clamp(1.35rem,2.2vw,1.8rem)] leading-tight text-orange-700 dark:text-orange-300" style={{ fontFamily: "Agbalumo, cursive" }}>Ideas into experiences, one line at a time.</p>
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400">Developer · Product thinker · Builder</p>
           <h1 className="max-w-4xl text-[clamp(3.5rem,9vw,7.6rem)] font-semibold leading-[0.88] tracking-[-0.075em] text-zinc-950 dark:text-white">
             Building
