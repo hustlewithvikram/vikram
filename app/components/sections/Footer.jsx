@@ -1,89 +1,21 @@
-import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa6";
-import { Phone, Email } from "@mui/icons-material"; // MUI icons
-import { openUrl } from "../../utils/utils";
+import { ArrowUpRight, Github, Instagram, Linkedin, Mail } from "lucide-react";
 
-const CONTACTS = {
-	github: "https://github.com/vikramisdev",
-	instagram: "https://instagram.com/vikramisdev",
-	facebook: "https://facebook.com/vikramisdev",
-	twitter: "https://x.com/vikramisdev",
-	email: "vs423502@gmail.com",
-	phone: "+918805469136",
-};
+const links = [
+  { label: "GitHub", href: "https://github.com/vikramisdev", icon: Github },
+  { label: "Instagram", href: "https://instagram.com/vikramisdev", icon: Instagram },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/vikramisdev", icon: Linkedin },
+];
 
 export default function Footer() {
-	return (
-		<footer className="bg-black text-white px-6 md:px-24 py-12 md:py-24 rounded-3xl m-4 relative overflow-hidden">
-			<h2 className="text-2xl md:text-3xl font-bold mb-8 border-b border-gray-700 w-fit pb-2">
-				Contact Me
-			</h2>
-
-			{/* Contact Info */}
-			<div className="space-y-3 md:space-y-2 my-6 text-sm md:text-base">
-				<ContactItem
-					value={CONTACTS.phone}
-					href={`tel:${CONTACTS.phone}`}
-					icon={<Phone />}
-				/>
-				<ContactItem
-					value={CONTACTS.email}
-					href={`mailto:${CONTACTS.email}`}
-					icon={<Email />}
-				/>
-			</div>
-
-			{/* Social Links */}
-			<div className="flex flex-wrap gap-4">
-				<SocialIcon
-					url={CONTACTS.instagram}
-					label="Instagram"
-					icon={<FaInstagram />}
-				/>
-				<SocialIcon
-					url={CONTACTS.facebook}
-					label="Facebook"
-					icon={<FaFacebook />}
-				/>
-				<SocialIcon
-					url={CONTACTS.twitter}
-					label="Twitter"
-					icon={<FaTwitter />}
-				/>
-				<SocialIcon
-					url={CONTACTS.github}
-					label="GitHub"
-					icon={<FaGithub />}
-				/>
-			</div>
-		</footer>
-	);
-}
-
-// Contact Item
-function ContactItem({ value, href, icon }) {
-	return (
-		<a
-			href={href}
-			className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors duration-200"
-		>
-			{icon} {/* MUI icon instead of label */}
-			<span>{value}</span>
-		</a>
-	);
-}
-
-// Social Icon
-function SocialIcon({ url, label, icon }) {
-	return (
-		<button
-			onClick={() => openUrl(url)}
-			aria-label={label}
-			className="group flex items-center gap-2 text-white bg-zinc-800 hover:bg-white hover:text-black px-4 py-2 rounded-full transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 shadow-lg"
-		>
-			<span className="text-xl">{icon}</span>
-			<span className="hidden sm:inline text-sm font-medium">
-				{label}
-			</span>
-		</button>
-	);
+  return (
+    <footer id="contact" className="px-4 pb-5 pt-10 sm:px-6 sm:pt-16 lg:px-8">
+      <div className="section-container overflow-hidden rounded-[2rem] bg-zinc-950 px-6 py-12 text-white dark:bg-zinc-900 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
+        <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div><p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-orange-400"><span className="h-2 w-2 rounded-full bg-orange-500" /> Have a project in mind?</p><h2 className="mt-5 max-w-3xl text-[clamp(2.7rem,7vw,5.8rem)] font-semibold leading-[0.95] tracking-[-0.065em]">Let’s make<br /><span className="text-orange-400">something useful.</span></h2><a href="mailto:vs423502@gmail.com" className="mt-8 inline-flex min-h-12 items-center gap-3 rounded-full bg-orange-600 px-6 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-orange-500"><Mail size={17} /> vs423502@gmail.com <ArrowUpRight size={16} /></a></div>
+          <div className="flex flex-wrap gap-2 lg:justify-end">{links.map(({ label, href, icon: Icon }) => <a key={label} href={href} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-white/15 px-4 text-sm text-white/80 transition hover:border-orange-400 hover:text-orange-300"><Icon size={16} />{label}<ArrowUpRight size={14} /></a>)}</div>
+        </div>
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} Vikram Vishwakarma</span><span>Designed with intent. Built with curiosity.</span><a href="#home" className="w-fit transition hover:text-orange-300">Back to top ↑</a></div>
+      </div>
+    </footer>
+  );
 }
