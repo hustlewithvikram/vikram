@@ -87,13 +87,13 @@ const timelineData = [
 ];
 
 const toneClasses = {
-  blue: "bg-blue-100 text-blue-700 dark:bg-blue-400/15 dark:text-blue-300",
-  violet: "bg-violet-100 text-violet-700 dark:bg-violet-400/15 dark:text-violet-300",
-  amber: "bg-amber-100 text-amber-800 dark:bg-amber-400/15 dark:text-amber-300",
-  emerald: "bg-emerald-100 text-emerald-700 dark:bg-emerald-400/15 dark:text-emerald-300",
-  indigo: "bg-indigo-100 text-indigo-700 dark:bg-indigo-400/15 dark:text-indigo-300",
-  rose: "bg-rose-100 text-rose-700 dark:bg-rose-400/15 dark:text-rose-300",
-  cyan: "bg-cyan-100 text-cyan-800 dark:bg-cyan-400/15 dark:text-cyan-300",
+  blue: "bg-orange-100 text-orange-700 dark:bg-orange-400/15 dark:text-orange-300",
+  violet: "bg-orange-100 text-orange-700 dark:bg-orange-400/15 dark:text-orange-300",
+  amber: "bg-orange-100 text-orange-700 dark:bg-orange-400/15 dark:text-orange-300",
+  emerald: "bg-orange-100 text-orange-700 dark:bg-orange-400/15 dark:text-orange-300",
+  indigo: "bg-orange-100 text-orange-700 dark:bg-orange-400/15 dark:text-orange-300",
+  rose: "bg-orange-100 text-orange-700 dark:bg-orange-400/15 dark:text-orange-300",
+  cyan: "bg-orange-100 text-orange-700 dark:bg-orange-400/15 dark:text-orange-300",
 };
 
 function JourneyCard({ item, index, compact = false }) {
@@ -155,14 +155,14 @@ export default function Timeline() {
     >
       <div className="mx-auto mb-9 max-w-3xl text-center sm:mb-12">
         <span className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-neutral-600 shadow-sm dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
-          <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+          <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
           The path so far
         </span>
         <h2
           id="journey-heading"
           className="mt-4 text-3xl font-bold tracking-tight text-neutral-950 dark:text-white sm:text-4xl lg:text-5xl"
         >
-          My Journey<span className="text-blue-600 dark:text-blue-400">.</span>
+          My Journey<span className="text-orange-600 dark:text-orange-400">.</span>
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-neutral-600 dark:text-neutral-400 sm:text-base sm:leading-7">
           Every milestone taught me something new. Here’s how curiosity turned
