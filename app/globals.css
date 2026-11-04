@@ -1,259 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'PP Neue Montreal';
-  src: url('/fonts/ppneuemontreal-medium.otf') format('opentype'); /* Fix format */
-  font-weight: bold; /* Set the correct weight */
-  font-style: normal;
-}
-
-@keyframes ripple {
-	0% {
-		opacity: 0.3;
-		transform: scale(0);
-	}
-	100% {
-		opacity: 0;
-		transform: scale(3.5);
-	}
-}
-
-/* HTML: <div class="inverted-radius"></div> */
-.inverted-radius {
-  --r: 40px; /* the radius */
-  --s: 40px; /* size of inner curve */
-  --x: 10px; /* horizontal offset (no percentage) */
-  --y: 10px; /* vertical offset (no percentage) */
-
-  border-radius: var(--r);
-  --_m:/calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%,#0000 72%);
-  --_g:conic-gradient(at calc(100% - var(--r)) var(--r),#0000 25%,#000 0);
-  --_d:(var(--s) + var(--r));
-  mask:
-    calc(100% - var(--_d) - var(--x)) 0 var(--_m),
-    100% calc(var(--_d) + var(--y)) var(--_m),
-    radial-gradient(var(--s) at 100% 0,#0000 99%,#000 calc(100% + 1px))
-     calc(-1*var(--r) - var(--x)) calc(var(--r) + var(--y)),
-    var(--_g) calc(-1*var(--_d) - var(--x)) 0,
-    var(--_g) 0 calc(var(--_d) + var(--y));
-  mask-repeat: no-repeat;
-}
-
-/* Customize the overall scrollbar */
-::-webkit-scrollbar {
-  width: 12px; /* Width of the scrollbar */
-  height: 16px; /* Height of the horizontal scrollbar */
-}
-
-/* The track (background of the scrollbar) */
-::-webkit-scrollbar-track {
-  background-color: #111; /* Track color */
-  padding-right: 5px; /* Adds space on the right of the scrollbar */
-}
-
-/* The thumb (the draggable part of the scrollbar) */
-::-webkit-scrollbar-thumb {
-  background-color: transparent; /* Thumb color */
-  border-radius: 10px; /* Rounded corners */
-}
-
-/* When the thumb is hovered */
-::-webkit-scrollbar-thumb:hover {
-  background-color: #bfdbfe ;
-}
-
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-  --primary-color: white;
-  --primary-color-dark: black;
-  --secondary-color: #ebebfa;
-  --secondary-color-dark: #1e1e1e;
-  --container-color-dark: #232323;
-  --bio-color: #f7f7ff;
-  --bio-color-dark: #323232;
-  --black: black;
-  --contact-color-dark: #1e1e1e;
-  --background-color: #f8f7f1;
-  --theme: "dark";
-  --theme-color: #f6a22c;
+  color-scheme: light;
+  --accent: 234 88 12;
+  --page: 255 255 255;
+}
+.dark {
+  color-scheme: dark;
+  --page: 11 11 13;
 }
 
-.bg-container {
-  background: #faf9f9;
-}
+html { scroll-behavior: smooth; scroll-padding-top: 6.5rem; }
+body { min-width: 320px; background: rgb(var(--page)); font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; }
+::selection { background: rgb(234 88 12 / 0.2); color: inherit; }
+:focus-visible { outline: 2px solid #ea580c; outline-offset: 3px; }
 
-.bg-black-varient-1 {
-  background: #121826;
+@layer components {
+  .section-container { @apply mx-auto w-full max-w-7xl; }
+  .section-space { @apply px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28; }
+  .section-heading { @apply max-w-3xl text-[clamp(2.5rem,6vw,4.7rem)] font-semibold leading-[1.02] tracking-[-0.065em] text-zinc-950 dark:text-white; }
+  .eyebrow { @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400; }
+  .eyebrow-dot { @apply h-2 w-2 rounded-full bg-orange-600 dark:bg-orange-400; }
+  .accent-text { @apply text-orange-600 dark:text-orange-400; }
+  .surface-card { @apply rounded-[1.5rem] border border-zinc-200 bg-white transition-colors dark:border-zinc-800 dark:bg-zinc-900; }
 }
-
-/* Apply this to any container you want to animate */
-.animated-bg {
-  background: linear-gradient(270deg, #3d3d3d, #e0e0e0, #000000, #fffbf8);
-  background-size: 600% 600%;
-  animation: gradientAnimation 8s ease-in-out infinite;
+@media (max-width: 640px) {
+  html { scroll-padding-top: 5.5rem; }
 }
-
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.scroll-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.scrolling-text {
-  display: flex;
-  justify-content: space-between;
-  min-width: 100%;
-  animation: scrollText 10s linear infinite;
-}
-
-@keyframes scrollText {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.frontend-text {
-  transform: translateX(-50%);
-  transition: transform 1s ease;
-}
-
-.developer-text {
-  transform: translateX(50%);
-  transition: transform 1s ease;
-}
-
-[data-scroll-class="frontend-text"] {
-  transform: translateX(0); /* Reset position when scrolled */
-}
-
-[data-scroll-class="developer-text"] {
-  transform: translateX(0); /* Reset position when scrolled */
-}
-
-/* smiley face */
-/* Center the smiley face */
-.smiley {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  background-color: white;
-  border-radius: 50%;
-}
-
-/* Eyes */
-.eye {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #3b3b3b;
-  border-radius: 50%;
-  top: 15px;
-}
-
-/* Left eye position */
-.left-eye {
-  left: 35px;
-}
-
-/* Right eye position */
-.right-eye {
-  right: 35px;
-}
-
-/* Blinking animation */
-.eye::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #ffcc4d;
-  border-radius: 50%;
-  animation: blink 3s infinite;
-}
-
-@keyframes blink {
-  0%, 98%, 100% {
-    height: 100%;
-  }
-  99% {
-    height: 10%;
-  }
-}
-
-/* Mouth */
-.mouth {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 20px;
-  border-bottom: 5px solid #3b3b3b;
-  border-radius: 0 0 50px 50px;
-}
-
-/* data aos */
-@keyframes flip-down {
-  0% {
-    transform: rotateX(-90deg);
-    /* opacity: 0; */
-    border-radius: 0; /* Start fully rounded */
-  }
-  100% {
-    transform: rotateX(0deg);
-    /* opacity: 1; */
-    border-radius: 20px; /* Final rounded corners */
-  }
-}
-
-/* Custom AOS Class */
-.aos-animate[data-aos="custom-flip-down"] {
-  animation: flip-down 1s ease-out forwards;
-}
-
-@layer base {
-  .theme {
-    --animate-marquee: marquee var(--duration) infinite linear;
-    --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
-  }
-}
-
-@theme inline {
-  @keyframes marquee {
-  from {
-    transform: translateX(0);
-    }
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-    }
-  }
-  @keyframes marquee-vertical {
-  from {
-    transform: translateY(0);
-    }
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
-    }
-  }
-}
-
-::view-transition-old(root), ::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
