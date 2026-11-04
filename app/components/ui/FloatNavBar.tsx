@@ -38,7 +38,7 @@ export default function FloatNavBar() {
           {sections.map(({ id, label }) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} className={`shrink-0 rounded-full px-2.5 py-2 text-[11px] font-medium transition sm:px-3 sm:text-xs ${active === id ? "bg-orange-600 text-white" : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"}`}>{label}</a>)}
         </div>
         <div className="ml-2 shrink-0 border-l border-zinc-200 pl-2 dark:border-zinc-700">
-          <AnimatedThemeToggler aria-label="Toggle color theme" className="grid h-8 w-8 cursor-pointer place-items-center rounded-full text-zinc-700 transition hover:bg-orange-50 hover:text-orange-700 dark:text-zinc-200 dark:hover:bg-orange-400/10 dark:hover:text-orange-300" />
+          <AnimatedThemeToggler className="grid h-8 w-8 cursor-pointer place-items-center rounded-full text-zinc-700 transition hover:bg-orange-50 hover:text-orange-700 dark:text-zinc-200 dark:hover:bg-orange-400/10 dark:hover:text-orange-300" />
         </div>
       </nav>
     </header>
