@@ -10,7 +10,7 @@ import FloatNavBar from "./components/ui/FloatNavBar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen overflow-x-clip bg-white text-zinc-950 transition-colors duration-300 dark:bg-[#0b0b0d] dark:text-white">
+    <main className="min-h-screen overflow-x-clip bg-white text-zinc-950 transition-colors duration-500 dark:bg-[#0b0b0d] dark:text-white">
       <FloatNavBar />
       <Hero />
       <About />
