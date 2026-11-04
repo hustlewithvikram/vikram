@@ -2,8 +2,8 @@ import { ArrowUpRight, Github, Instagram, Linkedin, Mail } from "lucide-react";
 
 const links = [
   { label: "GitHub", href: "https://github.com/hustlewithvikram", icon: Github },
-  { label: "Instagram", href: "https://instagram.com/vikramisdev", icon: Instagram },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/vikramisdev", icon: Linkedin },
+  { label: "Instagram", href: "https://instagram.com/hustlewithvikram", icon: Instagram },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/hustlewithvikram", icon: Linkedin },
 ];
 
 export default function Footer() {
