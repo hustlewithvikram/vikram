@@ -38,7 +38,7 @@ export default async function RootLayout({
 							url: "https://vikram.is-a.dev",
 							sameAs: [
 								"https://www.linkedin.com/in/vikramisdev",
-								"https://github.com/vikramisdev",
+								"https://github.com/hustlewithvikram",
 							],
 						}),
 					}}
