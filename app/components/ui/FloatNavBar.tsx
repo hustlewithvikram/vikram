@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
+import { flushSync } from "react-dom";
 import { motion } from "framer-motion";
 import {
   Code2,
@@ -94,7 +95,7 @@ export default function FloatNavBar() {
     const nextTheme = isDark ? "light" : "dark";
     const transitionDocument = document as Document & { startViewTransition?: (callback: () => void) => unknown };
     if (transitionDocument.startViewTransition) {
-      transitionDocument.startViewTransition(() => setTheme(nextTheme));
+      transitionDocument.startViewTransition(() => flushSync(() => setTheme(nextTheme)));
     } else {
       setTheme(nextTheme);
     }
