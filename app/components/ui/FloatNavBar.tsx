@@ -90,6 +90,15 @@ export default function FloatNavBar() {
   }, []);
 
   const isDark = resolvedTheme === "dark";
+  const toggleTheme = () => {
+    const nextTheme = isDark ? "light" : "dark";
+    const transitionDocument = document as Document & { startViewTransition?: (callback: () => void) => unknown };
+    if (transitionDocument.startViewTransition) {
+      transitionDocument.startViewTransition(() => setTheme(nextTheme));
+    } else {
+      setTheme(nextTheme);
+    }
+  };
 
   return (
     <motion.header
@@ -141,7 +150,7 @@ export default function FloatNavBar() {
           type="button"
           whileTap={{ scale: 0.9, rotate: 12 }}
           transition={{ type: "spring", stiffness: 420, damping: 24 }}
-          onClick={() => setTheme(isDark ? "light" : "dark")}
+          onClick={toggleTheme}
           aria-label={mounted ? `Switch to ${isDark ? "light" : "dark"} mode` : "Toggle color theme"}
           title={mounted ? `Switch to ${isDark ? "light" : "dark"} mode` : "Toggle color theme"}
           className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-zinc-300/80 bg-white/90 text-zinc-900 shadow-sm transition-colors duration-300 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:border-white/15 dark:bg-white/10 dark:text-amber-200 dark:hover:bg-white/20 sm:h-11 sm:w-11"
