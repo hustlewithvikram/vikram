@@ -29,7 +29,7 @@ function JourneyCard({ item, index, onOpen }) {
       transition={{ duration: 0.38, delay: (index % 4) * 0.045, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -3 }}
       whileTap={{ scale: 0.985 }}
-      className={`group relative flex min-h-[190px] w-full min-w-0 flex-col items-start overflow-hidden rounded-[1.6rem] border border-zinc-200/80 bg-white p-5 text-left shadow-[0_4px_18px_rgba(15,23,42,0.035)] transition-colors hover:border-orange-300 hover:shadow-xl hover:shadow-orange-950/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-orange-400/50 sm:min-h-[210px] sm:p-6 ${index === 0 || index === 4 ? "sm:col-span-2" : ""}`}
+      className={`group relative flex h-full min-h-[190px] w-full min-w-0 flex-col items-start overflow-hidden rounded-[1.6rem] border border-zinc-200/80 bg-white p-5 text-left shadow-[0_4px_18px_rgba(15,23,42,0.035)] transition-colors hover:border-orange-300 hover:shadow-xl hover:shadow-orange-950/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-orange-400/50 sm:min-h-[210px] sm:p-6 ${index === 0 ? "sm:col-span-2 xl:row-span-2 xl:min-h-[310px]" : index === 3 || index === 4 || index === 6 ? "sm:col-span-2" : ""}`}
     >
       <div className="flex w-full items-start justify-between gap-3">
         <span className="grid h-12 w-12 place-items-center rounded-2xl bg-orange-100 text-2xl text-orange-800 dark:bg-orange-400/10 dark:text-orange-300">{item.icon}</span>
@@ -75,7 +75,7 @@ export default function Timeline() {
         <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 sm:pb-1"><span className="font-semibold text-zinc-900 dark:text-white">2021</span> — Started <span className="mx-2 text-zinc-300 dark:text-zinc-700">·</span> <span className="font-semibold text-zinc-900 dark:text-white">07</span> — Milestones <span className="mx-2 text-zinc-300 dark:text-zinc-700">·</span> Tap a card to explore</p>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-4">
+      <div className="grid auto-rows-[minmax(190px,auto)] gap-3 sm:grid-cols-2 sm:gap-4 xl:auto-rows-[150px] xl:grid-cols-4 xl:gap-4">
         {timelineData.map((item, index) => <JourneyCard key={item.id} item={item} index={index} onOpen={() => setSelected(item)} />)}
       </div>
 
