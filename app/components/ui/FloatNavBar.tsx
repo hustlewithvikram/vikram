@@ -1,115 +1,42 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import clsx from "clsx";
-import {
-	Folder,
-	Home,
-	Mail,
-	Person,
-	Stars,
-	Timeline,
-} from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const sections = [
-	{ id: "home", icon: <Home />, label: "Home" },
-	{ id: "about", icon: <Person />, label: "About" },
-	{ id: "timeline", icon: <Timeline />, label: "Timeline" },
-	{ id: "projects", icon: <Folder />, label: "Projects" },
-	{ id: "skills", icon: <Stars />, label: "Skills" },
-	{ id: "contact", icon: <Mail />, label: "Contact" },
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "journey", label: "Journey" },
+  { id: "projects", label: "Work" },
+  { id: "skills", label: "Stack" },
+  { id: "contact", label: "Contact" },
 ];
 
-const FloatNavBar = () => {
-	const [activeSection, setActiveSection] = useState("home");
-	const [indicatorStyle, setIndicatorStyle] = useState({ top: 0, height: 0 });
-	const [scaleY, setScaleY] = useState(1);
-	const btnRefs = useRef<(HTMLButtonElement | null)[]>([]);
+export default function FloatNavBar() {
+  const [active, setActive] = useState("home");
+  const pathname = usePathname();
 
-	const scrollToSection = (id: string) => {
-		const section = document.getElementById(id);
-		if (section) {
-			section.scrollIntoView({ behavior: "smooth", block: "start" });
-		}
-	};
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible) setActive(visible.target.id);
+    }, { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.15, 0.35, 0.6] });
 
-	useEffect(() => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						setActiveSection(entry.target.id);
-					}
-				});
-			},
-			{ threshold: 0.6 }
-		);
+    sections.forEach(({ id }) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+    return () => observer.disconnect();
+  }, [pathname]);
 
-		sections.forEach(({ id }) => {
-			const section = document.getElementById(id);
-			if (section) observer.observe(section);
-		});
-
-		return () => observer.disconnect();
-	}, []);
-
-	useEffect(() => {
-		const index = sections.findIndex((s) => s.id === activeSection);
-		const btn = btnRefs.current[index];
-		if (btn) {
-			setIndicatorStyle({
-				top: btn.offsetTop,
-				height: btn.offsetHeight,
-			});
-		}
-	}, [activeSection]);
-
-	useEffect(() => {
-		setScaleY(1.1); // Stretch effect
-		const timeout = setTimeout(() => setScaleY(1), 220); // Bounce back
-		return () => clearTimeout(timeout);
-	}, [indicatorStyle.top]);
-
-	return (
-		<div className="hidden md:flex fixed right-4 top-1/2 -translate-y-1/2 z-50 pointer-events-none">
-			<nav
-				className="relative flex flex-col items-center
-        backdrop-blur-md border border-gray-300 dark:border-gray-700 rounded-full
-        px-2 py-2 pointer-events-auto"
-			>
-				{/* Vertical sliding indicator */}
-				<div
-					className="absolute left-1.5 right-1.5 bg-black dark:bg-white rounded-full transition-all duration-300 ease-[cubic-bezier(0.25,1.5,0.5,1)] transform-gpu"
-					style={{
-						top: indicatorStyle.top,
-						height: indicatorStyle.height,
-						transform: `scaleY(${scaleY})`,
-						zIndex: 0,
-					}}
-				/>
-
-				{/* Buttons */}
-				{sections.map(({ id, icon, label }, index) => (
-					<button
-						key={id}
-						ref={(el) => {
-							btnRefs.current[index] = el;
-						}}
-						onClick={() => scrollToSection(id)}
-						className={clsx(
-							"relative z-10 flex items-center justify-center mb-2 p-3 rounded-full transition-all duration-200",
-							activeSection === id
-								? "text-white dark:text-black"
-								: "text-black dark:text-white hover:bg-black/10 dark:hover:bg-white/10"
-						)}
-						aria-label={label}
-					>
-						{icon}
-					</button>
-				))}
-			</nav>
-		</div>
-	);
-};
-
-export default FloatNavBar;
+  return (
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-5">
+      <nav aria-label="Main navigation" className="mx-auto flex w-full max-w-7xl items-center justify-between rounded-full border border-zinc-200/80 bg-white/85 px-4 py-2.5 shadow-sm backdrop-blur-xl dark:border-zinc-800/90 dark:bg-zinc-950/80 sm:px-5">
+        <a href="#home" className="text-sm font-bold tracking-tight text-zinc-950 dark:text-white">V<span className="text-orange-600 dark:text-orange-400">.</span></a>
+        <div className="flex max-w-[calc(100%-3rem)] items-center gap-0.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:gap-1">
+          {sections.map(({ id, label }) => <a key={id} href={`#${id}`} aria-current={active === id ? "location" : undefined} className={`shrink-0 rounded-full px-2.5 py-2 text-[11px] font-medium transition sm:px-3 sm:text-xs ${active === id ? "bg-orange-600 text-white" : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white"}`}>{label}</a>)}
+        </div>
+      </nav>
+    </header>
+  );
+}
