@@ -14,7 +14,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative isolate overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-24">
+    <section id="home" className="relative isolate overflow-hidden px-4 pb-16 pt-20 sm:px-6 sm:pb-20 sm:pt-24 lg:px-8 lg:pb-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(ellipse_at_75%_20%,rgba(234,88,12,0.10),transparent_55%)]" />
       <div className="mx-auto grid min-h-[min(760px,calc(100svh-7rem))] w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: "easeOut" }} className="order-2 min-w-0 lg:order-1">
@@ -48,10 +48,9 @@ const Hero = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/35 via-transparent to-zinc-950/75" />
             <div className="absolute inset-x-4 top-4 flex items-center justify-between gap-3 sm:inset-x-6 sm:top-6">
               <span className="rounded-full border border-white/25 bg-black/25 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/90 shadow-lg backdrop-blur-xl sm:text-[10px]">Ideas into experiences</span>
-              <span className="rounded-full border border-white/25 bg-black/25 px-3 py-1.5 text-[9px] font-medium tracking-wide text-white/85 backdrop-blur-xl sm:text-[10px]">Available for ideas</span>
             </div>
             <div className="absolute bottom-0 inset-x-0 p-5 text-white sm:p-7">
-              <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.24em] text-white/65">Based in India · Building worldwide</p>
+              <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.24em] text-white/65">Based in India</p>
               <div className="flex items-end justify-between gap-3">
                 <div className="min-w-0">
                   <p className="text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-3xl">Vikram Vishwakarma</p>
