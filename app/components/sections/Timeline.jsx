@@ -25,56 +25,50 @@ const timelineData = [
 function JourneyCard({ item, index }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 22 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.45, delay: (index % 3) * 0.07, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex h-full min-h-[230px] flex-col overflow-hidden rounded-[1.65rem] border border-zinc-200/80 bg-white p-5 shadow-[0_4px_18px_rgba(15,23,42,0.035)] transition duration-300 hover:-translate-y-1 hover:border-orange-300/80 hover:shadow-[0_16px_36px_rgba(15,23,42,0.08)] dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:border-orange-400/30 dark:hover:shadow-black/20 sm:p-6"
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ duration: 0.35, delay: (index % 4) * 0.045, ease: [0.22, 1, 0.36, 1] }}
+      className="group flex min-w-0 items-center gap-3 rounded-2xl border border-zinc-200/80 bg-white p-3 shadow-[0_3px_14px_rgba(15,23,42,0.03)] transition duration-300 hover:-translate-y-0.5 hover:border-orange-300/80 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:border-orange-400/30 sm:h-full sm:items-start sm:gap-0 sm:rounded-[1.4rem] sm:p-4"
     >
-      <div className="flex items-start justify-between gap-3">
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-orange-50 text-2xl text-orange-700 dark:bg-orange-400/10 dark:text-orange-300" aria-hidden="true">
-          {item.icon}
-        </span>
-        <span className="rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-zinc-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
-          {item.date}
-        </span>
+      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-orange-50 text-xl text-orange-700 dark:bg-orange-400/10 dark:text-orange-300 sm:h-11 sm:w-11 sm:rounded-2xl sm:text-2xl" aria-hidden="true">
+        {item.icon}
+      </span>
+      <div className="min-w-0 flex-1 sm:mt-3">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span className="text-[10px] font-bold tracking-[0.14em] text-orange-700 dark:text-orange-400">{item.id}</span>
+          <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+          <span className="text-[10px] font-medium text-zinc-500 dark:text-zinc-400">{item.date}</span>
+          <span className="ml-auto hidden rounded-full bg-zinc-100 px-2 py-1 text-[9px] font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400 sm:inline-flex">{item.tag}</span>
+        </div>
+        <h3 className="mt-1 text-sm font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-base">{item.title}</h3>
+        <p className="mt-1 line-clamp-2 text-xs leading-5 text-zinc-600 dark:text-zinc-400">{item.description}</p>
       </div>
-      <div className="mt-5 flex items-center gap-2">
-        <span className="text-[11px] font-bold tracking-[0.18em] text-orange-700 dark:text-orange-400">{item.id}</span>
-        <span className="h-px w-7 bg-zinc-200 dark:bg-zinc-700" />
-        <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">{item.tag}</span>
-      </div>
-      <h3 className="mt-3 text-lg font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-xl">{item.title}</h3>
-      <p className="mt-2 flex-1 text-sm leading-6 text-zinc-600 dark:text-zinc-400">{item.description}</p>
-      <div className="mt-5 flex items-center justify-between border-t border-zinc-100 pt-4 dark:border-zinc-800">
-        <span className="text-[11px] font-medium text-zinc-400 dark:text-zinc-500">Milestone {index + 1} / {timelineData.length}</span>
-        <MdArrowOutward className="text-lg text-zinc-400 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-orange-600 dark:group-hover:text-orange-400" />
-      </div>
+      <MdArrowOutward className="ml-auto shrink-0 text-base text-zinc-300 transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-orange-600 dark:text-zinc-600 dark:group-hover:text-orange-400 sm:hidden" />
     </motion.article>
   );
 }
 
 export default function Timeline() {
   return (
-    <section id="journey" aria-labelledby="journey-heading" className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
-      <div className="mb-9 flex flex-col gap-5 sm:mb-12 md:flex-row md:items-end md:justify-between">
+    <section id="journey" aria-labelledby="journey-heading" className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+      <div className="mb-7 flex flex-col gap-4 sm:mb-9 md:flex-row md:items-end md:justify-between">
         <div className="max-w-2xl">
           <p className="eyebrow"><span className="eyebrow-dot" /> The path so far</p>
-          <h2 id="journey-heading" className="section-heading mt-5">My Journey<span className="accent-text">.</span></h2>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-zinc-600 dark:text-zinc-400 sm:text-base">
+          <h2 id="journey-heading" className="section-heading mt-4">My Journey<span className="accent-text">.</span></h2>
+          <p className="mt-3 max-w-xl text-sm leading-6 text-zinc-600 dark:text-zinc-400 sm:text-base sm:leading-7">
             From first lines of HTML to shipping web and mobile products — each chapter added a new tool, perspective, and reason to keep building.
           </p>
         </div>
-        <div className="flex gap-2 sm:gap-3">
-          {[{ value: "2021", label: "Started" }, { value: "07", label: "Milestones" }, { value: "∞", label: "Still learning" }].map((stat) => (
-            <div key={stat.label} className="min-w-0 rounded-2xl border border-zinc-200 bg-zinc-50/80 px-3 py-3 dark:border-zinc-800 dark:bg-zinc-900/70 sm:min-w-[104px] sm:px-4">
-              <p className="text-lg font-bold tracking-tight text-zinc-950 dark:text-white sm:text-xl">{stat.value}</p>
-              <p className="mt-0.5 text-[10px] font-medium text-zinc-500 dark:text-zinc-400 sm:text-xs">{stat.label}</p>
-            </div>
-          ))}
-        </div>
+        <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 sm:pb-1">
+          <span className="font-semibold text-zinc-900 dark:text-white">2021</span> — Started
+          <span className="mx-2 text-zinc-300 dark:text-zinc-700">·</span>
+          <span className="font-semibold text-zinc-900 dark:text-white">07</span> — Milestones
+          <span className="mx-2 text-zinc-300 dark:text-zinc-700">·</span>
+          Still learning
+        </p>
       </div>
-      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
+      <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3 xl:grid-cols-4">
         {timelineData.map((item, index) => <JourneyCard key={item.id} item={item} index={index} />)}
       </div>
     </section>
