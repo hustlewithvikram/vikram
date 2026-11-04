@@ -58,10 +58,10 @@ export default function FloatNavBar() {
 
       if (currentY < 80) {
         setVisible(true);
-        previousY = currentY;
+        previousScrollY.current = currentY;
       } else if (Math.abs(delta) > 5) {
         setVisible(delta < 0);
-        previousY = currentY;
+        previousScrollY.current = currentY;
       }
       ticking = false;
     };
