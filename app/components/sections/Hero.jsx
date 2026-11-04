@@ -45,11 +45,20 @@ const Hero = () => {
         <motion.div initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.12, ease: "easeOut" }} className="order-1 mx-auto w-full max-w-[430px] lg:order-2 lg:max-w-[500px]">
           <div className="relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-zinc-200 shadow-2xl shadow-zinc-900/10 dark:bg-zinc-800 sm:rounded-[2.5rem]">
             <Image src="/images/vikram_vishwakarma.png" alt="Portrait of Vikram Vishwakarma" fill priority sizes="(max-width: 1024px) 80vw, 500px" className="object-cover object-top" />
-            <p className="absolute left-5 right-5 top-5 -rotate-2 text-[clamp(0.81rem,1.32vw,1.08rem)] leading-none tracking-[0.015em] text-orange-100 sm:left-7 sm:right-7 sm:top-7" style={{ fontFamily: "Allura, cursive", fontWeight: 400 }}>Ideas into experiences, one line at a time.</p>
-            <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/35 to-transparent" />
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white sm:bottom-7 sm:left-7 sm:right-7">
-              <div><p className="text-xs uppercase tracking-[0.2em] text-white/75">Based in India</p><p className="mt-1 text-xl font-semibold tracking-tight sm:text-2xl">Vikram Vishwakarma</p></div>
-              <span className="grid h-11 w-11 place-items-center rounded-full border border-white/40 bg-white/15 backdrop-blur"><ArrowDown size={18} /></span>
+            <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/35 via-transparent to-zinc-950/75" />
+            <div className="absolute inset-x-4 top-4 flex items-center justify-between gap-3 sm:inset-x-6 sm:top-6">
+              <span className="rounded-full border border-white/25 bg-black/25 px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-white/90 shadow-lg backdrop-blur-xl sm:text-[10px]">Ideas into experiences</span>
+              <span className="rounded-full border border-white/25 bg-black/25 px-3 py-1.5 text-[9px] font-medium tracking-wide text-white/85 backdrop-blur-xl sm:text-[10px]">Available for ideas</span>
+            </div>
+            <div className="absolute bottom-0 inset-x-0 p-5 text-white sm:p-7">
+              <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.24em] text-white/65">Based in India · Building worldwide</p>
+              <div className="flex items-end justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-3xl">Vikram Vishwakarma</p>
+                  <p className="mt-1.5 text-xs text-white/75 sm:text-sm">Developer · Designer · Product builder</p>
+                </div>
+                <a href="#about" aria-label="Explore about me" className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/35 bg-white/15 shadow-lg backdrop-blur-xl transition hover:scale-105 hover:bg-white/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"><ArrowDown size={18} /></a>
+              </div>
             </div>
           </div>
           <div className="mt-4 flex items-center justify-between px-1 text-xs text-zinc-500 dark:text-zinc-400"><span>Curiosity into craft.</span><span>01 / 06</span></div>
