@@ -1,101 +1,44 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowUpRight, Code2, Layers3, Smartphone } from "lucide-react";
 
-const container = {
-	hidden: {},
-	show: {
-		transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-	},
-};
+const highlights = [
+  { icon: Code2, title: "Web development", text: "Building fast, maintainable interfaces and full-stack experiences." },
+  { icon: Smartphone, title: "Mobile experiences", text: "Creating practical, polished Android and cross-platform apps." },
+  { icon: Layers3, title: "Product thinking", text: "Balancing visual detail, usability and engineering decisions." },
+];
 
-const fadeUp = {
-	hidden: { opacity: 0, y: 20 },
-	show: {
-		opacity: 1,
-		y: 0,
-		transition: { duration: 0.6, ease: [0.25, 0.8, 0.25, 1] },
-	},
-};
+export default function About() {
+  return (
+    <section id="about" className="section-space border-y border-zinc-200/80 bg-zinc-50/80 dark:border-zinc-800 dark:bg-zinc-900/35">
+      <div className="section-container">
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <div>
+            <p className="eyebrow"><span className="eyebrow-dot" /> A little about me</p>
+            <h2 className="section-heading mt-5">A developer with a <span className="accent-text">builder’s mindset.</span></h2>
+          </div>
+          <div>
+            <p className="max-w-3xl text-lg leading-8 text-zinc-700 dark:text-zinc-300 sm:text-xl sm:leading-9">
+              I’m a Computer Science graduate from Maharashtra, India, working in Quality Engineering & Assurance while continuing to build software outside the day job. I enjoy the space where thoughtful design meets reliable engineering.
+            </p>
+            <p className="mt-5 max-w-3xl leading-8 text-zinc-600 dark:text-zinc-400">
+              My work spans React, React Native, JavaScript, Python and Android development. I like understanding how products work end to end — from the first interface sketch to the systems that make the experience dependable.
+            </p>
+            <a href="#projects" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-orange-700 transition hover:gap-3 dark:text-orange-400">Explore selected work <ArrowUpRight size={16} /></a>
+          </div>
+        </div>
 
-const About = () => {
-	return (
-		<section
-			id="about"
-			className="relative min-h-screen flex items-center justify-center px-6 md:px-12 py-20 bg-gradient-to-b transition-colors"
-		>
-			<motion.div
-				variants={container}
-				initial="hidden"
-				whileInView="show"
-				viewport={{ once: true }}
-				className="max-w-7xl mx-auto flex flex-col gap-12"
-			>
-				{/* Heading */}
-				<motion.div variants={fadeUp} className="space-y-6">
-					<div className="inline-flex items-center px-4 py-1.5 rounded-full bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 text-sm font-medium">
-						About Me
-					</div>
-
-					<h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight text-gray-900 dark:text-white">
-						Hi, I’m{" "}
-						<span className="text-blue-400">
-							Vikram Vishwakarma
-						</span>
-					</h1>
-
-					<p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">
-						Based in Maharashtra, India — I’m a{" "}
-						<span className="font-semibold">
-							Computer Science graduate
-						</span>{" "}
-						and{" "}
-						<span className="font-semibold text-gray-900 dark:text-white">
-							React.js & React Native Developer
-						</span>{" "}
-						passionate about crafting clean, modern, and
-						user-focused digital experiences.
-					</p>
-				</motion.div>
-
-				{/* Body */}
-				<motion.div
-					variants={fadeUp}
-					className="space-y-6 text-lg md:text-xl"
-				>
-					<p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-						I build{" "}
-						<span className="font-medium">scalable web apps</span>{" "}
-						with{" "}
-						<span className="font-semibold text-blue-600 dark:text-blue-400">
-							React.js
-						</span>{" "}
-						and{" "}
-						<span className="font-medium">
-							cross-platform mobile apps
-						</span>{" "}
-						with{" "}
-						<span className="font-semibold text-indigo-600 dark:text-indigo-400">
-							React Native
-						</span>
-						. My expertise spans UI/UX, animations, Firebase
-						integrations, and seamless backend connections.
-					</p>
-
-					<p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-						My philosophy:{" "}
-						<span className="italic text-gray-900 dark:text-white">
-							design simplicity
-						</span>{" "}
-						+ <span className="italic">engineering excellence</span>
-						. I strive to build apps that not only work flawlessly
-						but feel natural and delightful to use.
-					</p>
-				</motion.div>
-			</motion.div>
-		</section>
-	);
-};
-
-export default About;
+        <div className="mt-14 grid gap-3 sm:grid-cols-3">
+          {highlights.map(({ icon: Icon, title, text }, index) => (
+            <motion.article key={title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.4, delay: index * 0.08 }} className="surface-card p-6 sm:p-7">
+              <span className="mb-8 grid h-11 w-11 place-items-center rounded-2xl bg-orange-100 text-orange-700 dark:bg-orange-400/10 dark:text-orange-300"><Icon size={21} /></span>
+              <h3 className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-white">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400">{text}</p>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
