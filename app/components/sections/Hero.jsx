@@ -20,7 +20,7 @@ const Hero = () => {
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: "easeOut" }} className="order-2 min-w-0 lg:order-1">
           <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-3.5 py-2 text-xs font-semibold tracking-wide text-orange-800 dark:border-orange-400/20 dark:bg-orange-400/10 dark:text-orange-300">
             <span className="h-2 w-2 rounded-full bg-orange-500" />
-            Available for meaningful opportunities
+            Building for the web & Android
           </div>
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400">Developer · Product thinker · Builder</p>
           <h1 className="max-w-4xl text-[clamp(3.5rem,9vw,7.6rem)] font-semibold leading-[0.88] tracking-[-0.075em] text-zinc-950 dark:text-white">
