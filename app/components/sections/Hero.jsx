@@ -18,7 +18,6 @@ const Hero = () => {
       <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[34rem] bg-[radial-gradient(ellipse_at_75%_20%,rgba(234,88,12,0.10),transparent_55%)]" />
       <div className="mx-auto grid min-h-[min(760px,calc(100svh-7rem))] w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
         <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, ease: "easeOut" }} className="order-2 min-w-0 lg:order-1">
-          <p className="mb-3 -rotate-2 text-[clamp(1.35rem,2.2vw,1.8rem)] leading-tight text-orange-700 dark:text-orange-300" style={{ fontFamily: "Agbalumo, cursive" }}>Ideas into experiences, one line at a time.</p>
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.24em] text-zinc-500 dark:text-zinc-400">Developer · Product thinker · Builder</p>
           <h1 className="max-w-4xl text-[clamp(3.5rem,9vw,7.6rem)] font-semibold leading-[0.88] tracking-[-0.075em] text-zinc-950 dark:text-white">
             Building
@@ -46,6 +45,7 @@ const Hero = () => {
         <motion.div initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.12, ease: "easeOut" }} className="order-1 mx-auto w-full max-w-[430px] lg:order-2 lg:max-w-[500px]">
           <div className="relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-[2rem] bg-zinc-200 shadow-2xl shadow-zinc-900/10 dark:bg-zinc-800 sm:rounded-[2.5rem]">
             <Image src="/images/vikram_vishwakarma.png" alt="Portrait of Vikram Vishwakarma" fill priority sizes="(max-width: 1024px) 80vw, 500px" className="object-cover object-top" />
+            <p className="absolute left-5 right-5 top-5 -rotate-2 text-[clamp(0.81rem,1.32vw,1.08rem)] leading-none tracking-[0.015em] text-orange-100 sm:left-7 sm:right-7 sm:top-7" style={{ fontFamily: "Allura, cursive", fontWeight: 400 }}>Ideas into experiences, one line at a time.</p>
             <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/35 to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white sm:bottom-7 sm:left-7 sm:right-7">
               <div><p className="text-xs uppercase tracking-[0.2em] text-white/75">Based in India</p><p className="mt-1 text-xl font-semibold tracking-tight sm:text-2xl">Vikram Vishwakarma</p></div>
