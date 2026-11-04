@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ArrowUpRight, Github, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, Github, ChevronLeft, ChevronRight, House } from "lucide-react";
 
 const projects = [
   { number: "01", title: "Location Dots", category: "Android · Kotlin · Jetpack Compose", description: "A location timeline that turns everyday movement into a thoughtful visual history of places visited.", image: null, links: [{ label: "GitHub", href: "https://github.com/hustlewithvikram/location-dots" }] },
@@ -13,6 +13,8 @@ const projects = [
   { number: "05", title: "Advit Design Studio", category: "Next.js · React · Resend", description: "A studio portfolio website designed to present creative work through a clean, considered interface.", image: "/images/projects/advitdesignstudio.jpg", links: [{ label: "GitHub", href: "https://github.com/hustlewithvikram/advit" }] },
   { number: "06", title: "Deep Notes", category: "Android · Kotlin · Room · Jetpack Compose", description: "A note-taking app inspired by Google Keep, with local storage, dynamic color, swipe actions and content search.", image: null, links: [{ label: "GitHub", href: "https://github.com/hustlewithvikram/deepnotes" }] },
   { number: "07", title: "Task Management", category: "Angular · Express · Node.js", description: "A full-stack task management application with an Angular interface and an Express backend.", image: null, links: [{ label: "GitHub", href: "https://github.com/hustlewithvikram/task-management" }] },
+  { number: "08", title: "iCamera", category: "Android · Kotlin · CameraX · Camera2", description: "An adaptive Android camera experience inspired by iPhone Camera, discovering each device’s real lens, resolution, frame-rate and capture capabilities.", image: null, links: [{ label: "GitHub", href: "https://github.com/hustlewithvikram/i-camera" }] },
+  { number: "09", title: "Adaptive Icon Studio", category: "React · TypeScript · Vite · SVG · Canvas", description: "A browser-based Android icon workspace for importing drawable XML, previewing adaptive masks, adjusting layers and exporting launcher assets.", image: null, links: [{ label: "GitHub", href: "https://github.com/hustlewithvikram/aais" }] },
 ];
 
 export default function Projects() {
@@ -92,6 +94,7 @@ export default function Projects() {
           <div className="mt-1 flex items-center justify-between px-1">
             <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Swipe to explore <span className="text-orange-600 dark:text-orange-400">· {String(activeIndex + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</span></p>
             <div className="flex gap-2">
+              <button type="button" onClick={() => moveTo(0)} aria-label="First project" title="Back to first project" className="grid h-9 w-9 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 transition hover:border-orange-400 hover:text-orange-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:text-orange-300"><House size={16} /></button>
               <button type="button" onClick={() => moveTo(Math.max(0, activeIndex - 1))} aria-label="Previous project" className="grid h-9 w-9 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 transition hover:border-orange-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"><ChevronLeft size={17} /></button>
               <button type="button" onClick={() => moveTo(Math.min(projects.length - 1, activeIndex + 1))} aria-label="Next project" className="grid h-9 w-9 place-items-center rounded-full border border-zinc-200 bg-white text-zinc-700 transition hover:border-orange-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200"><ChevronRight size={17} /></button>
             </div>
