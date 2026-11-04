@@ -5,10 +5,12 @@ import "./globals.css";
 export const metadata: Metadata = {
 	title: "Vikram Vishwakarma",
 	description:
-		"Portfolio of Vikram Vishwakarma, a Web Developer specializing in Next.js, React, and JavaScript.",
+		"Portfolio of Vikram Vishwakarma — software developer building thoughtful web and mobile experiences with React, React Native, Kotlin and modern technologies.",
 	keywords: [
 		"Vikram Vishwakarma",
-		"Web Developer",
+		"Software Developer",
+		"React Native Developer",
+		"Android Developer",
 		"Next.js",
 		"React",
 		"JavaScript",
@@ -48,11 +50,11 @@ export default async function RootLayout({
 				{/* Open Graph Tags */}
 				<meta
 					property="og:title"
-					content="Vikram Vishwakarma - Web Developer"
+					content="Vikram Vishwakarma — Software Developer"
 				/>
 				<meta
 					property="og:description"
-					content="Portfolio of Vikram Vishwakarma, a Web Developer specializing in Next.js, React, and JavaScript."
+					content="Portfolio of Vikram Vishwakarma — software developer building thoughtful web and mobile experiences."
 				/>
 				<meta property="og:image" content="/images/profile_round.ico" />
 				<meta property="og:url" content="https://vikram.is-a.dev" />
