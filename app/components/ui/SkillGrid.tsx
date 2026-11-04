@@ -10,7 +10,7 @@ const groups = [
   { icon: Wrench, title: "Tools & workflow", detail: "Build, ship & iterate", tone: "green", skills: ["Git", "GitHub", "Linux", "Figma", "Postman", "VS Code"] },
 ];
 
-const tones = {
+const tones: Record<string, string> = {
   orange: "bg-orange-100 text-orange-800 dark:bg-orange-400/15 dark:text-orange-300",
   blue: "bg-sky-100 text-sky-800 dark:bg-sky-400/15 dark:text-sky-300",
   violet: "bg-violet-100 text-violet-800 dark:bg-violet-400/15 dark:text-violet-300",
